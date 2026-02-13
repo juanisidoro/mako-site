@@ -26,6 +26,23 @@ export interface ScoreRecommendation {
   message: string;
 }
 
+export interface SiteProbeUrl {
+  url: string;
+  path: string;
+  hasMako: boolean;
+  makoVersion?: string;
+  makoTokens?: number;
+  makoType?: string;
+  error?: string;
+}
+
+export interface SiteProbe {
+  urls: SiteProbeUrl[];
+  makoCount: number;
+  totalChecked: number;
+  adoptionPct: number;
+}
+
 export interface ScoreResult {
   id?: string;
   url: string;
@@ -36,6 +53,7 @@ export interface ScoreResult {
   grade: Grade;
   categories: ScoreCategory[];
   recommendations: ScoreRecommendation[];
+  siteProbe?: SiteProbe;
   isPublic: boolean;
   createdAt: string;
 }

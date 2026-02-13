@@ -3,11 +3,12 @@ import { evaluateContentStructure } from "./categories/content-structure";
 import { evaluateMetadata } from "./categories/metadata";
 import { evaluateLlmAccessibility } from "./categories/llm-accessibility";
 import { evaluateAgentReadiness } from "./categories/agent-readiness";
+import { probeSite } from "./site-probe";
 import { getGrade } from "./types";
 import type { ScoreResult, ScoreCategory, ScoreRecommendation } from "./types";
 import { saveScore } from "@/lib/db";
 
-export type { ScoreResult, ScoreCategory, ScoreCheck, ScoreRecommendation, Grade, PageData } from "./types";
+export type { ScoreResult, ScoreCategory, ScoreCheck, ScoreRecommendation, Grade, PageData, SiteProbe, SiteProbeUrl } from "./types";
 
 export async function scoreUrl(url: string, isPublic: boolean): Promise<ScoreResult> {
   const page = await extractPageData(url);
@@ -17,8 +18,11 @@ export async function scoreUrl(url: string, isPublic: boolean): Promise<ScoreRes
   const metadata = evaluateMetadata(page);
   const llmAccessibility = evaluateLlmAccessibility(page);
 
-  // Evaluate async category (HTTP probes)
-  const agentReadiness = await evaluateAgentReadiness(page);
+  // Evaluate async category (HTTP probes) + site-wide MAKO probe in parallel
+  const [agentReadiness, siteProbe] = await Promise.all([
+    evaluateAgentReadiness(page),
+    probeSite(page.$, page.finalUrl),
+  ]);
 
   const categories: ScoreCategory[] = [
     contentStructure,
@@ -49,6 +53,7 @@ export async function scoreUrl(url: string, isPublic: boolean): Promise<ScoreRes
     grade,
     categories,
     recommendations,
+    siteProbe: siteProbe.totalChecked > 0 ? siteProbe : undefined,
     isPublic,
     createdAt: new Date().toISOString(),
   };

@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import type { ScoreResult } from '@/lib/scorer/types';
 import { ScoreCard } from './score-card';
 import { CategoryBreakdown } from './category-breakdown';
+import { SiteProbeResults } from './site-probe-results';
 import { ScoreRecommendations } from './score-recommendations';
 import { ShareButtons } from './share-buttons';
 
@@ -51,6 +52,9 @@ export function ScoreResults({ result }: ScoreResultsProps) {
         <div className="space-y-8">
           <ScoreCard result={result} />
           <CategoryBreakdown categories={result.categories} />
+          {result.siteProbe && (
+            <SiteProbeResults probe={result.siteProbe} domain={result.domain} />
+          )}
         </div>
       )}
 
