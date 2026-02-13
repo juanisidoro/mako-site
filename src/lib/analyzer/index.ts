@@ -90,14 +90,15 @@ export async function analyzeUrl(
     createdAt: new Date().toISOString(),
   };
 
-  // 14. Try save to DB (non-blocking, catch errors)
-  saveAnalysis(result).then((id) => {
+  // 14. Save to DB (awaited so serverless doesn't terminate early)
+  try {
+    const id = await saveAnalysis(result);
     if (id) {
       result.id = id;
     }
-  }).catch((error) => {
+  } catch (error) {
     console.error("[analyzer] Failed to save analysis to DB:", error);
-  });
+  }
 
   return result;
 }
