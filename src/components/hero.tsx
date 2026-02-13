@@ -6,12 +6,12 @@ export function Hero() {
   const t = useTranslations('hero');
 
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden min-h-[calc(100svh-53px)] sm:min-h-0 flex flex-col">
       {/* Background effects */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(6,214,160,0.07)_0%,_transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_rgba(56,189,248,0.05)_0%,_transparent_40%)]" />
 
-      <div className="relative mx-auto max-w-5xl px-6 pt-14 pb-16 sm:pt-32 sm:pb-28">
+      <div className="relative mx-auto max-w-5xl px-6 py-8 flex-1 flex flex-col justify-center sm:flex-none sm:py-0 sm:pt-32 sm:pb-28">
         <div className="flex flex-col items-center text-center">
           {/* Badge */}
           <div className="mb-5 sm:mb-8 flex flex-wrap items-center justify-center gap-3">
