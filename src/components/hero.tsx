@@ -11,10 +11,10 @@ export function Hero() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(6,214,160,0.07)_0%,_transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_rgba(56,189,248,0.05)_0%,_transparent_40%)]" />
 
-      <div className="relative mx-auto max-w-5xl px-6 pt-24 pb-20 sm:pt-32 sm:pb-28">
+      <div className="relative mx-auto max-w-5xl px-6 pt-14 pb-16 sm:pt-32 sm:pb-28">
         <div className="flex flex-col items-center text-center">
           {/* Badge */}
-          <div className="mb-8 flex flex-wrap items-center justify-center gap-3">
+          <div className="mb-5 sm:mb-8 flex flex-wrap items-center justify-center gap-3">
             <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-3 py-1 text-xs font-medium text-emerald-400">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
               {t('badge')}
@@ -37,7 +37,7 @@ export function Hero() {
           </p>
 
           {/* Install command */}
-          <div className="mt-10 flex items-center gap-3 rounded-xl border border-slate-700/50 bg-slate-900/60 px-5 py-3 backdrop-blur-sm">
+          <div className="mt-8 sm:mt-10 flex items-center gap-3 rounded-xl border border-slate-700/50 bg-slate-900/60 px-5 py-3 backdrop-blur-sm">
             <span className="text-slate-500 font-mono text-sm">$</span>
             <code className="font-mono text-sm text-emerald-400">{t('install')}</code>
             <CopyButton text={t('install')} />

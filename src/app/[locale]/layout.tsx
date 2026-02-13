@@ -120,6 +120,11 @@ export default async function LocaleLayout({
         {siteConfig.googleSiteVerification && (
           <meta name="google-site-verification" content={siteConfig.googleSiteVerification} />
         )}
+        <script
+          defer
+          src="https://analytics.moniisima.com/script.js"
+          data-website-id="0bb9b0f2-7272-4b79-aeee-cc0ec74fdd93"
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"

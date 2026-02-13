@@ -52,19 +52,12 @@ export function Ecosystem() {
             <FadeIn key={item.key} delay={i * 120}>
               <a
                 href={item.href}
-                target={item.badge ? undefined : '_blank'}
-                rel={item.badge ? undefined : 'noopener noreferrer'}
-                className={`group block rounded-xl border border-slate-800 bg-slate-900/30 p-6 transition hover:border-emerald-500/30 hover:bg-slate-900/50 ${item.badge ? 'pointer-events-none opacity-60' : ''}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block rounded-xl border border-slate-800 bg-slate-900/30 p-6 transition hover:border-emerald-500/30 hover:bg-slate-900/50"
               >
-                <div className="flex items-center justify-between">
-                  <div className="inline-flex rounded-lg bg-emerald-500/10 p-2.5 text-emerald-400">
-                    {item.icon}
-                  </div>
-                  {item.badge && (
-                    <span className="rounded-full border border-slate-700 bg-slate-800 px-2.5 py-0.5 text-xs text-slate-400">
-                      {item.badge}
-                    </span>
-                  )}
+                <div className="inline-flex rounded-lg bg-emerald-500/10 p-2.5 text-emerald-400">
+                  {item.icon}
                 </div>
                 <h3 className="mt-4 text-lg font-semibold text-white">
                   {t(`${item.key}_title`)}

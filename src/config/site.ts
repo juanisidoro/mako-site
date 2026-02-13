@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: 'MAKO',
   tagline: 'Markdown Agent Knowledge Optimization',
-  baseUrl: 'https://mako-site.vercel.app',
+  baseUrl: 'https://makospec.vercel.app',
   github: 'https://github.com/juanisidoro/mako-spec',
   githubJs: 'https://github.com/juanisidoro/mako-js',
   npm: 'https://www.npmjs.com/package/@mako-spec/js',
@@ -11,5 +11,5 @@ export const siteConfig = {
     license: 'https://opensource.org/licenses/Apache-2.0',
     programmingLanguage: 'TypeScript',
   },
-  googleSiteVerification: '',
+  googleSiteVerification: '_Ik3Fvfm1hfW_2Gudl9fMPtMQrxu0IhE9vR1Utkx60U',
 };
