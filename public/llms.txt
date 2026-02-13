@@ -1,0 +1,31 @@
+# MAKO — Markdown Agent Knowledge Optimization
+
+> Open protocol for serving LLM-optimized web content. 93% fewer tokens than HTML.
+
+MAKO transforms web pages into structured, token-efficient Markdown that AI agents can read faster and smarter. It uses HTTP content negotiation (Accept: text/mako+markdown) so agents get optimized content while browsers get normal HTML.
+
+## Key Features
+- **93% token reduction**: A product page goes from 4,125 tokens (HTML) to 276 tokens (MAKO)
+- **Compact Embedding Format (CEF)**: 512-dim embeddings in ~470 bytes via int8 quantization + gzip + base64url
+- **Declared actions**: Machine-readable actions (add_to_cart, subscribe) with endpoints
+- **Semantic links**: Internal, external, and API links with context descriptions
+- **10 content types**: product, article, docs, landing, profile, listing, event, recipe, faq, custom
+- **3 conformance levels**: Level 1 (file), Level 2 (HTTP), Level 3 (CEF)
+
+## How It Works
+1. Agent sends HEAD request with `Accept: text/mako+markdown`
+2. Server responds with X-Mako-* headers (tokens, type, embedding)
+3. Agent checks CEF embedding similarity against query
+4. If relevant, agent sends GET for full MAKO content
+
+## Links
+- Spec: https://github.com/juanisidoro/mako-spec
+- JS Library: https://github.com/juanisidoro/mako-js
+- npm: https://www.npmjs.com/package/@mako-spec/js
+- Website: https://mako-site.vercel.app
+
+## Install
+npm install @mako-spec/js
+
+## License
+Apache-2.0

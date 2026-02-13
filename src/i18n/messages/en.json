@@ -1,0 +1,93 @@
+{
+  "meta": {
+    "title": "MAKO — Markdown Agent Knowledge Optimization",
+    "description": "Open protocol for serving LLM-optimized web content. 93% fewer tokens than HTML. Semantic structure for AI agents with CEF embeddings, actions, and smart linking."
+  },
+  "nav": {
+    "spec": "Spec",
+    "github": "GitHub",
+    "npm": "npm",
+    "docs": "Docs",
+    "menu": "Menu"
+  },
+  "hero": {
+    "badge": "Open Protocol v1.0",
+    "title_line1": "93% fewer tokens",
+    "title_line2": "for AI agents",
+    "subtitle": "MAKO is an open protocol that transforms web content into LLM-optimized Markdown. Semantic frontmatter, compact embeddings, and declared actions — so AI agents read the web efficiently.",
+    "install": "npm install @mako-spec/js",
+    "cta_spec": "Read the Spec",
+    "cta_github": "View on GitHub"
+  },
+  "how_it_works": {
+    "title": "How It Works",
+    "subtitle": "Three-step content negotiation that's fully backwards-compatible with existing HTTP infrastructure.",
+    "step1_title": "1. HEAD Request",
+    "step1_desc": "The agent sends a HEAD request with the MAKO Accept header. The server responds with X-Mako-* headers including token count, content type, and the CEF embedding.",
+    "step1_code": "HEAD /product/nike-air-max-90 HTTP/1.1\nAccept: text/mako+markdown",
+    "step2_title": "2. Check Relevance",
+    "step2_desc": "The agent decodes the compact CEF embedding from the header (only ~470 bytes) and checks cosine similarity against the user's query. No need to download the full content yet.",
+    "step2_code": "X-Mako-Embedding: gAAAA...(470 bytes)\nX-Mako-Tokens: 276\nX-Mako-Type: product",
+    "step3_title": "3. GET Content",
+    "step3_desc": "If relevant, the agent fetches the full MAKO document — structured Markdown with frontmatter, actions, and semantic links. Just 276 tokens instead of 4,125 from raw HTML.",
+    "step3_code": "GET /product/nike-air-max-90 HTTP/1.1\nAccept: text/mako+markdown"
+  },
+  "benchmark": {
+    "title": "Token Efficiency",
+    "subtitle": "Real-world comparison of the same product page across different formats.",
+    "html_label": "Raw HTML",
+    "cf_label": "Markdown (CF)",
+    "mako_label": "MAKO",
+    "reduction_label": "fewer tokens vs raw HTML",
+    "embedding_label": "bytes for a 512-dim CEF embedding"
+  },
+  "preview": {
+    "title": "What a MAKO File Looks Like",
+    "subtitle": "Structured YAML frontmatter + optimized Markdown body. Everything an AI agent needs, nothing it doesn't."
+  },
+  "features": {
+    "title": "Built for the Agent Web",
+    "subtitle": "Every feature designed to make AI agents read the web faster and smarter.",
+    "items": {
+      "cef": {
+        "title": "Compact Embedding Format",
+        "description": "512-dimension embeddings compressed to ~470 bytes via int8 quantization + gzip + base64url. Transmitted in a single HTTP header."
+      },
+      "actions": {
+        "title": "Declared Actions",
+        "description": "Machine-readable actions (add_to_cart, subscribe, book) with endpoints and parameters. Agents know what they can do before reading the content."
+      },
+      "links": {
+        "title": "Semantic Links",
+        "description": "Internal, external, and API links with context descriptions. Agents navigate your site with purpose, not by crawling blindly."
+      },
+      "types": {
+        "title": "Content Types",
+        "description": "10 built-in types (product, article, docs, recipe, FAQ...) plus custom. Each type tells the agent exactly what structure to expect."
+      }
+    }
+  },
+  "ecosystem": {
+    "title": "The Ecosystem",
+    "subtitle": "Everything you need to start serving MAKO content today.",
+    "spec_title": "MAKO Spec",
+    "spec_desc": "The full protocol specification. Content types, frontmatter schema, HTTP headers, conformance levels, and the CEF standard.",
+    "js_title": "@mako-spec/js",
+    "js_desc": "TypeScript library for parsing, generating, and validating MAKO files. Includes CEF encode/decode and Express middleware.",
+    "cli_title": "MAKO CLI",
+    "cli_desc": "Command-line tool for validating, inspecting, and benchmarking MAKO files. Coming soon.",
+    "cli_badge": "Coming soon"
+  },
+  "cta": {
+    "title": "Ready to optimize for AI?",
+    "description": "Start serving LLM-optimized content in minutes. Open protocol, Apache-2.0 licensed, production-ready.",
+    "primary_button": "Read the Spec",
+    "secondary_button": "Install the Library"
+  },
+  "footer": {
+    "mit": "Apache-2.0 License"
+  },
+  "breadcrumb": {
+    "home": "Home"
+  }
+}

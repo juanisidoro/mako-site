@@ -1,0 +1,93 @@
+{
+  "meta": {
+    "title": "MAKO — Markdown Agent Knowledge Optimization",
+    "description": "Protocole ouvert pour servir du contenu web optimisé pour les LLMs. 93% de tokens en moins par rapport au HTML. Structure sémantique pour agents IA avec embeddings CEF, actions et liens intelligents."
+  },
+  "nav": {
+    "spec": "Spec",
+    "github": "GitHub",
+    "npm": "npm",
+    "docs": "Docs",
+    "menu": "Menu"
+  },
+  "hero": {
+    "badge": "Protocole Ouvert v1.0",
+    "title_line1": "93% de tokens en moins",
+    "title_line2": "pour les agents IA",
+    "subtitle": "MAKO est un protocole ouvert qui transforme le contenu web en Markdown optimisé pour les LLMs. Frontmatter sémantique, embeddings compacts et actions déclarées — pour que les agents IA lisent le web efficacement.",
+    "install": "npm install @mako-spec/js",
+    "cta_spec": "Lire la Spec",
+    "cta_github": "Voir sur GitHub"
+  },
+  "how_it_works": {
+    "title": "Comment Ça Marche",
+    "subtitle": "Négociation de contenu en trois étapes, entièrement compatible avec l'infrastructure HTTP existante.",
+    "step1_title": "1. Requête HEAD",
+    "step1_desc": "L'agent envoie une requête HEAD avec l'en-tête Accept MAKO. Le serveur répond avec les en-têtes X-Mako-* incluant le nombre de tokens, le type de contenu et l'embedding CEF.",
+    "step1_code": "HEAD /product/nike-air-max-90 HTTP/1.1\nAccept: text/mako+markdown",
+    "step2_title": "2. Vérifier la Pertinence",
+    "step2_desc": "L'agent décode l'embedding CEF compact depuis l'en-tête (~470 octets) et calcule la similarité cosinus avec la requête utilisateur. Pas besoin de télécharger tout le contenu.",
+    "step2_code": "X-Mako-Embedding: gAAAA...(470 bytes)\nX-Mako-Tokens: 276\nX-Mako-Type: product",
+    "step3_title": "3. Obtenir le Contenu",
+    "step3_desc": "Si pertinent, l'agent récupère le document MAKO complet — Markdown structuré avec frontmatter, actions et liens sémantiques. Seulement 276 tokens au lieu de 4 125 du HTML brut.",
+    "step3_code": "GET /product/nike-air-max-90 HTTP/1.1\nAccept: text/mako+markdown"
+  },
+  "benchmark": {
+    "title": "Efficacité des Tokens",
+    "subtitle": "Comparaison réelle de la même page produit dans différents formats.",
+    "html_label": "HTML brut",
+    "cf_label": "Markdown (CF)",
+    "mako_label": "MAKO",
+    "reduction_label": "de tokens en moins vs HTML brut",
+    "embedding_label": "octets pour un embedding CEF de 512 dimensions"
+  },
+  "preview": {
+    "title": "À Quoi Ressemble un Fichier MAKO",
+    "subtitle": "Frontmatter YAML structuré + corps Markdown optimisé. Tout ce dont un agent IA a besoin, rien de plus."
+  },
+  "features": {
+    "title": "Conçu pour le Web des Agents",
+    "subtitle": "Chaque fonctionnalité conçue pour que les agents IA lisent le web plus vite et plus intelligemment.",
+    "items": {
+      "cef": {
+        "title": "Format d'Embedding Compact",
+        "description": "Embeddings de 512 dimensions compressés à ~470 octets via quantification int8 + gzip + base64url. Transmis dans un seul en-tête HTTP."
+      },
+      "actions": {
+        "title": "Actions Déclarées",
+        "description": "Actions lisibles par machine (ajouter au panier, s'abonner, réserver) avec endpoints et paramètres. Les agents savent ce qu'ils peuvent faire avant de lire le contenu."
+      },
+      "links": {
+        "title": "Liens Sémantiques",
+        "description": "Liens internes, externes et API avec descriptions de contexte. Les agents naviguent votre site avec intention, pas en explorant à l'aveugle."
+      },
+      "types": {
+        "title": "Types de Contenu",
+        "description": "10 types intégrés (produit, article, docs, recette, FAQ...) plus custom. Chaque type indique à l'agent exactement quelle structure attendre."
+      }
+    }
+  },
+  "ecosystem": {
+    "title": "L'Écosystème",
+    "subtitle": "Tout ce dont vous avez besoin pour commencer à servir du contenu MAKO aujourd'hui.",
+    "spec_title": "MAKO Spec",
+    "spec_desc": "La spécification complète du protocole. Types de contenu, schéma frontmatter, en-têtes HTTP, niveaux de conformité et le standard CEF.",
+    "js_title": "@mako-spec/js",
+    "js_desc": "Bibliothèque TypeScript pour parser, générer et valider les fichiers MAKO. Inclut CEF encode/decode et middleware Express.",
+    "cli_title": "MAKO CLI",
+    "cli_desc": "Outil en ligne de commande pour valider, inspecter et benchmarker les fichiers MAKO. Bientôt disponible.",
+    "cli_badge": "Bientôt"
+  },
+  "cta": {
+    "title": "Prêt à optimiser pour l'IA ?",
+    "description": "Commencez à servir du contenu optimisé pour les LLMs en minutes. Protocole ouvert, licence Apache-2.0, prêt pour la production.",
+    "primary_button": "Lire la Spec",
+    "secondary_button": "Installer la Bibliothèque"
+  },
+  "footer": {
+    "mit": "Licence Apache-2.0"
+  },
+  "breadcrumb": {
+    "home": "Accueil"
+  }
+}

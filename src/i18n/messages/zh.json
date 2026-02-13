@@ -1,0 +1,93 @@
+{
+  "meta": {
+    "title": "MAKO — Markdown Agent Knowledge Optimization",
+    "description": "为LLM优化网页内容的开放协议。比HTML减少93%的token。为AI代理提供语义结构，包含CEF嵌入、操作和智能链接。"
+  },
+  "nav": {
+    "spec": "规范",
+    "github": "GitHub",
+    "npm": "npm",
+    "docs": "文档",
+    "menu": "菜单"
+  },
+  "hero": {
+    "badge": "开放协议 v1.0",
+    "title_line1": "减少93%的token",
+    "title_line2": "为AI代理而生",
+    "subtitle": "MAKO是一个开放协议，将网页内容转换为LLM优化的Markdown。语义前置数据、紧凑嵌入和声明式操作——让AI代理高效阅读网络。",
+    "install": "npm install @mako-spec/js",
+    "cta_spec": "阅读规范",
+    "cta_github": "在GitHub查看"
+  },
+  "how_it_works": {
+    "title": "工作原理",
+    "subtitle": "三步内容协商，与现有HTTP基础设施完全兼容。",
+    "step1_title": "1. HEAD请求",
+    "step1_desc": "代理发送带有MAKO Accept头的HEAD请求。服务器响应X-Mako-*头，包括token数量、内容类型和CEF嵌入。",
+    "step1_code": "HEAD /product/nike-air-max-90 HTTP/1.1\nAccept: text/mako+markdown",
+    "step2_title": "2. 检查相关性",
+    "step2_desc": "代理从头部解码紧凑的CEF嵌入（仅约470字节），并计算与用户查询的余弦相似度。无需下载完整内容。",
+    "step2_code": "X-Mako-Embedding: gAAAA...(470 bytes)\nX-Mako-Tokens: 276\nX-Mako-Type: product",
+    "step3_title": "3. 获取内容",
+    "step3_desc": "如果相关，代理获取完整的MAKO文档——带有前置数据、操作和语义链接的结构化Markdown。仅276个token，而非原始HTML的4,125个。",
+    "step3_code": "GET /product/nike-air-max-90 HTTP/1.1\nAccept: text/mako+markdown"
+  },
+  "benchmark": {
+    "title": "Token效率",
+    "subtitle": "同一产品页面在不同格式下的真实对比。",
+    "html_label": "原始HTML",
+    "cf_label": "Markdown (CF)",
+    "mako_label": "MAKO",
+    "reduction_label": "相比原始HTML减少的token",
+    "embedding_label": "字节（512维CEF嵌入）"
+  },
+  "preview": {
+    "title": "MAKO文件的样子",
+    "subtitle": "结构化YAML前置数据 + 优化的Markdown正文。AI代理需要的一切，不需要的一概没有。"
+  },
+  "features": {
+    "title": "为代理网络而建",
+    "subtitle": "每个功能都旨在让AI代理更快、更智能地阅读网络。",
+    "items": {
+      "cef": {
+        "title": "紧凑嵌入格式",
+        "description": "512维嵌入通过int8量化 + gzip + base64url压缩至约470字节。通过单个HTTP头传输。"
+      },
+      "actions": {
+        "title": "声明式操作",
+        "description": "机器可读的操作（加入购物车、订阅、预订）带有端点和参数。代理在阅读内容之前就知道能做什么。"
+      },
+      "links": {
+        "title": "语义链接",
+        "description": "内部、外部和API链接带有上下文描述。代理有目的地导航您的网站，而非盲目爬取。"
+      },
+      "types": {
+        "title": "内容类型",
+        "description": "10种内置类型（产品、文章、文档、食谱、FAQ...）加上自定义类型。每种类型告诉代理确切的结构。"
+      }
+    }
+  },
+  "ecosystem": {
+    "title": "生态系统",
+    "subtitle": "今天开始提供MAKO内容所需的一切。",
+    "spec_title": "MAKO规范",
+    "spec_desc": "完整的协议规范。内容类型、前置数据架构、HTTP头、合规级别和CEF标准。",
+    "js_title": "@mako-spec/js",
+    "js_desc": "用于解析、生成和验证MAKO文件的TypeScript库。包含CEF编码/解码和Express中间件。",
+    "cli_title": "MAKO CLI",
+    "cli_desc": "用于验证、检查和基准测试MAKO文件的命令行工具。即将推出。",
+    "cli_badge": "即将推出"
+  },
+  "cta": {
+    "title": "准备好为AI优化了吗？",
+    "description": "几分钟内开始提供LLM优化的内容。开放协议，Apache-2.0许可证，可用于生产环境。",
+    "primary_button": "阅读规范",
+    "secondary_button": "安装库"
+  },
+  "footer": {
+    "mit": "Apache-2.0许可证"
+  },
+  "breadcrumb": {
+    "home": "首页"
+  }
+}

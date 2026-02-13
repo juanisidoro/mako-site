@@ -1,0 +1,93 @@
+{
+  "meta": {
+    "title": "MAKO — Markdown Agent Knowledge Optimization",
+    "description": "LLM最適化Webコンテンツを提供するオープンプロトコル。HTMLより93%少ないトークン。CEFエンベディング、アクション、スマートリンクを備えたAIエージェント向けセマンティック構造。"
+  },
+  "nav": {
+    "spec": "仕様",
+    "github": "GitHub",
+    "npm": "npm",
+    "docs": "ドキュメント",
+    "menu": "メニュー"
+  },
+  "hero": {
+    "badge": "オープンプロトコル v1.0",
+    "title_line1": "93%少ないトークン",
+    "title_line2": "AIエージェント向け",
+    "subtitle": "MAKOはWebコンテンツをLLM最適化Markdownに変換するオープンプロトコルです。セマンティックフロントマター、コンパクトエンベディング、宣言的アクション — AIエージェントがWebを効率的に読むために。",
+    "install": "npm install @mako-spec/js",
+    "cta_spec": "仕様を読む",
+    "cta_github": "GitHubで見る"
+  },
+  "how_it_works": {
+    "title": "仕組み",
+    "subtitle": "既存のHTTPインフラと完全に互換性のある3ステップのコンテンツネゴシエーション。",
+    "step1_title": "1. HEADリクエスト",
+    "step1_desc": "エージェントがMAKO Acceptヘッダー付きのHEADリクエストを送信。サーバーはトークン数、コンテンツタイプ、CEFエンベディングを含むX-Mako-*ヘッダーで応答します。",
+    "step1_code": "HEAD /product/nike-air-max-90 HTTP/1.1\nAccept: text/mako+markdown",
+    "step2_title": "2. 関連性チェック",
+    "step2_desc": "エージェントがヘッダーからコンパクトなCEFエンベディング（約470バイト）をデコードし、ユーザークエリとのコサイン類似度を計算。フルコンテンツのダウンロード不要。",
+    "step2_code": "X-Mako-Embedding: gAAAA...(470 bytes)\nX-Mako-Tokens: 276\nX-Mako-Type: product",
+    "step3_title": "3. コンテンツ取得",
+    "step3_desc": "関連性がある場合、エージェントはMAKOドキュメント全体を取得 — フロントマター、アクション、セマンティックリンクを含む構造化Markdown。生HTMLの4,125トークンの代わりにわずか276トークン。",
+    "step3_code": "GET /product/nike-air-max-90 HTTP/1.1\nAccept: text/mako+markdown"
+  },
+  "benchmark": {
+    "title": "トークン効率",
+    "subtitle": "同じ商品ページの異なるフォーマットでの実際の比較。",
+    "html_label": "生HTML",
+    "cf_label": "Markdown (CF)",
+    "mako_label": "MAKO",
+    "reduction_label": "生HTMLと比較してトークン削減",
+    "embedding_label": "バイト（512次元CEFエンベディング）"
+  },
+  "preview": {
+    "title": "MAKOファイルの見た目",
+    "subtitle": "構造化YAMLフロントマター + 最適化Markdownボディ。AIエージェントに必要なものすべて、不要なものは一切なし。"
+  },
+  "features": {
+    "title": "エージェントWebのために構築",
+    "subtitle": "AIエージェントがWebをより速く、よりスマートに読むために設計されたすべての機能。",
+    "items": {
+      "cef": {
+        "title": "コンパクトエンベディングフォーマット",
+        "description": "512次元エンベディングをint8量子化 + gzip + base64urlで約470バイトに圧縮。単一のHTTPヘッダーで転送。"
+      },
+      "actions": {
+        "title": "宣言的アクション",
+        "description": "機械可読なアクション（カートに追加、購読、予約）にエンドポイントとパラメータ付き。エージェントはコンテンツを読む前に何ができるか把握。"
+      },
+      "links": {
+        "title": "セマンティックリンク",
+        "description": "内部、外部、APIリンクにコンテキスト説明付き。エージェントは盲目的にクロールせず、目的を持ってサイトをナビゲート。"
+      },
+      "types": {
+        "title": "コンテンツタイプ",
+        "description": "10の組み込みタイプ（商品、記事、ドキュメント、レシピ、FAQ...）+ カスタム。各タイプがエージェントに期待する構造を正確に伝達。"
+      }
+    }
+  },
+  "ecosystem": {
+    "title": "エコシステム",
+    "subtitle": "今日からMAKOコンテンツの提供を開始するために必要なすべて。",
+    "spec_title": "MAKO仕様",
+    "spec_desc": "完全なプロトコル仕様。コンテンツタイプ、フロントマタースキーマ、HTTPヘッダー、適合レベル、CEF標準。",
+    "js_title": "@mako-spec/js",
+    "js_desc": "MAKOファイルの解析、生成、検証用TypeScriptライブラリ。CEFエンコード/デコードとExpressミドルウェア付き。",
+    "cli_title": "MAKO CLI",
+    "cli_desc": "MAKOファイルの検証、検査、ベンチマーク用コマンドラインツール。近日公開。",
+    "cli_badge": "近日公開"
+  },
+  "cta": {
+    "title": "AI向けに最適化する準備はできましたか？",
+    "description": "数分でLLM最適化コンテンツの提供を開始。オープンプロトコル、Apache-2.0ライセンス、本番環境対応。",
+    "primary_button": "仕様を読む",
+    "secondary_button": "ライブラリをインストール"
+  },
+  "footer": {
+    "mit": "Apache-2.0ライセンス"
+  },
+  "breadcrumb": {
+    "home": "ホーム"
+  }
+}
