@@ -28,6 +28,12 @@ export function Header() {
           >
             Features
           </a>
+          <Link
+            href="/analyzer"
+            className="text-sm text-slate-400 transition hover:text-white"
+          >
+            {t('analyzer')}
+          </Link>
           <a
             href={siteConfig.github}
             target="_blank"
@@ -80,6 +86,13 @@ export function Header() {
             <a href="#features" className="text-sm text-slate-400" onClick={() => setOpen(false)}>
               Features
             </a>
+            <Link
+              href="/analyzer"
+              className="text-sm text-slate-400"
+              onClick={() => setOpen(false)}
+            >
+              {t('analyzer')}
+            </Link>
             <a
               href={siteConfig.github}
               target="_blank"

@@ -8,7 +8,8 @@
     "github": "GitHub",
     "npm": "npm",
     "docs": "Docs",
-    "menu": "Menú"
+    "menu": "Menú",
+    "analyzer": "Analizador"
   },
   "hero": {
     "badge": "Protocolo Abierto v1.0",
@@ -89,5 +90,59 @@
   },
   "breadcrumb": {
     "home": "Inicio"
+  },
+  "analyzer": {
+    "title": "MAKO Analyzer",
+    "description": "Pega cualquier URL para ver cómo MAKO la optimiza para agentes IA. Obtén análisis instantáneo de ahorro de tokens.",
+    "meta_title": "MAKO Analyzer - Analiza cualquier URL",
+    "meta_description": "Descubre cómo MAKO reduce tokens para cualquier página web. Pega una URL y obtén análisis instantáneo.",
+    "form": {
+      "url_label": "URL a analizar",
+      "url_placeholder": "https://ejemplo.com/producto/...",
+      "analyze_button": "Analizar",
+      "analyzing": "Analizando...",
+      "public_label": "Hacer público",
+      "public_description": "Permitir que este análisis aparezca en el directorio público"
+    },
+    "results": {
+      "overview_tab": "Ahorro de Tokens",
+      "mako_tab": "Archivo MAKO",
+      "headers_tab": "Headers",
+      "html_tokens": "Tokens HTML",
+      "mako_tokens": "Tokens MAKO",
+      "savings": "Ahorro de Tokens",
+      "content_type": "Tipo de Contenido",
+      "entity": "Entidad",
+      "summary": "Resumen",
+      "copy_mako": "Copiar MAKO",
+      "copy_headers": "Copiar Headers",
+      "copied": "¡Copiado!",
+      "generated_by": "Generado por análisis basado en reglas",
+      "not_ai": "No generado por IA"
+    },
+    "errors": {
+      "invalid_url": "Por favor, introduce una URL válida",
+      "fetch_failed": "No se pudo obtener esta URL. Verifica la URL e intenta de nuevo.",
+      "analysis_failed": "El análisis falló. Por favor, intenta de nuevo.",
+      "url_required": "La URL es obligatoria"
+    }
+  },
+  "directory": {
+    "title": "Análisis Públicos",
+    "description": "Explora análisis MAKO compartidos públicamente por la comunidad.",
+    "meta_title": "Directorio MAKO - Análisis Públicos",
+    "meta_description": "Explora análisis MAKO públicos y descubre el ahorro real de tokens.",
+    "stats": {
+      "total_analyses": "Total de Análisis",
+      "avg_savings": "Ahorro Promedio",
+      "unique_domains": "Dominios Únicos"
+    },
+    "list": {
+      "no_results": "Aún no hay análisis públicos. ¡Sé el primero en compartir uno!",
+      "analyzed_on": "Analizado el",
+      "tokens_saved": "tokens ahorrados",
+      "view_details": "Ver detalles",
+      "load_more": "Cargar más"
+    }
   }
 }

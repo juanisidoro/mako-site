@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.25.2",
+    "@neondatabase/serverless": "^1.0.2",
+    "cheerio": "^1.2.0",
     "mcp-handler": "^1.0.7",
     "next": "^15.1.0",
     "next-intl": "^3.25.0",
@@ -19,6 +21,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.0.0",
+    "@types/cheerio": "^1.0.0",
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",

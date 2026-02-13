@@ -5,6 +5,8 @@ import { siteConfig } from '@/config/site';
 // Add new routes here as you create pages
 const routes = [
   '',
+  '/analyzer',
+  '/directory',
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

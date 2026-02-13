@@ -8,7 +8,8 @@
     "github": "GitHub",
     "npm": "npm",
     "docs": "文档",
-    "menu": "菜单"
+    "menu": "菜单",
+    "analyzer": "分析器"
   },
   "hero": {
     "badge": "开放协议 v1.0",
@@ -89,5 +90,59 @@
   },
   "breadcrumb": {
     "home": "首页"
+  },
+  "analyzer": {
+    "title": "MAKO 分析器",
+    "description": "粘贴任意URL，查看MAKO如何为AI代理优化页面。获取即时的Token节省分析。",
+    "meta_title": "MAKO 分析器 - 分析任意URL",
+    "meta_description": "了解MAKO如何为任何网页减少Token。粘贴URL即可获得即时分析。",
+    "form": {
+      "url_label": "要分析的URL",
+      "url_placeholder": "https://example.com/product/...",
+      "analyze_button": "分析",
+      "analyzing": "分析中...",
+      "public_label": "设为公开",
+      "public_description": "允许此分析出现在公共目录中"
+    },
+    "results": {
+      "overview_tab": "Token节省",
+      "mako_tab": "MAKO文件",
+      "headers_tab": "请求头",
+      "html_tokens": "HTML Tokens",
+      "mako_tokens": "MAKO Tokens",
+      "savings": "Token节省",
+      "content_type": "内容类型",
+      "entity": "实体",
+      "summary": "摘要",
+      "copy_mako": "复制MAKO",
+      "copy_headers": "复制请求头",
+      "copied": "已复制！",
+      "generated_by": "由基于规则的分析生成",
+      "not_ai": "非AI生成"
+    },
+    "errors": {
+      "invalid_url": "请输入有效的URL",
+      "fetch_failed": "无法获取此URL。请检查URL后重试。",
+      "analysis_failed": "分析失败。请重试。",
+      "url_required": "URL为必填项"
+    }
+  },
+  "directory": {
+    "title": "公共分析",
+    "description": "浏览社区公开分享的MAKO分析。",
+    "meta_title": "MAKO目录 - 公共分析",
+    "meta_description": "浏览公共MAKO分析，了解实际的Token节省效果。",
+    "stats": {
+      "total_analyses": "分析总数",
+      "avg_savings": "平均节省",
+      "unique_domains": "独立域名"
+    },
+    "list": {
+      "no_results": "暂无公共分析。成为第一个分享的人！",
+      "analyzed_on": "分析于",
+      "tokens_saved": "Token已节省",
+      "view_details": "查看详情",
+      "load_more": "加载更多"
+    }
   }
 }

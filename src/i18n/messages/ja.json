@@ -8,7 +8,8 @@
     "github": "GitHub",
     "npm": "npm",
     "docs": "ドキュメント",
-    "menu": "メニュー"
+    "menu": "メニュー",
+    "analyzer": "アナライザー"
   },
   "hero": {
     "badge": "オープンプロトコル v1.0",
@@ -89,5 +90,59 @@
   },
   "breadcrumb": {
     "home": "ホーム"
+  },
+  "analyzer": {
+    "title": "MAKO アナライザー",
+    "description": "任意のURLを貼り付けて、MAKOがAIエージェント向けにどう最適化するか確認。即座にトークン節約分析を取得。",
+    "meta_title": "MAKO アナライザー - 任意のURLを分析",
+    "meta_description": "MAKOがあらゆるウェブページのトークンをどう削減するか確認。URLを貼り付けて即座に分析。",
+    "form": {
+      "url_label": "分析するURL",
+      "url_placeholder": "https://example.com/product/...",
+      "analyze_button": "分析する",
+      "analyzing": "分析中...",
+      "public_label": "公開する",
+      "public_description": "この分析を公開ディレクトリに表示することを許可"
+    },
+    "results": {
+      "overview_tab": "トークン節約",
+      "mako_tab": "MAKOファイル",
+      "headers_tab": "ヘッダー",
+      "html_tokens": "HTMLトークン",
+      "mako_tokens": "MAKOトークン",
+      "savings": "トークン節約",
+      "content_type": "コンテンツタイプ",
+      "entity": "エンティティ",
+      "summary": "概要",
+      "copy_mako": "MAKOをコピー",
+      "copy_headers": "ヘッダーをコピー",
+      "copied": "コピー済み！",
+      "generated_by": "ルールベース分析で生成",
+      "not_ai": "AI生成ではありません"
+    },
+    "errors": {
+      "invalid_url": "有効なURLを入力してください",
+      "fetch_failed": "このURLを取得できませんでした。URLを確認して再試行してください。",
+      "analysis_failed": "分析に失敗しました。もう一度お試しください。",
+      "url_required": "URLは必須です"
+    }
+  },
+  "directory": {
+    "title": "公開分析",
+    "description": "コミュニティが公開したMAKO分析を閲覧。",
+    "meta_title": "MAKOディレクトリ - 公開分析",
+    "meta_description": "公開MAKO分析を閲覧し、実際のトークン節約効果を確認。",
+    "stats": {
+      "total_analyses": "総分析数",
+      "avg_savings": "平均節約率",
+      "unique_domains": "ユニークドメイン"
+    },
+    "list": {
+      "no_results": "まだ公開分析はありません。最初の共有者になりましょう！",
+      "analyzed_on": "分析日",
+      "tokens_saved": "トークン節約",
+      "view_details": "詳細を表示",
+      "load_more": "もっと読み込む"
+    }
   }
 }

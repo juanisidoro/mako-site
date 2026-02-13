@@ -8,7 +8,8 @@
     "github": "GitHub",
     "npm": "npm",
     "docs": "Docs",
-    "menu": "Menü"
+    "menu": "Menü",
+    "analyzer": "Analyzer"
   },
   "hero": {
     "badge": "Offenes Protokoll v1.0",
@@ -89,5 +90,59 @@
   },
   "breadcrumb": {
     "home": "Startseite"
+  },
+  "analyzer": {
+    "title": "MAKO Analyzer",
+    "description": "Fügen Sie eine beliebige URL ein, um zu sehen, wie MAKO sie für KI-Agenten optimiert. Erhalten Sie sofortige Token-Einsparungsanalyse.",
+    "meta_title": "MAKO Analyzer - Beliebige URL analysieren",
+    "meta_description": "Sehen Sie, wie MAKO Tokens für jede Webseite reduziert. URL einfügen und sofortige Analyse erhalten.",
+    "form": {
+      "url_label": "URL zum Analysieren",
+      "url_placeholder": "https://beispiel.de/produkt/...",
+      "analyze_button": "Analysieren",
+      "analyzing": "Wird analysiert...",
+      "public_label": "Öffentlich machen",
+      "public_description": "Diese Analyse im öffentlichen Verzeichnis anzeigen lassen"
+    },
+    "results": {
+      "overview_tab": "Token-Einsparung",
+      "mako_tab": "MAKO-Datei",
+      "headers_tab": "Header",
+      "html_tokens": "HTML-Tokens",
+      "mako_tokens": "MAKO-Tokens",
+      "savings": "Token-Einsparung",
+      "content_type": "Inhaltstyp",
+      "entity": "Entität",
+      "summary": "Zusammenfassung",
+      "copy_mako": "MAKO kopieren",
+      "copy_headers": "Header kopieren",
+      "copied": "Kopiert!",
+      "generated_by": "Durch regelbasierte Analyse generiert",
+      "not_ai": "Nicht KI-generiert"
+    },
+    "errors": {
+      "invalid_url": "Bitte geben Sie eine gültige URL ein",
+      "fetch_failed": "Diese URL konnte nicht abgerufen werden. Überprüfen Sie die URL und versuchen Sie es erneut.",
+      "analysis_failed": "Analyse fehlgeschlagen. Bitte versuchen Sie es erneut.",
+      "url_required": "URL ist erforderlich"
+    }
+  },
+  "directory": {
+    "title": "Öffentliche Analysen",
+    "description": "Durchsuchen Sie öffentlich geteilte MAKO-Analysen der Community.",
+    "meta_title": "MAKO-Verzeichnis - Öffentliche Analysen",
+    "meta_description": "Durchsuchen Sie öffentliche MAKO-Analysen und sehen Sie reale Token-Einsparungen.",
+    "stats": {
+      "total_analyses": "Analysen Gesamt",
+      "avg_savings": "Durchschn. Einsparung",
+      "unique_domains": "Einzigartige Domains"
+    },
+    "list": {
+      "no_results": "Noch keine öffentlichen Analysen. Seien Sie der Erste!",
+      "analyzed_on": "Analysiert am",
+      "tokens_saved": "Tokens gespart",
+      "view_details": "Details anzeigen",
+      "load_more": "Mehr laden"
+    }
   }
 }
