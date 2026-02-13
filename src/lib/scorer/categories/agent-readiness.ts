@@ -1,6 +1,6 @@
 import type { PageData, ScoreCategory, ScoreCheck } from "../types";
 
-const PROBE_TIMEOUT = 3000;
+const PROBE_TIMEOUT = 5000;
 
 async function probe(url: string, init?: RequestInit): Promise<Response | null> {
   const controller = new AbortController();
@@ -19,6 +19,32 @@ async function probe(url: string, init?: RequestInit): Promise<Response | null> 
   }
 }
 
+/** Try multiple paths for sitemap (many plugins use sitemap_index.xml or other patterns) */
+async function probeSitemap(origin: string): Promise<{ found: boolean; details?: string }> {
+  const paths = [
+    "/sitemap.xml",
+    "/sitemap_index.xml",
+    "/sitemap/sitemap-index.xml",
+    "/wp-sitemap.xml",
+  ];
+
+  for (const path of paths) {
+    const res = await probe(`${origin}${path}`);
+    if (res && res.ok) {
+      const ct = res.headers.get("content-type") || "";
+      const isXml = ct.includes("xml") || ct.includes("text/");
+      if (isXml) {
+        if (path !== "/sitemap.xml") {
+          return { found: true, details: `Found at ${path} (redirect/alternate path)` };
+        }
+        return { found: true };
+      }
+    }
+  }
+
+  return { found: false, details: "No sitemap found (checked /sitemap.xml, /sitemap_index.xml, /wp-sitemap.xml)" };
+}
+
 export async function evaluateAgentReadiness(page: PageData): Promise<ScoreCategory> {
   const checks: ScoreCheck[] = [];
 
@@ -30,14 +56,14 @@ export async function evaluateAgentReadiness(page: PageData): Promise<ScoreCateg
   }
 
   // Run all HTTP probes in parallel
-  const [makoRes, llmsTxtRes, robotsRes, sitemapRes, mcpRes] = await Promise.allSettled([
+  const [makoRes, llmsTxtRes, robotsRes, sitemapResult, mcpRes] = await Promise.allSettled([
     probe(page.finalUrl, {
       method: "HEAD",
       headers: { Accept: "text/mako+markdown" },
     }),
     probe(`${origin}/llms.txt`),
     probe(`${origin}/robots.txt`),
-    probe(`${origin}/sitemap.xml`),
+    probeSitemap(origin),
     probe(`${origin}/.well-known/mcp.json`),
   ]);
 
@@ -94,18 +120,16 @@ export async function evaluateAgentReadiness(page: PageData): Promise<ScoreCateg
     details: robotsDetails,
   });
 
-  // has_sitemap (4 pts)
-  const sitemapResponse = sitemapRes.status === "fulfilled" ? sitemapRes.value : null;
-  const hasSitemap = !!sitemapResponse && sitemapResponse.ok;
+  // has_sitemap (4 pts) — supports redirects and alternate paths
+  const sitemap = sitemapResult.status === "fulfilled" ? sitemapResult.value : null;
+  const hasSitemap = sitemap?.found ?? false;
   checks.push({
     id: "has_sitemap",
     name: "Has sitemap.xml",
     maxPoints: 4,
     earned: hasSitemap ? 4 : 0,
     passed: hasSitemap,
-    details: !hasSitemap
-      ? "No sitemap.xml found at site root"
-      : undefined,
+    details: sitemap?.details,
   });
 
   // has_mcp_endpoint (2 pts)
