@@ -9,7 +9,8 @@
     "npm": "npm",
     "docs": "文档",
     "menu": "菜单",
-    "analyzer": "分析器"
+    "analyzer": "分析器",
+    "score": "评分"
   },
   "hero": {
     "badge": "开放协议 v1.0",
@@ -143,6 +144,42 @@
       "tokens_saved": "Token已节省",
       "view_details": "查看详情",
       "load_more": "加载更多"
+    }
+  },
+  "score": {
+    "title": "MAKO 评分",
+    "description": "您的网站对AI的准备程度如何？获取0到100的评分，了解需要改进的地方。",
+    "meta_title": "MAKO评分 - AI就绪审计",
+    "meta_description": "检查您的网站对AI代理的准备程度。在内容结构、元数据、LLM可访问性和代理就绪方面获得0-100的评分。",
+    "form": {
+      "url_label": "要评估的URL",
+      "url_placeholder": "https://example.com",
+      "score_button": "获取评分",
+      "scoring": "评估中...",
+      "public_label": "公开",
+      "public_description": "允许此评分公开显示并可分享"
+    },
+    "tabs": {
+      "score": "评分",
+      "details": "建议",
+      "share": "分享"
+    },
+    "recommendations": {
+      "perfect": "满分！您的网站已完全为AI代理优化。",
+      "subtitle": "按影响排序的改进建议。修复这些以提高您的评分。"
+    },
+    "share": {
+      "social": "分享到社交媒体",
+      "download": "下载评分卡",
+      "download_png": "下载PNG",
+      "embed": "嵌入徽章",
+      "copy": "复制",
+      "copied": "已复制！"
+    },
+    "errors": {
+      "invalid_url": "请输入有效的URL",
+      "url_required": "URL是必填项",
+      "score_failed": "评估失败，请重试。"
     }
   }
 }

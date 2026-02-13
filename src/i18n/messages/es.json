@@ -9,7 +9,8 @@
     "npm": "npm",
     "docs": "Docs",
     "menu": "Menú",
-    "analyzer": "Analizador"
+    "analyzer": "Analizador",
+    "score": "Score"
   },
   "hero": {
     "badge": "Protocolo Abierto v1.0",
@@ -143,6 +144,42 @@
       "tokens_saved": "tokens ahorrados",
       "view_details": "Ver detalles",
       "load_more": "Cargar más"
+    }
+  },
+  "score": {
+    "title": "MAKO Score",
+    "description": "¿Qué tan preparada está tu web para la IA? Obtén tu puntuación de 0 a 100 y descubre qué mejorar.",
+    "meta_title": "MAKO Score - Auditoría de AI-Readiness",
+    "meta_description": "Comprueba qué tan preparada está tu web para agentes IA. Puntuación de 0-100 en estructura, metadatos, accesibilidad LLM y preparación para agentes.",
+    "form": {
+      "url_label": "URL a evaluar",
+      "url_placeholder": "https://ejemplo.com",
+      "score_button": "Obtener Score",
+      "scoring": "Evaluando...",
+      "public_label": "Hacer público",
+      "public_description": "Permitir que este score aparezca públicamente y pueda compartirse"
+    },
+    "tabs": {
+      "score": "Score",
+      "details": "Recomendaciones",
+      "share": "Compartir"
+    },
+    "recommendations": {
+      "perfect": "¡Puntuación perfecta! Tu sitio está totalmente optimizado para agentes IA.",
+      "subtitle": "Mejoras ordenadas por impacto. Corrige estas para subir tu score."
+    },
+    "share": {
+      "social": "Compartir en redes sociales",
+      "download": "Descargar tarjeta de score",
+      "download_png": "Descargar como PNG",
+      "embed": "Insertar badge",
+      "copy": "Copiar",
+      "copied": "¡Copiado!"
+    },
+    "errors": {
+      "invalid_url": "Por favor, introduce una URL válida",
+      "url_required": "La URL es obligatoria",
+      "score_failed": "Error al evaluar. Inténtalo de nuevo."
     }
   }
 }

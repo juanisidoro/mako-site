@@ -9,7 +9,8 @@
     "npm": "npm",
     "docs": "Docs",
     "menu": "Menü",
-    "analyzer": "Analyzer"
+    "analyzer": "Analyzer",
+    "score": "Score"
   },
   "hero": {
     "badge": "Offenes Protokoll v1.0",
@@ -143,6 +144,42 @@
       "tokens_saved": "Tokens gespart",
       "view_details": "Details anzeigen",
       "load_more": "Mehr laden"
+    }
+  },
+  "score": {
+    "title": "MAKO Score",
+    "description": "Wie KI-bereit ist Ihre Website? Erhalten Sie Ihren Score von 0 bis 100 und erfahren Sie, was Sie verbessern können.",
+    "meta_title": "MAKO Score - KI-Bereitschafts-Audit",
+    "meta_description": "Prüfen Sie, wie KI-bereit Ihre Website ist. Score von 0-100 für Struktur, Metadaten, LLM-Zugänglichkeit und Agenten-Bereitschaft.",
+    "form": {
+      "url_label": "URL bewerten",
+      "url_placeholder": "https://beispiel.de",
+      "score_button": "Score abrufen",
+      "scoring": "Bewertung...",
+      "public_label": "Öffentlich machen",
+      "public_description": "Diesen Score öffentlich sichtbar und teilbar machen"
+    },
+    "tabs": {
+      "score": "Score",
+      "details": "Empfehlungen",
+      "share": "Teilen"
+    },
+    "recommendations": {
+      "perfect": "Perfekter Score! Ihre Website ist vollständig für KI-Agenten optimiert.",
+      "subtitle": "Verbesserungen nach Auswirkung sortiert. Beheben Sie diese, um Ihren Score zu erhöhen."
+    },
+    "share": {
+      "social": "In sozialen Medien teilen",
+      "download": "Score-Karte herunterladen",
+      "download_png": "Als PNG herunterladen",
+      "embed": "Badge einbetten",
+      "copy": "Kopieren",
+      "copied": "Kopiert!"
+    },
+    "errors": {
+      "invalid_url": "Bitte geben Sie eine gültige URL ein",
+      "url_required": "URL ist erforderlich",
+      "score_failed": "Bewertung fehlgeschlagen. Bitte versuchen Sie es erneut."
     }
   }
 }

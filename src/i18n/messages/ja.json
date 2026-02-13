@@ -9,7 +9,8 @@
     "npm": "npm",
     "docs": "ドキュメント",
     "menu": "メニュー",
-    "analyzer": "アナライザー"
+    "analyzer": "アナライザー",
+    "score": "スコア"
   },
   "hero": {
     "badge": "オープンプロトコル v1.0",
@@ -143,6 +144,42 @@
       "tokens_saved": "トークン節約",
       "view_details": "詳細を表示",
       "load_more": "もっと読み込む"
+    }
+  },
+  "score": {
+    "title": "MAKO スコア",
+    "description": "あなたのウェブサイトはAIにどれだけ対応していますか？0から100のスコアを取得し、改善点を確認しましょう。",
+    "meta_title": "MAKOスコア - AI対応度監査",
+    "meta_description": "ウェブサイトのAI対応度をチェック。コンテンツ構造、メタデータ、LLMアクセシビリティ、エージェント対応の4カテゴリで0-100のスコアを取得。",
+    "form": {
+      "url_label": "評価するURL",
+      "url_placeholder": "https://example.com",
+      "score_button": "スコアを取得",
+      "scoring": "評価中...",
+      "public_label": "公開する",
+      "public_description": "このスコアを公開して共有できるようにする"
+    },
+    "tabs": {
+      "score": "スコア",
+      "details": "改善提案",
+      "share": "共有"
+    },
+    "recommendations": {
+      "perfect": "満点！あなたのサイトはAIエージェントに完全に最適化されています。",
+      "subtitle": "影響度順の改善提案。これらを修正してスコアを上げましょう。"
+    },
+    "share": {
+      "social": "SNSでシェア",
+      "download": "スコアカードをダウンロード",
+      "download_png": "PNGでダウンロード",
+      "embed": "バッジを埋め込む",
+      "copy": "コピー",
+      "copied": "コピーしました！"
+    },
+    "errors": {
+      "invalid_url": "有効なURLを入力してください",
+      "url_required": "URLは必須です",
+      "score_failed": "評価に失敗しました。もう一度お試しください。"
     }
   }
 }

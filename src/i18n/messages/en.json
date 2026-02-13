@@ -9,7 +9,8 @@
     "npm": "npm",
     "docs": "Docs",
     "menu": "Menu",
-    "analyzer": "Analyzer"
+    "analyzer": "Analyzer",
+    "score": "Score"
   },
   "hero": {
     "badge": "Open Protocol v1.0",
@@ -143,6 +144,42 @@
       "tokens_saved": "tokens saved",
       "view_details": "View details",
       "load_more": "Load more"
+    }
+  },
+  "score": {
+    "title": "MAKO Score",
+    "description": "How AI-ready is your website? Get your score from 0 to 100 and see what to improve.",
+    "meta_title": "MAKO Score - AI Readiness Audit",
+    "meta_description": "Check how AI-ready your website is. Get a score from 0-100 across content structure, metadata, LLM accessibility, and agent readiness.",
+    "form": {
+      "url_label": "URL to score",
+      "url_placeholder": "https://example.com",
+      "score_button": "Get Score",
+      "scoring": "Scoring...",
+      "public_label": "Make public",
+      "public_description": "Allow this score to appear publicly and be shared"
+    },
+    "tabs": {
+      "score": "Score",
+      "details": "Recommendations",
+      "share": "Share"
+    },
+    "recommendations": {
+      "perfect": "Perfect score! Your site is fully optimized for AI agents.",
+      "subtitle": "Improvements ordered by impact. Fix these to raise your score."
+    },
+    "share": {
+      "social": "Share on social media",
+      "download": "Download score card",
+      "download_png": "Download as PNG",
+      "embed": "Embed badge",
+      "copy": "Copy",
+      "copied": "Copied!"
+    },
+    "errors": {
+      "invalid_url": "Please enter a valid URL",
+      "url_required": "URL is required",
+      "score_failed": "Scoring failed. Please try again."
     }
   }
 }

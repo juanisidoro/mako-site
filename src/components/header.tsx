@@ -34,6 +34,12 @@ export function Header() {
           >
             {t('analyzer')}
           </Link>
+          <Link
+            href="/score"
+            className="text-sm text-slate-400 transition hover:text-white"
+          >
+            {t('score')}
+          </Link>
           <a
             href={siteConfig.github}
             target="_blank"
@@ -92,6 +98,13 @@ export function Header() {
               onClick={() => setOpen(false)}
             >
               {t('analyzer')}
+            </Link>
+            <Link
+              href="/score"
+              className="text-sm text-slate-400"
+              onClick={() => setOpen(false)}
+            >
+              {t('score')}
             </Link>
             <a
               href={siteConfig.github}

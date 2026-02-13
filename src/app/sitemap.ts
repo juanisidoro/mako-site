@@ -6,6 +6,7 @@ import { siteConfig } from '@/config/site';
 const routes = [
   '',
   '/analyzer',
+  '/score',
   '/directory',
 ];
 

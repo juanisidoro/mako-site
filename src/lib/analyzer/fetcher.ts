@@ -56,7 +56,7 @@ function isBlockedHost(hostname: string): boolean {
 
 export async function fetchUrl(
   url: string
-): Promise<{ html: string; finalUrl: string; statusCode: number }> {
+): Promise<{ html: string; finalUrl: string; statusCode: number; usedJinaFallback: boolean }> {
   // Validate URL format
   const parseResult = urlSchema.safeParse(url);
   if (!parseResult.success) {
@@ -74,7 +74,7 @@ export async function fetchUrl(
   try {
     const result = await doFetch(url);
     if (result.html.length >= MIN_BODY_LENGTH) {
-      return result;
+      return { ...result, usedJinaFallback: false };
     }
     // Body too small, try Jina fallback
   } catch {
@@ -89,6 +89,7 @@ export async function fetchUrl(
       html: result.html,
       finalUrl: url, // Keep original URL as the canonical one
       statusCode: result.statusCode,
+      usedJinaFallback: true,
     };
   } catch (error) {
     throw new Error(

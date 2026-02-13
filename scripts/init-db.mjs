@@ -34,3 +34,27 @@ await sql`
 `;
 
 console.log("OK: Table 'analyses' created successfully");
+
+await sql`
+  CREATE TABLE IF NOT EXISTS scores (
+    id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    url             TEXT NOT NULL,
+    domain          TEXT NOT NULL,
+    entity          TEXT NOT NULL,
+    content_type    TEXT NOT NULL,
+    total_score     INTEGER NOT NULL,
+    grade           TEXT NOT NULL,
+    categories_json JSONB NOT NULL,
+    recommendations JSONB NOT NULL,
+    is_public       BOOLEAN NOT NULL DEFAULT true,
+    created_at      TIMESTAMPTZ NOT NULL DEFAULT now()
+  )
+`;
+
+await sql`
+  CREATE INDEX IF NOT EXISTS idx_scores_public
+  ON scores (is_public, created_at DESC)
+  WHERE is_public = true
+`;
+
+console.log("OK: Table 'scores' created successfully");
