@@ -22,12 +22,12 @@ export function Header() {
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-5 sm:flex">
-          <a
-            href="#features"
+          <Link
+            href="/#features"
             className="text-sm text-slate-400 transition hover:text-white"
           >
             Features
-          </a>
+          </Link>
           <Link
             href="/analyzer"
             className="text-sm text-slate-400 transition hover:text-white"
@@ -83,9 +83,9 @@ export function Header() {
       {open && (
         <nav className="border-t border-slate-800/50 px-6 py-4 sm:hidden">
           <div className="flex flex-col gap-3">
-            <a href="#features" className="text-sm text-slate-400" onClick={() => setOpen(false)}>
+            <Link href="/#features" className="text-sm text-slate-400" onClick={() => setOpen(false)}>
               Features
-            </a>
+            </Link>
             <Link
               href="/analyzer"
               className="text-sm text-slate-400"

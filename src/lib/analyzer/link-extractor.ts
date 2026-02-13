@@ -75,6 +75,16 @@ export function extractLinks(
       return;
     }
 
+    // Skip non-semantic links (legal, privacy, cookies, terms)
+    const hrefLower = href.toLowerCase();
+    if (
+      /privac|cookie|legal|terms|condiciones|aviso-legal|politica-de/.test(hrefLower) ||
+      /policies\.google\.com/.test(hrefLower) ||
+      /creativecommons\.org/.test(hrefLower)
+    ) {
+      return;
+    }
+
     // Resolve relative URLs
     let resolvedUrl: string;
     try {

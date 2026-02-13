@@ -19,6 +19,7 @@ const REMOVE_SELECTORS = [
   '[role="navigation"]',
   '[role="banner"]',
   '[role="contentinfo"]',
+  '[role="complementary"]',
   ".ad",
   ".ads",
   ".advertisement",
@@ -26,6 +27,21 @@ const REMOVE_SELECTORS = [
   ".cookie",
   ".popup",
   ".modal",
+  '[class*="cookie"]',
+  '[class*="consent"]',
+  '[id*="cookie"]',
+  '[id*="consent"]',
+  '[class*="footer"]',
+  '[class*="legal"]',
+  '[class*="copyright"]',
+  '[class*="social-share"]',
+  '[class*="share-buttons"]',
+  '[class*="newsletter"]',
+  '[class*="subscribe"]',
+  '[class*="comments"]',
+  '[id*="comments"]',
+  '[class*="related-posts"]',
+  '[class*="breadcrumb"]',
 ].join(", ");
 
 /** Selectors for main content area, in priority order */
@@ -251,22 +267,47 @@ function convertTable($: CheerioAPI, $el: CheerioSelection): string {
   return lines.join("\n");
 }
 
+/** Patterns that indicate footer/boilerplate text to remove */
+const BOILERPLATE_PATTERNS = [
+  /^.*(?:all rights reserved|todos los derechos|© ?\d{4}|copyright \d{4}).*$/gim,
+  /^.*(?:política de cookies|cookie policy|politica de privacidad|privacy policy).*$/gim,
+  /^.*(?:aceptar y cerrar|accept and close|declinar|decline).*$/gim,
+  /^.*(?:utilizamos cookies|we use cookies|usamos cookies).*$/gim,
+  /^(?:legal|contacto|contact)\s*$/gim,
+  /^(?:para los curiosos|te impulsamos al crecimiento)\s*$/gim,
+];
+
 function cleanMarkdown(text: string): string {
+  let cleaned = text
+    // Normalize line endings
+    .replace(/\r\n/g, "\n")
+    // Normalize unicode whitespace
+    .replace(/[\u00A0\u2000-\u200B\u202F\u205F\u3000]/g, " ")
+    // Remove zero-width characters
+    .replace(/[\u200B-\u200D\uFEFF]/g, "");
+
+  // Remove boilerplate lines
+  for (const pattern of BOILERPLATE_PATTERNS) {
+    cleaned = cleaned.replace(pattern, "");
+  }
+
+  // Process lines
+  const lines = cleaned.split("\n").map((line) => line.trimEnd());
+
+  // Remove duplicate consecutive lines
+  const deduped: string[] = [];
+  for (const line of lines) {
+    const trimmed = line.trim();
+    const lastTrimmed = deduped[deduped.length - 1]?.trim();
+    if (trimmed && trimmed === lastTrimmed) continue;
+    deduped.push(line);
+  }
+
   return (
-    text
-      // Normalize line endings
-      .replace(/\r\n/g, "\n")
-      // Collapse excessive newlines to max 2
-      .replace(/\n{3,}/g, "\n\n")
-      // Remove leading/trailing whitespace on lines
-      .split("\n")
-      .map((line) => line.trimEnd())
+    deduped
       .join("\n")
-      // Normalize unicode whitespace
-      .replace(/[\u00A0\u2000-\u200B\u202F\u205F\u3000]/g, " ")
-      // Remove zero-width characters
-      .replace(/[\u200B-\u200D\uFEFF]/g, "")
-      // Trim the whole document
+      // Collapse 3+ newlines to 2
+      .replace(/\n{3,}/g, "\n\n")
       .trim()
   );
 }
