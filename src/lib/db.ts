@@ -130,6 +130,7 @@ export async function getAnalysisStats(): Promise<AnalysisStats> {
 
 export interface ScoreRow {
   id?: string;
+  shareHash?: string;
   url: string;
   domain: string;
   entity: string;
@@ -152,6 +153,7 @@ export async function initScoresTable(): Promise<void> {
   await sql`
     CREATE TABLE IF NOT EXISTS scores (
       id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+      share_hash      TEXT UNIQUE,
       url             TEXT NOT NULL,
       domain          TEXT NOT NULL,
       entity          TEXT NOT NULL,
@@ -182,13 +184,15 @@ export async function saveScore(result: {
   recommendations: unknown;
   isPublic: boolean;
   createdAt: string;
-}): Promise<string | null> {
+  shareHash: string;
+}): Promise<{ id: string; shareHash: string } | null> {
   try {
     const rows = await sql`
       INSERT INTO scores (
-        url, domain, entity, content_type, total_score, grade,
+        share_hash, url, domain, entity, content_type, total_score, grade,
         categories_json, recommendations, is_public, created_at
       ) VALUES (
+        ${result.shareHash},
         ${result.url},
         ${result.domain},
         ${result.entity},
@@ -200,9 +204,10 @@ export async function saveScore(result: {
         ${result.isPublic},
         ${result.createdAt}
       )
-      RETURNING id
+      RETURNING id, share_hash
     `;
-    return rows[0]?.id ?? null;
+    const row = rows[0];
+    return row ? { id: row.id as string, shareHash: row.share_hash as string } : null;
   } catch (error) {
     console.error("[db] Failed to save score:", error);
     return null;
@@ -272,9 +277,28 @@ export async function getLatestPublicScore(domain: string): Promise<ScoreRow | n
   }
 }
 
+export async function getScoreByHash(hash: string): Promise<ScoreRow | null> {
+  try {
+    const rows = await sql`
+      SELECT
+        id, share_hash, url, domain, entity, content_type, total_score, grade,
+        categories_json, recommendations, is_public, created_at
+      FROM scores
+      WHERE share_hash = ${hash}
+      LIMIT 1
+    `;
+    if (rows.length === 0) return null;
+    return mapRowToScore(rows[0]);
+  } catch (error) {
+    console.error("[db] Failed to get score by hash:", error);
+    return null;
+  }
+}
+
 function mapRowToScore(row: Record<string, unknown>): ScoreRow {
   return {
     id: row.id as string,
+    shareHash: (row.share_hash as string) ?? undefined,
     url: row.url as string,
     domain: row.domain as string,
     entity: row.entity as string,

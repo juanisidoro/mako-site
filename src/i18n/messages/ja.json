@@ -226,17 +226,17 @@
   },
   "score": {
     "title": "MAKO スコア",
-    "description": "あなたのWebサイトはAIにどれだけ対応していますか？Discoverable、Readable、Trustworthy、Actionableの4つの観点で0から100のスコアを取得しましょう。",
-    "about": "MAKOスコアは、AIエージェントがあなたのコンテンツをいかに効率的に発見、読み取り、信頼し、操作できるかを測定します。",
-    "meta_title": "MAKOスコア - AI対応度監査",
-    "meta_description": "WebサイトのあなたのサイトのアーカイブのAI対応度をチェック。Discoverability、Readability、Trustworthiness、ActionabilityでAIエージェント向けの0-100スコアを取得。",
+    "description": "あなたのウェブサイトはAIに対応していますか？発見可能性、可読性、信頼性、操作性の4つの観点で0〜100のスコアを取得しましょう。",
+    "about": "MAKOスコアは、AIエージェントがあなたのコンテンツをどれだけ効率的に発見、読解、信頼、操作できるかを測定します。",
+    "meta_title": "MAKO スコア - AI対応度監査",
+    "meta_description": "あなたのウェブサイトのAI対応度を確認しましょう。AIエージェントの発見可能性、可読性、信頼性、操作性で0-100のスコアを取得。",
     "form": {
       "url_label": "評価するURL",
       "url_placeholder": "https://example.com",
       "score_button": "スコアを取得",
       "scoring": "評価中...",
       "public_label": "公開する",
-      "public_description": "このスコアを公開して共有できるようにする"
+      "public_description": "このスコアを公開して共有可能にする"
     },
     "tabs": {
       "business": "概要",
@@ -244,30 +244,158 @@
       "share": "共有"
     },
     "business": {
-      "top_actions": "スコアを向上させるための主要なアクション",
-      "mako_cta_title": "あなたのAI潜在能力を最大限に活用",
-      "mako_cta_desc": "MAKOプロトコルを実装して、AIエージェントが最適化されたコンテンツに直接アクセスできるようにします。@mako-spec/jsまたはWordPressプラグインをインストールして開始できます。"
+      "top_actions": "スコア改善の優先アクション",
+      "mako_cta_title": "AIの可能性を最大限に引き出す",
+      "mako_cta_desc": "MAKOプロトコルを実装して、AIエージェントに最適化されたコンテンツへの直接アクセスを提供しましょう。<js>@mako-spec/js</js>または<wp>WordPressプラグイン</wp>をインストールして始めましょう。"
     },
     "developer": {
       "all_recommendations": "すべての推奨事項"
     },
     "recommendations": {
-      "perfect": "満点です！あなたのサイトはAIエージェント向けに完全に最適化されています。",
-      "subtitle": "影響度順に並んだ改善提案。これらを修正してスコアを上げてください。"
+      "perfect": "満点！あなたのサイトはAIエージェントに完全に最適化されています。",
+      "subtitle": "影響度順に並べた改善提案。これらを修正してスコアを上げましょう。"
     },
     "share": {
-      "social": "ソーシャルメディアでシェア",
-      "download": "スコアカードをダウンロード",
-      "download_png": "PNGでダウンロード",
-      "embed": "バッジを埋め込む",
-      "copy": "コピー",
+      "social": "ソーシャルメディアで共有",
       "copy_link": "リンクをコピー",
-      "copied": "コピーしました！"
+      "copied": "コピーしました！",
+      "og_description": "{domain} のAI対応スコアは {score}/100 です。あなたのウェブサイトのMAKO Scoreをチェックしましょう。",
+      "cta_check_yours": "あなたのMAKO Scoreをチェック"
     },
     "errors": {
       "invalid_url": "有効なURLを入力してください",
       "url_required": "URLは必須です",
       "score_failed": "評価に失敗しました。もう一度お試しください。"
+    },
+    "categories": {
+      "discoverable": {
+        "name": "発見可能",
+        "question": "AIエージェントはあなたを発見できますか？",
+        "info_what": "AIエージェントが最適化されたコンテンツを見つけられるかを確認します：MAKOサポート、llms.txt、コンテンツネゴシエーション、発見シグナル。",
+        "info_why": "エージェントがコンテンツを発見できなければ、他のすべては意味がありません。このカテゴリはAIウェブでのサイトの可視性を確保します。"
+      },
+      "readable": {
+        "name": "可読",
+        "question": "AIエージェントはあなたを理解できますか？",
+        "info_what": "AIエージェントがコンテンツを抽出・理解する容易さを測定します：信号対雑音比、セマンティックHTML、見出し、JavaScript依存性。",
+        "info_why": "ほとんどのウェブページは90%以上がボイラープレートです。エージェントはビジネスについて正確な回答を生成するために、クリーンで構造化されたコンテンツを必要とします。"
+      },
+      "trustworthy": {
+        "name": "信頼性",
+        "question": "AIエージェントはあなたを信頼できますか？",
+        "info_what": "メタデータの品質と鮮度を評価します：JSON-LD、Open Graph、正規URL、robots.txt、要約やETagなどのMAKO固有の信頼シグナル。",
+        "info_why": "信頼シグナルは、エージェントがコンテンツの正確性を検証し、コンテキストを理解し、回答であなたのページを引用するかどうかを判断するのに役立ちます。"
+      },
+      "actionable": {
+        "name": "操作可能",
+        "question": "AIエージェントはあなたと対話できますか？",
+        "info_what": "エージェントがコンテンツと対話できるかを確認します：構造化アクション、セマンティックリンク、MAKOヘッダーの完全性、コンテンツ抽出の品質。",
+        "info_why": "エージェントウェブの未来はトランザクションです。エージェントが購入、購読、連絡のアクションを見つけられなければ、コンバージョンを逃します。"
+      }
+    },
+    "checks": {
+      "serves_mako": { "name": "MAKOコンテンツを提供", "info": "MAKOにより、エージェントは生HTMLの約7%のトークンでコンテンツを取得できます — 最大の単一改善。" },
+      "mako_content_negotiation": { "name": "MAKOコンテンツネゴシエーション", "info": "正しいContent-Typeヘッダーにより、エージェントは応答をMAKOとして解析します。" },
+      "mako_link_tag": { "name": "MAKO発見リンクタグ", "info": "<link rel=\"alternate\">タグにより、エージェントは追加のHEADリクエストなしでMAKOサポートを発見できます。" },
+      "has_llms_txt": { "name": "llms.txtあり", "info": "llms.txtはAIエージェントにサイトの内容とアクセス方法を伝えます — LLM向けのrobots.txtのようなものです。" },
+      "has_mcp_endpoint": { "name": "MCPエンドポイントあり", "info": "Model Context Protocol (MCP)により、エージェントは構造化APIとしてサービスと対話できます。" },
+      "content_signal_ratio": { "name": "コンテンツ信号比", "info": "ページの実際のコンテンツとナビゲーション、広告、ボイラープレートマークアップの割合を測定します。" },
+      "no_js_dependency": { "name": "JavaScript不要", "info": "LLMとクローラーはJavaScriptを実行できません。コンテンツにJSが必要な場合、AIエージェントには見えません。" },
+      "first_meaningful_content": { "name": "最初の意味のあるコンテンツ", "info": "エージェントは最初の数百文字をスキャンします。ナビ/ヘッダーしか見つからなければ、ページをスキップする可能性があります。" },
+      "meaningful_headings": { "name": "意味のある見出し", "info": "説明的な見出しにより、エージェントはすべてを読まずに構造を理解するスマートスキミングができます。" },
+      "semantic_html": { "name": "セマンティックHTML構造", "info": "<main>、<article>、<section>などのタグがエージェントに実際のコンテンツの場所を伝えます。" },
+      "has_h1": { "name": "単一のH1あり", "info": "H1はエージェントがページの内容を理解するために使用する主要なシグナルです。" },
+      "image_alt_text": { "name": "画像にaltテキストあり", "info": "altテキストがなければ画像はエージェントに見えません。あれば、視覚的コンテンツを理解できます。" },
+      "link_quality": { "name": "説明的なリンクテキスト", "info": "説明的なテキストのリンクにより、エージェントは目的を持って誘導できます。" },
+      "has_json_ld": { "name": "JSON-LD構造化データ", "info": "JSON-LDのSchema.orgにより、エージェントはコンテンツタイプ（商品、記事、イベント）を推測せずに理解できます。" },
+      "has_og_tags": { "name": "Open Graphタグ", "info": "Open Graphタグはソーシャルプラットフォームとエージェントの両方がコンテンツのプレビューと分類に使用します。" },
+      "has_meta_description": { "name": "メタディスクリプション", "info": "メタディスクリプションは、エージェントがページ全体を読まない時に使用する簡易要約です。" },
+      "has_canonical": { "name": "正規URL", "info": "正規URLにより、エージェントがコンテンツの重複バージョンをインデックスすることを防ぎます。" },
+      "has_lang": { "name": "言語属性", "info": "lang属性はエージェントにコンテンツの言語を伝え、理解力を向上させます。" },
+      "has_robots_txt": { "name": "robots.txt", "info": "許容的なrobots.txtは、クローラーとAIエージェントがサイトで歓迎されていることを示します。" },
+      "has_sitemap": { "name": "サイトマップ", "info": "サイトマップはエージェントがリンクを一つずつ巡らずにすべてのページを発見するのを助けます。" },
+      "mako_summary_quality": { "name": "MAKO要約品質", "info": "適切に作成された要約（10-30語、≤160文字）はエージェントがビジネスを説明するために使用するものです。" },
+      "mako_freshness": { "name": "MAKOコンテンツ鮮度", "info": "X-Mako-Updatedヘッダーはエージェントにコンテンツの新しさを伝えます — 古いデータは信頼を失います。" },
+      "mako_etag": { "name": "MAKO ETagキャッシュ", "info": "ETagにより効率的なキャッシュが可能になります — エージェントはすべてを再ダウンロードせずにコンテンツの変更を確認できます。" },
+      "mako_tokens_declared": { "name": "MAKOトークン数宣言", "info": "宣言されたトークン数により、エージェントはダウンロード前にコンテキストウィンドウの予算を計画できます。" },
+      "mako_body_quality": { "name": "MAKO本文品質", "info": "十分な本文コンテンツ（≥200文字）により、エージェントが作業するための実質があることを確保します。" },
+      "structured_actions": { "name": "構造化アクション", "info": "機械可読のアクション（購入、購読、連絡）により、エージェントはユーザーをコンバージョンに導きます。" },
+      "semantic_links": { "name": "セマンティックリンク", "info": "コンテキスト付きのMAKOリンクにより、エージェントは目的と理解を持ってサイトをナビゲートします。" },
+      "action_completeness": { "name": "アクションの完全性", "info": "完全なアクション（名前+説明+url）はエージェントに行動に必要なすべてを提供します。" },
+      "mako_headers_complete": { "name": "MAKOヘッダー完全", "info": "7つすべてのMAKOヘッダーがHTTPレベルでエージェントに完全なメタデータ像を提供します。" },
+      "clean_extraction": { "name": "クリーンなコンテンツ抽出", "info": "少なくとも200文字の抽出可能なコンテンツにより、エージェントが有用な応答を生成するのに十分であることを確保します。" }
+    },
+    "grades": {
+      "F": { "title": "AIエージェントに見えない", "description": "あなたのサイトはAIエージェントによって確実に解析できません。基本構造が欠けています。" },
+      "D": { "title": "努力すれば読める", "description": "エージェントはいくつかのデータを抽出できますが、結果が不正確な可能性があります。重要なシグナルが欠けています。" },
+      "C": { "title": "アクセス可能だが非効率", "description": "良い基本構造です。エージェントはあなたを理解しますが、過剰なトークンを消費します。" },
+      "B": { "title": "AI向けに最適化", "description": "エージェントはあなたを上手く効率的に読みます。MAKO実装が次のレベルを解放します。" },
+      "A": { "title": "エージェント対応", "description": "高速な発見、信頼性の高い構造化データ、効率的なトークン使用。" },
+      "A_plus": { "title": "エージェントファースト", "description": "あなたのサイトはAIエージェントの言語をネイティブに話します。満点。" }
+    },
+    "conformance": {
+      "level_1": "AI-Readable",
+      "level_2": "MAKO Discovery",
+      "level_3": "MAKO Standard",
+      "level_4": "MAKO Excellence"
+    },
+    "impact": {
+      "high": "高",
+      "medium": "中",
+      "low": "低"
+    },
+    "rec": {
+      "serves_mako": { "message": "@mako-spec/jsミドルウェアまたはmako-wpプラグインでMAKOコンテンツネゴシエーションを実装してください。", "businessMessage": "AIエージェントがコンテンツを直接読めるようにしましょう — これが最大の単一改善です。" },
+      "mako_content_negotiation": { "message": "サーバーがMAKO応答にContent-Type: text/mako+markdownを返すことを確認してください。", "businessMessage": "MAKO設定を修正して、AIエージェントが最適化コンテンツを正しく識別できるようにしましょう。" },
+      "mako_link_tag": { "message": "HTML <head>に<link rel=\"alternate\" type=\"text/mako+markdown\">を追加してください。", "businessMessage": "AIエージェントがサイトの最適化コンテンツサポートを発見できるようにしましょう。" },
+      "has_llms_txt": { "message": "サイトルートにAIエージェント向けのllms.txtファイルを追加してください。", "businessMessage": "AIアシスタントにビジネスの内容を伝えて、正確に推薦してもらいましょう。" },
+      "has_mcp_endpoint": { "message": "Model Context Protocol統合のための/.well-known/mcp.jsonエンドポイントを追加してください。", "businessMessage": "サイトとの高度なAI統合を有効にしましょう。" },
+      "content_signal_ratio": { "message": "不要なスクリプト、インラインスタイル、非セマンティックマークアップを削除してHTMLの冗長性を減らしてください。", "businessMessage": "ページコードをクリーンにして、AIエージェントが実際のコンテンツに集中できるようにしましょう。" },
+      "no_js_dependency": { "message": "コンテンツを静的/SSR HTMLとして提供してください。LLMエージェントとクローラーはJavaScriptを実行できません。", "businessMessage": "JavaScript不要でコンテンツを利用可能にしましょう — ほとんどのAIエージェントはスクリプトを実行できません。" },
+      "first_meaningful_content": { "message": "H1とメインコンテンツがドキュメントの最初の300文字以内に表示されるようにしてください。", "businessMessage": "メインコンテンツをページの上部に移動して、AIエージェントがすぐに見つけられるようにしましょう。" },
+      "meaningful_headings": { "message": "セクション内容を要約する説明的な見出しを使用してください。「ようこそ」のような一般的な見出しは避けてください。", "businessMessage": "明確なセクションタイトルを使用して、AIエージェントがページ構造を理解できるようにしましょう。" },
+      "semantic_html": { "message": "セマンティックHTML要素：<main>、<article>、<section>を使用してコンテンツを構造化してください。", "businessMessage": "適切なHTML構造を使用して、AIエージェントがメインコンテンツ領域を特定できるようにしましょう。" },
+      "has_h1": { "message": "ページのメイントピックを説明するH1見出しを1つだけ追加してください。", "businessMessage": "明確なメイン見出しを追加しましょう — AIエージェントが最初に探すものです。" },
+      "image_alt_text": { "message": "AIエージェントがビジュアルコンテンツを理解できるよう、画像に説明的なaltテキストを追加してください。", "businessMessage": "画像をテキストで説明して、AIエージェントが何を表示しているか分かるようにしましょう。" },
+      "link_quality": { "message": "一般的なリンクテキスト（ここをクリック、もっと読む）を説明的なラベルに置き換えてください。", "businessMessage": "意味のあるリンクラベルを使用して、AIエージェントが各リンクの行き先を理解できるようにしましょう。" },
+      "has_json_ld": { "message": "5つ以上のプロパティを持つJSON-LD構造化データ（Schema.org）を追加してください。", "businessMessage": "構造化データを追加して、AIエージェントがページの内容を正確に理解できるようにしましょう。" },
+      "has_og_tags": { "message": "Open Graphタグを追加：og:title、og:description、og:type、og:image。", "businessMessage": "ソーシャル共有タグを追加しましょう — AIエージェントはコンテンツの要約に使用します。" },
+      "has_meta_description": { "message": "簡潔なページ要約を含む<meta name=\"description\">を追加してください。", "businessMessage": "AIエージェントがコンテンツの要約として使用できるページ説明を追加しましょう。" },
+      "has_canonical": { "message": "このコンテンツの主要URLを特定する<link rel=\"canonical\">を追加してください。", "businessMessage": "AIエージェントにこのページの公式URLを伝えましょう。" },
+      "has_lang": { "message": "<html>にlang属性を追加してください（例：<html lang=\"ja\">）。", "businessMessage": "ページの言語を宣言して、AIエージェントが正しい言語で応答するようにしましょう。" },
+      "has_robots_txt": { "message": "AIクローラーがコンテンツにアクセスできるrobots.txtを追加してください。", "businessMessage": "robots.txtファイルを追加してAIエージェントがサイトをクロールできるようにしましょう。" },
+      "has_sitemap": { "message": "クローラーがすべてのページを発見できるようsitemap.xmlを追加してください。", "businessMessage": "サイトマップでAIエージェントがすべての重要なページを見つけられるようにしましょう。" },
+      "mako_summary_quality": { "message": "MAKOフロントマターに要約フィールド（10-30語、≤160文字）を追加してください。", "businessMessage": "MAKOファイルに明確な要約を書きましょう — AIエージェントはそれを使ってビジネスを説明します。" },
+      "mako_freshness": { "message": "X-Mako-Updatedヘッダーをコンテンツの最終更新日に設定してください。", "businessMessage": "AI最適化コンテンツを最新に保ちましょう — 古いデータは信頼を損ないます。" },
+      "mako_etag": { "message": "効率的なキャッシュのためにMAKO応答にETagヘッダーを追加してください。", "businessMessage": "キャッシュを有効にして、AIエージェントがコンテンツ更新を効率的に確認できるようにしましょう。" },
+      "mako_tokens_declared": { "message": "MAKOコンテンツのトークン数を宣言するX-Mako-Tokensヘッダーを設定してください。", "businessMessage": "コンテンツサイズを宣言して、AIエージェントがトークン予算を計画できるようにしましょう。" },
+      "mako_body_quality": { "message": "MAKO本文コンテンツに少なくとも200文字の意味のあるmarkdownがあることを確認してください。", "businessMessage": "MAKOファイルにAIエージェントが作業するのに十分なコンテンツを提供しましょう。" },
+      "structured_actions": { "message": "機械可読のCTA/アクションを追加してください。MAKOでは名前、説明、urlでアクションを定義します。", "businessMessage": "明確なアクション（購入、購読、連絡）を定義して、AIエージェントがユーザーを導けるようにしましょう。" },
+      "semantic_links": { "message": "MAKOフロントマターにコンテキスト付きのセマンティックリンクを含めてください。", "businessMessage": "意味のあるリンクでページを接続して、AIエージェントがサイトをナビゲートできるようにしましょう。" },
+      "action_completeness": { "message": "すべてのMAKOアクションに名前、説明、urlフィールドがあることを確認してください。", "businessMessage": "アクション定義を完成させて、AIエージェントが必要な情報をすべて持てるようにしましょう。" },
+      "mako_headers_complete": { "message": "すべてのMAKOヘッダーを含めてください：Version、Type、Lang、Entity、Tokens、Updated、Canonical。", "businessMessage": "完全なメタデータを提供して、AIエージェントがコンテンツの全体像を把握できるようにしましょう。" },
+      "clean_extraction": { "message": "ページに少なくとも200文字の抽出可能なコンテンツがあることを確認してください。", "businessMessage": "ページにもっとコンテンツを追加しましょう — AIエージェントには作業するための実質が必要です。" }
+    },
+    "check_details": {
+      "content_signal_ratio_low": "コンテンツ信号比は{ratio}% — ボイラープレートが多すぎます",
+      "content_signal_ratio_ok": "{ratio}%のコンテンツ信号比",
+      "no_js_dependency_fail": "ページにJavaScriptレンダリングが必要でした（Jinaフォールバック使用）",
+      "first_meaningful_content_fail": "メインコンテンツの表示が遅すぎます — 実際のコンテンツの前にナビゲーションやボイラープレートが多すぎます",
+      "meaningful_headings_none": "見出しが見つかりません",
+      "meaningful_headings_generic": "{generic}/{total}の見出しが一般的すぎるか短すぎます",
+      "semantic_html_fail": "<article>、<main>、<section>要素が見つかりません",
+      "has_h1_none": "H1見出しが見つかりません",
+      "has_h1_multiple": "H1見出しが{count}個見つかりました（正確に1つであるべきです）",
+      "image_alt_text_fail": "{total}枚中{withAlt}枚のみaltテキストあり",
+      "link_quality_fail": "{total}個中{bad}個のリンクが「ここをクリック」のような一般的なテキスト",
+      "not_applicable": "該当なし（MAKOサポートなし）"
+    },
+    "site_scan": {
+      "description": "サイト上の最大10ページを確認し、どのページがMAKOコンテンツを提供しているかを表示します。サイト全体のMAKO導入状況を示します。",
+      "no_mako": "MAKOページはまだ検出されていません。MAKOプロトコルを導入して、AIエージェントがサイトを効率的に読めるようにしましょう。",
+      "partial": "{total}URLのうち{count}がMAKOを提供しています。サイト全体に導入を広げて、AIアクセシビリティを最大化しましょう。",
+      "urls_checked": "{domain}の{total}URLを確認",
+      "adoption_label": "サイト全体のMAKO導入率"
     }
   }
 }

@@ -1,3 +1,4 @@
+import crypto from "crypto";
 import { extractPageData } from "@/lib/analyzer/extract";
 import { probeMako } from "./mako-probe";
 import { evaluateDiscoverable } from "./categories/discoverable";
@@ -8,6 +9,10 @@ import { probeSite } from "./site-probe";
 import { getGrade, getGradeInfo, getConformanceLevel } from "./types";
 import type { ScoreResult, ScoreCategory, ScoreRecommendation } from "./types";
 import { saveScore } from "@/lib/db";
+
+function generateShareHash(): string {
+  return crypto.randomBytes(6).toString("base64url").slice(0, 8);
+}
 
 export type {
   ScoreResult,
@@ -83,9 +88,13 @@ export async function scoreUrl(
   };
 
   // Save to DB
+  const shareHash = generateShareHash();
   try {
-    const id = await saveScore(result);
-    if (id) result.id = id;
+    const saved = await saveScore({ ...result, shareHash });
+    if (saved) {
+      result.id = saved.id;
+      result.shareHash = saved.shareHash;
+    }
   } catch (error) {
     console.error("[scorer] Failed to save score to DB:", error);
   }

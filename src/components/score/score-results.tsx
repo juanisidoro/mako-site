@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import type { ScoreResult } from '@/lib/scorer/types';
+import { siteConfig } from '@/config/site';
 import { ScoreCard } from './score-card';
 import { CategoryBreakdown } from './category-breakdown';
 import { SiteProbeResults } from './site-probe-results';
@@ -18,6 +19,18 @@ interface ScoreResultsProps {
 export function ScoreResults({ result }: ScoreResultsProps) {
   const t = useTranslations('score');
   const [activeTab, setActiveTab] = useState<Tab>('business');
+
+  // Map grade to translation key
+  const gradeKey = result.grade === 'A+' ? 'A_plus' : result.grade;
+  const gradeTitle = t.has(`grades.${gradeKey}.title`) ? t(`grades.${gradeKey}.title`) : result.gradeInfo.title;
+  const gradeDescription = t.has(`grades.${gradeKey}.description`) ? t(`grades.${gradeKey}.description`) : result.gradeInfo.description;
+
+  // Map conformance level
+  const conformanceName = result.conformanceLevel
+    ? (t.has(`conformance.level_${result.conformanceLevel.level}`)
+        ? t(`conformance.level_${result.conformanceLevel.level}`)
+        : result.conformanceLevel.name)
+    : null;
 
   const tabs: { key: Tab; label: string; icon: React.ReactNode }[] = [
     {
@@ -90,16 +103,16 @@ export function ScoreResults({ result }: ScoreResultsProps) {
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-white">
-                  {result.gradeInfo.title}
+                  {gradeTitle}
                 </h3>
                 <p className="mt-1 text-sm text-slate-400 leading-relaxed">
-                  {result.gradeInfo.description}
+                  {gradeDescription}
                 </p>
               </div>
             </div>
 
             {/* Conformance level */}
-            {result.conformanceLevel && (
+            {result.conformanceLevel && conformanceName && (
               <div className="mt-4 flex items-center gap-2 rounded-lg bg-emerald-500/5 border border-emerald-500/20 px-4 py-3">
                 <div className="flex items-center gap-1.5">
                   {result.conformanceLevel.badge === 'star' && (
@@ -123,7 +136,7 @@ export function ScoreResults({ result }: ScoreResultsProps) {
                     </svg>
                   )}
                   <span className="text-sm font-semibold text-emerald-400">
-                    Level {result.conformanceLevel.level}: {result.conformanceLevel.name}
+                    Level {result.conformanceLevel.level}: {conformanceName}
                   </span>
                 </div>
               </div>
@@ -155,7 +168,18 @@ export function ScoreResults({ result }: ScoreResultsProps) {
                     {t('business.mako_cta_title')}
                   </h4>
                   <p className="mt-1 text-sm text-slate-400">
-                    {t('business.mako_cta_desc')}
+                    {t.rich('business.mako_cta_desc', {
+                      js: (chunks) => (
+                        <a href={siteConfig.npm} target="_blank" rel="noopener noreferrer" className="text-emerald-400 hover:text-emerald-300 underline underline-offset-2">
+                          {chunks}
+                        </a>
+                      ),
+                      wp: (chunks) => (
+                        <a href={siteConfig.githubWp} target="_blank" rel="noopener noreferrer" className="text-emerald-400 hover:text-emerald-300 underline underline-offset-2">
+                          {chunks}
+                        </a>
+                      ),
+                    })}
                   </p>
                 </div>
               </div>

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import type { ScoreResult } from '@/lib/scorer/types';
 import { siteConfig } from '@/config/site';
 
@@ -9,7 +9,10 @@ interface ShareButtonsProps {
   result: ScoreResult;
 }
 
-function buildShareUrl(result: ScoreResult): string {
+function buildShareUrl(result: ScoreResult, locale: string): string {
+  if (result.shareHash) {
+    return `${siteConfig.baseUrl}/${locale}/p/${result.shareHash}`;
+  }
   const params = new URLSearchParams({
     score: String(result.totalScore),
     grade: result.grade,
@@ -20,26 +23,22 @@ function buildShareUrl(result: ScoreResult): string {
     c3: String(result.categories[2]?.earned ?? 0),
     c4: String(result.categories[3]?.earned ?? 0),
   });
-  return `${siteConfig.baseUrl}/score?${params.toString()}`;
+  return `${siteConfig.baseUrl}/${locale}/score?${params.toString()}`;
 }
 
 export function ShareButtons({ result }: ShareButtonsProps) {
   const t = useTranslations('score');
+  const locale = useLocale();
   const [copied, setCopied] = useState<string | null>(null);
 
-  const shareUrl = buildShareUrl(result);
-  const ogUrl = `${siteConfig.baseUrl}/api/score/og?score=${result.totalScore}&grade=${result.grade}&domain=${encodeURIComponent(result.domain)}&entity=${encodeURIComponent(result.entity)}&c1=${result.categories[0]?.earned ?? 0}&c2=${result.categories[1]?.earned ?? 0}&c3=${result.categories[2]?.earned ?? 0}&c4=${result.categories[3]?.earned ?? 0}`;
-  const badgeUrl = `${siteConfig.baseUrl}/api/score/badge?url=${encodeURIComponent(result.url)}`;
+  const shareUrl = buildShareUrl(result, locale);
 
   const shareText = `${result.domain} scored ${result.totalScore}/100 on AI-readiness! Grade: ${result.grade}`;
   const shareTextWithUrl = `${shareText}\n\nCheck your site's MAKO Score:`;
 
-  // Social URLs — all share the URL with dynamic OG meta tags
   const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareTextWithUrl)}&url=${encodeURIComponent(shareUrl)}`;
   const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
   const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(`${shareText}\n${shareUrl}`)}`;
-
-  const badgeEmbed = `<a href="${siteConfig.baseUrl}/score"><img src="${badgeUrl}" alt="MAKO Score: ${result.totalScore}/100" /></a>`;
 
   function copyToClipboard(text: string, key: string) {
     navigator.clipboard.writeText(text).then(() => {
@@ -95,38 +94,6 @@ export function ShareButtons({ result }: ShareButtonsProps) {
               <path strokeLinecap="round" strokeLinejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
             </svg>
             {copied === 'link' ? t('share.copied') : t('share.copy_link')}
-          </button>
-        </div>
-      </div>
-
-      {/* Download OG image */}
-      <div className="space-y-3">
-        <p className="text-sm font-medium text-slate-300">{t('share.download')}</p>
-        <a
-          href={ogUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-lg border border-slate-700 bg-slate-800/50 px-4 py-2.5 text-sm text-slate-300 transition hover:bg-slate-700 hover:text-white"
-        >
-          <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-          </svg>
-          {t('share.download_png')}
-        </a>
-      </div>
-
-      {/* Embed badge */}
-      <div className="space-y-3">
-        <p className="text-sm font-medium text-slate-300">{t('share.embed')}</p>
-        <div className="relative">
-          <pre className="rounded-lg border border-slate-800 bg-slate-900/50 p-4 text-xs text-slate-400 overflow-x-auto">
-            {badgeEmbed}
-          </pre>
-          <button
-            onClick={() => copyToClipboard(badgeEmbed, 'badge')}
-            className="absolute right-2 top-2 rounded-md bg-slate-700 px-2 py-1 text-xs text-slate-300 transition hover:bg-slate-600"
-          >
-            {copied === 'badge' ? t('share.copied') : t('share.copy')}
           </button>
         </div>
       </div>

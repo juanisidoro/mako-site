@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import type { SiteProbe } from '@/lib/scorer/types';
 
 interface SiteProbeResultsProps {
@@ -9,6 +10,7 @@ interface SiteProbeResultsProps {
 }
 
 export function SiteProbeResults({ probe, domain }: SiteProbeResultsProps) {
+  const t = useTranslations('score');
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -26,10 +28,10 @@ export function SiteProbeResults({ probe, domain }: SiteProbeResultsProps) {
           </div>
           <div className="text-left">
             <p className="text-sm font-medium text-white">
-              MAKO Site Scan
+              {t('site_scan.title')}
             </p>
             <p className="text-xs text-slate-500">
-              {probe.totalChecked} URLs from {domain} checked
+              {t('site_scan.checked', { count: probe.totalChecked, domain })}
             </p>
           </div>
         </div>
@@ -58,13 +60,20 @@ export function SiteProbeResults({ probe, domain }: SiteProbeResultsProps) {
         </div>
       </button>
 
+      {/* Description */}
+      <div className="px-4 sm:px-5 pb-3 -mt-1">
+        <p className="text-xs text-slate-600">
+          {t('site_scan.description')}
+        </p>
+      </div>
+
       {/* Expanded URL list */}
       {expanded && (
         <div className="border-t border-slate-800">
           {/* Adoption bar */}
           <div className="px-4 sm:px-5 py-3 bg-slate-900/30">
             <div className="flex items-center justify-between mb-1.5">
-              <span className="text-xs text-slate-500">MAKO adoption across site</span>
+              <span className="text-xs text-slate-500">{t('site_scan.adoption')}</span>
               <span className="text-xs font-mono text-slate-400">{probe.adoptionPct}%</span>
             </div>
             <div className="h-2 rounded-full bg-slate-800 overflow-hidden">
@@ -136,14 +145,14 @@ export function SiteProbeResults({ probe, domain }: SiteProbeResultsProps) {
           {probe.makoCount === 0 && (
             <div className="px-4 sm:px-5 py-3 bg-slate-900/30 border-t border-slate-800">
               <p className="text-xs text-slate-500">
-                No URLs on this site serve MAKO content. Adopt the MAKO protocol to let AI agents read your site efficiently.
+                {t('site_scan.no_mako')}
               </p>
             </div>
           )}
           {probe.makoCount > 0 && probe.makoCount < probe.totalChecked && (
             <div className="px-4 sm:px-5 py-3 bg-slate-900/30 border-t border-slate-800">
               <p className="text-xs text-slate-500">
-                {probe.makoCount} of {probe.totalChecked} URLs serve MAKO. Extend adoption across your site to maximize AI accessibility.
+                {t('site_scan.partial_mako', { count: probe.makoCount, total: probe.totalChecked })}
               </p>
             </div>
           )}

@@ -226,17 +226,17 @@
   },
   "score": {
     "title": "MAKO Score",
-    "description": "Votre site est-il prêt pour l'IA ? Obtenez votre score de 0 à 100 sur Découvrable, Lisible, Digne de confiance et Interactif.",
-    "about": "MAKO Score mesure l'efficacité avec laquelle les agents IA peuvent découvrir, lire, faire confiance et interagir avec votre contenu.",
-    "meta_title": "MAKO Score - Audit de Préparation pour l'IA",
-    "meta_description": "Vérifiez si votre site est prêt pour les agents IA. Score de 0-100 sur la découvrabilité, la lisibilité, la fiabilité et l'interactivité pour les agents IA.",
+    "description": "Votre site est-il prêt pour l'IA ? Obtenez votre score de 0 à 100 selon Découvrabilité, Lisibilité, Fiabilité et Actionnabilité.",
+    "about": "Le MAKO Score mesure l'efficacité avec laquelle les agents IA peuvent découvrir, lire, faire confiance et interagir avec votre contenu.",
+    "meta_title": "MAKO Score - Audit de Préparation IA",
+    "meta_description": "Vérifiez si votre site est prêt pour les agents IA. Obtenez un score de 0-100 en découvrabilité, lisibilité, fiabilité et actionnabilité pour les agents IA.",
     "form": {
       "url_label": "URL à évaluer",
-      "url_placeholder": "https://exemple.fr",
+      "url_placeholder": "https://example.com",
       "score_button": "Obtenir le Score",
       "scoring": "Évaluation...",
       "public_label": "Rendre public",
-      "public_description": "Permettre à ce score d'apparaître publiquement et d'être partagé"
+      "public_description": "Permettre que ce score apparaisse publiquement et puisse être partagé"
     },
     "tabs": {
       "business": "Aperçu",
@@ -244,9 +244,9 @@
       "share": "Partager"
     },
     "business": {
-      "top_actions": "Principales Actions pour Améliorer votre Score",
-      "mako_cta_title": "Libérez votre plein potentiel pour l'IA",
-      "mako_cta_desc": "Implémentez le protocole MAKO pour donner aux agents IA un accès direct à votre contenu optimisé. Installez @mako-spec/js ou le plugin WordPress pour commencer."
+      "top_actions": "Actions Prioritaires pour Améliorer Votre Score",
+      "mako_cta_title": "Libérez tout votre potentiel IA",
+      "mako_cta_desc": "Implémentez le protocole MAKO pour donner aux agents IA un accès direct à votre contenu optimisé. Installez <js>@mako-spec/js</js> ou le <wp>plugin WordPress</wp> pour commencer."
     },
     "developer": {
       "all_recommendations": "Toutes les Recommandations"
@@ -257,17 +257,145 @@
     },
     "share": {
       "social": "Partager sur les réseaux sociaux",
-      "download": "Télécharger la carte de score",
-      "download_png": "Télécharger en PNG",
-      "embed": "Intégrer le badge",
-      "copy": "Copier",
       "copy_link": "Copier le lien",
-      "copied": "Copié !"
+      "copied": "Copié !",
+      "og_description": "{domain} a obtenu {score}/100 en préparation IA. Vérifiez le MAKO Score de votre site web.",
+      "cta_check_yours": "Vérifiez votre MAKO Score"
     },
     "errors": {
-      "invalid_url": "Veuillez entrer une URL valide",
-      "url_required": "L'URL est requise",
+      "invalid_url": "Veuillez saisir une URL valide",
+      "url_required": "L'URL est obligatoire",
       "score_failed": "Échec de l'évaluation. Veuillez réessayer."
+    },
+    "categories": {
+      "discoverable": {
+        "name": "Découvrable",
+        "question": "Les agents IA peuvent-ils vous découvrir ?",
+        "info_what": "Vérifie si les agents IA peuvent trouver votre contenu optimisé : support MAKO, llms.txt, négociation de contenu et signaux de découverte.",
+        "info_why": "Si les agents ne peuvent pas découvrir votre contenu, rien d'autre n'a d'importance. Cette catégorie garantit que votre site est visible pour le web IA."
+      },
+      "readable": {
+        "name": "Lisible",
+        "question": "Les agents IA peuvent-ils vous comprendre ?",
+        "info_what": "Mesure la facilité avec laquelle les agents IA peuvent extraire et comprendre votre contenu : rapport signal/bruit, HTML sémantique, titres et dépendance JavaScript.",
+        "info_why": "La plupart des pages web contiennent 90%+ de code superflu. Les agents ont besoin d'un contenu propre et structuré pour générer des réponses précises sur votre activité."
+      },
+      "trustworthy": {
+        "name": "Fiable",
+        "question": "Les agents IA peuvent-ils vous faire confiance ?",
+        "info_what": "Évalue la qualité et la fraîcheur des métadonnées : JSON-LD, Open Graph, URLs canoniques, robots.txt et signaux de confiance MAKO comme les résumés et ETags.",
+        "info_why": "Les signaux de confiance aident les agents à vérifier la précision du contenu, comprendre le contexte et décider s'ils doivent citer votre page dans leurs réponses."
+      },
+      "actionable": {
+        "name": "Actionnable",
+        "question": "Les agents IA peuvent-ils interagir avec vous ?",
+        "info_what": "Vérifie si les agents peuvent interagir avec votre contenu : actions structurées, liens sémantiques, complétude des headers MAKO et qualité d'extraction du contenu.",
+        "info_why": "L'avenir du web des agents est transactionnel. Si les agents ne trouvent pas vos actions d'achat, d'abonnement ou de contact, vous perdez des conversions."
+      }
+    },
+    "checks": {
+      "serves_mako": { "name": "Sert du contenu MAKO", "info": "MAKO permet aux agents d'obtenir votre contenu en ~7% des tokens du HTML brut — la plus grande amélioration individuelle." },
+      "mako_content_negotiation": { "name": "Négociation de contenu MAKO", "info": "Le bon header Content-Type garantit que les agents interprètent votre réponse comme MAKO, pas comme du texte générique." },
+      "mako_link_tag": { "name": "Tag de découverte MAKO", "info": "Une balise <link rel=\"alternate\"> permet aux agents de découvrir le support MAKO sans faire de requête HEAD supplémentaire." },
+      "has_llms_txt": { "name": "Possède llms.txt", "info": "llms.txt indique aux agents IA ce que votre site propose et comment y accéder — comme robots.txt pour les LLMs." },
+      "has_mcp_endpoint": { "name": "Possède un endpoint MCP", "info": "Le Model Context Protocol (MCP) permet aux agents d'interagir avec votre service comme une API structurée." },
+      "content_signal_ratio": { "name": "Ratio signal de contenu", "info": "Mesure la proportion de votre page qui est du contenu réel vs navigation, publicités et balisage superflu." },
+      "no_js_dependency": { "name": "Contenu sans JavaScript", "info": "Les LLMs et crawlers ne peuvent pas exécuter JavaScript. Si le contenu nécessite JS, il est invisible pour les agents IA." },
+      "first_meaningful_content": { "name": "Premier contenu significatif", "info": "Les agents scannent les premiers centaines de caractères. S'ils ne trouvent que nav/header, ils peuvent ignorer votre page." },
+      "meaningful_headings": { "name": "Titres significatifs", "info": "Des titres descriptifs permettent aux agents de faire une lecture intelligente — comprendre la structure sans tout lire." },
+      "semantic_html": { "name": "Structure HTML sémantique", "info": "Les balises comme <main>, <article>, <section> indiquent aux agents où se trouve le vrai contenu." },
+      "has_h1": { "name": "Possède un H1 unique", "info": "Le H1 est le signal principal que les agents utilisent pour comprendre le sujet d'une page." },
+      "image_alt_text": { "name": "Images avec texte alt", "info": "Sans texte alt, les images sont invisibles pour les agents. Avec, ils comprennent votre contenu visuel." },
+      "link_quality": { "name": "Texte de lien descriptif", "info": "Les liens avec un texte descriptif permettent aux agents de naviguer avec intention, pas de cliquer aveuglément sur des liens génériques." },
+      "has_json_ld": { "name": "Données structurées JSON-LD", "info": "Schema.org en JSON-LD permet aux agents de comprendre le type de contenu (produit, article, événement) sans deviner." },
+      "has_og_tags": { "name": "Tags Open Graph", "info": "Les tags Open Graph sont utilisés par les plateformes sociales ET les agents IA pour prévisualiser et classifier le contenu." },
+      "has_meta_description": { "name": "Meta description", "info": "La meta description est le résumé rapide que les agents utilisent quand ils ne lisent pas la page entière." },
+      "has_canonical": { "name": "URL canonique", "info": "Les URLs canoniques empêchent les agents d'indexer des versions dupliquées de votre contenu." },
+      "has_lang": { "name": "Attribut de langue", "info": "L'attribut lang indique aux agents dans quelle langue est votre contenu, améliorant la compréhension." },
+      "has_robots_txt": { "name": "robots.txt", "info": "Un robots.txt permissif signale que les crawlers et agents IA sont les bienvenus sur votre site." },
+      "has_sitemap": { "name": "Sitemap", "info": "Les sitemaps aident les agents à découvrir toutes vos pages sans crawler lien par lien." },
+      "mako_summary_quality": { "name": "Qualité du résumé MAKO", "info": "Un résumé bien rédigé (10-30 mots, ≤160 chars) est ce que les agents utilisent pour décrire votre activité." },
+      "mako_freshness": { "name": "Fraîcheur du contenu MAKO", "info": "Le header X-Mako-Updated indique aux agents la récence de votre contenu — des données périmées perdent la confiance." },
+      "mako_etag": { "name": "Cache ETag MAKO", "info": "Les ETags permettent un cache efficace — les agents vérifient si le contenu a changé sans tout retélécharger." },
+      "mako_tokens_declared": { "name": "Comptage de tokens MAKO déclaré", "info": "Le comptage de tokens déclaré permet aux agents de planifier leur budget de fenêtre de contexte avant le téléchargement." },
+      "mako_body_quality": { "name": "Qualité du corps MAKO", "info": "Un contenu de corps suffisant (≥200 chars) garantit que les agents ont de la substance pour travailler." },
+      "structured_actions": { "name": "Actions structurées", "info": "Les actions lisibles par machine (acheter, s'abonner, contacter) permettent aux agents de guider les utilisateurs vers les conversions." },
+      "semantic_links": { "name": "Liens sémantiques", "info": "Les liens MAKO avec contexte permettent aux agents de naviguer votre site avec intention et compréhension." },
+      "action_completeness": { "name": "Complétude des actions", "info": "Des actions complètes (nom + description + url) donnent aux agents tout ce dont ils ont besoin pour agir." },
+      "mako_headers_complete": { "name": "Headers MAKO complets", "info": "Les 7 headers MAKO fournissent aux agents une image complète des métadonnées au niveau HTTP." },
+      "clean_extraction": { "name": "Extraction propre du contenu", "info": "Au moins 200 caractères de contenu extractible garantit que les agents ont assez pour générer des réponses utiles." }
+    },
+    "grades": {
+      "F": { "title": "Invisible pour les agents IA", "description": "Votre site ne peut pas être analysé par les agents IA de manière fiable. La structure de base est manquante." },
+      "D": { "title": "Lisible avec effort", "description": "Les agents peuvent extraire certaines données, mais les résultats peuvent être inexacts. Des signaux clés manquent." },
+      "C": { "title": "Accessible mais inefficace", "description": "Bonne structure de base. Les agents vous comprennent mais consomment trop de tokens pour ce faire." },
+      "B": { "title": "Optimisé pour l'IA", "description": "Les agents vous lisent bien et efficacement. L'implémentation MAKO débloque le niveau suivant." },
+      "A": { "title": "Prêt pour les agents", "description": "Découverte rapide, données structurées fiables et utilisation efficace des tokens." },
+      "A_plus": { "title": "Agent-first", "description": "Votre site parle nativement le langage des agents IA. Score parfait." }
+    },
+    "conformance": {
+      "level_1": "AI-Readable",
+      "level_2": "MAKO Discovery",
+      "level_3": "MAKO Standard",
+      "level_4": "MAKO Excellence"
+    },
+    "impact": {
+      "high": "Élevé",
+      "medium": "Moyen",
+      "low": "Faible"
+    },
+    "rec": {
+      "serves_mako": { "message": "Implémentez la négociation de contenu MAKO avec le middleware @mako-spec/js ou le plugin mako-wp.", "businessMessage": "Permettez aux agents IA de lire votre contenu directement — c'est la plus grande amélioration que vous puissiez faire." },
+      "mako_content_negotiation": { "message": "Assurez-vous que votre serveur retourne Content-Type: text/mako+markdown pour les réponses MAKO.", "businessMessage": "Corrigez votre configuration MAKO pour que les agents IA identifient correctement votre contenu optimisé." },
+      "mako_link_tag": { "message": "Ajoutez <link rel=\"alternate\" type=\"text/mako+markdown\"> dans votre <head> HTML.", "businessMessage": "Aidez les agents IA à découvrir que votre site supporte le contenu optimisé." },
+      "has_llms_txt": { "message": "Ajoutez un fichier llms.txt à la racine de votre site décrivant votre site pour les agents IA.", "businessMessage": "Dites aux assistants IA ce que fait votre entreprise pour qu'ils puissent vous recommander avec précision." },
+      "has_mcp_endpoint": { "message": "Ajoutez un endpoint /.well-known/mcp.json pour l'intégration Model Context Protocol.", "businessMessage": "Activez les intégrations IA avancées avec votre site." },
+      "content_signal_ratio": { "message": "Réduisez le surplus HTML en supprimant les scripts inutiles, styles inline et balisage non-sémantique.", "businessMessage": "Nettoyez le code de votre page pour que les agents IA puissent se concentrer sur votre contenu réel." },
+      "no_js_dependency": { "message": "Servez le contenu en HTML statique/SSR. Les agents LLM et crawlers ne peuvent pas exécuter JavaScript.", "businessMessage": "Rendez votre contenu disponible sans JavaScript — la plupart des agents IA ne peuvent pas exécuter de scripts." },
+      "first_meaningful_content": { "message": "Assurez-vous que le H1 et le contenu principal apparaissent dans les 300 premiers caractères du document.", "businessMessage": "Déplacez votre contenu principal plus haut sur la page pour que les agents IA le trouvent immédiatement." },
+      "meaningful_headings": { "message": "Utilisez des titres descriptifs qui résument le contenu de la section. Évitez les titres génériques comme Bienvenue.", "businessMessage": "Utilisez des titres de section clairs pour que les agents IA comprennent la structure de votre page." },
+      "semantic_html": { "message": "Utilisez des éléments HTML sémantiques : <main>, <article>, <section> pour structurer le contenu.", "businessMessage": "Utilisez une structure HTML appropriée pour que les agents IA identifient votre zone de contenu principal." },
+      "has_h1": { "message": "Ajoutez exactement un titre H1 décrivant le sujet principal de la page.", "businessMessage": "Ajoutez un titre principal clair — c'est la première chose que les agents IA cherchent." },
+      "image_alt_text": { "message": "Ajoutez du texte alt descriptif aux images pour que les agents IA comprennent le contenu visuel.", "businessMessage": "Décrivez vos images en texte pour que les agents IA sachent ce qu'elles montrent." },
+      "link_quality": { "message": "Remplacez le texte de lien générique (cliquez ici, en savoir plus) par des libellés descriptifs.", "businessMessage": "Utilisez des libellés de lien significatifs pour que les agents IA comprennent où mène chaque lien." },
+      "has_json_ld": { "message": "Ajoutez des données structurées JSON-LD (Schema.org) avec au moins 5 propriétés.", "businessMessage": "Ajoutez des données structurées pour que les agents IA comprennent exactement de quoi parle votre page." },
+      "has_og_tags": { "message": "Ajoutez les tags Open Graph : og:title, og:description, og:type, og:image.", "businessMessage": "Ajoutez des tags de partage social — les agents IA les utilisent pour résumer votre contenu." },
+      "has_meta_description": { "message": "Ajoutez une <meta name=\"description\"> avec un résumé concis de la page.", "businessMessage": "Ajoutez une description de page que les agents IA peuvent utiliser comme résumé du contenu." },
+      "has_canonical": { "message": "Ajoutez <link rel=\"canonical\"> pour identifier l'URL principale de ce contenu.", "businessMessage": "Indiquez aux agents IA quelle URL est l'officielle pour cette page." },
+      "has_lang": { "message": "Ajoutez un attribut lang à <html> (ex: <html lang=\"fr\">).", "businessMessage": "Déclarez la langue de votre page pour que les agents IA répondent dans la bonne langue." },
+      "has_robots_txt": { "message": "Ajoutez un robots.txt qui autorise les crawlers IA à accéder à votre contenu.", "businessMessage": "Autorisez les agents IA à explorer votre site en ajoutant un fichier robots.txt." },
+      "has_sitemap": { "message": "Ajoutez un sitemap.xml pour aider les crawlers à découvrir toutes vos pages.", "businessMessage": "Aidez les agents IA à trouver toutes vos pages importantes avec un sitemap." },
+      "mako_summary_quality": { "message": "Ajoutez un champ résumé (10-30 mots, ≤160 chars) au frontmatter MAKO.", "businessMessage": "Rédigez un résumé clair dans votre fichier MAKO — les agents IA l'utilisent pour décrire votre activité." },
+      "mako_freshness": { "message": "Définissez le header X-Mako-Updated à la date de dernière modification du contenu.", "businessMessage": "Gardez votre contenu optimisé pour l'IA à jour — les données périmées nuisent à la confiance." },
+      "mako_etag": { "message": "Ajoutez un header ETag aux réponses MAKO pour un cache efficace.", "businessMessage": "Activez le cache pour que les agents IA puissent vérifier efficacement les mises à jour de contenu." },
+      "mako_tokens_declared": { "message": "Définissez le header X-Mako-Tokens pour déclarer le nombre de tokens de votre contenu MAKO.", "businessMessage": "Déclarez la taille du contenu pour que les agents IA puissent planifier leur budget de tokens." },
+      "mako_body_quality": { "message": "Assurez-vous que le corps du contenu MAKO contient au moins 200 caractères de markdown significatif.", "businessMessage": "Fournissez suffisamment de contenu dans votre fichier MAKO pour que les agents IA puissent travailler." },
+      "structured_actions": { "message": "Ajoutez des CTAs/actions lisibles par machine. Dans MAKO, définissez des actions avec nom, description et url.", "businessMessage": "Définissez des actions claires (acheter, s'abonner, contacter) pour que les agents IA puissent y guider les utilisateurs." },
+      "semantic_links": { "message": "Incluez des liens sémantiques avec contexte dans le frontmatter MAKO.", "businessMessage": "Connectez vos pages avec des liens significatifs pour que les agents IA puissent naviguer votre site." },
+      "action_completeness": { "message": "Assurez-vous que toutes les actions MAKO ont des champs nom, description et url.", "businessMessage": "Complétez vos définitions d'actions pour que les agents IA aient toutes les informations nécessaires." },
+      "mako_headers_complete": { "message": "Incluez tous les headers MAKO : Version, Type, Lang, Entity, Tokens, Updated, Canonical.", "businessMessage": "Fournissez des métadonnées complètes pour que les agents IA aient une vue d'ensemble de votre contenu." },
+      "clean_extraction": { "message": "Assurez-vous que votre page contient au moins 200 caractères de contenu extractible.", "businessMessage": "Ajoutez plus de contenu à votre page — les agents IA ont besoin de substance pour travailler." }
+    },
+    "check_details": {
+      "content_signal_ratio_low": "Le ratio signal de contenu est de {ratio}% — trop de code superflu",
+      "content_signal_ratio_ok": "{ratio}% de ratio signal de contenu",
+      "no_js_dependency_fail": "La page a nécessité un rendu JavaScript (fallback Jina utilisé)",
+      "first_meaningful_content_fail": "Le contenu principal n'apparaît pas assez tôt — trop de navigation ou de code superflu avant le contenu réel",
+      "meaningful_headings_none": "Aucun titre trouvé",
+      "meaningful_headings_generic": "{generic}/{total} titres sont génériques ou trop courts",
+      "semantic_html_fail": "Aucun élément <article>, <main> ou <section> trouvé",
+      "has_h1_none": "Aucun titre H1 trouvé",
+      "has_h1_multiple": "{count} titres H1 trouvés (il devrait y en avoir exactement 1)",
+      "image_alt_text_fail": "Seulement {withAlt}/{total} images ont un texte alt",
+      "link_quality_fail": "{bad}/{total} liens ont un texte générique comme cliquez ici",
+      "not_applicable": "Non applicable (pas de support MAKO)"
+    },
+    "site_scan": {
+      "description": "Vérifie jusqu'à 10 pages de votre site pour voir lesquelles servent du contenu MAKO. Cela montre votre adoption MAKO à l'échelle du site.",
+      "no_mako": "Aucune page MAKO détectée pour l'instant. Adoptez le protocole MAKO pour que les agents IA lisent votre site efficacement.",
+      "partial": "{count} des {total} URLs servent MAKO. Étendez l'adoption sur votre site pour maximiser l'accessibilité IA.",
+      "urls_checked": "{total} URLs de {domain} vérifiées",
+      "adoption_label": "Adoption MAKO sur le site"
     }
   }
 }

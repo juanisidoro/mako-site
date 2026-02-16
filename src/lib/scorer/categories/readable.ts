@@ -11,6 +11,9 @@ export function evaluateReadable(page: PageData): ScoreCategory {
   // content_signal_ratio (7 pts) — main content vs full page text
   const textContent = page.markdown.replace(/\s+/g, " ").trim();
   const htmlText = page.html
+    .replace(/<script[\s\S]*?<\/script>/gi, "")
+    .replace(/<style[\s\S]*?<\/style>/gi, "")
+    .replace(/<noscript[\s\S]*?<\/noscript>/gi, "")
     .replace(/<[^>]+>/g, "")
     .replace(/\s+/g, " ")
     .trim();

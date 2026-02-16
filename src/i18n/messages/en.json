@@ -246,7 +246,7 @@
     "business": {
       "top_actions": "Top Actions to Improve Your Score",
       "mako_cta_title": "Unlock your full AI potential",
-      "mako_cta_desc": "Implement the MAKO protocol to give AI agents direct access to your optimized content. Install @mako-spec/js or the WordPress plugin to get started."
+      "mako_cta_desc": "Implement the MAKO protocol to give AI agents direct access to your optimized content. Install <js>@mako-spec/js</js> or the <wp>WordPress plugin</wp> to get started."
     },
     "developer": {
       "all_recommendations": "All Recommendations"
@@ -257,17 +257,145 @@
     },
     "share": {
       "social": "Share on social media",
-      "download": "Download score card",
-      "download_png": "Download as PNG",
-      "embed": "Embed badge",
-      "copy": "Copy",
       "copy_link": "Copy link",
-      "copied": "Copied!"
+      "copied": "Copied!",
+      "og_description": "{domain} scored {score}/100 on AI-readiness. Check your website's MAKO Score.",
+      "cta_check_yours": "Check your MAKO Score"
     },
     "errors": {
       "invalid_url": "Please enter a valid URL",
       "url_required": "URL is required",
       "score_failed": "Scoring failed. Please try again."
+    },
+    "categories": {
+      "discoverable": {
+        "name": "Discoverable",
+        "question": "Can AI agents discover you?",
+        "info_what": "Checks whether AI agents can find your optimized content: MAKO support, llms.txt, content negotiation, and discovery signals.",
+        "info_why": "If agents can't discover your content, nothing else matters. This category ensures your site is visible to the AI web."
+      },
+      "readable": {
+        "name": "Readable",
+        "question": "Can AI agents understand you?",
+        "info_what": "Measures how cleanly AI agents can extract and understand your content: signal-to-noise ratio, semantic HTML, headings, and JavaScript dependency.",
+        "info_why": "Most web pages are 90%+ boilerplate. Agents need clean, structured content to generate accurate responses about your business."
+      },
+      "trustworthy": {
+        "name": "Trustworthy",
+        "question": "Can AI agents trust you?",
+        "info_what": "Evaluates metadata quality and freshness: JSON-LD, Open Graph, canonical URLs, robots.txt, and MAKO-specific trust signals like summaries and ETags.",
+        "info_why": "Trust signals help agents verify content accuracy, understand context, and decide whether to cite your page in responses."
+      },
+      "actionable": {
+        "name": "Actionable",
+        "question": "Can AI agents interact with you?",
+        "info_what": "Checks whether agents can interact with your content: structured actions, semantic links, MAKO headers completeness, and content extraction quality.",
+        "info_why": "The future of the agent web is transactional. If agents can't find your buy, subscribe, or contact actions, you miss conversions."
+      }
+    },
+    "checks": {
+      "serves_mako": { "name": "Serves MAKO content", "info": "MAKO lets agents get your content in ~7% of the tokens of raw HTML — the biggest single improvement." },
+      "mako_content_negotiation": { "name": "MAKO content negotiation", "info": "The correct Content-Type header ensures agents parse your response as MAKO, not generic text." },
+      "mako_link_tag": { "name": "MAKO discovery link tag", "info": "A <link rel=\"alternate\"> tag lets agents discover MAKO support without making an extra HEAD request." },
+      "has_llms_txt": { "name": "Has llms.txt", "info": "llms.txt tells AI agents what your site offers and how to access it — like robots.txt for LLMs." },
+      "has_mcp_endpoint": { "name": "Has MCP endpoint", "info": "Model Context Protocol (MCP) lets agents interact with your service as a structured API." },
+      "content_signal_ratio": { "name": "Content signal ratio", "info": "Measures how much of your page is actual content vs navigation, ads, and boilerplate markup." },
+      "no_js_dependency": { "name": "Content without JavaScript", "info": "LLMs and crawlers cannot execute JavaScript. If content requires JS, it's invisible to AI agents." },
+      "first_meaningful_content": { "name": "First meaningful content", "info": "Agents scan the first few hundred characters. If they find only nav/header, they may skip your page." },
+      "meaningful_headings": { "name": "Meaningful headings", "info": "Descriptive headings let agents do smart skimming — understanding structure without reading everything." },
+      "semantic_html": { "name": "Semantic HTML structure", "info": "Tags like <main>, <article>, <section> tell agents where the real content lives." },
+      "has_h1": { "name": "Has single H1", "info": "The H1 is the primary signal agents use to understand what a page is about." },
+      "image_alt_text": { "name": "Images have alt text", "info": "Without alt text, images are invisible to agents. With it, they understand your visual content." },
+      "link_quality": { "name": "Descriptive link text", "info": "Links with descriptive text let agents navigate purposefully, not blindly crawl click here links." },
+      "has_json_ld": { "name": "JSON-LD structured data", "info": "Schema.org in JSON-LD lets agents understand content type (product, article, event) without guessing." },
+      "has_og_tags": { "name": "Open Graph tags", "info": "Open Graph tags are used by social platforms AND AI agents to preview and classify content." },
+      "has_meta_description": { "name": "Meta description", "info": "The meta description is the quick summary agents use when they don't read the full page." },
+      "has_canonical": { "name": "Canonical URL", "info": "Canonical URLs prevent agents from indexing duplicate versions of your content." },
+      "has_lang": { "name": "Language attribute", "info": "The lang attribute tells agents what language your content is in, improving comprehension." },
+      "has_robots_txt": { "name": "robots.txt", "info": "A permissive robots.txt signals that crawlers and AI agents are welcome on your site." },
+      "has_sitemap": { "name": "Sitemap", "info": "Sitemaps help agents discover all your pages without crawling link by link." },
+      "mako_summary_quality": { "name": "MAKO summary quality", "info": "A well-crafted summary (10-30 words, ≤160 chars) is what agents use to describe your business." },
+      "mako_freshness": { "name": "MAKO content freshness", "info": "The X-Mako-Updated header tells agents how recent your content is — stale data loses trust." },
+      "mako_etag": { "name": "MAKO ETag caching", "info": "ETags enable efficient caching — agents check if content changed without re-downloading everything." },
+      "mako_tokens_declared": { "name": "MAKO token count declared", "info": "Declared token count lets agents plan their context window budget before downloading." },
+      "mako_body_quality": { "name": "MAKO body quality", "info": "Enough body content (≥200 chars) ensures agents have substance to work with." },
+      "structured_actions": { "name": "Structured actions", "info": "Machine-readable actions (buy, subscribe, contact) let agents guide users to conversions." },
+      "semantic_links": { "name": "Semantic links", "info": "MAKO links with context let agents navigate your site with purpose and understanding." },
+      "action_completeness": { "name": "Action completeness", "info": "Complete actions (name + description + url) give agents everything they need to act." },
+      "mako_headers_complete": { "name": "MAKO headers complete", "info": "All 7 MAKO headers provide agents with a complete metadata picture at the HTTP level." },
+      "clean_extraction": { "name": "Clean content extraction", "info": "At least 200 characters of extractable content ensures agents have enough to generate useful responses." }
+    },
+    "grades": {
+      "F": { "title": "Invisible to AI agents", "description": "Your site can't be parsed by AI agents reliably. Basic structure is missing." },
+      "D": { "title": "Readable with effort", "description": "Agents can extract some data, but results may be inaccurate. Key signals are missing." },
+      "C": { "title": "Accessible but inefficient", "description": "Good base structure. Agents understand you but consume excess tokens doing so." },
+      "B": { "title": "Optimized for AI", "description": "Agents read you well and efficiently. MAKO implementation unlocks the next level." },
+      "A": { "title": "Agent-ready", "description": "Fast discovery, reliable structured data, and efficient token usage." },
+      "A_plus": { "title": "Agent-first", "description": "Your site speaks the language of AI agents natively. Perfect score." }
+    },
+    "conformance": {
+      "level_1": "AI-Readable",
+      "level_2": "MAKO Discovery",
+      "level_3": "MAKO Standard",
+      "level_4": "MAKO Excellence"
+    },
+    "impact": {
+      "high": "High",
+      "medium": "Medium",
+      "low": "Low"
+    },
+    "rec": {
+      "serves_mako": { "message": "Implement MAKO content negotiation with @mako-spec/js middleware or mako-wp plugin.", "businessMessage": "Enable AI agents to read your content directly — this is the single biggest improvement you can make." },
+      "mako_content_negotiation": { "message": "Ensure your server returns Content-Type: text/mako+markdown for MAKO responses.", "businessMessage": "Fix your MAKO setup so AI agents correctly identify your optimized content." },
+      "mako_link_tag": { "message": "Add <link rel=\"alternate\" type=\"text/mako+markdown\"> to your HTML <head>.", "businessMessage": "Help AI agents discover that your site supports optimized content." },
+      "has_llms_txt": { "message": "Add an llms.txt file at your site root describing your site for AI agents.", "businessMessage": "Tell AI assistants what your business does so they can recommend you accurately." },
+      "has_mcp_endpoint": { "message": "Add a /.well-known/mcp.json endpoint for Model Context Protocol integration.", "businessMessage": "Enable advanced AI integrations with your site." },
+      "content_signal_ratio": { "message": "Reduce HTML bloat by removing unnecessary scripts, inline styles, and non-semantic markup.", "businessMessage": "Clean up your page code so AI agents can focus on your actual content, not boilerplate." },
+      "no_js_dependency": { "message": "Serve content as static/SSR HTML. LLM agents and crawlers cannot execute JavaScript.", "businessMessage": "Make your content available without JavaScript — most AI agents can't run scripts." },
+      "first_meaningful_content": { "message": "Ensure the H1 and main content appear within the first 300 characters of the document.", "businessMessage": "Move your main content higher on the page so AI agents find it immediately." },
+      "meaningful_headings": { "message": "Use descriptive headings that summarize section content. Avoid generic headings like Welcome.", "businessMessage": "Use clear section titles so AI agents understand your page structure." },
+      "semantic_html": { "message": "Use semantic HTML elements: <main>, <article>, <section> to structure content.", "businessMessage": "Use proper HTML structure so AI agents can identify your main content area." },
+      "has_h1": { "message": "Add exactly one H1 heading that describes the page's main topic.", "businessMessage": "Add a clear main heading — it's the first thing AI agents look for." },
+      "image_alt_text": { "message": "Add descriptive alt text to images so AI agents understand visual content.", "businessMessage": "Describe your images in text so AI agents know what they show." },
+      "link_quality": { "message": "Replace generic link text (click here, read more) with descriptive labels.", "businessMessage": "Use meaningful link labels so AI agents understand where each link goes." },
+      "has_json_ld": { "message": "Add JSON-LD structured data (Schema.org) with at least 5 properties.", "businessMessage": "Add structured data so AI agents understand exactly what your page is about." },
+      "has_og_tags": { "message": "Add Open Graph tags: og:title, og:description, og:type, og:image.", "businessMessage": "Add social sharing tags — AI agents use them to summarize your content." },
+      "has_meta_description": { "message": "Add a <meta name=\"description\"> with a concise page summary.", "businessMessage": "Add a page description that AI agents can use as a content summary." },
+      "has_canonical": { "message": "Add <link rel=\"canonical\"> to identify the primary URL for this content.", "businessMessage": "Tell AI agents which URL is the official one for this page." },
+      "has_lang": { "message": "Add a lang attribute to <html> (e.g., <html lang=\"en\">).", "businessMessage": "Declare your page language so AI agents respond in the right language." },
+      "has_robots_txt": { "message": "Add a robots.txt that allows AI crawlers to access your content.", "businessMessage": "Allow AI agents to crawl your site by adding a robots.txt file." },
+      "has_sitemap": { "message": "Add a sitemap.xml to help crawlers discover all your pages.", "businessMessage": "Help AI agents find all your important pages with a sitemap." },
+      "mako_summary_quality": { "message": "Add a summary field (10-30 words, ≤160 chars) to your MAKO frontmatter.", "businessMessage": "Write a clear summary in your MAKO file — AI agents use it to describe your business." },
+      "mako_freshness": { "message": "Set X-Mako-Updated header to the content's last modification date.", "businessMessage": "Keep your AI-optimized content up to date — stale data hurts trust." },
+      "mako_etag": { "message": "Add an ETag header to MAKO responses for efficient caching.", "businessMessage": "Enable caching so AI agents can efficiently check for content updates." },
+      "mako_tokens_declared": { "message": "Set X-Mako-Tokens header to declare the token count of your MAKO content.", "businessMessage": "Declare content size so AI agents can plan their token budget." },
+      "mako_body_quality": { "message": "Ensure MAKO body content has at least 200 characters of meaningful markdown.", "businessMessage": "Provide enough content in your MAKO file for AI agents to work with." },
+      "structured_actions": { "message": "Add machine-readable CTAs/actions. In MAKO, define actions with name, description, and url.", "businessMessage": "Define clear actions (buy, subscribe, contact) so AI agents can guide users to them." },
+      "semantic_links": { "message": "Include semantic links with context in your MAKO frontmatter.", "businessMessage": "Connect your pages with meaningful links so AI agents can navigate your site." },
+      "action_completeness": { "message": "Ensure all MAKO actions have name, description, and url fields.", "businessMessage": "Complete your action definitions so AI agents have all the info they need." },
+      "mako_headers_complete": { "message": "Include all MAKO headers: Version, Type, Lang, Entity, Tokens, Updated, Canonical.", "businessMessage": "Provide complete metadata so AI agents get the full picture of your content." },
+      "clean_extraction": { "message": "Ensure your page has at least 200 characters of extractable content.", "businessMessage": "Add more content to your page — AI agents need substance to work with." }
+    },
+    "check_details": {
+      "content_signal_ratio_low": "Content signal ratio is {ratio}% — too much boilerplate",
+      "content_signal_ratio_ok": "{ratio}% content signal ratio",
+      "no_js_dependency_fail": "Page required JavaScript rendering (Jina fallback used)",
+      "first_meaningful_content_fail": "Main content doesn't appear early enough — too much navigation or boilerplate before real content",
+      "meaningful_headings_none": "No headings found",
+      "meaningful_headings_generic": "{generic}/{total} headings are generic or too short",
+      "semantic_html_fail": "No <article>, <main>, or <section> elements found",
+      "has_h1_none": "No H1 heading found",
+      "has_h1_multiple": "Found {count} H1 headings (should be exactly 1)",
+      "image_alt_text_fail": "Only {withAlt}/{total} images have alt text",
+      "link_quality_fail": "{bad}/{total} links have generic text like click here",
+      "not_applicable": "Not applicable (no MAKO support)"
+    },
+    "site_scan": {
+      "description": "Checks up to 10 pages on your site to see which ones serve MAKO content. This shows your site-wide MAKO adoption.",
+      "no_mako": "No MAKO pages detected yet. Adopt the MAKO protocol to let AI agents read your site efficiently.",
+      "partial": "{count} of {total} URLs serve MAKO. Extend adoption across your site to maximize AI accessibility.",
+      "urls_checked": "{total} URLs from {domain} checked",
+      "adoption_label": "MAKO adoption across site"
     }
   }
 }

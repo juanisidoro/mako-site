@@ -226,48 +226,176 @@
   },
   "score": {
     "title": "MAKO 评分",
-    "description": "你的网站对AI的准备程度如何？获取0到100的评分，涵盖可发现性、可读性、可信度和可交互性四个方面。",
-    "about": "MAKO评分衡量AI代理能否有效地发现、阅读、信任和与你的内容交互。",
-    "meta_title": "MAKO 评分 - AI就绪审计",
-    "meta_description": "检查你的网站对AI的准备程度。获取0-100的评分，涵盖AI代理的可发现性、可读性、可信度和可交互性。",
+    "description": "您的网站对AI准备好了吗？获取0到100的评分，涵盖可发现性、可读性、可信性和可操作性。",
+    "about": "MAKO评分衡量AI代理发现、阅读、信任和与您的内容互动的效率。",
+    "meta_title": "MAKO 评分 - AI就绪度审计",
+    "meta_description": "检查您的网站对AI代理的准备程度。获取0-100的评分，涵盖AI代理的可发现性、可读性、可信性和可操作性。",
     "form": {
       "url_label": "要评估的URL",
       "url_placeholder": "https://example.com",
       "score_button": "获取评分",
       "scoring": "评估中...",
       "public_label": "公开",
-      "public_description": "允许此评分公开显示并可分享"
+      "public_description": "允许此评分公开显示和分享"
     },
     "tabs": {
       "business": "概览",
-      "developer": "技术细节",
+      "developer": "技术详情",
       "share": "分享"
     },
     "business": {
-      "top_actions": "提高评分的首要建议",
-      "mako_cta_title": "释放你的AI潜能",
-      "mako_cta_desc": "实施MAKO协议，让AI代理直接访问优化后的内容。安装@mako-spec/js或WordPress插件来开始。"
+      "top_actions": "提高评分的首要行动",
+      "mako_cta_title": "释放您的AI全部潜力",
+      "mako_cta_desc": "实施MAKO协议，让AI代理直接访问您的优化内容。安装<js>@mako-spec/js</js>或<wp>WordPress插件</wp>即可开始。"
     },
     "developer": {
       "all_recommendations": "所有建议"
     },
     "recommendations": {
-      "perfect": "满分！你的网站已完全为AI代理优化。",
-      "subtitle": "按影响排序的改进建议。修复这些以提高你的评分。"
+      "perfect": "满分！您的网站已完全优化为AI代理服务。",
+      "subtitle": "按影响程度排序的改进建议。修复这些以提高您的评分。"
     },
     "share": {
       "social": "分享到社交媒体",
-      "download": "下载评分卡",
-      "download_png": "下载为PNG",
-      "embed": "嵌入徽章",
-      "copy": "复制",
       "copy_link": "复制链接",
-      "copied": "已复制！"
+      "copied": "已复制！",
+      "og_description": "{domain} 的AI就绪度得分为 {score}/100。检查您网站的 MAKO Score。",
+      "cta_check_yours": "检查您的 MAKO Score"
     },
     "errors": {
       "invalid_url": "请输入有效的URL",
       "url_required": "URL是必填项",
       "score_failed": "评估失败，请重试。"
+    },
+    "categories": {
+      "discoverable": {
+        "name": "可发现",
+        "question": "AI代理能发现您吗？",
+        "info_what": "检查AI代理是否能找到您的优化内容：MAKO支持、llms.txt、内容协商和发现信号。",
+        "info_why": "如果代理无法发现您的内容，其他一切都不重要。此类别确保您的网站在AI网络中可见。"
+      },
+      "readable": {
+        "name": "可读",
+        "question": "AI代理能理解您吗？",
+        "info_what": "衡量AI代理提取和理解内容的便捷程度：信噪比、语义HTML、标题和JavaScript依赖。",
+        "info_why": "大多数网页有90%以上的冗余代码。代理需要干净、结构化的内容来生成关于您业务的准确回答。"
+      },
+      "trustworthy": {
+        "name": "可信",
+        "question": "AI代理能信任您吗？",
+        "info_what": "评估元数据质量和新鲜度：JSON-LD、Open Graph、规范URL、robots.txt以及MAKO特定的信任信号（如摘要和ETag）。",
+        "info_why": "信任信号帮助代理验证内容准确性、理解上下文，并决定是否在回答中引用您的页面。"
+      },
+      "actionable": {
+        "name": "可操作",
+        "question": "AI代理能与您互动吗？",
+        "info_what": "检查代理是否能与您的内容互动：结构化操作、语义链接、MAKO头部完整性和内容提取质量。",
+        "info_why": "代理网络的未来是事务性的。如果代理找不到您的购买、订阅或联系操作，您将失去转化机会。"
+      }
+    },
+    "checks": {
+      "serves_mako": { "name": "提供MAKO内容", "info": "MAKO让代理以原始HTML约7%的token获取您的内容——最大的单项改进。" },
+      "mako_content_negotiation": { "name": "MAKO内容协商", "info": "正确的Content-Type头确保代理将您的响应解析为MAKO，而非普通文本。" },
+      "mako_link_tag": { "name": "MAKO发现链接标签", "info": "<link rel=\"alternate\">标签让代理无需额外HEAD请求即可发现MAKO支持。" },
+      "has_llms_txt": { "name": "有llms.txt", "info": "llms.txt告诉AI代理您的网站提供什么以及如何访问——就像LLM的robots.txt。" },
+      "has_mcp_endpoint": { "name": "有MCP端点", "info": "模型上下文协议（MCP）让代理以结构化API方式与您的服务互动。" },
+      "content_signal_ratio": { "name": "内容信号比", "info": "衡量页面中实际内容与导航、广告和冗余标记的比例。" },
+      "no_js_dependency": { "name": "无JavaScript依赖", "info": "LLM和爬虫无法执行JavaScript。如果内容需要JS，对AI代理来说是不可见的。" },
+      "first_meaningful_content": { "name": "首个有意义内容", "info": "代理扫描前几百个字符。如果只找到导航/页头，可能会跳过您的页面。" },
+      "meaningful_headings": { "name": "有意义的标题", "info": "描述性标题让代理进行智能略读——不用阅读所有内容就能理解结构。" },
+      "semantic_html": { "name": "语义HTML结构", "info": "<main>、<article>、<section>等标签告诉代理真正的内容在哪里。" },
+      "has_h1": { "name": "有唯一H1", "info": "H1是代理用来理解页面主题的主要信号。" },
+      "image_alt_text": { "name": "图片有alt文本", "info": "没有alt文本，图片对代理不可见。有了它，代理就能理解您的视觉内容。" },
+      "link_quality": { "name": "描述性链接文本", "info": "具有描述性文本的链接让代理有目的地导航，而非盲目点击。" },
+      "has_json_ld": { "name": "JSON-LD结构化数据", "info": "JSON-LD中的Schema.org让代理无需猜测即可理解内容类型（产品、文章、事件）。" },
+      "has_og_tags": { "name": "Open Graph标签", "info": "Open Graph标签被社交平台和AI代理用于预览和分类内容。" },
+      "has_meta_description": { "name": "Meta描述", "info": "Meta描述是代理在不阅读整个页面时使用的快速摘要。" },
+      "has_canonical": { "name": "规范URL", "info": "规范URL防止代理索引您内容的重复版本。" },
+      "has_lang": { "name": "语言属性", "info": "lang属性告诉代理您的内容使用什么语言，提高理解力。" },
+      "has_robots_txt": { "name": "robots.txt", "info": "宽松的robots.txt表示爬虫和AI代理在您的网站上受欢迎。" },
+      "has_sitemap": { "name": "站点地图", "info": "站点地图帮助代理发现您的所有页面，无需逐链接爬取。" },
+      "mako_summary_quality": { "name": "MAKO摘要质量", "info": "精心编写的摘要（10-30字，≤160字符）是代理用来描述您业务的内容。" },
+      "mako_freshness": { "name": "MAKO内容新鲜度", "info": "X-Mako-Updated头告诉代理您的内容有多新——过时的数据会失去信任。" },
+      "mako_etag": { "name": "MAKO ETag缓存", "info": "ETag实现高效缓存——代理无需重新下载所有内容即可检查内容是否变更。" },
+      "mako_tokens_declared": { "name": "MAKO token计数声明", "info": "声明的token计数让代理在下载前规划其上下文窗口预算。" },
+      "mako_body_quality": { "name": "MAKO正文质量", "info": "足够的正文内容（≥200字符）确保代理有实质内容可以使用。" },
+      "structured_actions": { "name": "结构化操作", "info": "机器可读的操作（购买、订阅、联系）让代理引导用户完成转化。" },
+      "semantic_links": { "name": "语义链接", "info": "带上下文的MAKO链接让代理有目的和理解地浏览您的网站。" },
+      "action_completeness": { "name": "操作完整性", "info": "完整的操作（名称+描述+url）给代理提供行动所需的一切。" },
+      "mako_headers_complete": { "name": "MAKO头部完整", "info": "全部7个MAKO头在HTTP级别为代理提供完整的元数据图景。" },
+      "clean_extraction": { "name": "干净的内容提取", "info": "至少200个字符的可提取内容确保代理有足够内容生成有用的回答。" }
+    },
+    "grades": {
+      "F": { "title": "对AI代理不可见", "description": "您的网站无法被AI代理可靠地解析。基本结构缺失。" },
+      "D": { "title": "费力才可读", "description": "代理可以提取一些数据，但结果可能不准确。关键信号缺失。" },
+      "C": { "title": "可访问但低效", "description": "基础结构良好。代理能理解您，但消耗过多token。" },
+      "B": { "title": "为AI优化", "description": "代理能良好且高效地阅读您的内容。MAKO实施将解锁下一级别。" },
+      "A": { "title": "代理就绪", "description": "快速发现、可靠的结构化数据和高效的token使用。" },
+      "A_plus": { "title": "代理优先", "description": "您的网站原生地说着AI代理的语言。满分。" }
+    },
+    "conformance": {
+      "level_1": "AI-Readable",
+      "level_2": "MAKO Discovery",
+      "level_3": "MAKO Standard",
+      "level_4": "MAKO Excellence"
+    },
+    "impact": {
+      "high": "高",
+      "medium": "中",
+      "low": "低"
+    },
+    "rec": {
+      "serves_mako": { "message": "使用@mako-spec/js中间件或mako-wp插件实现MAKO内容协商。", "businessMessage": "让AI代理直接阅读您的内容——这是您能做的最大单项改进。" },
+      "mako_content_negotiation": { "message": "确保您的服务器为MAKO响应返回Content-Type: text/mako+markdown。", "businessMessage": "修复您的MAKO设置，使AI代理正确识别您的优化内容。" },
+      "mako_link_tag": { "message": "在HTML <head>中添加<link rel=\"alternate\" type=\"text/mako+markdown\">。", "businessMessage": "帮助AI代理发现您的网站支持优化内容。" },
+      "has_llms_txt": { "message": "在网站根目录添加llms.txt文件，为AI代理描述您的网站。", "businessMessage": "告诉AI助手您的业务做什么，以便准确推荐您。" },
+      "has_mcp_endpoint": { "message": "添加/.well-known/mcp.json端点用于Model Context Protocol集成。", "businessMessage": "启用与您网站的高级AI集成。" },
+      "content_signal_ratio": { "message": "通过删除不必要的脚本、内联样式和非语义标记来减少HTML冗余。", "businessMessage": "清理页面代码，让AI代理专注于您的实际内容而非冗余代码。" },
+      "no_js_dependency": { "message": "以静态/SSR HTML提供内容。LLM代理和爬虫无法执行JavaScript。", "businessMessage": "使您的内容无需JavaScript即可访问——大多数AI代理无法运行脚本。" },
+      "first_meaningful_content": { "message": "确保H1和主要内容出现在文档的前300个字符内。", "businessMessage": "将主要内容移到页面更高位置，让AI代理立即找到。" },
+      "meaningful_headings": { "message": "使用描述性标题概括章节内容。避免使用\"欢迎\"等通用标题。", "businessMessage": "使用清晰的章节标题，让AI代理理解页面结构。" },
+      "semantic_html": { "message": "使用语义HTML元素：<main>、<article>、<section>来构建内容。", "businessMessage": "使用正确的HTML结构，让AI代理识别主要内容区域。" },
+      "has_h1": { "message": "添加恰好一个描述页面主题的H1标题。", "businessMessage": "添加清晰的主标题——这是AI代理首先寻找的。" },
+      "image_alt_text": { "message": "为图片添加描述性alt文本，让AI代理理解视觉内容。", "businessMessage": "用文本描述图片，让AI代理知道图片展示了什么。" },
+      "link_quality": { "message": "将通用链接文本（点击这里、了解更多）替换为描述性标签。", "businessMessage": "使用有意义的链接标签，让AI代理理解每个链接的去向。" },
+      "has_json_ld": { "message": "添加至少5个属性的JSON-LD结构化数据（Schema.org）。", "businessMessage": "添加结构化数据，让AI代理准确理解您的页面内容。" },
+      "has_og_tags": { "message": "添加Open Graph标签：og:title、og:description、og:type、og:image。", "businessMessage": "添加社交分享标签——AI代理用它们来总结您的内容。" },
+      "has_meta_description": { "message": "添加一个简洁的页面摘要<meta name=\"description\">。", "businessMessage": "添加页面描述，AI代理可将其用作内容摘要。" },
+      "has_canonical": { "message": "添加<link rel=\"canonical\">来标识此内容的主要URL。", "businessMessage": "告诉AI代理哪个URL是此页面的官方地址。" },
+      "has_lang": { "message": "为<html>添加lang属性（例如<html lang=\"zh\">）。", "businessMessage": "声明页面语言，使AI代理用正确的语言回应。" },
+      "has_robots_txt": { "message": "添加允许AI爬虫访问您内容的robots.txt。", "businessMessage": "通过添加robots.txt文件允许AI代理爬取您的网站。" },
+      "has_sitemap": { "message": "添加sitemap.xml帮助爬虫发现您的所有页面。", "businessMessage": "通过站点地图帮助AI代理找到您所有重要页面。" },
+      "mako_summary_quality": { "message": "在MAKO frontmatter中添加摘要字段（10-30字，≤160字符）。", "businessMessage": "在MAKO文件中写一个清晰的摘要——AI代理用它来描述您的业务。" },
+      "mako_freshness": { "message": "将X-Mako-Updated头设置为内容的最后修改日期。", "businessMessage": "保持AI优化内容的更新——过时数据会损害信任。" },
+      "mako_etag": { "message": "为MAKO响应添加ETag头以实现高效缓存。", "businessMessage": "启用缓存，让AI代理高效检查内容更新。" },
+      "mako_tokens_declared": { "message": "设置X-Mako-Tokens头来声明MAKO内容的token计数。", "businessMessage": "声明内容大小，让AI代理规划其token预算。" },
+      "mako_body_quality": { "message": "确保MAKO正文内容至少有200个字符的有意义markdown。", "businessMessage": "在MAKO文件中提供足够内容供AI代理使用。" },
+      "structured_actions": { "message": "添加机器可读的CTA/操作。在MAKO中，定义包含名称、描述和url的操作。", "businessMessage": "定义明确的操作（购买、订阅、联系），让AI代理引导用户完成。" },
+      "semantic_links": { "message": "在MAKO frontmatter中包含带上下文的语义链接。", "businessMessage": "用有意义的链接连接页面，让AI代理能浏览您的网站。" },
+      "action_completeness": { "message": "确保所有MAKO操作都有名称、描述和url字段。", "businessMessage": "完善操作定义，让AI代理获得所需的全部信息。" },
+      "mako_headers_complete": { "message": "包含所有MAKO头：Version、Type、Lang、Entity、Tokens、Updated、Canonical。", "businessMessage": "提供完整的元数据，让AI代理全面了解您的内容。" },
+      "clean_extraction": { "message": "确保页面至少有200个字符的可提取内容。", "businessMessage": "为页面添加更多内容——AI代理需要实质内容来工作。" }
+    },
+    "check_details": {
+      "content_signal_ratio_low": "内容信号比为{ratio}%——冗余代码过多",
+      "content_signal_ratio_ok": "{ratio}%内容信号比",
+      "no_js_dependency_fail": "页面需要JavaScript渲染（使用了Jina降级方案）",
+      "first_meaningful_content_fail": "主要内容出现不够早——真实内容前有太多导航或冗余代码",
+      "meaningful_headings_none": "未找到标题",
+      "meaningful_headings_generic": "{generic}/{total}个标题过于通用或太短",
+      "semantic_html_fail": "未找到<article>、<main>或<section>元素",
+      "has_h1_none": "未找到H1标题",
+      "has_h1_multiple": "找到{count}个H1标题（应该恰好是1个）",
+      "image_alt_text_fail": "仅{withAlt}/{total}张图片有alt文本",
+      "link_quality_fail": "{bad}/{total}个链接有通用文本如\"点击这里\"",
+      "not_applicable": "不适用（无MAKO支持）"
+    },
+    "site_scan": {
+      "description": "检查您网站上最多10个页面，查看哪些提供MAKO内容。这显示了您网站的MAKO采用情况。",
+      "no_mako": "尚未检测到MAKO页面。采用MAKO协议让AI代理高效阅读您的网站。",
+      "partial": "{total}个URL中有{count}个提供MAKO。在整个网站扩展采用以最大化AI可访问性。",
+      "urls_checked": "已检查{domain}的{total}个URL",
+      "adoption_label": "网站MAKO采用率"
     }
   }
 }

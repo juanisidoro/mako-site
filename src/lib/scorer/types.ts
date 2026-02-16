@@ -94,6 +94,7 @@ export interface MakoLink {
 
 export interface ScoreResult {
   id?: string;
+  shareHash?: string;
   url: string;
   domain: string;
   entity: string;

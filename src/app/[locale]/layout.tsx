@@ -125,6 +125,11 @@ export default async function LocaleLayout({
           src="https://analytics.moniisima.com/script.js"
           data-website-id="0bb9b0f2-7272-4b79-aeee-cc0ec74fdd93"
         />
+        <link
+          rel="alternate"
+          type="text/mako+markdown"
+          href={`${siteConfig.baseUrl}/api/mako?path=/${locale}`}
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"

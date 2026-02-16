@@ -58,3 +58,11 @@ await sql`
 `;
 
 console.log("OK: Table 'scores' created successfully");
+
+// Migration: add share_hash column if not exists
+await sql`
+  ALTER TABLE scores
+  ADD COLUMN IF NOT EXISTS share_hash TEXT UNIQUE
+`;
+
+console.log("OK: Column 'share_hash' added to scores table");
