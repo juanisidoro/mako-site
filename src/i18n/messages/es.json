@@ -77,8 +77,9 @@
     "js_title": "@mako-spec/js",
     "js_desc": "Librería TypeScript para parsear, generar y validar archivos MAKO. Incluye CEF encode/decode y middleware Express.",
     "cli_title": "MAKO CLI",
-    "cli_desc": "Herramienta de línea de comandos para validar, inspeccionar y benchmarkear archivos MAKO. Próximamente.",
-    "cli_badge": "Próximamente"
+    "cli_desc": "Herramienta de línea de comandos para validar, inspeccionar y benchmarkear archivos MAKO.",
+    "wp_title": "MAKO para WordPress",
+    "wp_desc": "Plugin WordPress que genera y sirve contenido MAKO via content negotiation. WooCommerce, AI BYOK y generación masiva."
   },
   "cta": {
     "title": "¿Listo para optimizar para IA?",

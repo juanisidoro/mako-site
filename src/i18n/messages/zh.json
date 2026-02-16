@@ -77,8 +77,9 @@
     "js_title": "@mako-spec/js",
     "js_desc": "用于解析、生成和验证MAKO文件的TypeScript库。包含CEF编码/解码和Express中间件。",
     "cli_title": "MAKO CLI",
-    "cli_desc": "用于验证、检查和基准测试MAKO文件的命令行工具。即将推出。",
-    "cli_badge": "即将推出"
+    "cli_desc": "用于验证、检查和基准测试MAKO文件的命令行工具。",
+    "wp_title": "MAKO WordPress插件",
+    "wp_desc": "通过内容协商生成和提供MAKO内容的WordPress插件。支持WooCommerce、AI BYOK和批量生成。"
   },
   "cta": {
     "title": "准备好为AI优化了吗？",

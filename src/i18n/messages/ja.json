@@ -77,8 +77,9 @@
     "js_title": "@mako-spec/js",
     "js_desc": "MAKOファイルの解析、生成、検証用TypeScriptライブラリ。CEFエンコード/デコードとExpressミドルウェア付き。",
     "cli_title": "MAKO CLI",
-    "cli_desc": "MAKOファイルの検証、検査、ベンチマーク用コマンドラインツール。近日公開。",
-    "cli_badge": "近日公開"
+    "cli_desc": "MAKOファイルの検証、検査、ベンチマーク用コマンドラインツール。",
+    "wp_title": "MAKO WordPress プラグイン",
+    "wp_desc": "コンテントネゴシエーションでMAKOコンテンツを生成・配信するWordPressプラグイン。WooCommerce、AI BYOK、一括生成対応。"
   },
   "cta": {
     "title": "AI向けに最適化する準備はできましたか？",

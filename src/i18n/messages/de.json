@@ -77,8 +77,9 @@
     "js_title": "@mako-spec/js",
     "js_desc": "TypeScript-Bibliothek zum Parsen, Generieren und Validieren von MAKO-Dateien. Inkl. CEF Encode/Decode und Express-Middleware.",
     "cli_title": "MAKO CLI",
-    "cli_desc": "Kommandozeilen-Tool zum Validieren, Inspizieren und Benchmarken von MAKO-Dateien. Demnächst verfügbar.",
-    "cli_badge": "Demnächst"
+    "cli_desc": "Kommandozeilen-Tool zum Validieren, Inspizieren und Benchmarken von MAKO-Dateien.",
+    "wp_title": "MAKO für WordPress",
+    "wp_desc": "WordPress-Plugin, das MAKO-Inhalte via Content Negotiation generiert und bereitstellt. WooCommerce, AI BYOK und Massengenerierung."
   },
   "cta": {
     "title": "Bereit für KI zu optimieren?",

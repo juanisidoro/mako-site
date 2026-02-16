@@ -4,6 +4,7 @@ export const siteConfig = {
   baseUrl: 'https://makospec.vercel.app',
   github: 'https://github.com/juanisidoro/mako-spec',
   githubJs: 'https://github.com/juanisidoro/mako-js',
+  githubWp: 'https://github.com/juanisidoro/mako-wp',
   npm: 'https://www.npmjs.com/package/@mako-spec/js',
   jsonLd: {
     type: 'SoftwareApplication' as const,
