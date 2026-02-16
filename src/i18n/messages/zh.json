@@ -226,9 +226,10 @@
   },
   "score": {
     "title": "MAKO 评分",
-    "description": "您的网站对AI的准备程度如何？获取0到100的评分，了解需要改进的地方。",
-    "meta_title": "MAKO评分 - AI就绪审计",
-    "meta_description": "检查您的网站对AI代理的准备程度。在内容结构、元数据、LLM可访问性和代理就绪方面获得0-100的评分。",
+    "description": "你的网站对AI的准备程度如何？获取0到100的评分，涵盖可发现性、可读性、可信度和可交互性四个方面。",
+    "about": "MAKO评分衡量AI代理能否有效地发现、阅读、信任和与你的内容交互。",
+    "meta_title": "MAKO 评分 - AI就绪审计",
+    "meta_description": "检查你的网站对AI的准备程度。获取0-100的评分，涵盖AI代理的可发现性、可读性、可信度和可交互性。",
     "form": {
       "url_label": "要评估的URL",
       "url_placeholder": "https://example.com",
@@ -238,18 +239,26 @@
       "public_description": "允许此评分公开显示并可分享"
     },
     "tabs": {
-      "score": "评分",
-      "details": "建议",
+      "business": "概览",
+      "developer": "技术细节",
       "share": "分享"
     },
+    "business": {
+      "top_actions": "提高评分的首要建议",
+      "mako_cta_title": "释放你的AI潜能",
+      "mako_cta_desc": "实施MAKO协议，让AI代理直接访问优化后的内容。安装@mako-spec/js或WordPress插件来开始。"
+    },
+    "developer": {
+      "all_recommendations": "所有建议"
+    },
     "recommendations": {
-      "perfect": "满分！您的网站已完全为AI代理优化。",
-      "subtitle": "按影响排序的改进建议。修复这些以提高您的评分。"
+      "perfect": "满分！你的网站已完全为AI代理优化。",
+      "subtitle": "按影响排序的改进建议。修复这些以提高你的评分。"
     },
     "share": {
       "social": "分享到社交媒体",
       "download": "下载评分卡",
-      "download_png": "下载PNG",
+      "download_png": "下载为PNG",
       "embed": "嵌入徽章",
       "copy": "复制",
       "copy_link": "复制链接",

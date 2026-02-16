@@ -1,41 +1,63 @@
 import { extractPageData } from "@/lib/analyzer/extract";
-import { evaluateContentStructure } from "./categories/content-structure";
-import { evaluateMetadata } from "./categories/metadata";
-import { evaluateLlmAccessibility } from "./categories/llm-accessibility";
-import { evaluateAgentReadiness } from "./categories/agent-readiness";
+import { probeMako } from "./mako-probe";
+import { evaluateDiscoverable } from "./categories/discoverable";
+import { evaluateReadable } from "./categories/readable";
+import { evaluateTrustworthy } from "./categories/trustworthy";
+import { evaluateActionable } from "./categories/actionable";
 import { probeSite } from "./site-probe";
-import { getGrade } from "./types";
+import { getGrade, getGradeInfo, getConformanceLevel } from "./types";
 import type { ScoreResult, ScoreCategory, ScoreRecommendation } from "./types";
 import { saveScore } from "@/lib/db";
 
-export type { ScoreResult, ScoreCategory, ScoreCheck, ScoreRecommendation, Grade, PageData, SiteProbe, SiteProbeUrl } from "./types";
+export type {
+  ScoreResult,
+  ScoreCategory,
+  ScoreCheck,
+  ScoreRecommendation,
+  Grade,
+  GradeInfo,
+  ConformanceLevel,
+  MakoProbeResult,
+  MakoAction,
+  MakoLink,
+  PageData,
+  SiteProbe,
+  SiteProbeUrl,
+} from "./types";
 
-export async function scoreUrl(url: string, isPublic: boolean): Promise<ScoreResult> {
+export async function scoreUrl(
+  url: string,
+  isPublic: boolean
+): Promise<ScoreResult> {
   const page = await extractPageData(url);
 
-  // Evaluate synchronous categories
-  const contentStructure = evaluateContentStructure(page);
-  const metadata = evaluateMetadata(page);
-  const llmAccessibility = evaluateLlmAccessibility(page);
+  // Run MAKO probe once — shared across categories
+  const makoProbe = await probeMako(page.finalUrl, page.$);
 
-  // Evaluate async category (HTTP probes) + site-wide MAKO probe in parallel
-  const [agentReadiness, siteProbe] = await Promise.all([
-    evaluateAgentReadiness(page),
+  // Evaluate sync categories
+  const readable = evaluateReadable(page);
+  const actionable = evaluateActionable(page, makoProbe);
+
+  // Evaluate async categories + site probe in parallel
+  const [discoverable, trustworthy, siteProbe] = await Promise.all([
+    evaluateDiscoverable(page, makoProbe),
+    evaluateTrustworthy(page, makoProbe),
     probeSite(page.$, page.finalUrl),
   ]);
 
   const categories: ScoreCategory[] = [
-    contentStructure,
-    metadata,
-    llmAccessibility,
-    agentReadiness,
+    discoverable,
+    readable,
+    trustworthy,
+    actionable,
   ];
 
   const totalScore = categories.reduce((sum, c) => sum + c.earned, 0);
   const grade = getGrade(totalScore);
+  const gradeInfo = getGradeInfo(totalScore);
+  const conformanceLevel = getConformanceLevel(totalScore);
 
-  // Generate recommendations from failed checks
-  const recommendations = generateRecommendations(categories, page);
+  const recommendations = generateRecommendations(categories);
 
   let domain: string;
   try {
@@ -51,6 +73,8 @@ export async function scoreUrl(url: string, isPublic: boolean): Promise<ScoreRes
     contentType: page.contentType,
     totalScore,
     grade,
+    gradeInfo,
+    conformanceLevel,
     categories,
     recommendations,
     siteProbe: siteProbe.totalChecked > 0 ? siteProbe : undefined,
@@ -61,9 +85,7 @@ export async function scoreUrl(url: string, isPublic: boolean): Promise<ScoreRes
   // Save to DB
   try {
     const id = await saveScore(result);
-    if (id) {
-      result.id = id;
-    }
+    if (id) result.id = id;
   } catch (error) {
     console.error("[scorer] Failed to save score to DB:", error);
   }
@@ -71,108 +93,233 @@ export async function scoreUrl(url: string, isPublic: boolean): Promise<ScoreRes
   return result;
 }
 
-const RECOMMENDATION_MAP: Record<string, { impact: number; message: string }> = {
+// ── Recommendations ────────────────────────────────────────────────
+
+const RECOMMENDATION_MAP: Record<
+  string,
+  { impact: number; message: string; businessMessage: string }
+> = {
+  // Discoverable
   serves_mako: {
     impact: 10,
-    message: "Adopt the MAKO protocol to serve LLM-optimized content. Install @mako-spec/js and add MAKO content negotiation to your server.",
+    message:
+      "Implement MAKO content negotiation with @mako-spec/js middleware or mako-wp plugin.",
+    businessMessage:
+      "Enable AI agents to read your content directly — this is the single biggest improvement you can make.",
+  },
+  mako_content_negotiation: {
+    impact: 5,
+    message:
+      "Ensure your server returns Content-Type: text/mako+markdown for MAKO responses.",
+    businessMessage:
+      "Fix your MAKO setup so AI agents correctly identify your optimized content.",
+  },
+  mako_link_tag: {
+    impact: 3,
+    message:
+      'Add <link rel="alternate" type="text/mako+markdown"> to your HTML <head>.',
+    businessMessage:
+      "Help AI agents discover that your site supports optimized content.",
   },
   has_llms_txt: {
-    impact: 8,
-    message: "Add an llms.txt file to your site root describing your site for AI agents. See llmstxt.org for the format.",
-  },
-  has_json_ld: {
-    impact: 8,
-    message: "Add JSON-LD structured data (Schema.org) to help AI agents understand your content semantically.",
-  },
-  token_efficiency: {
-    impact: 7,
-    message: "Reduce HTML bloat by removing unnecessary scripts, inline styles, and non-semantic markup. Clean HTML means better LLM comprehension.",
-  },
-  no_js_dependency: {
-    impact: 7,
-    message: "Serve content as static HTML instead of requiring JavaScript rendering. LLMs and crawlers can't execute JS.",
-  },
-  has_h1: {
     impact: 6,
-    message: "Add exactly one H1 heading that clearly describes your page's main topic.",
-  },
-  semantic_html: {
-    impact: 6,
-    message: "Use semantic HTML elements like <main>, <article>, and <section> to structure your content for better AI parsing.",
-  },
-  has_og_tags: {
-    impact: 5,
-    message: "Add Open Graph meta tags (og:title, og:description, og:type, og:image) for better content discovery.",
-  },
-  has_meta_description: {
-    impact: 5,
-    message: "Add a <meta name=\"description\"> tag with a concise summary of your page content.",
-  },
-  meaningful_headings: {
-    impact: 5,
-    message: "Use descriptive headings that summarize each section's content. Avoid generic headings like 'Welcome' or 'Home'.",
-  },
-  has_h2_sections: {
-    impact: 4,
-    message: "Break your content into sections with H2 headings for better structure and scannability.",
-  },
-  image_alt_text: {
-    impact: 4,
-    message: "Add descriptive alt text to all images so AI agents can understand visual content.",
-  },
-  link_quality: {
-    impact: 4,
-    message: "Replace generic link text like 'click here' with descriptive labels that explain where the link goes.",
-  },
-  has_robots_txt: {
-    impact: 4,
-    message: "Add a robots.txt file that allows AI crawlers to access your content.",
-  },
-  has_sitemap: {
-    impact: 4,
-    message: "Add a sitemap.xml to help crawlers and AI agents discover all your pages.",
-  },
-  has_canonical: {
-    impact: 3,
-    message: "Add a <link rel=\"canonical\"> to help AI agents identify the primary URL for your content.",
-  },
-  has_lang: {
-    impact: 3,
-    message: "Add a lang attribute to your <html> element (e.g., <html lang=\"en\">) to declare the content language.",
-  },
-  heading_hierarchy: {
-    impact: 3,
-    message: "Fix your heading hierarchy — don't skip levels (e.g., H1 → H3 without H2).",
-  },
-  structured_actions: {
-    impact: 3,
-    message: "Add clear call-to-action buttons so AI agents can detect available actions on your page.",
-  },
-  has_title: {
-    impact: 2,
-    message: "Add a meaningful <title> tag (at least 5 characters) that describes your page.",
-  },
-  schema_depth: {
-    impact: 2,
-    message: "Enrich your JSON-LD with more properties (at least 5) for deeper AI understanding.",
-  },
-  content_noise_ratio: {
-    impact: 2,
-    message: "Reduce non-content elements (ads, trackers, excessive navigation) to improve the content-to-noise ratio.",
-  },
-  clean_extraction: {
-    impact: 2,
-    message: "Ensure your page has at least 200 characters of meaningful content for proper analysis.",
+    message:
+      "Add an llms.txt file at your site root describing your site for AI agents.",
+    businessMessage:
+      "Tell AI assistants what your business does so they can recommend you accurately.",
   },
   has_mcp_endpoint: {
     impact: 2,
-    message: "Add a /.well-known/mcp.json endpoint to enable Model Context Protocol (MCP) integration.",
+    message:
+      "Add a /.well-known/mcp.json endpoint for Model Context Protocol integration.",
+    businessMessage:
+      "Enable advanced AI integrations with your site.",
+  },
+
+  // Readable
+  content_signal_ratio: {
+    impact: 7,
+    message:
+      "Reduce HTML bloat by removing unnecessary scripts, inline styles, and non-semantic markup.",
+    businessMessage:
+      "Clean up your page code so AI agents can focus on your actual content, not boilerplate.",
+  },
+  no_js_dependency: {
+    impact: 7,
+    message:
+      "Serve content as static/SSR HTML. LLM agents and crawlers cannot execute JavaScript.",
+    businessMessage:
+      "Make your content available without JavaScript — most AI agents can't run scripts.",
+  },
+  first_meaningful_content: {
+    impact: 4,
+    message:
+      "Ensure the H1 and main content appear within the first 300 characters of the document.",
+    businessMessage:
+      "Move your main content higher on the page so AI agents find it immediately.",
+  },
+  meaningful_headings: {
+    impact: 4,
+    message:
+      'Use descriptive headings that summarize section content. Avoid generic headings like "Welcome".',
+    businessMessage:
+      "Use clear section titles so AI agents understand your page structure.",
+  },
+  semantic_html: {
+    impact: 4,
+    message:
+      "Use semantic HTML elements: <main>, <article>, <section> to structure content.",
+    businessMessage:
+      "Use proper HTML structure so AI agents can identify your main content area.",
+  },
+  has_h1: {
+    impact: 3,
+    message:
+      "Add exactly one H1 heading that describes the page's main topic.",
+    businessMessage:
+      "Add a clear main heading — it's the first thing AI agents look for.",
+  },
+  image_alt_text: {
+    impact: 2,
+    message:
+      "Add descriptive alt text to images so AI agents understand visual content.",
+    businessMessage:
+      "Describe your images in text so AI agents know what they show.",
+  },
+  link_quality: {
+    impact: 2,
+    message:
+      'Replace generic link text ("click here", "read more") with descriptive labels.',
+    businessMessage:
+      "Use meaningful link labels so AI agents understand where each link goes.",
+  },
+
+  // Trustworthy
+  has_json_ld: {
+    impact: 8,
+    message:
+      "Add JSON-LD structured data (Schema.org) with at least 5 properties.",
+    businessMessage:
+      "Add structured data so AI agents understand exactly what your page is about.",
+  },
+  has_og_tags: {
+    impact: 3,
+    message:
+      "Add Open Graph tags: og:title, og:description, og:type, og:image.",
+    businessMessage:
+      "Add social sharing tags — AI agents use them to summarize your content.",
+  },
+  has_meta_description: {
+    impact: 3,
+    message:
+      'Add a <meta name="description"> with a concise page summary.',
+    businessMessage:
+      "Add a page description that AI agents can use as a content summary.",
+  },
+  has_canonical: {
+    impact: 2,
+    message:
+      'Add <link rel="canonical"> to identify the primary URL for this content.',
+    businessMessage:
+      "Tell AI agents which URL is the official one for this page.",
+  },
+  has_lang: {
+    impact: 2,
+    message:
+      'Add a lang attribute to <html> (e.g., <html lang="en">).',
+    businessMessage:
+      "Declare your page language so AI agents respond in the right language.",
+  },
+  has_robots_txt: {
+    impact: 2,
+    message:
+      "Add a robots.txt that allows AI crawlers to access your content.",
+    businessMessage:
+      "Allow AI agents to crawl your site by adding a robots.txt file.",
+  },
+  has_sitemap: {
+    impact: 2,
+    message:
+      "Add a sitemap.xml to help crawlers discover all your pages.",
+    businessMessage:
+      "Help AI agents find all your important pages with a sitemap.",
+  },
+  mako_summary_quality: {
+    impact: 5,
+    message:
+      "Add a summary field (10-30 words, ≤160 chars) to your MAKO frontmatter.",
+    businessMessage:
+      "Write a clear summary in your MAKO file — AI agents use it to describe your business.",
+  },
+  mako_freshness: {
+    impact: 4,
+    message:
+      "Set X-Mako-Updated header to the content's last modification date.",
+    businessMessage:
+      "Keep your AI-optimized content up to date — stale data hurts trust.",
+  },
+  mako_etag: {
+    impact: 3,
+    message:
+      "Add an ETag header to MAKO responses for efficient caching.",
+    businessMessage:
+      "Enable caching so AI agents can efficiently check for content updates.",
+  },
+  mako_tokens_declared: {
+    impact: 2,
+    message:
+      "Set X-Mako-Tokens header to declare the token count of your MAKO content.",
+    businessMessage:
+      "Declare content size so AI agents can plan their token budget.",
+  },
+  mako_body_quality: {
+    impact: 3,
+    message:
+      "Ensure MAKO body content has at least 200 characters of meaningful markdown.",
+    businessMessage:
+      "Provide enough content in your MAKO file for AI agents to work with.",
+  },
+
+  // Actionable
+  structured_actions: {
+    impact: 7,
+    message:
+      "Add machine-readable CTAs/actions. In MAKO, define actions with name, description, and url.",
+    businessMessage:
+      "Define clear actions (buy, subscribe, contact) so AI agents can guide users to them.",
+  },
+  semantic_links: {
+    impact: 5,
+    message:
+      "Include semantic links with context in your MAKO frontmatter.",
+    businessMessage:
+      "Connect your pages with meaningful links so AI agents can navigate your site.",
+  },
+  action_completeness: {
+    impact: 4,
+    message:
+      "Ensure all MAKO actions have name, description, and url fields.",
+    businessMessage:
+      "Complete your action definitions so AI agents have all the info they need.",
+  },
+  mako_headers_complete: {
+    impact: 4,
+    message:
+      "Include all MAKO headers: Version, Type, Lang, Entity, Tokens, Updated, Canonical.",
+    businessMessage:
+      "Provide complete metadata so AI agents get the full picture of your content.",
+  },
+  clean_extraction: {
+    impact: 2,
+    message:
+      "Ensure your page has at least 200 characters of extractable content.",
+    businessMessage:
+      "Add more content to your page — AI agents need substance to work with.",
   },
 };
 
 function generateRecommendations(
-  categories: ScoreCategory[],
-  page: ScoreRecommendationContext,
+  categories: ScoreCategory[]
 ): ScoreRecommendation[] {
   const recommendations: ScoreRecommendation[] = [];
 
@@ -183,27 +330,16 @@ function generateRecommendations(
         if (rec) {
           recommendations.push({
             check: check.id,
+            category: category.key,
             impact: rec.impact,
             message: rec.message,
+            businessMessage: rec.businessMessage,
           });
         }
       }
     }
   }
 
-  // Sort by impact (highest first)
   recommendations.sort((a, b) => b.impact - a.impact);
-
-  // Always add MAKO CTA at the end if not already serving MAKO
-  const servesMako = categories
-    .flatMap((c) => c.checks)
-    .find((c) => c.id === "serves_mako");
-  if (servesMako && !servesMako.passed) {
-    // serves_mako recommendation is already included above, ensure it's last or prominent
-  }
-
   return recommendations;
 }
-
-// Minimal type for the context param — avoids importing CheerioAPI in the recommendation logic
-type ScoreRecommendationContext = { actions: { length: number } };

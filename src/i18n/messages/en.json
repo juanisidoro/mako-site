@@ -226,9 +226,10 @@
   },
   "score": {
     "title": "MAKO Score",
-    "description": "How AI-ready is your website? Get your score from 0 to 100 and see what to improve.",
+    "description": "How AI-ready is your website? Get your score from 0 to 100 across Discoverable, Readable, Trustworthy, and Actionable.",
+    "about": "MAKO Score measures how efficiently AI agents can discover, read, trust, and interact with your content.",
     "meta_title": "MAKO Score - AI Readiness Audit",
-    "meta_description": "Check how AI-ready your website is. Get a score from 0-100 across content structure, metadata, LLM accessibility, and agent readiness.",
+    "meta_description": "Check how AI-ready your website is. Get a score from 0-100 across discoverability, readability, trustworthiness, and actionability for AI agents.",
     "form": {
       "url_label": "URL to score",
       "url_placeholder": "https://example.com",
@@ -238,9 +239,17 @@
       "public_description": "Allow this score to appear publicly and be shared"
     },
     "tabs": {
-      "score": "Score",
-      "details": "Recommendations",
+      "business": "Overview",
+      "developer": "Technical Details",
       "share": "Share"
+    },
+    "business": {
+      "top_actions": "Top Actions to Improve Your Score",
+      "mako_cta_title": "Unlock your full AI potential",
+      "mako_cta_desc": "Implement the MAKO protocol to give AI agents direct access to your optimized content. Install @mako-spec/js or the WordPress plugin to get started."
+    },
+    "developer": {
+      "all_recommendations": "All Recommendations"
     },
     "recommendations": {
       "perfect": "Perfect score! Your site is fully optimized for AI agents.",

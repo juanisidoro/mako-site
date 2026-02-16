@@ -11,7 +11,8 @@ function getScoreColor(score: number): string {
 }
 
 const CAT_COLORS = ['#06d6a0', '#38bdf8', '#8b5cf6', '#f59e0b'];
-const CAT_NAMES = ['Content', 'Metadata', 'LLM Access', 'Agent Ready'];
+const CAT_NAMES = ['Discoverable', 'Readable', 'Trustworthy', 'Actionable'];
+const CAT_MAX = [15, 30, 30, 25];
 
 export async function GET(request: NextRequest) {
   const { searchParams } = request.nextUrl;
@@ -86,7 +87,7 @@ export async function GET(request: NextRequest) {
             gap: 64,
           }}
         >
-          {/* Gauge (simplified as circle for OG) */}
+          {/* Gauge */}
           <div
             style={{
               display: 'flex',
@@ -139,7 +140,7 @@ export async function GET(request: NextRequest) {
 
             {/* Category bars */}
             {cats.map((catScore, i) => {
-              const pct = (catScore / 25) * 100;
+              const pct = (catScore / CAT_MAX[i]) * 100;
               return (
                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
                   <div
@@ -165,7 +166,7 @@ export async function GET(request: NextRequest) {
                     style={{
                       display: 'flex',
                       justifyContent: 'space-between',
-                      width: 180,
+                      width: 200,
                     }}
                   >
                     <span style={{ fontSize: 14, color: '#94a3b8' }}>
@@ -178,7 +179,7 @@ export async function GET(request: NextRequest) {
                         fontFamily: 'monospace',
                       }}
                     >
-                      {catScore}/25
+                      {catScore}/{CAT_MAX[i]}
                     </span>
                   </div>
                 </div>

@@ -3,62 +3,67 @@
 import { useState } from 'react';
 import type { ScoreCategory } from '@/lib/scorer/types';
 
-function getCategoryColor(index: number): { bar: string; bg: string } {
-  const colors = [
-    { bar: 'bg-emerald-500', bg: 'bg-emerald-500/20' },
-    { bar: 'bg-sky-500', bg: 'bg-sky-500/20' },
-    { bar: 'bg-violet-500', bg: 'bg-violet-500/20' },
-    { bar: 'bg-amber-500', bg: 'bg-amber-500/20' },
-  ];
-  return colors[index % colors.length];
-}
+const CATEGORY_COLORS: Record<string, { bar: string; bg: string }> = {
+  discoverable: { bar: 'bg-emerald-500', bg: 'bg-emerald-500/20' },
+  readable: { bar: 'bg-sky-500', bg: 'bg-sky-500/20' },
+  trustworthy: { bar: 'bg-violet-500', bg: 'bg-violet-500/20' },
+  actionable: { bar: 'bg-amber-500', bg: 'bg-amber-500/20' },
+};
 
-/** Explains what each category measures and why it matters */
 const CATEGORY_INFO: Record<string, { what: string; why: string }> = {
-  'Content Structure': {
-    what: 'Evalúa cómo de bien está organizado el HTML de tu página: encabezados, jerarquía, etiquetas semánticas y ratio señal/ruido.',
-    why: 'Los agentes IA necesitan estructura clara para entender tu contenido. Sin H1, sin secciones, sin semántica = la IA no sabe qué es importante.',
+  discoverable: {
+    what: 'Checks whether AI agents can find your optimized content: MAKO support, llms.txt, content negotiation, and discovery signals.',
+    why: 'If agents can\'t discover your content, nothing else matters. This category ensures your site is visible to the AI web.',
   },
-  'Metadata & Structured Data': {
-    what: 'Verifica que tu página tenga JSON-LD (Schema.org), Open Graph tags, meta description, canonical, idioma y título.',
-    why: 'Los metadatos son el "pasaporte" de tu página. Sin ellos, los agentes IA no pueden clasificar, resumir ni recomendar tu contenido correctamente.',
+  readable: {
+    what: 'Measures how cleanly AI agents can extract and understand your content: signal-to-noise ratio, semantic HTML, headings, and JavaScript dependency.',
+    why: 'Most web pages are 90%+ boilerplate. Agents need clean, structured content to generate accurate responses about your business.',
   },
-  'LLM Accessibility': {
-    what: 'Mide si un LLM puede extraer contenido limpio: eficiencia de tokens, headings descriptivos, alt text, links con contexto y si necesita JavaScript.',
-    why: 'Si tu web requiere JS para mostrar contenido, los LLMs no pueden leerla. Un ratio de tokens alto significa que el 90%+ de tu HTML es ruido para la IA.',
+  trustworthy: {
+    what: 'Evaluates metadata quality and freshness: JSON-LD, Open Graph, canonical URLs, robots.txt, and MAKO-specific trust signals like summaries and ETags.',
+    why: 'Trust signals help agents verify content accuracy, understand context, and decide whether to cite your page in responses.',
   },
-  'Agent Readiness': {
-    what: 'Comprueba si tu web está preparada para agentes IA autónomos: MAKO protocol, llms.txt, robots.txt, sitemap, MCP endpoint y acciones detectables.',
-    why: 'Los agentes IA (ChatGPT, Perplexity, Claude...) buscan estas señales para decidir si pueden interactuar con tu web. Sin ellas, tu web es invisible para el tráfico IA del futuro.',
+  actionable: {
+    what: 'Checks whether agents can interact with your content: structured actions, semantic links, MAKO headers completeness, and content extraction quality.',
+    why: 'The future of the agent web is transactional. If agents can\'t find your buy, subscribe, or contact actions, you miss conversions.',
   },
 };
 
-/** Explains why each individual check matters */
 const CHECK_INFO: Record<string, string> = {
-  has_h1: 'El H1 es el título principal que los LLMs usan para entender de qué trata la página.',
-  has_h2_sections: 'Las secciones H2 ayudan a los agentes a navegar y extraer información específica.',
-  heading_hierarchy: 'Una jerarquía correcta (H1→H2→H3) permite a los LLMs entender la estructura del documento.',
-  semantic_html: 'Etiquetas como <main>, <article> y <section> indican a los agentes dónde está el contenido importante.',
-  content_noise_ratio: 'Un ratio alto de contenido vs ruido significa menos tokens desperdiciados para los LLMs.',
-  clean_extraction: 'Si no hay suficiente contenido extraíble, los agentes no pueden generar respuestas útiles sobre tu página.',
-  has_json_ld: 'Schema.org en JSON-LD permite a los agentes entender el tipo de contenido (producto, artículo, evento...) sin "adivinar".',
-  has_og_tags: 'Los tags OpenGraph son usados por redes sociales Y por agentes IA para previsualizar y clasificar contenido.',
-  has_meta_description: 'La meta description es el resumen que los LLMs usan cuando no quieren leer la página completa.',
-  has_canonical: 'El canonical evita que los agentes indexen versiones duplicadas de tu contenido.',
-  has_lang: 'El atributo lang indica al agente en qué idioma está tu contenido, mejorando la comprensión.',
-  has_title: 'El título es lo primero que lee un agente para decidir si tu página es relevante.',
-  schema_depth: 'Cuantas más propiedades tenga tu JSON-LD, más contexto tiene el agente sin necesidad de leer todo.',
-  token_efficiency: 'Menos tokens = menos coste por consulta. Un HTML limpio puede ahorrar hasta un 93% de tokens a los LLMs.',
-  meaningful_headings: 'Headings descriptivos ayudan a los LLMs a hacer "skimming" inteligente del contenido.',
-  link_quality: 'Links con texto descriptivo permiten a los agentes navegar tu sitio con propósito, no a ciegas.',
-  image_alt_text: 'Sin alt text, las imágenes son invisibles para los LLMs. Con alt text, el agente entiende el contexto visual.',
-  no_js_dependency: 'Los LLMs y crawlers no ejecutan JavaScript. Si tu contenido depende de JS, eres invisible para la IA.',
-  serves_mako: 'MAKO permite a los agentes obtener tu contenido optimizado en ~7% de los tokens del HTML original.',
-  has_llms_txt: 'llms.txt es como robots.txt pero para LLMs: les dice qué contenido tienes y cómo acceder a él.',
-  has_robots_txt: 'Un robots.txt permite a crawlers y agentes saber qué pueden y qué no pueden acceder.',
-  has_sitemap: 'El sitemap ayuda a los agentes a descubrir todas tus páginas sin tener que crawlear enlace por enlace.',
-  has_mcp_endpoint: 'MCP (Model Context Protocol) permite a los agentes IA interactuar directamente con tu servicio como una API.',
-  structured_actions: 'Acciones detectables (comprar, reservar, contactar...) permiten a los agentes actuar en nombre del usuario.',
+  // Discoverable
+  serves_mako: 'MAKO lets agents get your content in ~7% of the tokens of raw HTML — the biggest single improvement.',
+  mako_content_negotiation: 'The correct Content-Type header ensures agents parse your response as MAKO, not generic text.',
+  mako_link_tag: 'A <link rel="alternate"> tag lets agents discover MAKO support without making an extra HEAD request.',
+  has_llms_txt: 'llms.txt tells AI agents what your site offers and how to access it — like robots.txt for LLMs.',
+  has_mcp_endpoint: 'Model Context Protocol (MCP) lets agents interact with your service as a structured API.',
+  // Readable
+  content_signal_ratio: 'Measures how much of your page is actual content vs navigation, ads, and boilerplate markup.',
+  no_js_dependency: 'LLMs and crawlers cannot execute JavaScript. If content requires JS, it\'s invisible to AI agents.',
+  first_meaningful_content: 'Agents scan the first few hundred characters. If they find only nav/header, they may skip your page.',
+  meaningful_headings: 'Descriptive headings let agents do "smart skimming" — understanding structure without reading everything.',
+  semantic_html: 'Tags like <main>, <article>, <section> tell agents where the real content lives.',
+  has_h1: 'The H1 is the primary signal agents use to understand what a page is about.',
+  image_alt_text: 'Without alt text, images are invisible to agents. With it, they understand your visual content.',
+  link_quality: 'Links with descriptive text let agents navigate purposefully, not blindly crawl "click here" links.',
+  // Trustworthy
+  has_json_ld: 'Schema.org in JSON-LD lets agents understand content type (product, article, event) without guessing.',
+  has_og_tags: 'Open Graph tags are used by social platforms AND AI agents to preview and classify content.',
+  has_meta_description: 'The meta description is the quick summary agents use when they don\'t read the full page.',
+  has_canonical: 'Canonical URLs prevent agents from indexing duplicate versions of your content.',
+  has_lang: 'The lang attribute tells agents what language your content is in, improving comprehension.',
+  has_robots_txt: 'A permissive robots.txt signals that crawlers and AI agents are welcome on your site.',
+  has_sitemap: 'Sitemaps help agents discover all your pages without crawling link by link.',
+  mako_summary_quality: 'A well-crafted summary (10-30 words, ≤160 chars) is what agents use to describe your business.',
+  mako_freshness: 'The X-Mako-Updated header tells agents how recent your content is — stale data loses trust.',
+  mako_etag: 'ETags enable efficient caching — agents check if content changed without re-downloading everything.',
+  mako_tokens_declared: 'Declared token count lets agents plan their context window budget before downloading.',
+  mako_body_quality: 'Enough body content (≥200 chars) ensures agents have substance to work with.',
+  // Actionable
+  structured_actions: 'Machine-readable actions (buy, subscribe, contact) let agents guide users to conversions.',
+  semantic_links: 'MAKO links with context let agents navigate your site with purpose and understanding.',
+  action_completeness: 'Complete actions (name + description + url) give agents everything they need to act.',
+  mako_headers_complete: 'All 7 MAKO headers provide agents with a complete metadata picture at the HTTP level.',
+  clean_extraction: 'At least 200 characters of extractable content ensures agents have enough to generate useful responses.',
 };
 
 interface CategoryBreakdownProps {
@@ -73,24 +78,29 @@ export function CategoryBreakdown({ categories }: CategoryBreakdownProps) {
   return (
     <div className="space-y-4">
       {categories.map((cat, i) => {
-        const colors = getCategoryColor(i);
+        const colors = CATEGORY_COLORS[cat.key] || { bar: 'bg-slate-500', bg: 'bg-slate-500/20' };
         const pct = cat.maxPoints > 0 ? (cat.earned / cat.maxPoints) * 100 : 0;
         const isOpen = expanded === i;
-        const info = CATEGORY_INFO[cat.name];
+        const info = CATEGORY_INFO[cat.key];
         const isInfoOpen = showInfo === i;
 
         return (
-          <div key={cat.name}>
-            {/* Category header bar */}
+          <div key={cat.key}>
+            {/* Category header */}
             <div className="flex items-center gap-2 mb-1.5">
               <button
                 onClick={() => setExpanded(isOpen ? null : i)}
                 className="flex-1 text-left group"
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-sm font-medium text-slate-300 group-hover:text-white transition">
-                    {cat.name}
-                  </span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm font-medium text-slate-300 group-hover:text-white transition">
+                      {cat.name}
+                    </span>
+                    <span className="text-[10px] text-slate-600 italic hidden sm:inline">
+                      {cat.question}
+                    </span>
+                  </div>
                   <div className="flex items-center gap-2">
                     <span className="font-mono text-sm font-semibold text-slate-400">
                       {cat.earned}/{cat.maxPoints}
@@ -107,7 +117,7 @@ export function CategoryBreakdown({ categories }: CategoryBreakdownProps) {
                   </div>
                 </div>
               </button>
-              {/* Info (i) button */}
+              {/* Info button */}
               {info && (
                 <button
                   onClick={() => setShowInfo(isInfoOpen ? null : i)}
@@ -126,8 +136,8 @@ export function CategoryBreakdown({ categories }: CategoryBreakdownProps) {
             {/* Category info tooltip */}
             {isInfoOpen && info && (
               <div className="mb-3 rounded-lg border border-slate-700/50 bg-slate-800/50 p-3 text-xs space-y-1.5">
-                <p className="text-slate-300"><span className="text-emerald-400 font-medium">Qué mide:</span> {info.what}</p>
-                <p className="text-slate-300"><span className="text-amber-400 font-medium">Por qué importa:</span> {info.why}</p>
+                <p className="text-slate-300"><span className="text-emerald-400 font-medium">What it measures:</span> {info.what}</p>
+                <p className="text-slate-300"><span className="text-amber-400 font-medium">Why it matters:</span> {info.why}</p>
               </div>
             )}
 

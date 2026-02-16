@@ -226,9 +226,10 @@
   },
   "score": {
     "title": "MAKO スコア",
-    "description": "あなたのウェブサイトはAIにどれだけ対応していますか？0から100のスコアを取得し、改善点を確認しましょう。",
+    "description": "あなたのWebサイトはAIにどれだけ対応していますか？Discoverable、Readable、Trustworthy、Actionableの4つの観点で0から100のスコアを取得しましょう。",
+    "about": "MAKOスコアは、AIエージェントがあなたのコンテンツをいかに効率的に発見、読み取り、信頼し、操作できるかを測定します。",
     "meta_title": "MAKOスコア - AI対応度監査",
-    "meta_description": "ウェブサイトのAI対応度をチェック。コンテンツ構造、メタデータ、LLMアクセシビリティ、エージェント対応の4カテゴリで0-100のスコアを取得。",
+    "meta_description": "WebサイトのあなたのサイトのアーカイブのAI対応度をチェック。Discoverability、Readability、Trustworthiness、ActionabilityでAIエージェント向けの0-100スコアを取得。",
     "form": {
       "url_label": "評価するURL",
       "url_placeholder": "https://example.com",
@@ -238,16 +239,24 @@
       "public_description": "このスコアを公開して共有できるようにする"
     },
     "tabs": {
-      "score": "スコア",
-      "details": "改善提案",
+      "business": "概要",
+      "developer": "技術詳細",
       "share": "共有"
     },
+    "business": {
+      "top_actions": "スコアを向上させるための主要なアクション",
+      "mako_cta_title": "あなたのAI潜在能力を最大限に活用",
+      "mako_cta_desc": "MAKOプロトコルを実装して、AIエージェントが最適化されたコンテンツに直接アクセスできるようにします。@mako-spec/jsまたはWordPressプラグインをインストールして開始できます。"
+    },
+    "developer": {
+      "all_recommendations": "すべての推奨事項"
+    },
     "recommendations": {
-      "perfect": "満点！あなたのサイトはAIエージェントに完全に最適化されています。",
-      "subtitle": "影響度順の改善提案。これらを修正してスコアを上げましょう。"
+      "perfect": "満点です！あなたのサイトはAIエージェント向けに完全に最適化されています。",
+      "subtitle": "影響度順に並んだ改善提案。これらを修正してスコアを上げてください。"
     },
     "share": {
-      "social": "SNSでシェア",
+      "social": "ソーシャルメディアでシェア",
       "download": "スコアカードをダウンロード",
       "download_png": "PNGでダウンロード",
       "embed": "バッジを埋め込む",

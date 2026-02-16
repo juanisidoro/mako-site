@@ -29,7 +29,7 @@ export function SiteProbeResults({ probe, domain }: SiteProbeResultsProps) {
               MAKO Site Scan
             </p>
             <p className="text-xs text-slate-500">
-              {probe.totalChecked} URLs de {domain} verificadas
+              {probe.totalChecked} URLs from {domain} checked
             </p>
           </div>
         </div>
@@ -64,7 +64,7 @@ export function SiteProbeResults({ probe, domain }: SiteProbeResultsProps) {
           {/* Adoption bar */}
           <div className="px-4 sm:px-5 py-3 bg-slate-900/30">
             <div className="flex items-center justify-between mb-1.5">
-              <span className="text-xs text-slate-500">Adopción MAKO en el sitio</span>
+              <span className="text-xs text-slate-500">MAKO adoption across site</span>
               <span className="text-xs font-mono text-slate-400">{probe.adoptionPct}%</span>
             </div>
             <div className="h-2 rounded-full bg-slate-800 overflow-hidden">
@@ -136,14 +136,14 @@ export function SiteProbeResults({ probe, domain }: SiteProbeResultsProps) {
           {probe.makoCount === 0 && (
             <div className="px-4 sm:px-5 py-3 bg-slate-900/30 border-t border-slate-800">
               <p className="text-xs text-slate-500">
-                Ninguna URL del sitio sirve contenido MAKO. Adopta el protocolo MAKO para que los agentes IA lean tu web de forma eficiente.
+                No URLs on this site serve MAKO content. Adopt the MAKO protocol to let AI agents read your site efficiently.
               </p>
             </div>
           )}
           {probe.makoCount > 0 && probe.makoCount < probe.totalChecked && (
             <div className="px-4 sm:px-5 py-3 bg-slate-900/30 border-t border-slate-800">
               <p className="text-xs text-slate-500">
-                {probe.makoCount} de {probe.totalChecked} URLs sirven MAKO. Extiende la adopción a todo tu sitio para maximizar la accesibilidad IA.
+                {probe.makoCount} of {probe.totalChecked} URLs serve MAKO. Extend adoption across your site to maximize AI accessibility.
               </p>
             </div>
           )}

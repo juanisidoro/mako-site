@@ -226,21 +226,30 @@
   },
   "score": {
     "title": "MAKO Score",
-    "description": "Wie KI-bereit ist Ihre Website? Erhalten Sie Ihren Score von 0 bis 100 und erfahren Sie, was Sie verbessern können.",
+    "description": "Wie KI-bereit ist Ihre Website? Erhalten Sie Ihren Score von 0 bis 100 in den Kategorien Auffindbar, Lesbar, Vertrauenswürdig und Interaktiv.",
+    "about": "MAKO Score misst, wie effizient KI-Agenten Ihre Inhalte auffinden, lesen, vertrauen und mit ihnen interagieren können.",
     "meta_title": "MAKO Score - KI-Bereitschafts-Audit",
-    "meta_description": "Prüfen Sie, wie KI-bereit Ihre Website ist. Score von 0-100 für Struktur, Metadaten, LLM-Zugänglichkeit und Agenten-Bereitschaft.",
+    "meta_description": "Prüfen Sie, wie KI-bereit Ihre Website ist. Score von 0-100 für Auffindbarkeit, Lesbarkeit, Vertrauenswürdigkeit und Interaktivität von KI-Agenten.",
     "form": {
       "url_label": "URL bewerten",
       "url_placeholder": "https://beispiel.de",
       "score_button": "Score abrufen",
-      "scoring": "Bewertung...",
+      "scoring": "Bewertung läuft...",
       "public_label": "Öffentlich machen",
       "public_description": "Diesen Score öffentlich sichtbar und teilbar machen"
     },
     "tabs": {
-      "score": "Score",
-      "details": "Empfehlungen",
+      "business": "Übersicht",
+      "developer": "Technische Details",
       "share": "Teilen"
+    },
+    "business": {
+      "top_actions": "Top-Maßnahmen zur Verbesserung Ihres Scores",
+      "mako_cta_title": "Schöpfen Sie Ihr volles KI-Potenzial aus",
+      "mako_cta_desc": "Implementieren Sie das MAKO-Protokoll, um KI-Agenten direkten Zugriff auf Ihre optimierten Inhalte zu geben. Installieren Sie @mako-spec/js oder das WordPress-Plugin, um zu beginnen."
+    },
+    "developer": {
+      "all_recommendations": "Alle Empfehlungen"
     },
     "recommendations": {
       "perfect": "Perfekter Score! Ihre Website ist vollständig für KI-Agenten optimiert.",

@@ -226,21 +226,30 @@
   },
   "score": {
     "title": "MAKO Score",
-    "description": "Quão preparado para IA está o seu site? Obtenha sua pontuação de 0 a 100 e veja o que melhorar.",
+    "description": "Quão preparado para IA está o seu site? Obtenha sua pontuação de 0 a 100 em Descobribilidade, Legibilidade, Confiabilidade e Acionabilidade.",
+    "about": "MAKO Score mede o quão eficientemente agentes IA podem descobrir, ler, confiar e interagir com seu conteúdo.",
     "meta_title": "MAKO Score - Auditoria de AI-Readiness",
-    "meta_description": "Verifique quão preparado para IA está o seu site. Pontuação de 0-100 em estrutura, metadados, acessibilidade LLM e prontidão para agentes.",
+    "meta_description": "Verifique quão preparado para IA está o seu site. Pontuação de 0-100 em descobribilidade, legibilidade, confiabilidade e acionabilidade para agentes IA.",
     "form": {
       "url_label": "URL para avaliar",
-      "url_placeholder": "https://exemplo.com",
+      "url_placeholder": "https://example.com",
       "score_button": "Obter Score",
       "scoring": "Avaliando...",
       "public_label": "Tornar público",
       "public_description": "Permitir que esta pontuação apareça publicamente e possa ser compartilhada"
     },
     "tabs": {
-      "score": "Score",
-      "details": "Recomendações",
+      "business": "Visão Geral",
+      "developer": "Detalhes Técnicos",
       "share": "Compartilhar"
+    },
+    "business": {
+      "top_actions": "Principais Ações para Melhorar Seu Score",
+      "mako_cta_title": "Desbloqueie seu potencial total com IA",
+      "mako_cta_desc": "Implemente o protocolo MAKO para dar aos agentes IA acesso direto ao seu conteúdo otimizado. Instale @mako-spec/js ou o plugin WordPress para começar."
+    },
+    "developer": {
+      "all_recommendations": "Todas as Recomendações"
     },
     "recommendations": {
       "perfect": "Pontuação perfeita! Seu site está totalmente otimizado para agentes IA.",

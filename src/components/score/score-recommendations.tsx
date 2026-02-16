@@ -15,11 +15,19 @@ function getImpactLabel(impact: number): string {
   return 'Low';
 }
 
+const CATEGORY_LABELS: Record<string, { label: string; color: string }> = {
+  discoverable: { label: 'Discoverable', color: 'text-emerald-400/70 bg-emerald-500/5' },
+  readable: { label: 'Readable', color: 'text-sky-400/70 bg-sky-500/5' },
+  trustworthy: { label: 'Trustworthy', color: 'text-violet-400/70 bg-violet-500/5' },
+  actionable: { label: 'Actionable', color: 'text-amber-400/70 bg-amber-500/5' },
+};
+
 interface ScoreRecommendationsProps {
   recommendations: ScoreRecommendation[];
+  mode: 'business' | 'developer';
 }
 
-export function ScoreRecommendations({ recommendations }: ScoreRecommendationsProps) {
+export function ScoreRecommendations({ recommendations, mode }: ScoreRecommendationsProps) {
   const t = useTranslations('score');
 
   if (recommendations.length === 0) {
@@ -33,20 +41,34 @@ export function ScoreRecommendations({ recommendations }: ScoreRecommendationsPr
 
   return (
     <div className="space-y-3">
-      <p className="text-sm text-slate-500">{t('recommendations.subtitle')}</p>
-      {recommendations.map((rec, i) => (
-        <div
-          key={rec.check}
-          className="flex gap-3 rounded-lg border border-slate-800 bg-slate-900/30 p-4"
-        >
-          <div className="shrink-0 mt-0.5">
-            <span className={`inline-flex items-center rounded px-1.5 py-0.5 text-[10px] font-bold uppercase border ${getImpactColor(rec.impact)}`}>
-              {getImpactLabel(rec.impact)}
-            </span>
+      {mode === 'developer' && (
+        <p className="text-sm text-slate-500">{t('recommendations.subtitle')}</p>
+      )}
+      {recommendations.map((rec) => {
+        const catInfo = CATEGORY_LABELS[rec.category];
+        return (
+          <div
+            key={rec.check}
+            className="flex gap-3 rounded-lg border border-slate-800 bg-slate-900/30 p-4"
+          >
+            <div className="shrink-0 mt-0.5 flex flex-col items-center gap-1.5">
+              <span className={`inline-flex items-center rounded px-1.5 py-0.5 text-[10px] font-bold uppercase border ${getImpactColor(rec.impact)}`}>
+                {getImpactLabel(rec.impact)}
+              </span>
+              {mode === 'developer' && catInfo && (
+                <span className={`rounded px-1.5 py-0.5 text-[9px] font-medium ${catInfo.color}`}>
+                  {catInfo.label}
+                </span>
+              )}
+            </div>
+            <div className="min-w-0 flex-1">
+              <p className="text-sm text-slate-300 leading-relaxed">
+                {mode === 'business' ? rec.businessMessage : rec.message}
+              </p>
+            </div>
           </div>
-          <p className="text-sm text-slate-300 leading-relaxed">{rec.message}</p>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 }
