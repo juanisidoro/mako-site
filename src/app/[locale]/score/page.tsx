@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { setRequestLocale } from 'next-intl/server';
 import { getTranslations } from 'next-intl/server';
 import type { Metadata } from 'next';
@@ -67,7 +68,9 @@ export default async function ScorePage({
 
   return (
     <main>
-      <ScoreClient />
+      <Suspense>
+        <ScoreClient />
+      </Suspense>
       <Footer />
     </main>
   );

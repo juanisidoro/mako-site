@@ -56,12 +56,28 @@ export function Benchmark() {
           <p className="mt-4 text-slate-400">{t('subtitle')}</p>
         </div>
 
-        {/* Big number */}
-        <div className="mt-16 flex flex-col items-center">
+        {/* Before / After cards */}
+        <div className="mt-12 grid gap-6 sm:grid-cols-2">
+          {/* Before */}
+          <div className="rounded-xl border border-red-500/20 bg-red-500/5 p-6 text-center">
+            <p className="text-sm font-medium text-red-400 uppercase tracking-wider">{t('before_title')}</p>
+            <div className="mt-3 text-4xl sm:text-5xl font-bold text-red-400 font-mono">{t('before_size')}</div>
+            <p className="mt-2 text-sm text-slate-500">{t('before_tokens')}</p>
+          </div>
+          {/* After */}
+          <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-6 text-center">
+            <p className="text-sm font-medium text-emerald-400 uppercase tracking-wider">{t('after_title')}</p>
+            <div className="mt-3 text-4xl sm:text-5xl font-bold text-emerald-400 font-mono">{t('after_size')}</div>
+            <p className="mt-2 text-sm text-slate-500">{t('after_tokens')}</p>
+          </div>
+        </div>
+
+        {/* Big number — connecting result */}
+        <div className="mt-12 flex flex-col items-center">
           <div className="text-7xl sm:text-8xl lg:text-9xl font-bold gradient-text tracking-tighter">
             <AnimatedNumber target={93} suffix="%" />
           </div>
-          <p className="mt-2 text-lg text-slate-400">{t('reduction_label')}</p>
+          <p className="mt-2 text-lg text-slate-400">{t('result_label')}</p>
         </div>
 
         {/* Bars */}

@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "MAKO — Markdown Agent Knowledge Optimization",
-    "description": "Protocole ouvert pour servir du contenu web optimisé pour les LLMs. 93% de tokens en moins par rapport au HTML. Structure sémantique pour agents IA avec embeddings CEF, actions et liens intelligents."
+    "title": "MAKO — Faites comprendre votre business aux agents IA",
+    "description": "Protocole ouvert qui transforme les pages web en Markdown optimisé pour les agents IA. 93% de tokens en moins. Compatible avec llms.txt, Schema.org et WebMCP."
   },
   "nav": {
     "spec": "Spec",
@@ -14,12 +14,18 @@
   },
   "hero": {
     "badge": "Protocole Ouvert v1.0",
-    "title_line1": "93% de tokens en moins",
-    "title_line2": "pour les agents IA",
-    "subtitle": "MAKO est un protocole ouvert qui transforme le contenu web en Markdown optimisé pour les LLMs. Frontmatter sémantique, embeddings compacts et actions déclarées — pour que les agents IA lisent le web efficacement.",
-    "install": "npm install @mako-spec/js",
-    "cta_spec": "Lire la Spec",
-    "cta_github": "Voir sur GitHub"
+    "title_line1": "Faites comprendre",
+    "title_line2": "votre business aux agents IA",
+    "subtitle": "Votre site web parle HTML — les agents IA non. MAKO est un protocole ouvert qui donne à chaque page une version structurée et optimisée en tokens que les LLMs comprennent vraiment.",
+    "cta_score": "Vérifier votre Score",
+    "cta_spec": "Lire la Spec"
+  },
+  "problem": {
+    "title": "Le web a été conçu pour les humains",
+    "subtitle": "Quand un agent IA visite votre site, il télécharge barres de navigation, bannières de cookies, scripts publicitaires et des milliers de lignes de balisage — juste pour trouver un nom de produit et un prix.",
+    "stat_value": "181 Ko",
+    "stat_label": "poids moyen de page qu'un agent IA doit analyser",
+    "stat_detail": "4 125 tokens consommés avant de comprendre un seul produit"
   },
   "how_it_works": {
     "title": "Comment Ça Marche",
@@ -37,6 +43,13 @@
   "benchmark": {
     "title": "Efficacité des Tokens",
     "subtitle": "Comparaison réelle de la même page produit dans différents formats.",
+    "before_title": "Ce que les agents reçoivent aujourd'hui",
+    "before_size": "181 Ko",
+    "before_tokens": "4 125 tokens",
+    "after_title": "Avec MAKO",
+    "after_size": "3 Ko",
+    "after_tokens": "276 tokens",
+    "result_label": "de réduction de consommation de tokens",
     "html_label": "HTML brut",
     "cf_label": "Markdown (CF)",
     "mako_label": "MAKO",
@@ -69,6 +82,63 @@
       }
     }
   },
+  "audience": {
+    "title": "Qui en Bénéficie",
+    "subtitle": "MAKO comble le fossé entre votre contenu et les agents IA qui essaient de le comprendre.",
+    "business": {
+      "tag": "Business",
+      "title": "Propriétaires de Sites & Marketeurs",
+      "description": "Vos produits et votre contenu deviennent visibles pour ChatGPT, Perplexity et chaque assistant IA de shopping. Aucun changement de code — installez un plugin et laissez les agents IA trouver, comprendre et recommander votre business.",
+      "cta": "Vérifier votre Score"
+    },
+    "developer": {
+      "tag": "Developer",
+      "title": "Développeurs & Équipes Plateforme",
+      "description": "Un SDK typé, la validation CLI et un middleware Express pour ajouter MAKO à n'importe quel stack. Négociation de contenu, embeddings CEF et actions sémantiques — tout conforme à la spec, prêt à l'emploi.",
+      "cta": "Voir sur GitHub"
+    },
+    "ai_builder": {
+      "tag": "AI Builder",
+      "title": "Développeurs d'Agents IA & MCP",
+      "description": "Arrêtez de gaspiller des tokens à parser du HTML. MAKO donne à votre agent un frontmatter structuré, des actions déclarées et des liens sémantiques — avec une requête HEAD qui révèle la pertinence avant le téléchargement.",
+      "cta": "Obtenir le SDK"
+    }
+  },
+  "comparison": {
+    "title": "Compatible avec Votre Stack Existant",
+    "subtitle": "MAKO ne remplace pas les autres standards — il les complète. Chacun résout une partie différente du puzzle de la préparation à l'IA.",
+    "header_standard": "Standard",
+    "header_focus": "Focus",
+    "header_complement": "MAKO ajoute",
+    "items": {
+      "llms_txt": {
+        "name": "llms.txt",
+        "focus": "Instructions au niveau du site pour les LLMs — quoi explorer, quoi ignorer",
+        "complement": "Contenu structuré au niveau de la page avec frontmatter, actions et corps optimisé en tokens"
+      },
+      "schema_org": {
+        "name": "Schema.org",
+        "focus": "Métadonnées structurées pour les moteurs de recherche (JSON-LD, microdata)",
+        "complement": "Contenu lisible complet optimisé pour la consommation par les LLMs, pas seulement des extraits de métadonnées"
+      },
+      "webmcp": {
+        "name": "WebMCP",
+        "focus": "Exposer les outils et capacités du serveur aux agents IA via MCP",
+        "complement": "Le contenu lui-même — produits, articles, docs — dans un format que les agents peuvent lire directement"
+      },
+      "cloudflare_md": {
+        "name": "Cloudflare /md",
+        "focus": "Conversion HTML vers Markdown en edge pour n'importe quelle page",
+        "complement": "Documents sélectionnés, enrichis de frontmatter, avec 60% de tokens en moins que le markdown générique"
+      }
+    }
+  },
+  "score_inline": {
+    "title": "Votre site est-il prêt pour l'IA ?",
+    "subtitle": "Entrez votre URL et obtenez un MAKO Score instantané de 0 à 100.",
+    "placeholder": "https://example.com",
+    "button": "Obtenir votre Score"
+  },
   "ecosystem": {
     "title": "L'Écosystème",
     "subtitle": "Tout ce dont vous avez besoin pour commencer à servir du contenu MAKO aujourd'hui.",
@@ -82,10 +152,17 @@
     "wp_desc": "Plugin WordPress qui génère et sert du contenu MAKO via content negotiation. WooCommerce, AI BYOK et génération en masse."
   },
   "cta": {
-    "title": "Prêt à optimiser pour l'IA ?",
-    "description": "Commencez à servir du contenu optimisé pour les LLMs en minutes. Protocole ouvert, licence Apache-2.0, prêt pour la production.",
-    "primary_button": "Lire la Spec",
-    "secondary_button": "Installer la Bibliothèque"
+    "title": "Commencez à servir du contenu optimisé pour l'IA",
+    "description": "Choisissez votre voie. Protocole ouvert, licence Apache-2.0, prêt pour la production.",
+    "wp_title": "WordPress",
+    "wp_description": "Installez le plugin, activez, c'est fait. Compatible avec WooCommerce, Yoast et ACF.",
+    "wp_button": "Obtenir le Plugin",
+    "dev_title": "Developer",
+    "dev_description": "Ajoutez MAKO à n'importe quel stack avec le SDK TypeScript et les outils CLI.",
+    "dev_install": "npm install @mako-spec/js",
+    "ai_title": "AI Builder",
+    "ai_description": "Créez des agents qui consomment du contenu MAKO. SDK, spec et exemples.",
+    "ai_button": "Lire la Spec"
   },
   "footer": {
     "mit": "Licence Apache-2.0"

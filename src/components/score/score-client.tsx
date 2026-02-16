@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
+import { useSearchParams } from 'next/navigation';
 import { FadeIn } from '@/components/fade-in';
 import { ScoreForm } from './score-form';
 import { ScoreResults } from './score-results';
@@ -9,6 +10,8 @@ import type { ScoreResult } from '@/lib/scorer/types';
 
 export function ScoreClient() {
   const t = useTranslations('score');
+  const searchParams = useSearchParams();
+  const initialUrl = searchParams.get('url') || undefined;
   const [result, setResult] = useState<ScoreResult | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -33,6 +36,7 @@ export function ScoreClient() {
             onResult={setResult}
             loading={loading}
             setLoading={setLoading}
+            initialUrl={initialUrl}
           />
         </div>
       </FadeIn>

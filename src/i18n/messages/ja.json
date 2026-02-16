@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "MAKO — Markdown Agent Knowledge Optimization",
-    "description": "LLM最適化Webコンテンツを提供するオープンプロトコル。HTMLより93%少ないトークン。CEFエンベディング、アクション、スマートリンクを備えたAIエージェント向けセマンティック構造。"
+    "title": "MAKO — AIエージェントにあなたのビジネスを理解させよう",
+    "description": "WebページをAIエージェント向けに最適化されたMarkdownに変換するオープンプロトコル。トークン93%削減。llms.txt、Schema.org、WebMCPと併用可能。"
   },
   "nav": {
     "spec": "仕様",
@@ -14,12 +14,18 @@
   },
   "hero": {
     "badge": "オープンプロトコル v1.0",
-    "title_line1": "93%少ないトークン",
-    "title_line2": "AIエージェント向け",
-    "subtitle": "MAKOはWebコンテンツをLLM最適化Markdownに変換するオープンプロトコルです。セマンティックフロントマター、コンパクトエンベディング、宣言的アクション — AIエージェントがWebを効率的に読むために。",
-    "install": "npm install @mako-spec/js",
-    "cta_spec": "仕様を読む",
-    "cta_github": "GitHubで見る"
+    "title_line1": "AIエージェントに",
+    "title_line2": "あなたのビジネスを理解させよう",
+    "subtitle": "あなたのWebサイトはHTMLで書かれています — AIエージェントはそれを理解できません。MAKOは、すべてのページに構造化されたトークン効率の高いバージョンを提供し、LLMが本当に理解できるようにするオープンプロトコルです。",
+    "cta_score": "スコアをチェック",
+    "cta_spec": "仕様を読む"
+  },
+  "problem": {
+    "title": "Webは人間のために設計された",
+    "subtitle": "AIエージェントがあなたのサイトを訪問すると、ナビゲーションバー、Cookieバナー、広告スクリプト、何千行ものマークアップをダウンロードします — たった1つの商品名と価格を見つけるためだけに。",
+    "stat_value": "181 KB",
+    "stat_label": "AIエージェントが解析しなければならない平均ページサイズ",
+    "stat_detail": "1つの商品を理解する前に4,125トークンを消費"
   },
   "how_it_works": {
     "title": "仕組み",
@@ -37,6 +43,13 @@
   "benchmark": {
     "title": "トークン効率",
     "subtitle": "同じ商品ページの異なるフォーマットでの実際の比較。",
+    "before_title": "現在エージェントが受け取るもの",
+    "before_size": "181 KB",
+    "before_tokens": "4,125トークン",
+    "after_title": "MAKOを使うと",
+    "after_size": "3 KB",
+    "after_tokens": "276トークン",
+    "result_label": "トークン消費の削減",
     "html_label": "生HTML",
     "cf_label": "Markdown (CF)",
     "mako_label": "MAKO",
@@ -69,6 +82,63 @@
       }
     }
   },
+  "audience": {
+    "title": "誰が恩恵を受けるか",
+    "subtitle": "MAKOは、あなたのコンテンツとそれを理解しようとするAIエージェントとの間のギャップを埋めます。",
+    "business": {
+      "tag": "ビジネス",
+      "title": "サイトオーナー＆マーケター",
+      "description": "あなたの商品やコンテンツがChatGPT、Perplexity、あらゆるAIショッピングアシスタントから見えるようになります。コード変更は不要 — プラグインをインストールするだけで、AIエージェントがあなたのビジネスを見つけ、理解し、推薦します。",
+      "cta": "スコアをチェック"
+    },
+    "developer": {
+      "tag": "開発者",
+      "title": "開発者＆プラットフォームチーム",
+      "description": "型付きSDK、CLIバリデーション、Expressミドルウェアで、あらゆるスタックにMAKOを追加。コンテンツネゴシエーション、CEFエンベディング、セマンティックアクション — すべて仕様準拠で即利用可能。",
+      "cta": "GitHubで見る"
+    },
+    "ai_builder": {
+      "tag": "AIビルダー",
+      "title": "AIエージェント＆MCP開発者",
+      "description": "HTMLの解析にトークンを浪費するのはやめましょう。MAKOは構造化フロントマター、宣言的アクション、セマンティックリンクをエージェントに提供 — HEADリクエストでダウンロード前に関連性を確認できます。",
+      "cta": "SDKを入手"
+    }
+  },
+  "comparison": {
+    "title": "既存スタックと併用可能",
+    "subtitle": "MAKOは他の標準を置き換えるのではなく、補完します。それぞれがAI対応パズルの異なる部分を解決します。",
+    "header_standard": "標準",
+    "header_focus": "フォーカス",
+    "header_complement": "MAKOが追加するもの",
+    "items": {
+      "llms_txt": {
+        "name": "llms.txt",
+        "focus": "LLM向けのサイトレベルの指示 — 何をクロールし、何をスキップするか",
+        "complement": "フロントマター、アクション、トークン効率の高いボディを備えたページレベルの構造化コンテンツ"
+      },
+      "schema_org": {
+        "name": "Schema.org",
+        "focus": "検索エンジン向けの構造化メタデータ（JSON-LD、microdata）",
+        "complement": "メタデータスニペットだけでなく、LLM消費に最適化された完全な可読コンテンツ"
+      },
+      "webmcp": {
+        "name": "WebMCP",
+        "focus": "MCPを通じてAIエージェントにサーバーツールと機能を公開",
+        "complement": "コンテンツそのもの — 商品、記事、ドキュメント — をエージェントが直接読めるフォーマットで"
+      },
+      "cloudflare_md": {
+        "name": "Cloudflare /md",
+        "focus": "あらゆるページのHTML-to-Markdown変換をエッジで実行",
+        "complement": "汎用Markdownより60%少ないトークンの、厳選されたフロントマター付きドキュメント"
+      }
+    }
+  },
+  "score_inline": {
+    "title": "あなたのサイトのAI対応度は？",
+    "subtitle": "URLを入力して、0から100のMAKOスコアを即座に取得。",
+    "placeholder": "https://example.com",
+    "button": "スコアを取得"
+  },
   "ecosystem": {
     "title": "エコシステム",
     "subtitle": "今日からMAKOコンテンツの提供を開始するために必要なすべて。",
@@ -82,10 +152,17 @@
     "wp_desc": "コンテントネゴシエーションでMAKOコンテンツを生成・配信するWordPressプラグイン。WooCommerce、AI BYOK、一括生成対応。"
   },
   "cta": {
-    "title": "AI向けに最適化する準備はできましたか？",
-    "description": "数分でLLM最適化コンテンツの提供を開始。オープンプロトコル、Apache-2.0ライセンス、本番環境対応。",
-    "primary_button": "仕様を読む",
-    "secondary_button": "ライブラリをインストール"
+    "title": "AI最適化コンテンツの配信を始めよう",
+    "description": "あなたに合った方法を選択。オープンプロトコル、Apache-2.0ライセンス、本番環境対応。",
+    "wp_title": "WordPress",
+    "wp_description": "プラグインをインストールして有効化するだけ。WooCommerce、Yoast、ACFに対応。",
+    "wp_button": "プラグインを入手",
+    "dev_title": "開発者",
+    "dev_description": "TypeScript SDKとCLIツールで、あらゆるスタックにMAKOを追加。",
+    "dev_install": "npm install @mako-spec/js",
+    "ai_title": "AIビルダー",
+    "ai_description": "MAKOコンテンツを利用するエージェントを構築。SDK、仕様、サンプル完備。",
+    "ai_button": "仕様を読む"
   },
   "footer": {
     "mit": "Apache-2.0ライセンス"

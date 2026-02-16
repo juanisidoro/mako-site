@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 
 import type { ScoreResult } from '@/lib/scorer/types';
@@ -9,25 +9,26 @@ interface ScoreFormProps {
   onResult: (result: ScoreResult) => void;
   loading: boolean;
   setLoading: (loading: boolean) => void;
+  initialUrl?: string;
 }
 
-export function ScoreForm({ onResult, loading, setLoading }: ScoreFormProps) {
+export function ScoreForm({ onResult, loading, setLoading, initialUrl }: ScoreFormProps) {
   const t = useTranslations('score');
-  const [url, setUrl] = useState('');
+  const [url, setUrl] = useState(initialUrl || '');
   const [isPublic, setIsPublic] = useState(true);
   const [error, setError] = useState('');
+  const autoSubmitted = useRef(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const doSubmit = async (submitUrl: string) => {
     setError('');
 
-    if (!url.trim()) {
+    if (!submitUrl.trim()) {
       setError(t('errors.url_required'));
       return;
     }
 
     try {
-      new URL(url);
+      new URL(submitUrl);
     } catch {
       setError(t('errors.invalid_url'));
       return;
@@ -39,7 +40,7 @@ export function ScoreForm({ onResult, loading, setLoading }: ScoreFormProps) {
       const res = await fetch('/api/score', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ url, isPublic }),
+        body: JSON.stringify({ url: submitUrl, isPublic }),
       });
 
       if (!res.ok) {
@@ -57,6 +58,21 @@ export function ScoreForm({ onResult, loading, setLoading }: ScoreFormProps) {
       setLoading(false);
     }
   };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    await doSubmit(url);
+  };
+
+  // Auto-submit when initialUrl is provided
+  useEffect(() => {
+    if (initialUrl && !autoSubmitted.current) {
+      autoSubmitted.current = true;
+      setUrl(initialUrl);
+      doSubmit(initialUrl);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [initialUrl]);
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">

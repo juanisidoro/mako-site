@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "MAKO — Markdown Agent Knowledge Optimization",
-    "description": "为LLM优化网页内容的开放协议。比HTML减少93%的token。为AI代理提供语义结构，包含CEF嵌入、操作和智能链接。"
+    "title": "MAKO — 让AI代理理解你的业务",
+    "description": "将网页转换为AI代理优化的Markdown的开放协议。减少93%的token。与llms.txt、Schema.org和WebMCP协同工作。"
   },
   "nav": {
     "spec": "规范",
@@ -14,12 +14,18 @@
   },
   "hero": {
     "badge": "开放协议 v1.0",
-    "title_line1": "减少93%的token",
-    "title_line2": "为AI代理而生",
-    "subtitle": "MAKO是一个开放协议，将网页内容转换为LLM优化的Markdown。语义前置数据、紧凑嵌入和声明式操作——让AI代理高效阅读网络。",
-    "install": "npm install @mako-spec/js",
-    "cta_spec": "阅读规范",
-    "cta_github": "在GitHub查看"
+    "title_line1": "让AI代理",
+    "title_line2": "理解你的业务",
+    "subtitle": "你的网站用HTML表达——AI代理却无法理解。MAKO是一个开放协议，为每个页面提供结构化、高效利用token的版本，让LLM真正读懂。",
+    "cta_score": "查看你的评分",
+    "cta_spec": "阅读规范"
+  },
+  "problem": {
+    "title": "互联网是为人类设计的",
+    "subtitle": "当AI代理访问你的网站时，它需要下载导航栏、Cookie横幅、广告脚本和数千行标记——只是为了找到一个产品名称和价格。",
+    "stat_value": "181 KB",
+    "stat_label": "AI代理需要解析的平均页面大小",
+    "stat_detail": "在理解一个产品之前已消耗4,125个token"
   },
   "how_it_works": {
     "title": "工作原理",
@@ -37,6 +43,13 @@
   "benchmark": {
     "title": "Token效率",
     "subtitle": "同一产品页面在不同格式下的真实对比。",
+    "before_title": "代理目前获取的内容",
+    "before_size": "181 KB",
+    "before_tokens": "4,125 tokens",
+    "after_title": "使用MAKO之后",
+    "after_size": "3 KB",
+    "after_tokens": "276 tokens",
+    "result_label": "token消耗减少",
     "html_label": "原始HTML",
     "cf_label": "Markdown (CF)",
     "mako_label": "MAKO",
@@ -69,23 +82,87 @@
       }
     }
   },
+  "audience": {
+    "title": "谁能受益",
+    "subtitle": "MAKO弥合了你的内容与试图理解它的AI代理之间的差距。",
+    "business": {
+      "tag": "商业",
+      "title": "网站所有者与营销人员",
+      "description": "你的产品和内容将被ChatGPT、Perplexity以及所有AI购物助手发现。无需代码改动——安装插件，让AI代理找到、理解并推荐你的业务。",
+      "cta": "查看你的评分"
+    },
+    "developer": {
+      "tag": "开发者",
+      "title": "开发者与平台团队",
+      "description": "类型化SDK、CLI验证和Express中间件，将MAKO集成到任何技术栈。内容协商、CEF嵌入和语义操作——全部符合规范，开箱即用。",
+      "cta": "在GitHub查看"
+    },
+    "ai_builder": {
+      "tag": "AI构建者",
+      "title": "AI代理与MCP开发者",
+      "description": "不要再浪费token解析HTML了。MAKO为你的代理提供结构化前置数据、声明式操作和语义链接——通过HEAD请求即可在下载前判断相关性。",
+      "cta": "获取SDK"
+    }
+  },
+  "comparison": {
+    "title": "与你现有的技术栈协同工作",
+    "subtitle": "MAKO不替代其他标准——而是互补。每种方案解决AI就绪性中的不同部分。",
+    "header_standard": "标准",
+    "header_focus": "关注点",
+    "header_complement": "MAKO补充",
+    "items": {
+      "llms_txt": {
+        "name": "llms.txt",
+        "focus": "面向LLM的站点级指令——抓取什么、跳过什么",
+        "complement": "页面级结构化内容，包含前置数据、操作和高效利用token的正文"
+      },
+      "schema_org": {
+        "name": "Schema.org",
+        "focus": "面向搜索引擎的结构化元数据（JSON-LD、微数据）",
+        "complement": "为LLM消费优化的完整可读内容，而不仅仅是元数据片段"
+      },
+      "webmcp": {
+        "name": "WebMCP",
+        "focus": "通过MCP向AI代理暴露服务器工具和能力",
+        "complement": "内容本身——产品、文章、文档——以代理可直接读取的格式呈现"
+      },
+      "cloudflare_md": {
+        "name": "Cloudflare /md",
+        "focus": "在边缘将任意页面的HTML转换为Markdown",
+        "complement": "精心策划的、富含前置数据的文档，比通用markdown减少60%的token"
+      }
+    }
+  },
+  "score_inline": {
+    "title": "你的网站对AI的准备程度如何？",
+    "subtitle": "输入你的URL，即刻获取0到100的MAKO评分。",
+    "placeholder": "https://example.com",
+    "button": "获取你的评分"
+  },
   "ecosystem": {
     "title": "生态系统",
     "subtitle": "今天开始提供MAKO内容所需的一切。",
-    "spec_title": "MAKO规范",
-    "spec_desc": "完整的协议规范。内容类型、前置数据架构、HTTP头、合规级别和CEF标准。",
+    "wp_title": "MAKO for WordPress",
+    "wp_desc": "通过内容协商生成和提供MAKO内容的WordPress插件。支持WooCommerce、AI BYOK和批量生成。",
     "js_title": "@mako-spec/js",
     "js_desc": "用于解析、生成和验证MAKO文件的TypeScript库。包含CEF编码/解码和Express中间件。",
     "cli_title": "MAKO CLI",
     "cli_desc": "用于验证、检查和基准测试MAKO文件的命令行工具。",
-    "wp_title": "MAKO WordPress插件",
-    "wp_desc": "通过内容协商生成和提供MAKO内容的WordPress插件。支持WooCommerce、AI BYOK和批量生成。"
+    "spec_title": "MAKO规范",
+    "spec_desc": "完整的协议规范。内容类型、前置数据架构、HTTP头、合规级别和CEF标准。"
   },
   "cta": {
-    "title": "准备好为AI优化了吗？",
-    "description": "几分钟内开始提供LLM优化的内容。开放协议，Apache-2.0许可证，可用于生产环境。",
-    "primary_button": "阅读规范",
-    "secondary_button": "安装库"
+    "title": "开始提供AI优化的内容",
+    "description": "选择你的路径。开放协议，Apache-2.0许可证，可用于生产环境。",
+    "wp_title": "WordPress",
+    "wp_description": "安装插件，激活，完成。兼容WooCommerce、Yoast和ACF。",
+    "wp_button": "获取插件",
+    "dev_title": "开发者",
+    "dev_description": "使用TypeScript SDK和CLI工具将MAKO集成到任何技术栈。",
+    "dev_install": "npm install @mako-spec/js",
+    "ai_title": "AI构建者",
+    "ai_description": "构建消费MAKO内容的代理。SDK、规范和示例。",
+    "ai_button": "阅读规范"
   },
   "footer": {
     "mit": "Apache-2.0许可证"

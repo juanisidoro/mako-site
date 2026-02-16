@@ -1,9 +1,12 @@
 import { setRequestLocale } from 'next-intl/server';
 import { Hero } from '@/components/hero';
-import { HowItWorks } from '@/components/how-it-works';
+import { Problem } from '@/components/problem';
 import { Benchmark } from '@/components/benchmark';
+import { AudienceBenefits } from '@/components/audience-benefits';
+import { Comparison } from '@/components/comparison';
+import { ScoreInline } from '@/components/score-inline';
+import { HowItWorks } from '@/components/how-it-works';
 import { ProtocolPreview } from '@/components/protocol-preview';
-import { Features } from '@/components/features';
 import { Ecosystem } from '@/components/ecosystem';
 import { CtaSection } from '@/components/cta-section';
 import { Footer } from '@/components/footer';
@@ -19,10 +22,13 @@ export default async function HomePage({
   return (
     <main>
       <Hero />
-      <HowItWorks />
+      <Problem />
       <Benchmark />
+      <AudienceBenefits />
+      <Comparison />
+      <ScoreInline />
+      <HowItWorks />
       <ProtocolPreview />
-      <Features />
       <Ecosystem />
       <CtaSection />
       <Footer />
