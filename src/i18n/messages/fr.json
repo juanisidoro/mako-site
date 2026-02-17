@@ -55,17 +55,17 @@
     "layer_discovery": {
       "title": "Découverte",
       "question": "Comment l'agent sait-il que votre site supporte MAKO ?",
-      "description": "Avant toute chose, l'agent doit découvrir que votre site parle MAKO. Le endpoint .well-known/mako fournit un manifeste lisible par machine des URLs compatibles MAKO, des fonctionnalités supportées et de la méthode de négociation. Cela remplace le crawling aveugle par une découverte intentionnelle."
+      "description": "MAKO propose trois mécanismes de découverte : le endpoint .well-known/mako déclare les capacités au niveau du site, la balise <link rel=\"alternate\"> signale le support au niveau de la page, et l'élément <script type=\"text/mako+markdown\"> intègre le contenu MAKO directement dans le HTML. Ensemble, ils remplacent le crawling aveugle par une découverte intentionnelle."
     },
     "layer_prefilter": {
       "title": "Pré-filtrage",
       "question": "Comment l'agent décide-t-il si votre page est pertinente — avant de la télécharger ?",
-      "description": "Une requête HEAD légère retourne des en-têtes X-Mako-* avec les métadonnées : nombre de tokens, type de contenu, nom d'entité, langue et un ETag. L'agent sait maintenant tout ce qu'il faut pour décider de la pertinence — sans transférer un seul octet de contenu."
+      "description": "Une requête HEAD légère retourne des en-têtes de réponse classifiés selon RFC 2119 : en-têtes requis (MUST) comme version, type, tokens et langue ; en-têtes recommandés (SHOULD) comme ETag et Cache-Control pour la mise en cache ; et en-têtes optionnels (MAY) comme les actions déclarées. L'agent sait tout ce qu'il faut pour décider de la pertinence — sans transférer un seul octet de contenu."
     },
     "layer_content": {
       "title": "Contenu",
       "question": "Que reçoit réellement l'agent ?",
-      "description": "Une requête GET avec l'en-tête Accept MAKO retourne un document structuré : frontmatter YAML avec métadonnées typées, suivi d'un corps markdown propre. 245 tokens au lieu de 4 125 — une réduction de 94%. Chaque champ est défini par la spec : type, entité, résumé, actions, liens."
+      "description": "Une requête GET avec l'en-tête Accept MAKO retourne un document structuré : frontmatter YAML avec métadonnées typées, suivi d'un corps markdown propre. 245 tokens au lieu de 4 125 — une réduction de 94%. Alternativement, les agents peuvent extraire le contenu MAKO directement d'une balise <script> dans le HTML — sans négociation de contenu nécessaire."
     },
     "layer_navigation": {
       "title": "Navigation",

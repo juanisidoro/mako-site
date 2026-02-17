@@ -55,17 +55,17 @@
     "layer_discovery": {
       "title": "Entdeckung",
       "question": "Wie erkennt der Agent, dass Ihre Website MAKO unterstützt?",
-      "description": "Zuallererst muss der Agent entdecken, dass Ihre Website MAKO spricht. Der .well-known/mako-Endpoint liefert ein maschinenlesbares Manifest der MAKO-fähigen URLs, unterstützten Features und Verhandlungsmethode. Das ersetzt blindes Crawling durch gezielte Entdeckung."
+      "description": "MAKO bietet drei Entdeckungsmechanismen: Der .well-known/mako-Endpoint deklariert Capabilities auf Site-Ebene, das <link rel=\"alternate\">-Tag signalisiert Unterstützung auf Seitenebene, und das <script type=\"text/mako+markdown\">-Element bettet MAKO-Inhalte direkt in HTML ein. Zusammen ersetzen sie blindes Crawling durch gezielte Entdeckung."
     },
     "layer_prefilter": {
       "title": "Vorfilter",
       "question": "Wie entscheidet der Agent, ob Ihre Seite relevant ist — bevor er sie herunterlädt?",
-      "description": "Eine leichte HEAD-Anfrage liefert X-Mako-*-Header mit Metadaten: Token-Anzahl, Inhaltstyp, Entitätsname, Sprache und einen ETag. Der Agent weiß jetzt alles, was er für die Relevanzentscheidung braucht — ohne ein einziges Byte Inhalt zu übertragen."
+      "description": "Eine leichte HEAD-Anfrage liefert Response-Header, klassifiziert nach RFC 2119: erforderliche Header (MUST) wie Version, Typ, Tokens und Sprache; empfohlene Header (SHOULD) wie ETag und Cache-Control für Caching; und optionale Header (MAY) wie deklarierte Aktionen. Der Agent weiß alles, was er für die Relevanzentscheidung braucht — ohne ein einziges Byte Inhalt zu übertragen."
     },
     "layer_content": {
       "title": "Inhalt",
       "question": "Was erhält der Agent tatsächlich?",
-      "description": "Eine GET-Anfrage mit dem MAKO-Accept-Header liefert ein strukturiertes Dokument: YAML-Frontmatter mit typisierten Metadaten, gefolgt von einem sauberen Markdown-Body. 245 Tokens statt 4.125 — eine Reduzierung um 94%. Jedes Feld ist spec-definiert: Typ, Entität, Zusammenfassung, Aktionen, Links."
+      "description": "Eine GET-Anfrage mit dem MAKO-Accept-Header liefert ein strukturiertes Dokument: YAML-Frontmatter mit typisierten Metadaten, gefolgt von einem sauberen Markdown-Body. 245 Tokens statt 4.125 — eine Reduzierung um 94%. Alternativ können Agenten MAKO-Inhalte direkt aus einem <script>-Tag im HTML extrahieren — ohne Content-Negotiation."
     },
     "layer_navigation": {
       "title": "Navigation",

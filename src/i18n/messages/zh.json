@@ -55,17 +55,17 @@
     "layer_discovery": {
       "title": "发现",
       "question": "代理如何知道你的网站支持MAKO？",
-      "description": "首先，代理需要发现你的网站支持MAKO。.well-known/mako端点提供了一个机器可读的清单，包含MAKO启用的URL、支持的功能和协商方法。这用有意的发现取代了盲目爬取。"
+      "description": "MAKO提供三种发现机制：.well-known/mako端点声明站点级能力，<link rel=\"alternate\">标签标示页面级支持，<script type=\"text/mako+markdown\">元素将MAKO内容直接嵌入HTML。三者共同用有意的发现取代盲目爬取。"
     },
     "layer_prefilter": {
       "title": "预过滤",
       "question": "代理如何在下载之前判断你的页面是否相关？",
-      "description": "一个轻量的HEAD请求返回X-Mako-*头，包含元数据：token数量、内容类型、实体名称、语言和ETag。代理现在知道判断相关性所需的一切——而无需传输一个字节的内容。"
+      "description": "一个轻量的HEAD请求返回按RFC 2119分类的响应头：必需头部（MUST）如版本、类型、token数和语言；推荐头部（SHOULD）如ETag和Cache-Control用于缓存；可选头部（MAY）如声明的操作。代理知道判断相关性所需的一切——而无需传输一个字节的内容。"
     },
     "layer_content": {
       "title": "内容",
       "question": "代理实际收到什么？",
-      "description": "带有MAKO Accept头的GET请求返回结构化文档：带有类型化元数据的YAML前置数据，后跟干净的markdown正文。245个token而非4,125个——减少94%。每个字段都在规范中定义：类型、实体、摘要、操作、链接。"
+      "description": "带有MAKO Accept头的GET请求返回结构化文档：带有类型化元数据的YAML前置数据，后跟干净的markdown正文。245个token而非4,125个——减少94%。另外，代理也可以直接从HTML的<script>标签中提取MAKO内容——无需内容协商。"
     },
     "layer_navigation": {
       "title": "导航",

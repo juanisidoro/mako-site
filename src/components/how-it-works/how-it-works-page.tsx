@@ -7,38 +7,40 @@ import { FadeIn } from '@/components/fade-in';
 
 const CODE_WITHOUT: Record<string, { filename: string; code: string }> = {
   discovery: {
-    filename: 'Traditional discovery',
-    code: `GET / HTTP/1.1
-Host: example.com
+    filename: 'No discovery mechanism',
+    code: `# How does an agent know if a site has
+# AI-optimized content?
+
+GET / HTTP/1.1
 Accept: text/html
 
 HTTP/1.1 200 OK
 Content-Type: text/html; charset=utf-8
 Content-Length: 187429
 
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Example Store</title>
-  <!-- 47 scripts, 12 stylesheets... -->
-</head>
-<body>
-  <!-- 4,125 tokens of HTML to parse -->
-</body>
-</html>`,
+# No signal for AI-optimized content
+# No capability declaration
+# Agent must download and parse HTML
+# to understand anything about the site`,
   },
   prefilter: {
-    filename: 'No pre-filtering available',
-    code: `# Agent must download the full page
-# to determine if it's relevant
-
-GET /products/running-shoes HTTP/1.1
+    filename: 'HEAD returns no semantic info',
+    code: `HEAD /products/running-shoes HTTP/1.1
+Host: example.com
 Accept: text/html
 
-# Downloads 187 KB...
-# Parses 4,125 tokens...
-# Determines: "not relevant to user query"
-# Wasted: 4,125 tokens + 340ms`,
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=utf-8
+Content-Length: 187429
+Last-Modified: Mon, 10 Feb 2026 09:00:00 GMT
+
+# Agent knows: it's HTML, 187 KB
+# Agent does NOT know:
+#   - What type of content (product? blog?)
+#   - How many tokens to process
+#   - What language
+#   - What entity this page is about
+# Must download full page to decide relevance`,
   },
   content: {
     filename: 'Raw HTML content',
@@ -106,19 +108,28 @@ Content-Length: 187429
 
 const CODE_WITH: Record<string, { filename: string; code: string }> = {
   discovery: {
-    filename: '.well-known/mako',
-    code: `GET /.well-known/mako HTTP/1.1
-Host: example.com
-
-HTTP/1.1 200 OK
-Content-Type: application/json
+    filename: '3 discovery mechanisms',
+    code: `# 1. Site-level: /.well-known/mako
+GET /.well-known/mako HTTP/1.1
 
 {
   "mako": "1.0",
-  "endpoints": ["/products/*", "/blog/*"],
-  "negotiation": "content-type",
-  "features": ["actions", "embedding", "media"]
-}`,
+  "site": "example.com",
+  "accept": "text/mako+markdown",
+  "features": {
+    "content_negotiation": true,
+    "html_embedding": true
+  },
+  "spec": "https://makospec.vercel.app"
+}
+
+# 2. Page-level: HTML <link> element
+<link rel="alternate"
+      type="text/mako+markdown">
+
+# 3. Embedded: HTML <script> element
+<script type="text/mako+markdown"
+        id="mako">`,
   },
   prefilter: {
     filename: 'HEAD with MAKO headers',
@@ -127,16 +138,26 @@ Host: example.com
 Accept: text/mako+markdown
 
 HTTP/1.1 200 OK
+
+# MUST — required for valid MAKO response
+Content-Type: text/mako+markdown
 X-Mako-Version: 1.0
 X-Mako-Type: product
 X-Mako-Tokens: 245
-X-Mako-Entity: Running Shoes Pro
 X-Mako-Lang: en
-ETag: "a1b2c3"
+Vary: Accept
+
+# SHOULD — standard HTTP caching & context
+ETag: "mako-a1b2c3"
 Cache-Control: public, max-age=3600
+Last-Modified: Sat, 15 Feb 2026 10:00:00 GMT
+Content-Location: /products/running-shoes
+
+# MAY — advanced agent capabilities
+X-Mako-Actions: add_to_cart, check_availability
 
 # 0 bytes transferred
-# Agent knows: product, 245 tokens, English`,
+# Agent knows: product, 245 tokens, en`,
   },
   content: {
     filename: 'MAKO response (245 tokens)',
@@ -166,7 +187,10 @@ mesh upper.
 
 **Price:** $129.99
 **Sizes:** 7-13
-**Colors:** Black, White, Red`,
+**Colors:** Black, White, Red
+
+# Alternative: extract from HTML <script>
+# without content negotiation (Section 6.4)`,
   },
   navigation: {
     filename: 'Semantic links in frontmatter',
@@ -329,7 +353,7 @@ export function HowItWorksPage() {
                     </td>
                     <td className="py-3">
                       <code className="text-xs text-slate-300">
-                        X-Mako-Version, X-Mako-Type, X-Mako-Tokens, X-Mako-Lang
+                        Content-Type, X-Mako-Version, X-Mako-Tokens, X-Mako-Type, X-Mako-Lang, Vary
                       </code>
                     </td>
                   </tr>
@@ -342,7 +366,7 @@ export function HowItWorksPage() {
                     </td>
                     <td className="py-3">
                       <code className="text-xs text-slate-300">
-                        X-Mako-Entity, X-Mako-Updated, X-Mako-Canonical, ETag
+                        ETag, Cache-Control, Last-Modified, Content-Location
                       </code>
                     </td>
                   </tr>
@@ -355,7 +379,7 @@ export function HowItWorksPage() {
                     </td>
                     <td className="py-3">
                       <code className="text-xs text-slate-300">
-                        X-Mako-Embedding, Cache-Control
+                        X-Mako-Actions, X-Mako-Embedding, X-Mako-Embedding-Model, X-Mako-Embedding-Dim
                       </code>
                     </td>
                   </tr>
