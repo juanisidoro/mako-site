@@ -10,7 +10,8 @@
     "docs": "Docs",
     "menu": "Menu",
     "analyzer": "Analyzer",
-    "score": "Score"
+    "score": "Score",
+    "how_it_works": "How It Works"
   },
   "hero": {
     "badge": "Open Protocol v1.0",
@@ -29,16 +30,66 @@
   },
   "how_it_works": {
     "title": "How It Works",
-    "subtitle": "Three-step content negotiation that's fully backwards-compatible with existing HTTP infrastructure.",
-    "step1_title": "1. HEAD Request",
-    "step1_desc": "The agent sends a HEAD request with the MAKO Accept header. The server responds with X-Mako-* headers including token count, content type, and the CEF embedding.",
-    "step1_code": "HEAD /product/nike-air-max-90 HTTP/1.1\nAccept: text/mako+markdown",
-    "step2_title": "2. Check Relevance",
-    "step2_desc": "The agent decodes the compact CEF embedding from the header (only ~470 bytes) and checks cosine similarity against the user's query. No need to download the full content yet.",
-    "step2_code": "X-Mako-Embedding: gAAAA...(470 bytes)\nX-Mako-Tokens: 276\nX-Mako-Type: product",
-    "step3_title": "3. GET Content",
-    "step3_desc": "If relevant, the agent fetches the full MAKO document — structured Markdown with frontmatter, actions, and semantic links. Just 276 tokens instead of 4,125 from raw HTML.",
-    "step3_code": "GET /product/nike-air-max-90 HTTP/1.1\nAccept: text/mako+markdown"
+    "subtitle": "A 6-layer architecture that turns any website into an AI-optimized endpoint — built entirely on standard HTTP.",
+    "layer_discovery_title": "Discovery",
+    "layer_discovery_desc": "The agent finds which URLs support MAKO via .well-known/mako, link tags, or llms.txt.",
+    "layer_prefilter_title": "Pre-filter",
+    "layer_prefilter_desc": "A HEAD request returns metadata headers — token count, type, entity — without downloading the body.",
+    "layer_content_title": "Content",
+    "layer_content_desc": "The full MAKO document: structured frontmatter + clean markdown body in ~94% fewer tokens.",
+    "layer_navigation_title": "Navigation",
+    "layer_navigation_desc": "Semantic links with context let agents navigate your site with purpose, not blind crawling.",
+    "layer_action_title": "Actions",
+    "layer_action_desc": "Machine-readable CTAs (buy, subscribe, book) with endpoints and parameters — no JavaScript needed.",
+    "layer_cache_title": "Cache",
+    "layer_cache_desc": "ETags and conditional requests let agents check for changes without re-downloading content.",
+    "cta_learn_more": "Explore the 6 layers"
+  },
+  "how_it_works_page": {
+    "meta_title": "How It Works — MAKO Protocol Layers",
+    "meta_description": "Deep dive into the 6 layers of the MAKO protocol: Discovery, Pre-filter, Content, Navigation, Actions, and Cache.",
+    "title": "How It Works",
+    "subtitle": "6 layers that transform how AI agents interact with your website — all built on standard HTTP.",
+    "without_mako": "Without MAKO",
+    "with_mako": "With MAKO",
+    "layer_discovery": {
+      "title": "Discovery",
+      "question": "How does the agent know your site supports MAKO?",
+      "description": "Before anything else, the agent needs to discover that your site speaks MAKO. The .well-known/mako endpoint provides a machine-readable manifest of MAKO-enabled URLs, supported features, and negotiation method. This replaces blind crawling with intentional discovery."
+    },
+    "layer_prefilter": {
+      "title": "Pre-filter",
+      "question": "How does the agent decide if your page is relevant — before downloading it?",
+      "description": "A lightweight HEAD request returns X-Mako-* headers with metadata: token count, content type, entity name, language, and an ETag. The agent now knows everything it needs to decide relevance — without transferring a single byte of content."
+    },
+    "layer_content": {
+      "title": "Content",
+      "question": "What does the agent actually receive?",
+      "description": "A GET request with the MAKO Accept header returns a structured document: YAML frontmatter with typed metadata, followed by a clean markdown body. 245 tokens instead of 4,125 — a 94% reduction. Every field is spec-defined: type, entity, summary, actions, links."
+    },
+    "layer_navigation": {
+      "title": "Navigation",
+      "question": "How does the agent explore related content?",
+      "description": "Instead of parsing 127 links from HTML (most irrelevant), the MAKO frontmatter declares semantic links with context descriptions. The agent knows that /products/running-socks are 'Matching performance socks' — not just another URL to blindly crawl."
+    },
+    "layer_action": {
+      "title": "Actions",
+      "question": "How does the agent interact with your site?",
+      "description": "MAKO declares machine-readable actions in the frontmatter: add_to_cart, check_availability, notify_restock — each with a URL, method, and parameters. The agent can execute these actions directly, without parsing HTML forms or executing JavaScript."
+    },
+    "layer_cache": {
+      "title": "Cache",
+      "question": "How does the agent avoid re-downloading unchanged content?",
+      "description": "MAKO responses include ETag and Cache-Control headers. On subsequent visits, the agent sends a conditional GET with If-None-Match. If the content hasn't changed, the server returns 304 Not Modified — zero bytes transferred, zero tokens processed."
+    },
+    "annex_title": "Annex: RFC 2119 Header Classification",
+    "annex_subtitle": "MAKO headers follow RFC 2119 keywords to define conformance requirements.",
+    "annex_classification": "Classification",
+    "annex_rfc_keyword": "RFC Keyword",
+    "annex_headers": "Headers",
+    "annex_required": "Required",
+    "annex_recommended": "Recommended",
+    "annex_optional": "Optional"
   },
   "benchmark": {
     "title": "Token Efficiency",

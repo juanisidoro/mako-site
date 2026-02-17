@@ -10,7 +10,8 @@
     "docs": "ドキュメント",
     "menu": "メニュー",
     "analyzer": "アナライザー",
-    "score": "スコア"
+    "score": "スコア",
+    "how_it_works": "仕組み"
   },
   "hero": {
     "badge": "オープンプロトコル v1.0",
@@ -29,16 +30,66 @@
   },
   "how_it_works": {
     "title": "仕組み",
-    "subtitle": "既存のHTTPインフラと完全に互換性のある3ステップのコンテンツネゴシエーション。",
-    "step1_title": "1. HEADリクエスト",
-    "step1_desc": "エージェントがMAKO Acceptヘッダー付きのHEADリクエストを送信。サーバーはトークン数、コンテンツタイプ、CEFエンベディングを含むX-Mako-*ヘッダーで応答します。",
-    "step1_code": "HEAD /product/nike-air-max-90 HTTP/1.1\nAccept: text/mako+markdown",
-    "step2_title": "2. 関連性チェック",
-    "step2_desc": "エージェントがヘッダーからコンパクトなCEFエンベディング（約470バイト）をデコードし、ユーザークエリとのコサイン類似度を計算。フルコンテンツのダウンロード不要。",
-    "step2_code": "X-Mako-Embedding: gAAAA...(470 bytes)\nX-Mako-Tokens: 276\nX-Mako-Type: product",
-    "step3_title": "3. コンテンツ取得",
-    "step3_desc": "関連性がある場合、エージェントはMAKOドキュメント全体を取得 — フロントマター、アクション、セマンティックリンクを含む構造化Markdown。生HTMLの4,125トークンの代わりにわずか276トークン。",
-    "step3_code": "GET /product/nike-air-max-90 HTTP/1.1\nAccept: text/mako+markdown"
+    "subtitle": "あらゆるWebサイトをAI最適化エンドポイントに変える6層アーキテクチャ — 標準HTTPの上に構築。",
+    "layer_discovery_title": "ディスカバリー",
+    "layer_discovery_desc": "エージェントが.well-known/mako、linkタグ、llms.txtを通じてMAKO対応URLを発見します。",
+    "layer_prefilter_title": "プリフィルター",
+    "layer_prefilter_desc": "HEADリクエストがメタデータヘッダーを返します — トークン数、タイプ、エンティティ — ボディのダウンロード不要。",
+    "layer_content_title": "コンテンツ",
+    "layer_content_desc": "完全なMAKOドキュメント：構造化フロントマター + クリーンなmarkdownボディで約94%のトークン削減。",
+    "layer_navigation_title": "ナビゲーション",
+    "layer_navigation_desc": "コンテキスト付きセマンティックリンクにより、エージェントが目的を持ってサイトを巡回できます。",
+    "layer_action_title": "アクション",
+    "layer_action_desc": "機械読み取り可能なCTA（購入、購読、予約）とエンドポイント・パラメータ — JavaScript不要。",
+    "layer_cache_title": "キャッシュ",
+    "layer_cache_desc": "ETagと条件付きリクエストにより、コンテンツの再ダウンロードなしで変更を確認できます。",
+    "cta_learn_more": "6つの層を探索"
+  },
+  "how_it_works_page": {
+    "meta_title": "仕組み — MAKOプロトコルの層",
+    "meta_description": "MAKOプロトコルの6つの層を詳しく解説：ディスカバリー、プリフィルター、コンテンツ、ナビゲーション、アクション、キャッシュ。",
+    "title": "仕組み",
+    "subtitle": "AIエージェントがあなたのWebサイトとやり取りする方法を変える6つの層 — すべて標準HTTPの上に構築。",
+    "without_mako": "MAKOなし",
+    "with_mako": "MAKOあり",
+    "layer_discovery": {
+      "title": "ディスカバリー",
+      "question": "エージェントはあなたのサイトがMAKOをサポートしていることをどう知るのか？",
+      "description": "何よりもまず、エージェントはあなたのサイトがMAKOに対応していることを発見する必要があります。.well-known/makoエンドポイントは、MAKO対応URL、サポート機能、ネゴシエーション方法の機械読み取り可能なマニフェストを提供します。これにより、盲目的なクロールが意図的な発見に置き換わります。"
+    },
+    "layer_prefilter": {
+      "title": "プリフィルター",
+      "question": "エージェントはダウンロードする前に、ページの関連性をどう判断するのか？",
+      "description": "軽量なHEADリクエストがX-Mako-*ヘッダーでメタデータを返します：トークン数、コンテンツタイプ、エンティティ名、言語、ETag。エージェントは関連性を判断するために必要な全てを把握できます — コンテンツを1バイトも転送することなく。"
+    },
+    "layer_content": {
+      "title": "コンテンツ",
+      "question": "エージェントは実際に何を受け取るのか？",
+      "description": "MAKO Acceptヘッダー付きのGETリクエストが構造化ドキュメントを返します：型付きメタデータのYAMLフロントマター、続いてクリーンなmarkdownボディ。4,125トークンの代わりに245トークン — 94%の削減。すべてのフィールドは仕様で定義：タイプ、エンティティ、サマリー、アクション、リンク。"
+    },
+    "layer_navigation": {
+      "title": "ナビゲーション",
+      "question": "エージェントは関連コンテンツをどう探索するのか？",
+      "description": "HTMLから127のリンクを解析する代わりに（ほとんどが無関係）、MAKOフロントマターはコンテキスト説明付きのセマンティックリンクを宣言します。エージェントは /products/running-socks が'マッチするスポーツソックス'であることを知っています — 盲目的にクロールする別のURLではなく。"
+    },
+    "layer_action": {
+      "title": "アクション",
+      "question": "エージェントはあなたのサイトとどう対話するのか？",
+      "description": "MAKOはフロントマターで機械読み取り可能なアクションを宣言します：add_to_cart、check_availability、notify_restock — それぞれURL、メソッド、パラメータ付き。エージェントはHTMLフォームの解析やJavaScriptの実行なしに、これらのアクションを直接実行できます。"
+    },
+    "layer_cache": {
+      "title": "キャッシュ",
+      "question": "エージェントは変更されていないコンテンツの再ダウンロードをどう回避するのか？",
+      "description": "MAKOレスポンスにはETagとCache-Controlヘッダーが含まれます。以降の訪問で、エージェントはIf-None-Match付きの条件付きGETを送信します。コンテンツが変更されていなければ、サーバーは304 Not Modifiedを返します — 転送0バイト、処理0トークン。"
+    },
+    "annex_title": "付録：RFC 2119ヘッダー分類",
+    "annex_subtitle": "MAKOヘッダーはRFC 2119キーワードに従い、適合要件を定義します。",
+    "annex_classification": "分類",
+    "annex_rfc_keyword": "RFCキーワード",
+    "annex_headers": "ヘッダー",
+    "annex_required": "必須",
+    "annex_recommended": "推奨",
+    "annex_optional": "任意"
   },
   "benchmark": {
     "title": "トークン効率",

@@ -10,7 +10,8 @@
     "docs": "Docs",
     "menu": "Menü",
     "analyzer": "Analyzer",
-    "score": "Score"
+    "score": "Score",
+    "how_it_works": "So funktioniert's"
   },
   "hero": {
     "badge": "Offenes Protokoll v1.0",
@@ -29,16 +30,66 @@
   },
   "how_it_works": {
     "title": "So Funktioniert Es",
-    "subtitle": "Content-Negotiation in drei Schritten, vollständig kompatibel mit bestehender HTTP-Infrastruktur.",
-    "step1_title": "1. HEAD-Anfrage",
-    "step1_desc": "Der Agent sendet eine HEAD-Anfrage mit dem MAKO Accept-Header. Der Server antwortet mit X-Mako-* Headern inklusive Token-Anzahl, Inhaltstyp und CEF-Embedding.",
-    "step1_code": "HEAD /product/nike-air-max-90 HTTP/1.1\nAccept: text/mako+markdown",
-    "step2_title": "2. Relevanz prüfen",
-    "step2_desc": "Der Agent dekodiert das kompakte CEF-Embedding aus dem Header (~470 Bytes) und berechnet die Kosinus-Ähnlichkeit mit der Benutzeranfrage. Kein Download des gesamten Inhalts nötig.",
-    "step2_code": "X-Mako-Embedding: gAAAA...(470 bytes)\nX-Mako-Tokens: 276\nX-Mako-Type: product",
-    "step3_title": "3. Inhalt abrufen",
-    "step3_desc": "Wenn relevant, lädt der Agent das vollständige MAKO-Dokument — strukturiertes Markdown mit Frontmatter, Aktionen und semantischen Links. Nur 276 Tokens statt 4.125 aus rohem HTML.",
-    "step3_code": "GET /product/nike-air-max-90 HTTP/1.1\nAccept: text/mako+markdown"
+    "subtitle": "Eine 6-Schichten-Architektur, die jede Website in einen KI-optimierten Endpoint verwandelt — vollständig auf Standard-HTTP aufgebaut.",
+    "layer_discovery_title": "Entdeckung",
+    "layer_discovery_desc": "Der Agent entdeckt, welche URLs MAKO unterstützen via .well-known/mako, Link-Tags oder llms.txt.",
+    "layer_prefilter_title": "Vorfilter",
+    "layer_prefilter_desc": "Eine HEAD-Anfrage liefert Metadaten-Header — Token-Anzahl, Typ, Entität — ohne den Body herunterzuladen.",
+    "layer_content_title": "Inhalt",
+    "layer_content_desc": "Das vollständige MAKO-Dokument: strukturiertes Frontmatter + sauberer Markdown-Body mit ~94% weniger Tokens.",
+    "layer_navigation_title": "Navigation",
+    "layer_navigation_desc": "Semantische Links mit Kontext ermöglichen es Agenten, Ihre Website gezielt zu navigieren, statt blind zu crawlen.",
+    "layer_action_title": "Aktionen",
+    "layer_action_desc": "Maschinenlesbare CTAs (kaufen, abonnieren, buchen) mit Endpoints und Parametern — kein JavaScript nötig.",
+    "layer_cache_title": "Cache",
+    "layer_cache_desc": "ETags und bedingte Anfragen ermöglichen es Agenten, Änderungen zu prüfen, ohne Inhalte erneut herunterzuladen.",
+    "cta_learn_more": "Die 6 Schichten erkunden"
+  },
+  "how_it_works_page": {
+    "meta_title": "So Funktioniert Es — MAKO-Protokoll-Schichten",
+    "meta_description": "Detaillierte Analyse der 6 Schichten des MAKO-Protokolls: Entdeckung, Vorfilter, Inhalt, Navigation, Aktionen und Cache.",
+    "title": "So Funktioniert Es",
+    "subtitle": "6 Schichten, die verändern, wie KI-Agenten mit Ihrer Website interagieren — alles auf Standard-HTTP aufgebaut.",
+    "without_mako": "Ohne MAKO",
+    "with_mako": "Mit MAKO",
+    "layer_discovery": {
+      "title": "Entdeckung",
+      "question": "Wie erkennt der Agent, dass Ihre Website MAKO unterstützt?",
+      "description": "Zuallererst muss der Agent entdecken, dass Ihre Website MAKO spricht. Der .well-known/mako-Endpoint liefert ein maschinenlesbares Manifest der MAKO-fähigen URLs, unterstützten Features und Verhandlungsmethode. Das ersetzt blindes Crawling durch gezielte Entdeckung."
+    },
+    "layer_prefilter": {
+      "title": "Vorfilter",
+      "question": "Wie entscheidet der Agent, ob Ihre Seite relevant ist — bevor er sie herunterlädt?",
+      "description": "Eine leichte HEAD-Anfrage liefert X-Mako-*-Header mit Metadaten: Token-Anzahl, Inhaltstyp, Entitätsname, Sprache und einen ETag. Der Agent weiß jetzt alles, was er für die Relevanzentscheidung braucht — ohne ein einziges Byte Inhalt zu übertragen."
+    },
+    "layer_content": {
+      "title": "Inhalt",
+      "question": "Was erhält der Agent tatsächlich?",
+      "description": "Eine GET-Anfrage mit dem MAKO-Accept-Header liefert ein strukturiertes Dokument: YAML-Frontmatter mit typisierten Metadaten, gefolgt von einem sauberen Markdown-Body. 245 Tokens statt 4.125 — eine Reduzierung um 94%. Jedes Feld ist spec-definiert: Typ, Entität, Zusammenfassung, Aktionen, Links."
+    },
+    "layer_navigation": {
+      "title": "Navigation",
+      "question": "Wie erkundet der Agent verwandte Inhalte?",
+      "description": "Statt 127 Links aus dem HTML zu parsen (die meisten irrelevant), deklariert das MAKO-Frontmatter semantische Links mit Kontextbeschreibungen. Der Agent weiß, dass /products/running-socks 'Passende Sportsocken' sind — nicht nur eine weitere URL zum blinden Crawlen."
+    },
+    "layer_action": {
+      "title": "Aktionen",
+      "question": "Wie interagiert der Agent mit Ihrer Website?",
+      "description": "MAKO deklariert maschinenlesbare Aktionen im Frontmatter: add_to_cart, check_availability, notify_restock — jeweils mit URL, Methode und Parametern. Der Agent kann diese Aktionen direkt ausführen, ohne HTML-Formulare zu parsen oder JavaScript auszuführen."
+    },
+    "layer_cache": {
+      "title": "Cache",
+      "question": "Wie vermeidet der Agent das erneute Herunterladen unveränderter Inhalte?",
+      "description": "MAKO-Antworten enthalten ETag- und Cache-Control-Header. Bei nachfolgenden Besuchen sendet der Agent ein bedingtes GET mit If-None-Match. Hat sich der Inhalt nicht geändert, antwortet der Server mit 304 Not Modified — null Bytes übertragen, null Tokens verarbeitet."
+    },
+    "annex_title": "Anhang: RFC 2119 Header-Klassifikation",
+    "annex_subtitle": "MAKO-Header folgen den RFC 2119-Schlüsselwörtern zur Definition von Konformitätsanforderungen.",
+    "annex_classification": "Klassifikation",
+    "annex_rfc_keyword": "RFC-Schlüsselwort",
+    "annex_headers": "Header",
+    "annex_required": "Erforderlich",
+    "annex_recommended": "Empfohlen",
+    "annex_optional": "Optional"
   },
   "benchmark": {
     "title": "Token-Effizienz",

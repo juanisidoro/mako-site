@@ -29,6 +29,12 @@ export function Header() {
             Features
           </Link>
           <Link
+            href="/how-it-works"
+            className="text-sm text-slate-400 transition hover:text-white"
+          >
+            {t('how_it_works')}
+          </Link>
+          <Link
             href="/analyzer"
             className="text-sm text-slate-400 transition hover:text-white"
           >
@@ -91,6 +97,13 @@ export function Header() {
           <div className="flex flex-col gap-3">
             <Link href="/#features" className="text-sm text-slate-400" onClick={() => setOpen(false)}>
               Features
+            </Link>
+            <Link
+              href="/how-it-works"
+              className="text-sm text-slate-400"
+              onClick={() => setOpen(false)}
+            >
+              {t('how_it_works')}
             </Link>
             <Link
               href="/analyzer"

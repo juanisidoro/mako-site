@@ -10,7 +10,8 @@
     "docs": "Docs",
     "menu": "Menu",
     "analyzer": "Analisador",
-    "score": "Score"
+    "score": "Score",
+    "how_it_works": "Como Funciona"
   },
   "hero": {
     "badge": "Protocolo Aberto v1.0",
@@ -29,16 +30,66 @@
   },
   "how_it_works": {
     "title": "Como Funciona",
-    "subtitle": "Negociação de conteúdo em três passos, totalmente compatível com a infraestrutura HTTP existente.",
-    "step1_title": "1. Requisição HEAD",
-    "step1_desc": "O agente envia uma requisição HEAD com o header Accept do MAKO. O servidor responde com headers X-Mako-* incluindo contagem de tokens, tipo de conteúdo e o embedding CEF.",
-    "step1_code": "HEAD /product/nike-air-max-90 HTTP/1.1\nAccept: text/mako+markdown",
-    "step2_title": "2. Verificar Relevância",
-    "step2_desc": "O agente decodifica o embedding CEF compacto do header (~470 bytes) e calcula a similaridade cosseno com a consulta do usuário. Sem necessidade de baixar todo o conteúdo.",
-    "step2_code": "X-Mako-Embedding: gAAAA...(470 bytes)\nX-Mako-Tokens: 276\nX-Mako-Type: product",
-    "step3_title": "3. Obter Conteúdo",
-    "step3_desc": "Se relevante, o agente baixa o documento MAKO completo — Markdown estruturado com frontmatter, ações e links semânticos. Apenas 276 tokens em vez de 4.125 do HTML.",
-    "step3_code": "GET /product/nike-air-max-90 HTTP/1.1\nAccept: text/mako+markdown"
+    "subtitle": "Uma arquitetura de 6 camadas que transforma qualquer site em um endpoint otimizado para IA — construída inteiramente sobre HTTP padrão.",
+    "layer_discovery_title": "Descoberta",
+    "layer_discovery_desc": "O agente descobre quais URLs suportam MAKO via .well-known/mako, tags link ou llms.txt.",
+    "layer_prefilter_title": "Pré-filtro",
+    "layer_prefilter_desc": "Uma requisição HEAD retorna headers com metadados — contagem de tokens, tipo, entidade — sem baixar o corpo.",
+    "layer_content_title": "Conteúdo",
+    "layer_content_desc": "O documento MAKO completo: frontmatter estruturado + corpo markdown limpo com ~94% menos tokens.",
+    "layer_navigation_title": "Navegação",
+    "layer_navigation_desc": "Links semânticos com contexto permitem que agentes naveguem seu site com propósito, sem rastreamento cego.",
+    "layer_action_title": "Ações",
+    "layer_action_desc": "CTAs legíveis por máquina (comprar, assinar, reservar) com endpoints e parâmetros — sem JavaScript necessário.",
+    "layer_cache_title": "Cache",
+    "layer_cache_desc": "ETags e requisições condicionais permitem que agentes verifiquem mudanças sem re-baixar o conteúdo.",
+    "cta_learn_more": "Explorar as 6 camadas"
+  },
+  "how_it_works_page": {
+    "meta_title": "Como Funciona — Camadas do Protocolo MAKO",
+    "meta_description": "Análise detalhada das 6 camadas do protocolo MAKO: Descoberta, Pré-filtro, Conteúdo, Navegação, Ações e Cache.",
+    "title": "Como Funciona",
+    "subtitle": "6 camadas que transformam como agentes IA interagem com seu site — tudo construído sobre HTTP padrão.",
+    "without_mako": "Sem MAKO",
+    "with_mako": "Com MAKO",
+    "layer_discovery": {
+      "title": "Descoberta",
+      "question": "Como o agente sabe que seu site suporta MAKO?",
+      "description": "Antes de tudo, o agente precisa descobrir que seu site fala MAKO. O endpoint .well-known/mako fornece um manifesto legível por máquina de URLs habilitadas para MAKO, recursos suportados e método de negociação. Isso substitui o rastreamento cego por descoberta intencional."
+    },
+    "layer_prefilter": {
+      "title": "Pré-filtro",
+      "question": "Como o agente decide se sua página é relevante — antes de baixá-la?",
+      "description": "Uma requisição HEAD leve retorna headers X-Mako-* com metadados: contagem de tokens, tipo de conteúdo, nome da entidade, idioma e um ETag. O agente agora sabe tudo que precisa para decidir a relevância — sem transferir um único byte de conteúdo."
+    },
+    "layer_content": {
+      "title": "Conteúdo",
+      "question": "O que o agente realmente recebe?",
+      "description": "Uma requisição GET com o header Accept do MAKO retorna um documento estruturado: frontmatter YAML com metadados tipados, seguido de um corpo markdown limpo. 245 tokens em vez de 4.125 — uma redução de 94%. Cada campo é definido na spec: tipo, entidade, resumo, ações, links."
+    },
+    "layer_navigation": {
+      "title": "Navegação",
+      "question": "Como o agente explora conteúdo relacionado?",
+      "description": "Em vez de analisar 127 links do HTML (a maioria irrelevantes), o frontmatter MAKO declara links semânticos com descrições de contexto. O agente sabe que /products/running-socks são 'Meias esportivas compatíveis' — não apenas mais uma URL para rastrear cegamente."
+    },
+    "layer_action": {
+      "title": "Ações",
+      "question": "Como o agente interage com seu site?",
+      "description": "MAKO declara ações legíveis por máquina no frontmatter: add_to_cart, check_availability, notify_restock — cada uma com URL, método e parâmetros. O agente pode executar essas ações diretamente, sem analisar formulários HTML ou executar JavaScript."
+    },
+    "layer_cache": {
+      "title": "Cache",
+      "question": "Como o agente evita re-baixar conteúdo inalterado?",
+      "description": "Respostas MAKO incluem headers ETag e Cache-Control. Em visitas posteriores, o agente envia um GET condicional com If-None-Match. Se o conteúdo não mudou, o servidor retorna 304 Not Modified — zero bytes transferidos, zero tokens processados."
+    },
+    "annex_title": "Anexo: Classificação de Headers RFC 2119",
+    "annex_subtitle": "Os headers MAKO seguem as palavras-chave RFC 2119 para definir requisitos de conformidade.",
+    "annex_classification": "Classificação",
+    "annex_rfc_keyword": "Palavra-chave RFC",
+    "annex_headers": "Headers",
+    "annex_required": "Obrigatório",
+    "annex_recommended": "Recomendado",
+    "annex_optional": "Opcional"
   },
   "benchmark": {
     "title": "Eficiência de Tokens",

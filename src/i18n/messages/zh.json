@@ -10,7 +10,8 @@
     "docs": "文档",
     "menu": "菜单",
     "analyzer": "分析器",
-    "score": "评分"
+    "score": "评分",
+    "how_it_works": "工作原理"
   },
   "hero": {
     "badge": "开放协议 v1.0",
@@ -29,16 +30,66 @@
   },
   "how_it_works": {
     "title": "工作原理",
-    "subtitle": "三步内容协商，与现有HTTP基础设施完全兼容。",
-    "step1_title": "1. HEAD请求",
-    "step1_desc": "代理发送带有MAKO Accept头的HEAD请求。服务器响应X-Mako-*头，包括token数量、内容类型和CEF嵌入。",
-    "step1_code": "HEAD /product/nike-air-max-90 HTTP/1.1\nAccept: text/mako+markdown",
-    "step2_title": "2. 检查相关性",
-    "step2_desc": "代理从头部解码紧凑的CEF嵌入（仅约470字节），并计算与用户查询的余弦相似度。无需下载完整内容。",
-    "step2_code": "X-Mako-Embedding: gAAAA...(470 bytes)\nX-Mako-Tokens: 276\nX-Mako-Type: product",
-    "step3_title": "3. 获取内容",
-    "step3_desc": "如果相关，代理获取完整的MAKO文档——带有前置数据、操作和语义链接的结构化Markdown。仅276个token，而非原始HTML的4,125个。",
-    "step3_code": "GET /product/nike-air-max-90 HTTP/1.1\nAccept: text/mako+markdown"
+    "subtitle": "6层架构将任何网站转变为AI优化的端点——完全基于标准HTTP构建。",
+    "layer_discovery_title": "发现",
+    "layer_discovery_desc": "代理通过 .well-known/mako、link标签或llms.txt发现哪些URL支持MAKO。",
+    "layer_prefilter_title": "预过滤",
+    "layer_prefilter_desc": "HEAD请求返回元数据头——token数量、类型、实体——无需下载正文。",
+    "layer_content_title": "内容",
+    "layer_content_desc": "完整的MAKO文档：结构化前置数据 + 干净的markdown正文，减少约94%的token。",
+    "layer_navigation_title": "导航",
+    "layer_navigation_desc": "带上下文的语义链接让代理有目的地浏览你的网站，而非盲目爬取。",
+    "layer_action_title": "操作",
+    "layer_action_desc": "机器可读的CTA（购买、订阅、预订）带有端点和参数——无需JavaScript。",
+    "layer_cache_title": "缓存",
+    "layer_cache_desc": "ETag和条件请求让代理检查更改而无需重新下载内容。",
+    "cta_learn_more": "探索6个层次"
+  },
+  "how_it_works_page": {
+    "meta_title": "工作原理 — MAKO协议层",
+    "meta_description": "深入了解MAKO协议的6个层次：发现、预过滤、内容、导航、操作和缓存。",
+    "title": "工作原理",
+    "subtitle": "6个层次改变AI代理与你网站的交互方式——全部基于标准HTTP构建。",
+    "without_mako": "没有MAKO",
+    "with_mako": "使用MAKO",
+    "layer_discovery": {
+      "title": "发现",
+      "question": "代理如何知道你的网站支持MAKO？",
+      "description": "首先，代理需要发现你的网站支持MAKO。.well-known/mako端点提供了一个机器可读的清单，包含MAKO启用的URL、支持的功能和协商方法。这用有意的发现取代了盲目爬取。"
+    },
+    "layer_prefilter": {
+      "title": "预过滤",
+      "question": "代理如何在下载之前判断你的页面是否相关？",
+      "description": "一个轻量的HEAD请求返回X-Mako-*头，包含元数据：token数量、内容类型、实体名称、语言和ETag。代理现在知道判断相关性所需的一切——而无需传输一个字节的内容。"
+    },
+    "layer_content": {
+      "title": "内容",
+      "question": "代理实际收到什么？",
+      "description": "带有MAKO Accept头的GET请求返回结构化文档：带有类型化元数据的YAML前置数据，后跟干净的markdown正文。245个token而非4,125个——减少94%。每个字段都在规范中定义：类型、实体、摘要、操作、链接。"
+    },
+    "layer_navigation": {
+      "title": "导航",
+      "question": "代理如何探索相关内容？",
+      "description": "MAKO前置数据不是解析HTML中的127个链接（大多不相关），而是声明带有上下文描述的语义链接。代理知道 /products/running-socks 是'配套运动袜'——不仅仅是另一个要盲目爬取的URL。"
+    },
+    "layer_action": {
+      "title": "操作",
+      "question": "代理如何与你的网站交互？",
+      "description": "MAKO在前置数据中声明机器可读的操作：add_to_cart、check_availability、notify_restock——每个都有URL、方法和参数。代理可以直接执行这些操作，无需解析HTML表单或执行JavaScript。"
+    },
+    "layer_cache": {
+      "title": "缓存",
+      "question": "代理如何避免重新下载未更改的内容？",
+      "description": "MAKO响应包含ETag和Cache-Control头。在后续访问中，代理发送带有If-None-Match的条件GET。如果内容未更改，服务器返回304 Not Modified——零字节传输，零token处理。"
+    },
+    "annex_title": "附录：RFC 2119头部分类",
+    "annex_subtitle": "MAKO头部遵循RFC 2119关键字来定义一致性要求。",
+    "annex_classification": "分类",
+    "annex_rfc_keyword": "RFC关键字",
+    "annex_headers": "头部",
+    "annex_required": "必需",
+    "annex_recommended": "推荐",
+    "annex_optional": "可选"
   },
   "benchmark": {
     "title": "Token效率",

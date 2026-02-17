@@ -5,6 +5,7 @@ import { siteConfig } from '@/config/site';
 // Add new routes here as you create pages
 const routes = [
   '',
+  '/how-it-works',
   '/analyzer',
   '/score',
   '/directory',

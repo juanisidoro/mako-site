@@ -5,7 +5,7 @@ import { Benchmark } from '@/components/benchmark';
 import { AudienceBenefits } from '@/components/audience-benefits';
 import { Comparison } from '@/components/comparison';
 import { ScoreInline } from '@/components/score-inline';
-import { HowItWorks } from '@/components/how-it-works';
+import { HowItWorksOverview } from '@/components/how-it-works/how-it-works-overview';
 import { ProtocolPreview } from '@/components/protocol-preview';
 import { Ecosystem } from '@/components/ecosystem';
 import { CtaSection } from '@/components/cta-section';
@@ -27,7 +27,7 @@ export default async function HomePage({
       <AudienceBenefits />
       <Comparison />
       <ScoreInline />
-      <HowItWorks />
+      <HowItWorksOverview />
       <ProtocolPreview />
       <Ecosystem />
       <CtaSection />
