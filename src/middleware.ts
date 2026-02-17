@@ -21,5 +21,5 @@ export default function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/', '/(how-it-works|analyzer|score|directory)', '/(en|es|pt|fr|de|zh|ja)/:path*'],
+  matcher: ['/', '/(en|es|pt|fr|de|zh|ja)/:path*'],
 };
