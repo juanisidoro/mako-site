@@ -14,12 +14,12 @@
     "how_it_works": "工作原理"
   },
   "hero": {
-    "badge": "开放协议 v1.0",
-    "title_line1": "让AI代理",
-    "title_line2": "理解你的业务",
-    "subtitle": "你的网站用HTML表达——AI代理却无法理解。MAKO是一个开放协议，为每个页面提供结构化、高效利用token的版本，让LLM真正读懂。",
-    "cta_score": "查看你的评分",
-    "cta_spec": "阅读规范"
+    "badge": "开放标准 · Apache 2.0",
+    "title_line1": "AI能读取你的网站",
+    "title_line2": "但遗漏了关键信息",
+    "subtitle": "当ChatGPT、Perplexity或Claude访问你的网站时，它们下载181KB的导航栏、广告和脚本——只是为了找到一个产品名称。MAKO为每个页面提供干净、结构化的版本，让AI真正理解。",
+    "cta_score": "查看你的AI评分",
+    "cta_spec": "了解工作原理"
   },
   "problem": {
     "title": "互联网是为人类设计的",
@@ -204,8 +204,8 @@
     "spec_desc": "完整的协议规范。内容类型、前置数据架构、HTTP头、合规级别和CEF标准。"
   },
   "cta": {
-    "title": "开始提供AI优化的内容",
-    "description": "选择你的路径。开放协议，Apache-2.0许可证，可用于生产环境。",
+    "title": "下一个十亿访客不会使用浏览器",
+    "description": "确保他们找到关键信息。开放标准，Apache-2.0，可用于生产环境。",
     "wp_title": "WordPress",
     "wp_description": "安装插件，激活，完成。兼容WooCommerce、Yoast和ACF。",
     "wp_button": "获取插件",

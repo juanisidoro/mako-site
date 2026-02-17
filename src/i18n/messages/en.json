@@ -14,12 +14,12 @@
     "how_it_works": "How It Works"
   },
   "hero": {
-    "badge": "Open Protocol v1.0",
-    "title_line1": "Make AI agents",
-    "title_line2": "understand your business",
-    "subtitle": "Your website speaks HTML — AI agents don't. MAKO is an open protocol that gives every page a structured, token-efficient version that LLMs actually understand.",
-    "cta_score": "Check your Score",
-    "cta_spec": "Read the Spec"
+    "badge": "Open Standard · Apache 2.0",
+    "title_line1": "AI reads your website",
+    "title_line2": "but misses what matters",
+    "subtitle": "When ChatGPT, Perplexity or Claude visit your site, they download 181KB of navigation bars, ads and scripts — just to find a product name. MAKO gives every page a clean, structured version that AI actually understands.",
+    "cta_score": "Check your AI Score",
+    "cta_spec": "See how it works"
   },
   "problem": {
     "title": "The web was designed for humans",
@@ -204,8 +204,8 @@
     "spec_desc": "The full protocol specification. Content types, frontmatter schema, HTTP headers, conformance levels, and the CEF standard."
   },
   "cta": {
-    "title": "Start serving AI-optimized content",
-    "description": "Choose your path. Open protocol, Apache-2.0 licensed, production-ready.",
+    "title": "The next billion visitors won't use a browser",
+    "description": "Make sure they find what matters. Open standard, Apache-2.0, production-ready.",
     "wp_title": "WordPress",
     "wp_description": "Install the plugin, activate, done. Works with WooCommerce, Yoast, and ACF.",
     "wp_button": "Get the Plugin",

@@ -14,12 +14,12 @@
     "how_it_works": "仕組み"
   },
   "hero": {
-    "badge": "オープンプロトコル v1.0",
-    "title_line1": "AIエージェントに",
-    "title_line2": "あなたのビジネスを理解させよう",
-    "subtitle": "あなたのWebサイトはHTMLで書かれています — AIエージェントはそれを理解できません。MAKOは、すべてのページに構造化されたトークン効率の高いバージョンを提供し、LLMが本当に理解できるようにするオープンプロトコルです。",
-    "cta_score": "スコアをチェック",
-    "cta_spec": "仕様を読む"
+    "badge": "オープンスタンダード · Apache 2.0",
+    "title_line1": "AIはあなたのサイトを読む",
+    "title_line2": "でも大事なことを見落とす",
+    "subtitle": "ChatGPT、Perplexity、Claudeがあなたのサイトを訪問すると、181KBのナビゲーションバー、広告、スクリプトをダウンロードします——たった1つの商品名を見つけるためだけに。MAKOはすべてのページにクリーンで構造化されたバージョンを提供し、AIが本当に理解できるようにします。",
+    "cta_score": "AIスコアをチェック",
+    "cta_spec": "仕組みを見る"
   },
   "problem": {
     "title": "Webは人間のために設計された",
@@ -204,8 +204,8 @@
     "wp_desc": "コンテントネゴシエーションでMAKOコンテンツを生成・配信するWordPressプラグイン。WooCommerce、AI BYOK、一括生成対応。"
   },
   "cta": {
-    "title": "AI最適化コンテンツの配信を始めよう",
-    "description": "あなたに合った方法を選択。オープンプロトコル、Apache-2.0ライセンス、本番環境対応。",
+    "title": "次の10億人の訪問者はブラウザを使わない",
+    "description": "大事なことが伝わるようにしましょう。オープンスタンダード、Apache-2.0、本番環境対応。",
     "wp_title": "WordPress",
     "wp_description": "プラグインをインストールして有効化するだけ。WooCommerce、Yoast、ACFに対応。",
     "wp_button": "プラグインを入手",

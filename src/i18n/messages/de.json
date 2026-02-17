@@ -14,12 +14,12 @@
     "how_it_works": "So funktioniert's"
   },
   "hero": {
-    "badge": "Offenes Protokoll v1.0",
-    "title_line1": "KI-Agenten Ihr Unternehmen",
-    "title_line2": "verstehen lassen",
-    "subtitle": "Ihre Website spricht HTML — KI-Agenten nicht. MAKO ist ein offenes Protokoll, das jeder Seite eine strukturierte, token-effiziente Version gibt, die LLMs tatsächlich verstehen.",
-    "cta_score": "Score prüfen",
-    "cta_spec": "Spec lesen"
+    "badge": "Offener Standard · Apache 2.0",
+    "title_line1": "KI liest Ihre Website",
+    "title_line2": "aber übersieht das Wesentliche",
+    "subtitle": "Wenn ChatGPT, Perplexity oder Claude Ihre Website besuchen, laden sie 181KB Navigationsleisten, Werbung und Skripte herunter — nur um einen Produktnamen zu finden. MAKO gibt jeder Seite eine saubere, strukturierte Version, die KI wirklich versteht.",
+    "cta_score": "AI Score prüfen",
+    "cta_spec": "So funktioniert's"
   },
   "problem": {
     "title": "Das Web wurde für Menschen gemacht",
@@ -204,8 +204,8 @@
     "wp_desc": "WordPress-Plugin, das MAKO-Inhalte via Content Negotiation generiert und bereitstellt. WooCommerce, AI BYOK und Massengenerierung."
   },
   "cta": {
-    "title": "KI-optimierte Inhalte bereitstellen",
-    "description": "Wählen Sie Ihren Weg. Offenes Protokoll, Apache-2.0 Lizenz, produktionsbereit.",
+    "title": "Die nächste Milliarde Besucher wird keinen Browser nutzen",
+    "description": "Stellen Sie sicher, dass sie das Wesentliche finden. Offener Standard, Apache-2.0, produktionsbereit.",
     "wp_title": "WordPress",
     "wp_description": "Plugin installieren, aktivieren, fertig. Funktioniert mit WooCommerce, Yoast und ACF.",
     "wp_button": "Plugin holen",

@@ -14,12 +14,12 @@
     "how_it_works": "Cómo Funciona"
   },
   "hero": {
-    "badge": "Protocolo Abierto v1.0",
-    "title_line1": "Haz que los agentes IA",
-    "title_line2": "entiendan tu negocio",
-    "subtitle": "Tu web habla HTML — los agentes IA no. MAKO es un protocolo abierto que le da a cada página una versión estructurada y eficiente en tokens que los LLMs realmente entienden.",
-    "cta_score": "Consulta tu Score",
-    "cta_spec": "Leer la Spec"
+    "badge": "Estándar Abierto · Apache 2.0",
+    "title_line1": "La IA lee tu web",
+    "title_line2": "pero se pierde lo importante",
+    "subtitle": "Cuando ChatGPT, Perplexity o Claude visitan tu sitio, descargan 181KB de barras de navegación, anuncios y scripts — solo para encontrar el nombre de un producto. MAKO le da a cada página una versión limpia y estructurada que la IA realmente entiende.",
+    "cta_score": "Consulta tu AI Score",
+    "cta_spec": "Descubre cómo funciona"
   },
   "problem": {
     "title": "La web fue diseñada para humanos",
@@ -204,8 +204,8 @@
     "spec_desc": "La especificación completa del protocolo. Tipos de contenido, esquema frontmatter, cabeceras HTTP, niveles de conformidad y el estándar CEF."
   },
   "cta": {
-    "title": "Empieza a servir contenido optimizado para IA",
-    "description": "Elige tu camino. Protocolo abierto, licencia Apache-2.0, listo para producción.",
+    "title": "Los próximos mil millones de visitantes no usarán un navegador",
+    "description": "Asegúrate de que encuentren lo que importa. Estándar abierto, Apache-2.0, listo para producción.",
     "wp_title": "WordPress",
     "wp_description": "Instala el plugin, actívalo, listo. Compatible con WooCommerce, Yoast y ACF.",
     "wp_button": "Obtener el Plugin",
