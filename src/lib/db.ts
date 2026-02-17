@@ -28,7 +28,7 @@ export async function initDatabase(): Promise<void> {
   await sql`
     CREATE TABLE IF NOT EXISTS analyses (
       id            UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-      url           TEXT NOT NULL,
+      url           TEXT NOT NULL UNIQUE,
       domain        TEXT NOT NULL,
       html_tokens   INTEGER NOT NULL,
       mako_tokens   INTEGER NOT NULL,
@@ -72,6 +72,18 @@ export async function saveAnalysis(
         ${result.isPublic},
         ${result.createdAt}
       )
+      ON CONFLICT (url) DO UPDATE SET
+        domain = EXCLUDED.domain,
+        html_tokens = EXCLUDED.html_tokens,
+        mako_tokens = EXCLUDED.mako_tokens,
+        savings_pct = EXCLUDED.savings_pct,
+        content_type = EXCLUDED.content_type,
+        entity = EXCLUDED.entity,
+        summary = EXCLUDED.summary,
+        mako_content = EXCLUDED.mako_content,
+        headers_json = EXCLUDED.headers_json,
+        is_public = EXCLUDED.is_public,
+        created_at = EXCLUDED.created_at
       RETURNING id
     `;
     return rows[0]?.id ?? null;
@@ -154,7 +166,7 @@ export async function initScoresTable(): Promise<void> {
     CREATE TABLE IF NOT EXISTS scores (
       id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
       share_hash      TEXT UNIQUE,
-      url             TEXT NOT NULL,
+      url             TEXT NOT NULL UNIQUE,
       domain          TEXT NOT NULL,
       entity          TEXT NOT NULL,
       content_type    TEXT NOT NULL,
@@ -204,6 +216,16 @@ export async function saveScore(result: {
         ${result.isPublic},
         ${result.createdAt}
       )
+      ON CONFLICT (url) DO UPDATE SET
+        domain = EXCLUDED.domain,
+        entity = EXCLUDED.entity,
+        content_type = EXCLUDED.content_type,
+        total_score = EXCLUDED.total_score,
+        grade = EXCLUDED.grade,
+        categories_json = EXCLUDED.categories_json,
+        recommendations = EXCLUDED.recommendations,
+        is_public = EXCLUDED.is_public,
+        created_at = EXCLUDED.created_at
       RETURNING id, share_hash
     `;
     const row = rows[0];

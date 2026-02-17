@@ -66,3 +66,27 @@ await sql`
 `;
 
 console.log("OK: Column 'share_hash' added to scores table");
+
+// Migration: add UNIQUE constraint on url for both tables
+// Remove duplicates first (keep most recent per url)
+await sql`
+  DELETE FROM analyses a
+  USING analyses b
+  WHERE a.url = b.url AND a.created_at < b.created_at
+`;
+
+await sql`
+  DELETE FROM scores a
+  USING scores b
+  WHERE a.url = b.url AND a.created_at < b.created_at
+`;
+
+await sql`
+  CREATE UNIQUE INDEX IF NOT EXISTS idx_analyses_url_unique ON analyses (url)
+`;
+
+await sql`
+  CREATE UNIQUE INDEX IF NOT EXISTS idx_scores_url_unique ON scores (url)
+`;
+
+console.log("OK: UNIQUE constraint on url added to analyses and scores tables");
