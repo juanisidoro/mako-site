@@ -65,7 +65,7 @@
     "layer_content": {
       "title": "Contenu",
       "question": "Que reçoit réellement l'agent ?",
-      "description": "Une requête GET avec l'en-tête Accept MAKO retourne un document structuré : frontmatter YAML avec métadonnées typées, suivi d'un corps markdown propre. 245 tokens au lieu de 4 125 — une réduction de 94%. Alternativement, les agents peuvent extraire le contenu MAKO directement d'une balise <script> dans le HTML — sans négociation de contenu nécessaire."
+      "description": "Une requête GET avec l'en-tête Accept MAKO retourne un document structuré : frontmatter YAML avec métadonnées typées, suivi d'un corps markdown propre. 245 tokens au lieu de 4 125 — une réduction de 94%. Alternativement, les agents peuvent extraire le contenu MAKO directement d'un élément script dans le HTML — sans négociation de contenu nécessaire."
     },
     "layer_navigation": {
       "title": "Navigation",

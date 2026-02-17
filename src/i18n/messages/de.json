@@ -65,7 +65,7 @@
     "layer_content": {
       "title": "Inhalt",
       "question": "Was erhält der Agent tatsächlich?",
-      "description": "Eine GET-Anfrage mit dem MAKO-Accept-Header liefert ein strukturiertes Dokument: YAML-Frontmatter mit typisierten Metadaten, gefolgt von einem sauberen Markdown-Body. 245 Tokens statt 4.125 — eine Reduzierung um 94%. Alternativ können Agenten MAKO-Inhalte direkt aus einem <script>-Tag im HTML extrahieren — ohne Content-Negotiation."
+      "description": "Eine GET-Anfrage mit dem MAKO-Accept-Header liefert ein strukturiertes Dokument: YAML-Frontmatter mit typisierten Metadaten, gefolgt von einem sauberen Markdown-Body. 245 Tokens statt 4.125 — eine Reduzierung um 94%. Alternativ können Agenten MAKO-Inhalte direkt aus einem script-Element im HTML extrahieren — ohne Content-Negotiation."
     },
     "layer_navigation": {
       "title": "Navigation",

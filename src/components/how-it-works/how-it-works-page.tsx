@@ -1,5 +1,6 @@
 'use client';
 
+import { Fragment } from 'react';
 import { useTranslations } from 'next-intl';
 import { PageHeader } from '@/components/page-header';
 import { CodeBlock } from '@/components/code-block';
@@ -112,24 +113,13 @@ const CODE_WITH: Record<string, { filename: string; code: string }> = {
     code: `# 1. Site-level: /.well-known/mako
 GET /.well-known/mako HTTP/1.1
 
-{
-  "mako": "1.0",
-  "site": "example.com",
-  "accept": "text/mako+markdown",
-  "features": {
-    "content_negotiation": true,
-    "html_embedding": true
-  },
-  "spec": "https://makospec.vercel.app"
-}
+{ "mako": "1.0" }
 
 # 2. Page-level: HTML <link> element
-<link rel="alternate"
-      type="text/mako+markdown">
+<link rel="alternate" type="text/mako+markdown">
 
 # 3. Embedded: HTML <script> element
-<script type="text/mako+markdown"
-        id="mako">`,
+<script type="text/mako+markdown" id="mako">`,
   },
   prefilter: {
     filename: 'HEAD with MAKO headers',
@@ -189,8 +179,8 @@ mesh upper.
 **Sizes:** 7-13
 **Colors:** Black, White, Red
 
-# Alternative: extract from HTML <script>
-# without content negotiation (Section 6.4)`,
+# Also available via HTML <script> embedding
+# without content negotiation`,
   },
   navigation: {
     filename: 'Semantic links in frontmatter',
@@ -215,17 +205,17 @@ links:
 actions:
   - name: add_to_cart
     description: Add to shopping cart
-    url: /api/cart
+    endpoint: /api/cart
     method: POST
     params:
       sku: "SHOE-PRO-001"
       quantity: 1
   - name: check_availability
     description: Check stock by zip code
-    url: /api/stock?sku=SHOE-PRO-001
+    endpoint: /api/stock?sku=SHOE-PRO-001
   - name: notify_restock
     description: Get notified when back in stock
-    url: /api/notify
+    endpoint: /api/notify
 
 # Machine-readable, no JS required`,
   },
@@ -266,24 +256,59 @@ export function HowItWorksPage() {
         breadcrumbs={[{ label: t('title') }]}
       />
 
-      <div className="mx-auto max-w-5xl px-6 py-16">
-        {LAYERS.map((layer, i) => (
-          <FadeIn key={layer}>
-            <section className="mb-20">
-              {/* Layer header */}
-              <div className="mb-6">
-                <div className="mb-3 flex items-center gap-3">
-                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-500/10 text-sm font-bold text-emerald-400">
+      <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-16">
+        {/* Layer navigation */}
+        <nav className="mb-12 rounded-xl border border-slate-800 bg-slate-900/30 p-4 sm:p-6">
+          <div className="flex items-center gap-1 overflow-x-auto pb-1 sm:justify-center">
+            {LAYERS.map((layer, i) => (
+              <Fragment key={layer}>
+                <a
+                  href={`#${layer}`}
+                  className="group flex shrink-0 items-center gap-2 rounded-lg px-2.5 py-2 transition hover:bg-emerald-500/10 sm:px-3"
+                >
+                  <span className="inline-flex h-7 w-7 items-center justify-center rounded-md bg-emerald-500/10 text-xs font-bold text-emerald-400 transition group-hover:bg-emerald-500/20">
                     {i + 1}
                   </span>
-                  <h2 className="text-2xl font-bold text-white">
+                  <span className="text-xs font-medium text-slate-300 transition group-hover:text-white sm:text-sm">
+                    {t(`layer_${layer}.title`)}
+                  </span>
+                </a>
+                {i < LAYERS.length - 1 && (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 16 16"
+                    fill="currentColor"
+                    className="h-3.5 w-3.5 shrink-0 text-slate-600"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M6.22 4.22a.75.75 0 0 1 1.06 0l3.25 3.25a.75.75 0 0 1 0 1.06l-3.25 3.25a.75.75 0 0 1-1.06-1.06L8.94 8 6.22 5.28a.75.75 0 0 1 0-1.06Z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                )}
+              </Fragment>
+            ))}
+          </div>
+        </nav>
+
+        {LAYERS.map((layer, i) => (
+          <FadeIn key={layer}>
+            <section id={layer} className="mb-16 scroll-mt-24 sm:mb-20">
+              {/* Layer header */}
+              <div className="mb-5 sm:mb-6">
+                <div className="mb-3 flex items-center gap-3">
+                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500/10 text-sm font-bold text-emerald-400 sm:h-9 sm:w-9">
+                    {i + 1}
+                  </span>
+                  <h2 className="text-xl font-bold text-white sm:text-2xl">
                     {t(`layer_${layer}.title`)}
                   </h2>
                 </div>
                 <p className="text-sm italic text-emerald-400/80">
                   {t(`layer_${layer}.question`)}
                 </p>
-                <p className="mt-3 text-slate-400 leading-relaxed">
+                <p className="mt-3 text-sm text-slate-400 leading-relaxed sm:text-base">
                   {t(`layer_${layer}.description`)}
                 </p>
               </div>
@@ -291,7 +316,7 @@ export function HowItWorksPage() {
               {/* Comparison grid */}
               <div className="grid gap-4 lg:grid-cols-2">
                 {/* Without MAKO */}
-                <div>
+                <div className="min-w-0">
                   <div className="mb-2 flex items-center gap-2">
                     <span className="inline-block h-2 w-2 rounded-full bg-red-400" />
                     <span className="text-xs font-medium uppercase tracking-wider text-red-400">
@@ -305,7 +330,7 @@ export function HowItWorksPage() {
                 </div>
 
                 {/* With MAKO */}
-                <div>
+                <div className="min-w-0">
                   <div className="mb-2 flex items-center gap-2">
                     <span className="inline-block h-2 w-2 rounded-full bg-emerald-400" />
                     <span className="text-xs font-medium uppercase tracking-wider text-emerald-400">
@@ -324,7 +349,7 @@ export function HowItWorksPage() {
 
         {/* RFC 2119 Annex */}
         <FadeIn>
-          <section className="mt-8 rounded-xl border border-slate-800 bg-slate-900/30 p-8">
+          <section className="mt-4 rounded-xl border border-slate-800 bg-slate-900/30 p-4 sm:mt-8 sm:p-8">
             <h2 className="text-2xl font-bold text-white">{t('annex_title')}</h2>
             <p className="mt-2 text-slate-400">{t('annex_subtitle')}</p>
 

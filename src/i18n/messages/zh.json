@@ -65,7 +65,7 @@
     "layer_content": {
       "title": "内容",
       "question": "代理实际收到什么？",
-      "description": "带有MAKO Accept头的GET请求返回结构化文档：带有类型化元数据的YAML前置数据，后跟干净的markdown正文。245个token而非4,125个——减少94%。另外，代理也可以直接从HTML的<script>标签中提取MAKO内容——无需内容协商。"
+      "description": "带有MAKO Accept头的GET请求返回结构化文档：带有类型化元数据的YAML前置数据，后跟干净的markdown正文。245个token而非4,125个——减少94%。另外，代理也可以直接从HTML的script元素中提取MAKO内容——无需内容协商。"
     },
     "layer_navigation": {
       "title": "导航",

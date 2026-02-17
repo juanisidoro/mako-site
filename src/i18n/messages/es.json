@@ -65,7 +65,7 @@
     "layer_content": {
       "title": "Contenido",
       "question": "¿Qué recibe realmente el agente?",
-      "description": "Una petición GET con la cabecera Accept de MAKO devuelve un documento estructurado: frontmatter YAML con metadatos tipados, seguido de un cuerpo markdown limpio. 245 tokens en vez de 4.125 — una reducción del 94%. Alternativamente, los agentes pueden extraer contenido MAKO directamente de una etiqueta <script> en el HTML — sin necesidad de negociación de contenido."
+      "description": "Una petición GET con la cabecera Accept de MAKO devuelve un documento estructurado: frontmatter YAML con metadatos tipados, seguido de un cuerpo markdown limpio. 245 tokens en vez de 4.125 — una reducción del 94%. Alternativamente, los agentes pueden extraer contenido MAKO directamente de un elemento script en el HTML — sin necesidad de negociación de contenido."
     },
     "layer_navigation": {
       "title": "Navegación",
