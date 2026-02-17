@@ -99,11 +99,16 @@ export function Benchmark() {
                 <span className={`font-mono text-sm font-semibold ${i === 2 ? 'text-emerald-400' : 'text-slate-300'}`}>
                   <AnimatedNumber target={bar.tokens} />
                 </span>
-                <span className="text-xs text-slate-500 ml-1">tok</span>
+                <span className="text-xs text-slate-500 ml-1">~tok</span>
               </div>
             </div>
           ))}
         </div>
+
+        {/* Token estimation note */}
+        <p className="mt-4 text-[11px] text-slate-600 text-center">
+          {t('token_note')}
+        </p>
 
         {/* CEF stat */}
         <div className="mt-12 flex justify-center">

@@ -118,7 +118,7 @@ export function SiteProbeResults({ probe, domain }: SiteProbeResultsProps) {
                 <div className="flex items-center gap-2 shrink-0 ml-3">
                   {item.hasMako && item.makoTokens && (
                     <span className="text-xs text-emerald-400/70 font-mono">
-                      {item.makoTokens} tok
+                      ~{item.makoTokens} tok
                     </span>
                   )}
                   {item.hasMako && item.makoVersion && (

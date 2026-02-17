@@ -78,7 +78,7 @@ export function TokenComparison({
               {t('results.html_tokens')}
             </span>
             <span className="font-mono text-sm font-semibold text-slate-300" ref={htmlCount.ref}>
-              {htmlCount.value.toLocaleString()}
+              ~{htmlCount.value.toLocaleString()}
             </span>
           </div>
           <div className="h-10 rounded-lg bg-slate-900 border border-slate-800 overflow-hidden">
@@ -96,7 +96,7 @@ export function TokenComparison({
               {t('results.mako_tokens')}
             </span>
             <span className="font-mono text-sm font-semibold text-emerald-400" ref={makoCount.ref}>
-              {makoCount.value.toLocaleString()}
+              ~{makoCount.value.toLocaleString()}
             </span>
           </div>
           <div className="h-10 rounded-lg bg-slate-900 border border-slate-800 overflow-hidden">
@@ -107,6 +107,11 @@ export function TokenComparison({
           </div>
         </div>
       </div>
+
+      {/* Token estimation note */}
+      <p className="text-[11px] text-slate-600 text-center">
+        {t('results.token_note')}
+      </p>
 
       {/* Meta info */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
