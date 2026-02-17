@@ -1,4 +1,5 @@
 import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/routing';
 import { siteConfig } from '@/config/site';
 
 export function Hero() {
@@ -37,7 +38,7 @@ export function Hero() {
 
           {/* CTAs */}
           <div className="mt-8 sm:mt-10 flex flex-col gap-4 sm:flex-row">
-            <a
+            <Link
               href="/score"
               className="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-500 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-emerald-400 hover:shadow-lg hover:shadow-emerald-500/20"
             >
@@ -45,7 +46,7 @@ export function Hero() {
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-11.25a.75.75 0 00-1.5 0v2.5h-2.5a.75.75 0 000 1.5h2.5v2.5a.75.75 0 001.5 0v-2.5h2.5a.75.75 0 000-1.5h-2.5v-2.5z" clipRule="evenodd" />
               </svg>
               {t('cta_score')}
-            </a>
+            </Link>
             <a
               href={siteConfig.github}
               target="_blank"

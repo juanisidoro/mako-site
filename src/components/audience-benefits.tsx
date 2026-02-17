@@ -1,4 +1,5 @@
 import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/routing';
 import { siteConfig } from '@/config/site';
 import { FadeIn } from './fade-in';
 
@@ -56,13 +57,23 @@ export function AudienceBenefits() {
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-400">
                   {t(`${key}.description`)}
                 </p>
-                <a
-                  href={links[key]}
-                  {...(isExternal[key] ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                  className={`mt-6 inline-flex items-center justify-center rounded-lg px-5 py-2.5 text-sm font-semibold transition hover:shadow-lg ${ctaColors[key]}`}
-                >
-                  {t(`${key}.cta`)}
-                </a>
+                {isExternal[key] ? (
+                  <a
+                    href={links[key]}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`mt-6 inline-flex items-center justify-center rounded-lg px-5 py-2.5 text-sm font-semibold transition hover:shadow-lg ${ctaColors[key]}`}
+                  >
+                    {t(`${key}.cta`)}
+                  </a>
+                ) : (
+                  <Link
+                    href={links[key]}
+                    className={`mt-6 inline-flex items-center justify-center rounded-lg px-5 py-2.5 text-sm font-semibold transition hover:shadow-lg ${ctaColors[key]}`}
+                  >
+                    {t(`${key}.cta`)}
+                  </Link>
+                )}
               </div>
             </FadeIn>
           ))}
