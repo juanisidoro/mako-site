@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import { getDocPage, getDocSlugs } from '@/lib/docs';
 import { MarkdownRenderer } from '@/components/docs/markdown-renderer';
 import { TableOfContents } from '@/components/docs/table-of-contents';
+import { DocsMobileDrawer } from '@/components/docs/docs-mobile-drawer';
 import { Footer } from '@/components/footer';
 
 export function generateStaticParams() {
@@ -44,6 +45,7 @@ export default async function DocSlugPage({
         </main>
         <TableOfContents headings={doc.headings} />
       </div>
+      <DocsMobileDrawer headings={doc.headings} />
       <Footer />
     </>
   );

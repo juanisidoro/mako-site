@@ -5,6 +5,16 @@ import remarkGfm from 'remark-gfm';
 import rehypeSlug from 'rehype-slug';
 import rehypeHighlight from 'rehype-highlight';
 import type { Components } from 'react-markdown';
+import { isAsciiPipeline, PipelineDiagram } from './pipeline-diagram';
+
+function extractTextFromChildren(children: React.ReactNode): string {
+  if (typeof children === 'string') return children;
+  if (Array.isArray(children)) return children.map(extractTextFromChildren).join('');
+  if (children && typeof children === 'object' && 'props' in children) {
+    return extractTextFromChildren((children as React.ReactElement<{ children?: React.ReactNode }>).props.children);
+  }
+  return '';
+}
 
 function LinkIcon() {
   return (
@@ -98,11 +108,18 @@ const components: Components = {
       </code>
     );
   },
-  pre: ({ children, ...props }) => (
-    <pre className="bg-[#0a0f1a] border border-slate-800 rounded-lg p-4 mb-4 overflow-x-auto" {...props}>
-      {children}
-    </pre>
-  ),
+  pre: ({ children, ...props }) => {
+    // Extract text content to check for ASCII pipeline diagrams
+    const text = extractTextFromChildren(children);
+    if (text && isAsciiPipeline(text)) {
+      return <PipelineDiagram code={text} />;
+    }
+    return (
+      <pre className="bg-[#0a0f1a] border border-slate-800 rounded-lg p-4 mb-4 overflow-x-auto" {...props}>
+        {children}
+      </pre>
+    );
+  },
   table: ({ children, ...props }) => (
     <div className="overflow-x-auto mb-4">
       <table className="w-full text-sm border-collapse" {...props}>

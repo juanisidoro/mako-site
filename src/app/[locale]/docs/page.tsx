@@ -3,6 +3,7 @@ import { getTranslations } from 'next-intl/server';
 import type { Metadata } from 'next';
 import { Link } from '@/i18n/routing';
 import { Footer } from '@/components/footer';
+import { DocsMobileDrawer } from '@/components/docs/docs-mobile-drawer';
 
 const CARDS = [
   {
@@ -87,6 +88,7 @@ export default async function DocsIndexPage({
           ))}
         </div>
       </main>
+      <DocsMobileDrawer />
       <Footer />
     </>
   );
