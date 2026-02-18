@@ -514,6 +514,7 @@
     "nav_cef": "CEF-Format",
     "nav_headers": "HTTP-Header",
     "nav_examples": "Beispiele",
+    "nav_github": "GitHub Spec",
     "card_spec_title": "Spezifikation",
     "card_spec_desc": "Das vollständige MAKO-Protokoll: Dateiformat, Inhaltstypen, Frontmatter-Schema, Konformitätsstufen und Versionierung.",
     "card_cef_title": "CEF — Kompaktes Embedding-Format",
