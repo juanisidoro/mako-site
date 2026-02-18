@@ -501,5 +501,26 @@
       "urls_checked": "已检查{domain}的{total}个URL",
       "adoption_label": "网站MAKO采用率"
     }
+  },
+  "docs": {
+    "meta_title": "文档 — MAKO",
+    "meta_description": "MAKO 协议规范、CEF 编码格式、HTTP 头部参考和实际示例。",
+    "title": "文档",
+    "subtitle": "实现 MAKO 协议所需的一切。",
+    "on_this_page": "本页内容",
+    "nav_overview": "概览",
+    "nav_reference": "参考",
+    "nav_spec": "规范",
+    "nav_cef": "CEF 格式",
+    "nav_headers": "HTTP 头部",
+    "nav_examples": "示例",
+    "card_spec_title": "规范",
+    "card_spec_desc": "完整的 MAKO 协议：文件格式、内容类型、frontmatter 模式、合规级别和版本控制。",
+    "card_cef_title": "CEF — 紧凑嵌入格式",
+    "card_cef_desc": "将 512 维嵌入向量压缩至约 470 字节以通过 HTTP 头部传输的标准。",
+    "card_headers_title": "HTTP 头部参考",
+    "card_headers_desc": "MAKO 请求和响应 HTTP 头部的完整参考。",
+    "card_examples_title": "示例",
+    "card_examples_desc": "真实的 MAKO 文件示例：产品、文章和文档页面。"
   }
 }

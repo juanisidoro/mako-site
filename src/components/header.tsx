@@ -46,14 +46,12 @@ export function Header() {
           >
             {t('score')}
           </Link>
-          <a
-            href={siteConfig.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-sm text-slate-400 transition hover:text-white"
+          <Link
+            href="/docs"
+            className="text-sm text-slate-400 transition hover:text-white"
           >
-            {t('spec')}
-          </a>
+            {t('docs')}
+          </Link>
           <a
             href={siteConfig.npm}
             target="_blank"
@@ -119,14 +117,13 @@ export function Header() {
             >
               {t('score')}
             </Link>
-            <a
-              href={siteConfig.github}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/docs"
               className="text-sm text-slate-400"
+              onClick={() => setOpen(false)}
             >
-              {t('spec')} ↗
-            </a>
+              {t('docs')}
+            </Link>
             <a
               href={siteConfig.npm}
               target="_blank"

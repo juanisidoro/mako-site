@@ -501,5 +501,26 @@
       "urls_checked": "{domain}の{total}URLを確認",
       "adoption_label": "サイト全体のMAKO導入率"
     }
+  },
+  "docs": {
+    "meta_title": "ドキュメント — MAKO",
+    "meta_description": "MAKOプロトコル仕様、CEFエンコーディング形式、HTTPヘッダーリファレンス、実例。",
+    "title": "ドキュメント",
+    "subtitle": "MAKOプロトコルの実装に必要なすべて。",
+    "on_this_page": "このページの内容",
+    "nav_overview": "概要",
+    "nav_reference": "リファレンス",
+    "nav_spec": "仕様",
+    "nav_cef": "CEF形式",
+    "nav_headers": "HTTPヘッダー",
+    "nav_examples": "例",
+    "card_spec_title": "仕様",
+    "card_spec_desc": "MAKOプロトコルの全体：ファイル形式、コンテンツタイプ、フロントマタースキーマ、適合レベル、バージョニング。",
+    "card_cef_title": "CEF — コンパクト埋め込み形式",
+    "card_cef_desc": "512次元の埋め込みベクトルを約470バイトに圧縮してHTTPヘッダーで転送する標準。",
+    "card_headers_title": "HTTPヘッダーリファレンス",
+    "card_headers_desc": "MAKOのリクエストとレスポンスHTTPヘッダーの完全なリファレンス。",
+    "card_examples_title": "例",
+    "card_examples_desc": "実際のMAKOファイル例：商品、記事、ドキュメントページ。"
   }
 }

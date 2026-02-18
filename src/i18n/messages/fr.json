@@ -501,5 +501,26 @@
       "urls_checked": "{total} URLs de {domain} vérifiées",
       "adoption_label": "Adoption MAKO sur le site"
     }
+  },
+  "docs": {
+    "meta_title": "Documentation — MAKO",
+    "meta_description": "Spécification du protocole MAKO, format d'encodage CEF, référence des en-têtes HTTP et exemples concrets.",
+    "title": "Documentation",
+    "subtitle": "Tout ce dont vous avez besoin pour implémenter le protocole MAKO.",
+    "on_this_page": "Sur cette page",
+    "nav_overview": "Vue d'ensemble",
+    "nav_reference": "Référence",
+    "nav_spec": "Spécification",
+    "nav_cef": "Format CEF",
+    "nav_headers": "En-têtes HTTP",
+    "nav_examples": "Exemples",
+    "card_spec_title": "Spécification",
+    "card_spec_desc": "Le protocole MAKO complet : format de fichier, types de contenu, schéma frontmatter, niveaux de conformité et versionnage.",
+    "card_cef_title": "CEF — Format Compact d'Embeddings",
+    "card_cef_desc": "Standard de compression des vecteurs d'embeddings 512 dimensions en ~470 octets pour le transport via en-têtes HTTP.",
+    "card_headers_title": "Référence des En-têtes HTTP",
+    "card_headers_desc": "Référence complète des en-têtes HTTP de requête et réponse MAKO.",
+    "card_examples_title": "Exemples",
+    "card_examples_desc": "Exemples concrets de fichiers MAKO : pages produit, article et documentation."
   }
 }

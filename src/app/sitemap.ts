@@ -9,6 +9,11 @@ const routes = [
   '/analyzer',
   '/score',
   '/directory',
+  '/docs',
+  '/docs/spec',
+  '/docs/cef',
+  '/docs/headers',
+  '/docs/examples',
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

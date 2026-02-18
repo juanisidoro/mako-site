@@ -134,6 +134,31 @@ h1, h2, h3, h4 {
   animation: pulse-glow 3s ease-in-out infinite;
 }
 
+/* highlight.js theme — custom dark */
+.hljs {
+  background: transparent !important;
+  color: #cbd5e1;
+}
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-built_in { color: #f472b6; }
+.hljs-string,
+.hljs-attr { color: #38bdf8; }
+.hljs-title,
+.hljs-section,
+.hljs-name { color: #06d6a0; }
+.hljs-number,
+.hljs-literal { color: #fb923c; }
+.hljs-comment,
+.hljs-quote { color: #475569; font-style: italic; }
+.hljs-variable,
+.hljs-template-variable { color: #a78bfa; }
+.hljs-type,
+.hljs-class .hljs-title { color: #fbbf24; }
+.hljs-meta { color: #94a3b8; }
+.hljs-addition { color: #06d6a0; }
+.hljs-deletion { color: #ef4444; }
+
 /* Score gauge glow variants */
 .gauge-glow-green {
   filter: drop-shadow(0 0 12px rgba(34,197,94,0.4));

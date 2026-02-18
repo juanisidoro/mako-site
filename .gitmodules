@@ -1,0 +1,3 @@
+[submodule "content/spec"]
+	path = content/spec
+	url = https://github.com/juanisidoro/mako-spec.git
