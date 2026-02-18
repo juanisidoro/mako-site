@@ -26,7 +26,8 @@
     "body": "每天，ChatGPT、Perplexity、Claude和数千个AI代理访问数百万个网站。它们不渲染CSS。不执行JavaScript。不点击按钮。它们阅读——需要为阅读而设计的内容。",
     "row_browser": "浏览器",
     "row_human": "人类",
-    "row_agent": "AI代理"
+    "row_agent": "AI代理",
+    "row_result": "过载或空白"
   },
   "problem_proof": {
     "title": "问题不在于你的内容，而在于格式",

@@ -26,7 +26,8 @@
     "body": "Every day, ChatGPT, Perplexity, Claude, and thousands of AI agents visit millions of websites. They don't render CSS. They don't execute JavaScript. They don't click buttons. They read — and they need content designed for reading.",
     "row_browser": "Browser",
     "row_human": "Human",
-    "row_agent": "AI Agent"
+    "row_agent": "AI Agent",
+    "row_result": "Overloaded or empty"
   },
   "problem_proof": {
     "title": "The format is the problem, not your content",

@@ -27,7 +27,7 @@ export function GetStarted() {
   };
 
   return (
-    <section className="border-t border-slate-800/50">
+    <section id="get-started" className="border-t border-slate-800/50">
       <div className="mx-auto max-w-5xl px-6 py-16">
         <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/5 px-6 py-10 sm:px-10">
           {/* Header */}

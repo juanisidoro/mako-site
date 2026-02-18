@@ -24,9 +24,10 @@
   "the_shift": {
     "title": "Uma nova audiência está lendo a web",
     "body": "Todos os dias, ChatGPT, Perplexity, Claude e milhares de agentes IA visitam milhões de sites. Eles não renderizam CSS. Não executam JavaScript. Não clicam em botões. Eles leem — e precisam de conteúdo projetado para leitura.",
-    "row_browser": "Browser",
+    "row_browser": "Navegador",
     "row_human": "Humano",
-    "row_agent": "Agente IA"
+    "row_agent": "Agente IA",
+    "row_result": "Saturado ou vazio"
   },
   "problem_proof": {
     "title": "O problema não é seu conteúdo. É o formato.",

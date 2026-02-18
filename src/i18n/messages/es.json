@@ -15,18 +15,19 @@
   },
   "hero": {
     "badge": "Estándar Abierto · Apache 2.0",
-    "title_line1": "La web fue construida para browsers",
-    "title_line2": "La IA necesita otra cosa",
-    "subtitle": "MAKO es un estándar abierto que le da a cada página una versión limpia y estructurada para agentes IA. Misma URL, mismo servidor — diferente audiencia.",
-    "cta_score": "Comprueba tu AI Score",
-    "cta_spec": "Cómo funciona"
+    "title_line1": "La web fue construida para navegadores",
+    "title_line2": "la IA necesita su propio lenguaje",
+    "subtitle": "MAKO es un estándar abierto que le da a cada página una versión que los agentes IA realmente entienden. Misma URL, mismo servidor — diferente audiencia.",
+    "cta_score": "Empieza ahora",
+    "cta_spec": "Analiza tu web"
   },
   "the_shift": {
     "title": "Una nueva audiencia está leyendo la web",
     "body": "Cada día, ChatGPT, Perplexity, Claude y miles de agentes IA visitan millones de sitios web. No renderizan CSS. No ejecutan JavaScript. No hacen clic en botones. Leen — y necesitan contenido diseñado para ser leído.",
-    "row_browser": "Browser",
+    "row_browser": "Navegador",
     "row_human": "Humano",
-    "row_agent": "Agente IA"
+    "row_agent": "Agente IA",
+    "row_result": "Saturado o vacío"
   },
   "problem_proof": {
     "title": "El problema no es tu contenido. Es el formato.",
@@ -36,7 +37,7 @@
     "card_spa_label": "Apps JavaScript",
     "card_spa_value": "0 KB",
     "card_spa_detail": "Contenido renderizado del lado del cliente — invisible para agentes",
-    "resolution": "HTML fue diseñado para navegadores, no para agentes de razonamiento. Ya sea que tu sitio envíe demasiado o muy poco, el resultado es el mismo: la IA no puede extraer lo que importa de forma fiable.",
+    "resolution": "Este lenguaje no fue diseñado para agentes IA. Ya sea que tu sitio envíe demasiado o muy poco, el resultado es el mismo: la IA no puede extraer lo que realmente te importa de forma fiable.",
     "tokens_html": "tokens (HTML crudo)",
     "tokens_mako": "tokens (MAKO)",
     "fewer": "menos"

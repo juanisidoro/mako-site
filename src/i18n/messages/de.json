@@ -26,7 +26,8 @@
     "body": "Jeden Tag besuchen ChatGPT, Perplexity, Claude und Tausende von KI-Agenten Millionen von Websites. Sie rendern kein CSS. Sie führen kein JavaScript aus. Sie klicken nicht auf Buttons. Sie lesen — und brauchen Inhalte, die zum Lesen gemacht sind.",
     "row_browser": "Browser",
     "row_human": "Mensch",
-    "row_agent": "KI-Agent"
+    "row_agent": "KI-Agent",
+    "row_result": "Überladen oder leer"
   },
   "problem_proof": {
     "title": "Das Problem ist nicht dein Inhalt. Es ist das Format.",

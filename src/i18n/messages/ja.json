@@ -26,7 +26,8 @@
     "body": "毎日、ChatGPT、Perplexity、Claude、そして何千ものAIエージェントが何百万ものWebサイトを訪問しています。CSSをレンダリングしません。JavaScriptを実行しません。ボタンをクリックしません。読むのです — そして読むために設計されたコンテンツが必要です。",
     "row_browser": "ブラウザ",
     "row_human": "人間",
-    "row_agent": "AIエージェント"
+    "row_agent": "AIエージェント",
+    "row_result": "過負荷か空白"
   },
   "problem_proof": {
     "title": "問題はコンテンツではなく、フォーマットです",

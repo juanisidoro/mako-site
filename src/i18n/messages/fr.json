@@ -26,7 +26,8 @@
     "body": "Chaque jour, ChatGPT, Perplexity, Claude et des milliers d'agents IA visitent des millions de sites web. Ils ne rendent pas le CSS. Ils n'exécutent pas le JavaScript. Ils ne cliquent pas sur les boutons. Ils lisent — et ils ont besoin de contenu conçu pour la lecture.",
     "row_browser": "Navigateur",
     "row_human": "Humain",
-    "row_agent": "Agent IA"
+    "row_agent": "Agent IA",
+    "row_result": "Saturé ou vide"
   },
   "problem_proof": {
     "title": "Le problème n'est pas votre contenu. C'est le format.",

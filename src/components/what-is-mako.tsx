@@ -17,9 +17,6 @@ export function WhatIsMako() {
             <p className="mt-6 max-w-2xl mx-auto text-base leading-relaxed text-slate-400 sm:text-lg">
               {t('body_1')}
             </p>
-            <p className="mt-4 max-w-2xl mx-auto text-base leading-relaxed text-slate-400 sm:text-lg">
-              {t('body_2')}
-            </p>
           </div>
         </FadeIn>
 
