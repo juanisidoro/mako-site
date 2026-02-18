@@ -24,9 +24,15 @@
   "problem": {
     "title": "Le web a été conçu pour les humains",
     "subtitle": "Quand un agent IA visite votre site, il télécharge barres de navigation, bannières de cookies, scripts publicitaires et des milliers de lignes de balisage — juste pour trouver un nom de produit et un prix.",
+    "stat_traditional_label": "Sites traditionnels",
     "stat_value": "181 Ko",
-    "stat_label": "poids moyen de page qu'un agent IA doit analyser",
-    "stat_detail": "4 125 tokens consommés avant de comprendre un seul produit"
+    "stat_label": "de bruit : nav, pubs, scripts, cookies",
+    "stat_detail": "4 125 tokens consommés avant de trouver le produit",
+    "stat_spa_label": "SPAs modernes",
+    "stat_spa_value": "0 Ko",
+    "stat_spa_detail": "de contenu utile — juste un div vide",
+    "stat_spa_subdetail": "JavaScript rend tout. Les agents IA n'exécutent pas JS.",
+    "paradox": "L'ironie : un WordPress legacy est plus visible pour l'IA qu'une app React moderne. Dans les deux cas, sans MAKO votre contenu est invisible."
   },
   "how_it_works": {
     "title": "Comment Ça Marche",
@@ -55,7 +61,7 @@
     "layer_discovery": {
       "title": "Découverte",
       "question": "Comment l'agent sait-il que votre site supporte MAKO ?",
-      "description": "MAKO propose trois mécanismes de découverte : le endpoint .well-known/mako déclare les capacités au niveau du site, la balise <link rel=\"alternate\"> signale le support au niveau de la page, et l'élément <script type=\"text/mako+markdown\"> intègre le contenu MAKO directement dans le HTML. Ensemble, ils remplacent le crawling aveugle par une découverte intentionnelle."
+      "description": "MAKO propose trois mécanismes de découverte : le endpoint .well-known/mako déclare les capacités au niveau du site, la balise link rel=alternate signale le support au niveau de la page, et l'élément script type=text/mako+markdown intègre le contenu MAKO directement dans le HTML. Ensemble, ils remplacent le crawling aveugle par une découverte intentionnelle."
     },
     "layer_prefilter": {
       "title": "Pré-filtrage",

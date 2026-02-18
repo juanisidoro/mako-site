@@ -24,9 +24,15 @@
   "problem": {
     "title": "La web fue diseñada para humanos",
     "subtitle": "Cuando un agente IA visita tu sitio, descarga barras de navegación, banners de cookies, scripts de anuncios y miles de líneas de markup — solo para encontrar el nombre y precio de un producto.",
+    "stat_traditional_label": "Sitios tradicionales",
     "stat_value": "181 KB",
-    "stat_label": "peso promedio de página que un agente IA debe procesar",
-    "stat_detail": "4.125 tokens consumidos antes de entender un solo producto"
+    "stat_label": "de ruido: nav, anuncios, scripts, cookies",
+    "stat_detail": "4.125 tokens consumidos antes de encontrar el producto",
+    "stat_spa_label": "SPAs modernas",
+    "stat_spa_value": "0 KB",
+    "stat_spa_detail": "de contenido útil — solo un div vacío",
+    "stat_spa_subdetail": "JavaScript renderiza todo. Los agentes IA no ejecutan JS.",
+    "paradox": "La ironía: un WordPress legacy es más visible para la IA que una app React moderna. En ambos casos, sin MAKO tu contenido es invisible."
   },
   "how_it_works": {
     "title": "Cómo Funciona",
@@ -55,7 +61,7 @@
     "layer_discovery": {
       "title": "Descubrimiento",
       "question": "¿Cómo sabe el agente que tu sitio soporta MAKO?",
-      "description": "MAKO ofrece tres mecanismos de descubrimiento: el endpoint .well-known/mako declara capacidades a nivel de sitio, la etiqueta <link rel=\"alternate\"> señala soporte a nivel de página, y el elemento <script type=\"text/mako+markdown\"> incrusta contenido MAKO directamente en el HTML. Juntos, reemplazan el rastreo ciego con descubrimiento intencional."
+      "description": "MAKO ofrece tres mecanismos de descubrimiento: el endpoint .well-known/mako declara capacidades a nivel de sitio, la etiqueta link rel=alternate señala soporte a nivel de página, y el elemento script type=text/mako+markdown incrusta contenido MAKO directamente en el HTML. Juntos, reemplazan el rastreo ciego con descubrimiento intencional."
     },
     "layer_prefilter": {
       "title": "Pre-filtro",

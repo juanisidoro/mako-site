@@ -24,9 +24,15 @@
   "problem": {
     "title": "Das Web wurde für Menschen gemacht",
     "subtitle": "Wenn ein KI-Agent Ihre Website besucht, lädt er Navigationsleisten, Cookie-Banner, Werbeskripte und Tausende Zeilen Markup herunter — nur um einen Produktnamen und Preis zu finden.",
+    "stat_traditional_label": "Traditionelle Websites",
     "stat_value": "181 KB",
-    "stat_label": "durchschnittliches Seitengewicht, das ein KI-Agent parsen muss",
-    "stat_detail": "4.125 Tokens verbraucht, bevor ein einzelnes Produkt verstanden wird"
+    "stat_label": "Rauschen: Nav, Werbung, Scripts, Cookies",
+    "stat_detail": "4.125 Tokens verbraucht, bevor das Produkt gefunden wird",
+    "stat_spa_label": "Moderne SPAs",
+    "stat_spa_value": "0 KB",
+    "stat_spa_detail": "nützlicher Inhalt — nur ein leeres div",
+    "stat_spa_subdetail": "JavaScript rendert alles. KI-Agenten führen kein JS aus.",
+    "paradox": "Die Ironie: Ein Legacy-WordPress ist für KI sichtbarer als eine moderne React-App. In beiden Fällen ist Ihr Inhalt ohne MAKO unsichtbar."
   },
   "how_it_works": {
     "title": "So Funktioniert Es",
@@ -55,7 +61,7 @@
     "layer_discovery": {
       "title": "Entdeckung",
       "question": "Wie erkennt der Agent, dass Ihre Website MAKO unterstützt?",
-      "description": "MAKO bietet drei Entdeckungsmechanismen: Der .well-known/mako-Endpoint deklariert Capabilities auf Site-Ebene, das <link rel=\"alternate\">-Tag signalisiert Unterstützung auf Seitenebene, und das <script type=\"text/mako+markdown\">-Element bettet MAKO-Inhalte direkt in HTML ein. Zusammen ersetzen sie blindes Crawling durch gezielte Entdeckung."
+      "description": "MAKO bietet drei Entdeckungsmechanismen: Der .well-known/mako-Endpoint deklariert Capabilities auf Site-Ebene, das link rel=alternate-Tag signalisiert Unterstützung auf Seitenebene, und das script type=text/mako+markdown-Element bettet MAKO-Inhalte direkt in HTML ein. Zusammen ersetzen sie blindes Crawling durch gezielte Entdeckung."
     },
     "layer_prefilter": {
       "title": "Vorfilter",

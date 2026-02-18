@@ -24,9 +24,15 @@
   "problem": {
     "title": "A web foi projetada para humanos",
     "subtitle": "Quando um agente IA visita seu site, ele baixa barras de navegação, banners de cookies, scripts de anúncios e milhares de linhas de markup — só para encontrar o nome e o preço de um produto.",
+    "stat_traditional_label": "Sites tradicionais",
     "stat_value": "181 KB",
-    "stat_label": "peso médio de página que um agente IA precisa processar",
-    "stat_detail": "4.125 tokens consumidos antes de entender um único produto"
+    "stat_label": "de ruído: nav, anúncios, scripts, cookies",
+    "stat_detail": "4.125 tokens consumidos antes de encontrar o produto",
+    "stat_spa_label": "SPAs modernas",
+    "stat_spa_value": "0 KB",
+    "stat_spa_detail": "de conteúdo útil — apenas um div vazio",
+    "stat_spa_subdetail": "JavaScript renderiza tudo. Agentes IA não executam JS.",
+    "paradox": "A ironia: um WordPress legacy é mais visível para a IA do que um app React moderno. Em ambos os casos, sem MAKO seu conteúdo é invisível."
   },
   "how_it_works": {
     "title": "Como Funciona",
@@ -55,7 +61,7 @@
     "layer_discovery": {
       "title": "Descoberta",
       "question": "Como o agente sabe que seu site suporta MAKO?",
-      "description": "MAKO oferece três mecanismos de descoberta: o endpoint .well-known/mako declara capacidades a nível de site, a tag <link rel=\"alternate\"> sinaliza suporte a nível de página, e o elemento <script type=\"text/mako+markdown\"> incorpora conteúdo MAKO diretamente no HTML. Juntos, substituem o rastreamento cego por descoberta intencional."
+      "description": "MAKO oferece três mecanismos de descoberta: o endpoint .well-known/mako declara capacidades a nível de site, a tag link rel=alternate sinaliza suporte a nível de página, e o elemento script type=text/mako+markdown incorpora conteúdo MAKO diretamente no HTML. Juntos, substituem o rastreamento cego por descoberta intencional."
     },
     "layer_prefilter": {
       "title": "Pré-filtro",

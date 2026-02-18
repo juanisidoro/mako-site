@@ -24,9 +24,15 @@
   "problem": {
     "title": "Webは人間のために設計された",
     "subtitle": "AIエージェントがあなたのサイトを訪問すると、ナビゲーションバー、Cookieバナー、広告スクリプト、何千行ものマークアップをダウンロードします — たった1つの商品名と価格を見つけるためだけに。",
+    "stat_traditional_label": "従来のサイト",
     "stat_value": "181 KB",
-    "stat_label": "AIエージェントが解析しなければならない平均ページサイズ",
-    "stat_detail": "1つの商品を理解する前に4,125トークンを消費"
+    "stat_label": "ノイズ：ナビ、広告、スクリプト、Cookie",
+    "stat_detail": "商品を見つける前に4,125トークンを消費",
+    "stat_spa_label": "モダンSPA",
+    "stat_spa_value": "0 KB",
+    "stat_spa_detail": "有用なコンテンツ — 空のdivだけ",
+    "stat_spa_subdetail": "JavaScriptが全てをレンダリング。AIエージェントはJSを実行しません。",
+    "paradox": "皮肉なことに：レガシーなWordPressサイトの方が、モダンなReactアプリよりもAIにとって可視性が高い。どちらの場合も、MAKOなしではコンテンツは見えません。"
   },
   "how_it_works": {
     "title": "仕組み",
@@ -55,7 +61,7 @@
     "layer_discovery": {
       "title": "ディスカバリー",
       "question": "エージェントはあなたのサイトがMAKOをサポートしていることをどう知るのか？",
-      "description": "MAKOは3つの発見メカニズムを提供します：.well-known/makoエンドポイントがサイトレベルの機能を宣言し、<link rel=\"alternate\">タグがページレベルのサポートを示し、<script type=\"text/mako+markdown\">要素がMAKOコンテンツをHTMLに直接埋め込みます。これらが一体となり、盲目的なクロールを意図的な発見に置き換えます。"
+      "description": "MAKOは3つの発見メカニズムを提供します：.well-known/makoエンドポイントがサイトレベルの機能を宣言し、link rel=alternateタグがページレベルのサポートを示し、script type=text/mako+markdown要素がMAKOコンテンツをHTMLに直接埋め込みます。これらが一体となり、盲目的なクロールを意図的な発見に置き換えます。"
     },
     "layer_prefilter": {
       "title": "プリフィルター",

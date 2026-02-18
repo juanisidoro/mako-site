@@ -24,9 +24,15 @@
   "problem": {
     "title": "互联网是为人类设计的",
     "subtitle": "当AI代理访问你的网站时，它需要下载导航栏、Cookie横幅、广告脚本和数千行标记——只是为了找到一个产品名称和价格。",
+    "stat_traditional_label": "传统网站",
     "stat_value": "181 KB",
-    "stat_label": "AI代理需要解析的平均页面大小",
-    "stat_detail": "在理解一个产品之前已消耗4,125个token"
+    "stat_label": "噪音：导航、广告、脚本、Cookie",
+    "stat_detail": "在找到产品之前消耗4,125个token",
+    "stat_spa_label": "现代SPA",
+    "stat_spa_value": "0 KB",
+    "stat_spa_detail": "有用内容——只有一个空的div",
+    "stat_spa_subdetail": "JavaScript渲染一切。AI代理不执行JS。",
+    "paradox": "讽刺的是：一个传统WordPress网站对AI的可见性比现代React应用更高。无论哪种情况，没有MAKO你的内容都是不可见的。"
   },
   "how_it_works": {
     "title": "工作原理",
@@ -55,7 +61,7 @@
     "layer_discovery": {
       "title": "发现",
       "question": "代理如何知道你的网站支持MAKO？",
-      "description": "MAKO提供三种发现机制：.well-known/mako端点声明站点级能力，<link rel=\"alternate\">标签标示页面级支持，<script type=\"text/mako+markdown\">元素将MAKO内容直接嵌入HTML。三者共同用有意的发现取代盲目爬取。"
+      "description": "MAKO提供三种发现机制：.well-known/mako端点声明站点级能力，link rel=alternate标签标示页面级支持，script type=text/mako+markdown元素将MAKO内容直接嵌入HTML。三者共同用有意的发现取代盲目爬取。"
     },
     "layer_prefilter": {
       "title": "预过滤",

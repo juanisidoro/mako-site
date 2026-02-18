@@ -24,9 +24,15 @@
   "problem": {
     "title": "The web was designed for humans",
     "subtitle": "When an AI agent visits your site, it downloads navigation bars, cookie banners, ad scripts, and thousands of lines of markup — just to find a product name and price.",
+    "stat_traditional_label": "Traditional sites",
     "stat_value": "181 KB",
-    "stat_label": "average page weight an AI agent must parse",
-    "stat_detail": "4,125 tokens consumed before understanding a single product"
+    "stat_label": "of noise: nav, ads, scripts, cookies",
+    "stat_detail": "4,125 tokens consumed before finding the product",
+    "stat_spa_label": "Modern SPAs",
+    "stat_spa_value": "0 KB",
+    "stat_spa_detail": "of useful content — just an empty div",
+    "stat_spa_subdetail": "JavaScript renders everything. AI agents don't execute JS.",
+    "paradox": "The irony: a legacy WordPress site is more visible to AI than a modern React app. Either way, without MAKO your content is invisible."
   },
   "how_it_works": {
     "title": "How It Works",
@@ -55,7 +61,7 @@
     "layer_discovery": {
       "title": "Discovery",
       "question": "How does the agent know your site supports MAKO?",
-      "description": "MAKO offers three discovery mechanisms: the .well-known/mako endpoint declares site-level capabilities, the <link rel=\"alternate\"> tag signals page-level support, and the <script type=\"text/mako+markdown\"> element embeds MAKO content directly in HTML. Together, they replace blind crawling with intentional discovery."
+      "description": "MAKO offers three discovery mechanisms: the .well-known/mako endpoint declares site-level capabilities, the link rel=alternate tag signals page-level support, and the script type=text/mako+markdown element embeds MAKO content directly in HTML. Together, they replace blind crawling with intentional discovery."
     },
     "layer_prefilter": {
       "title": "Pre-filter",
