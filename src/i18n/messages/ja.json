@@ -14,12 +14,75 @@
     "how_it_works": "仕組み"
   },
   "hero": {
-    "badge": "オープンスタンダード · Apache 2.0",
-    "title_line1": "AIはあなたのサイトを読む",
-    "title_line2": "でも大事なことを見落とす",
-    "subtitle": "ChatGPT、Perplexity、Claudeがあなたのサイトを訪問すると、181KBのナビゲーションバー、広告、スクリプトをダウンロードします——たった1つの商品名を見つけるためだけに。MAKOはすべてのページにクリーンで構造化されたバージョンを提供し、AIが本当に理解できるようにします。",
+    "badge": "オープン標準 · Apache 2.0",
+    "title_line1": "Webはブラウザのために作られた",
+    "title_line2": "AIには別のものが必要",
+    "subtitle": "MAKOは、すべてのページにAIエージェント向けのクリーンで構造化されたバージョンを提供するオープン標準です。同じURL、同じサーバー — 異なるオーディエンス。",
     "cta_score": "AIスコアをチェック",
     "cta_spec": "仕組みを見る"
+  },
+  "the_shift": {
+    "title": "新しいオーディエンスがWebを読んでいる",
+    "body": "毎日、ChatGPT、Perplexity、Claude、そして何千ものAIエージェントが何百万ものWebサイトを訪問しています。CSSをレンダリングしません。JavaScriptを実行しません。ボタンをクリックしません。読むのです — そして読むために設計されたコンテンツが必要です。",
+    "row_browser": "ブラウザ",
+    "row_human": "人間",
+    "row_agent": "AIエージェント"
+  },
+  "problem_proof": {
+    "title": "問題はコンテンツではなく、フォーマットです",
+    "card_traditional_label": "コンテンツリッチなサイト",
+    "card_traditional_value": "181 KB",
+    "card_traditional_detail": "ナビ、広告、スクリプト、Cookie — ノイズに埋もれたコンテンツ",
+    "card_spa_label": "JavaScriptアプリ",
+    "card_spa_value": "0 KB",
+    "card_spa_detail": "クライアントサイドでレンダリング — エージェントには見えない",
+    "resolution": "HTMLはブラウザのために設計されました。推論エージェントのためではありません。サイトが多すぎても少なすぎても、結果は同じです：AIは重要な情報を確実に抽出できません。",
+    "tokens_html": "トークン（生HTML）",
+    "tokens_mako": "トークン（MAKO）",
+    "fewer": "削減"
+  },
+  "what_is_mako": {
+    "title": "MAKO：1つのページ、2つのバージョン",
+    "body_1": "MAKOは、どのWebサイトでも人間版と並んでAI最適化された構造化バージョンのコンテンツを提供できるオープン仕様です。",
+    "body_2": "AIエージェントがページを要求すると、サーバーは生のHTMLではなく、クリーンなメタデータとmarkdownで応答します。同じURL、同じサーバー、重複ゼロ — 異なるオーディエンスへの異なるレスポンスだけです。",
+    "diagram_title": "コンテントネゴシエーション",
+    "tagline": "SDKは不要。インフラ変更は不要。標準HTTP。"
+  },
+  "how_it_works_simple": {
+    "title": "仕組み",
+    "step_request_title": "AIがページをリクエスト",
+    "step_request_desc": "エージェントはブラウザと同じURLにアクセスします。",
+    "step_respond_title": "サーバーが構造化バージョンで応答",
+    "step_respond_desc": "クリーンなメタデータ、型付きコンテンツ、セマンティックリンク — AIに必要なすべて。",
+    "step_act_title": "AIが読み、理解し、行動する",
+    "step_act_desc": "エージェントが製品を抽出し、関連リンクをたどり、アクションを実行します。",
+    "tagline": "標準HTTPコンテントネゴシエーションに基づいています。"
+  },
+  "audience_impact": {
+    "title": "1つの標準。3つの効果。",
+    "subtitle": "同じアーキテクチャ、3つの異なる結果。",
+    "visibility_title": "可視性",
+    "visibility_desc": "製品とコンテンツがAI駆動のトラフィックに表示されます — ChatGPT、Perplexity、ショッピングアシスタント、Webを読むすべてのAI。",
+    "simplicity_title": "シンプルさ",
+    "simplicity_desc": "レンダリングハック不要、スクレイピングの回避策不要。型付きSDKとWordPressプラグイン — そのまま動くコンテントネゴシエーション。",
+    "determinism_title": "決定論的",
+    "determinism_desc": "構造化されたfrontmatter、宣言されたアクション、セマンティックリンク。脆弱なHTMLパーシングの代わりに、決定論的な取り込みレイヤー。"
+  },
+  "get_started": {
+    "title": "次の10億人の訪問者はブラウザを使わない。",
+    "title_2": "彼らがあなたのサイトをどう読むか定義しよう。",
+    "subtitle": "オープン標準。Apache-2.0。本番環境対応。",
+    "wp_title": "WordPress",
+    "wp_desc": "プラグインをインストール、有効化、完了。WooCommerceとACF対応。",
+    "sdk_title": "@mako-spec/js",
+    "sdk_install": "npm install @mako-spec/js",
+    "cli_title": "MAKO CLI",
+    "cli_desc": "MAKOファイルの検証、検査、ベンチマーク。",
+    "spec_title": "仕様",
+    "spec_desc": "完全なプロトコル：コンテンツタイプ、ヘッダー、適合レベル。",
+    "score_title": "あなたのサイトはAI対応ですか？",
+    "score_placeholder": "https://example.com",
+    "score_button": "スコアを取得"
   },
   "problem": {
     "title": "Webは人間のために設計された",
@@ -52,50 +115,31 @@
     "cta_learn_more": "6つの層を探索"
   },
   "how_it_works_page": {
-    "meta_title": "仕組み — MAKOプロトコルの層",
-    "meta_description": "MAKOプロトコルの6つの層を詳しく解説：ディスカバリー、プリフィルター、コンテンツ、ナビゲーション、アクション、キャッシュ。",
+    "meta_title": "仕組み — MAKO",
+    "meta_description": "MAKOがどのようにして、あらゆるウェブサイトが人間版の横にAI最適化された構造化バージョンを提供できるようにするか。同じURL、異なるオーディエンス。",
     "title": "仕組み",
-    "subtitle": "AIエージェントがあなたのWebサイトとやり取りする方法を変える6つの層 — すべて標準HTTPの上に構築。",
-    "without_mako": "MAKOなし",
-    "with_mako": "MAKOあり",
-    "layer_discovery": {
-      "title": "ディスカバリー",
-      "question": "エージェントはあなたのサイトがMAKOをサポートしていることをどう知るのか？",
-      "description": "MAKOは3つの発見メカニズムを提供します：.well-known/makoエンドポイントがサイトレベルの機能を宣言し、link rel=alternateタグがページレベルのサポートを示し、script type=text/mako+markdown要素がMAKOコンテンツをHTMLに直接埋め込みます。これらが一体となり、盲目的なクロールを意図的な発見に置き換えます。"
-    },
-    "layer_prefilter": {
-      "title": "プリフィルター",
-      "question": "エージェントはダウンロードする前に、ページの関連性をどう判断するのか？",
-      "description": "軽量なHEADリクエストがRFC 2119に従って分類されたレスポンスヘッダーを返します：必須ヘッダー（MUST）としてバージョン、タイプ、トークン数、言語；推奨ヘッダー（SHOULD）としてETagとCache-Control；任意ヘッダー（MAY）として宣言されたアクション。エージェントは関連性を判断するために必要な全てを把握できます——コンテンツを1バイトも転送することなく。"
-    },
-    "layer_content": {
-      "title": "コンテンツ",
-      "question": "エージェントは実際に何を受け取るのか？",
-      "description": "MAKO Acceptヘッダー付きのGETリクエストが構造化ドキュメントを返します：型付きメタデータのYAMLフロントマター、続いてクリーンなmarkdownボディ。4,125トークンの代わりに245トークン——94%の削減。また、エージェントはHTMLのscriptエレメントから直接MAKOコンテンツを抽出することもできます——コンテンツネゴシエーション不要です。"
-    },
-    "layer_navigation": {
-      "title": "ナビゲーション",
-      "question": "エージェントは関連コンテンツをどう探索するのか？",
-      "description": "HTMLから127のリンクを解析する代わりに（ほとんどが無関係）、MAKOフロントマターはコンテキスト説明付きのセマンティックリンクを宣言します。エージェントは /products/running-socks が'マッチするスポーツソックス'であることを知っています — 盲目的にクロールする別のURLではなく。"
-    },
-    "layer_action": {
-      "title": "アクション",
-      "question": "エージェントはあなたのサイトとどう対話するのか？",
-      "description": "MAKOはフロントマターで機械読み取り可能なアクションを宣言します：add_to_cart、check_availability、notify_restock — それぞれURL、メソッド、パラメータ付き。エージェントはHTMLフォームの解析やJavaScriptの実行なしに、これらのアクションを直接実行できます。"
-    },
-    "layer_cache": {
-      "title": "キャッシュ",
-      "question": "エージェントは変更されていないコンテンツの再ダウンロードをどう回避するのか？",
-      "description": "MAKOレスポンスにはETagとCache-Controlヘッダーが含まれます。以降の訪問で、エージェントはIf-None-Match付きの条件付きGETを送信します。コンテンツが変更されていなければ、サーバーは304 Not Modifiedを返します — 転送0バイト、処理0トークン。"
-    },
-    "annex_title": "付録：RFC 2119ヘッダー分類",
-    "annex_subtitle": "MAKOヘッダーはRFC 2119キーワードに従い、適合要件を定義します。",
-    "annex_classification": "分類",
-    "annex_rfc_keyword": "RFCキーワード",
-    "annex_headers": "ヘッダー",
-    "annex_required": "必須",
-    "annex_recommended": "推奨",
-    "annex_optional": "任意"
+    "subtitle": "1つのページ、2つのオーディエンス。MAKOはあらゆるウェブサイトに構造化レイヤーを追加し、AIエージェントが標準HTTPを使って読み、理解し、行動できるようにします。",
+    "diagram_label": "1つのページ、2つのオーディエンス",
+    "diagram_browser": "ブラウザ",
+    "diagram_agent": "AIエージェント",
+    "diagram_note": "同じURL。同じサーバー。リクエスト元に応じて異なるレスポンス。",
+    "step_request_title": "AIがページをリクエスト",
+    "step_request_body": "AIエージェントが既存のURLに標準HTTPリクエストを送信します。1つのヘッダーが構造化コンテンツの優先を示します。サーバーがMAKOをサポートしていない場合、通常のHTMLで応答します — 破壊的変更ゼロ。",
+    "step_request_point_1": "ブラウザと同じURLへの標準HTTPリクエスト",
+    "step_request_point_2": "AcceptヘッダーがMAKOフォーマットの優先を示す",
+    "step_request_point_3": "MAKOが利用不可の場合はHTMLにフォールバック",
+    "step_respond_title": "サーバーが構造化バージョンで応答",
+    "step_respond_body": "ナビゲーション、広告、スクリプトを含む生のHTMLの代わりに、サーバーはクリーンなドキュメントで応答します：型付きメタデータ、構造化コンテンツ、宣言された機能。",
+    "step_respond_point_1": "メタデータ：コンテンツタイプ、エンティティ名、言語、トークン数",
+    "step_respond_point_2": "関連コンテンツのみを含むクリーンなMarkdownボディ",
+    "step_respond_point_3": "宣言されたアクション（購入、登録、予約）とコンテキスト付きセマンティックリンク",
+    "step_act_title": "AIが読み、理解し、行動する",
+    "step_act_body": "エージェントは即座に処理できる構造化情報を受け取ります — HTMLの解析不要、JavaScript実行不要、127のリンクのどれが重要か推測不要。",
+    "step_act_point_1": "HTMLの解析やスクリプト実行なしで情報を抽出",
+    "step_act_point_2": "コンテキストと目的を持つセマンティックリンクをナビゲート",
+    "step_act_point_3": "型付きパラメータで宣言されたアクションを直接実行",
+    "cta_spec": "完全な仕様を読む",
+    "cta_score": "AIスコアをチェック"
   },
   "benchmark": {
     "title": "トークン効率",
@@ -115,7 +159,7 @@
     "token_note": "トークン数はモデルに依存しない推定値（~4文字/トークン）で、BPEトークナイザーの標準的な近似値です。"
   },
   "preview": {
-    "title": "MAKOファイルの見た目",
+    "title": "AIが実際に受け取るもの",
     "subtitle": "構造化YAMLフロントマター + 最適化Markdownボディ。AIエージェントに必要なものすべて、不要なものは一切なし。"
   },
   "features": {

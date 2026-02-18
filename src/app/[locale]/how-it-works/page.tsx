@@ -2,7 +2,7 @@ import { Suspense } from 'react';
 import { setRequestLocale } from 'next-intl/server';
 import { getTranslations } from 'next-intl/server';
 import type { Metadata } from 'next';
-import { HowItWorksPage } from '@/components/how-it-works/how-it-works-page';
+import { HowItWorksPageV2 } from '@/components/how-it-works/how-it-works-page-v2';
 import { Footer } from '@/components/footer';
 
 export async function generateMetadata({
@@ -30,7 +30,7 @@ export default async function HowItWorksRoute({
   return (
     <main>
       <Suspense>
-        <HowItWorksPage />
+        <HowItWorksPageV2 />
       </Suspense>
       <Footer />
     </main>

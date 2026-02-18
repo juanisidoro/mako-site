@@ -15,11 +15,74 @@
   },
   "hero": {
     "badge": "开放标准 · Apache 2.0",
-    "title_line1": "AI能读取你的网站",
-    "title_line2": "但遗漏了关键信息",
-    "subtitle": "当ChatGPT、Perplexity或Claude访问你的网站时，它们下载181KB的导航栏、广告和脚本——只是为了找到一个产品名称。MAKO为每个页面提供干净、结构化的版本，让AI真正理解。",
-    "cta_score": "查看你的AI评分",
-    "cta_spec": "了解工作原理"
+    "title_line1": "网络是为浏览器构建的",
+    "title_line2": "AI需要不同的东西",
+    "subtitle": "MAKO是一个开放标准，为每个页面提供面向AI代理的干净、结构化版本。相同URL，相同服务器——不同受众。",
+    "cta_score": "检查你的AI分数",
+    "cta_spec": "了解运作方式"
+  },
+  "the_shift": {
+    "title": "新的受众正在阅读网络",
+    "body": "每天，ChatGPT、Perplexity、Claude和数千个AI代理访问数百万个网站。它们不渲染CSS。不执行JavaScript。不点击按钮。它们阅读——需要为阅读而设计的内容。",
+    "row_browser": "浏览器",
+    "row_human": "人类",
+    "row_agent": "AI代理"
+  },
+  "problem_proof": {
+    "title": "问题不在于你的内容，而在于格式",
+    "card_traditional_label": "内容丰富的站点",
+    "card_traditional_value": "181 KB",
+    "card_traditional_detail": "导航、广告、脚本、Cookie——内容被噪音淹没",
+    "card_spa_label": "JavaScript应用",
+    "card_spa_value": "0 KB",
+    "card_spa_detail": "客户端渲染的内容——对代理不可见",
+    "resolution": "HTML是为浏览器设计的，不是为推理代理设计的。无论你的网站发送过多还是过少，结果都一样：AI无法可靠地提取重要内容。",
+    "tokens_html": "tokens（原始HTML）",
+    "tokens_mako": "tokens（MAKO）",
+    "fewer": "更少"
+  },
+  "what_is_mako": {
+    "title": "MAKO：一个页面，两个版本",
+    "body_1": "MAKO是一个开放规范，允许任何网站在人类版本旁边提供结构化的、AI优化的内容版本。",
+    "body_2": "当AI代理请求页面时，服务器以干净的元数据和markdown响应，而不是原始HTML。相同URL，相同服务器，零重复——只是为不同受众提供不同响应。",
+    "diagram_title": "内容协商",
+    "tagline": "无需SDK。无需基础设施变更。标准HTTP。"
+  },
+  "how_it_works_simple": {
+    "title": "工作原理",
+    "step_request_title": "AI请求你的页面",
+    "step_request_desc": "代理访问与任何浏览器相同的URL。",
+    "step_respond_title": "你的服务器以结构化版本响应",
+    "step_respond_desc": "干净的元数据、类型化内容、语义链接——AI需要的一切。",
+    "step_act_title": "AI阅读、理解并行动",
+    "step_act_desc": "代理提取你的产品，跟随相关链接，执行操作。",
+    "tagline": "基于标准HTTP内容协商。"
+  },
+  "audience_impact": {
+    "title": "一个标准。三种效果。",
+    "subtitle": "相同的架构，三种不同的结果。",
+    "visibility_title": "可见性",
+    "visibility_desc": "你的产品和内容出现在AI驱动的流量中——ChatGPT、Perplexity、购物助手和每个阅读网络的AI。",
+    "simplicity_title": "简洁性",
+    "simplicity_desc": "无需渲染hack，无需爬虫变通。类型化SDK和WordPress插件——开箱即用的内容协商。",
+    "determinism_title": "确定性",
+    "determinism_desc": "结构化frontmatter，声明式操作，语义链接。确定性的摄取层，取代脆弱的HTML解析。"
+  },
+  "get_started": {
+    "title": "下一个十亿访客不会使用浏览器。",
+    "title_2": "定义他们如何阅读你的网站。",
+    "subtitle": "开放标准。Apache-2.0。生产就绪。",
+    "wp_title": "WordPress",
+    "wp_desc": "安装插件，激活，完成。包含WooCommerce和ACF。",
+    "sdk_title": "@mako-spec/js",
+    "sdk_install": "npm install @mako-spec/js",
+    "cli_title": "MAKO CLI",
+    "cli_desc": "验证、检查和基准测试MAKO文件。",
+    "spec_title": "规范",
+    "spec_desc": "完整协议：内容类型、头部、合规级别。",
+    "score_title": "你的网站对AI准备好了吗？",
+    "score_placeholder": "https://example.com",
+    "score_button": "获取分数"
   },
   "problem": {
     "title": "互联网是为人类设计的",
@@ -52,50 +115,31 @@
     "cta_learn_more": "探索6个层次"
   },
   "how_it_works_page": {
-    "meta_title": "工作原理 — MAKO协议层",
-    "meta_description": "深入了解MAKO协议的6个层次：发现、预过滤、内容、导航、操作和缓存。",
+    "meta_title": "工作原理 — MAKO",
+    "meta_description": "MAKO如何让任何网站在人类版本旁边提供结构化的AI优化版本。相同URL，不同受众。",
     "title": "工作原理",
-    "subtitle": "6个层次改变AI代理与你网站的交互方式——全部基于标准HTTP构建。",
-    "without_mako": "没有MAKO",
-    "with_mako": "使用MAKO",
-    "layer_discovery": {
-      "title": "发现",
-      "question": "代理如何知道你的网站支持MAKO？",
-      "description": "MAKO提供三种发现机制：.well-known/mako端点声明站点级能力，link rel=alternate标签标示页面级支持，script type=text/mako+markdown元素将MAKO内容直接嵌入HTML。三者共同用有意的发现取代盲目爬取。"
-    },
-    "layer_prefilter": {
-      "title": "预过滤",
-      "question": "代理如何在下载之前判断你的页面是否相关？",
-      "description": "一个轻量的HEAD请求返回按RFC 2119分类的响应头：必需头部（MUST）如版本、类型、token数和语言；推荐头部（SHOULD）如ETag和Cache-Control用于缓存；可选头部（MAY）如声明的操作。代理知道判断相关性所需的一切——而无需传输一个字节的内容。"
-    },
-    "layer_content": {
-      "title": "内容",
-      "question": "代理实际收到什么？",
-      "description": "带有MAKO Accept头的GET请求返回结构化文档：带有类型化元数据的YAML前置数据，后跟干净的markdown正文。245个token而非4,125个——减少94%。另外，代理也可以直接从HTML的script元素中提取MAKO内容——无需内容协商。"
-    },
-    "layer_navigation": {
-      "title": "导航",
-      "question": "代理如何探索相关内容？",
-      "description": "MAKO前置数据不是解析HTML中的127个链接（大多不相关），而是声明带有上下文描述的语义链接。代理知道 /products/running-socks 是'配套运动袜'——不仅仅是另一个要盲目爬取的URL。"
-    },
-    "layer_action": {
-      "title": "操作",
-      "question": "代理如何与你的网站交互？",
-      "description": "MAKO在前置数据中声明机器可读的操作：add_to_cart、check_availability、notify_restock——每个都有URL、方法和参数。代理可以直接执行这些操作，无需解析HTML表单或执行JavaScript。"
-    },
-    "layer_cache": {
-      "title": "缓存",
-      "question": "代理如何避免重新下载未更改的内容？",
-      "description": "MAKO响应包含ETag和Cache-Control头。在后续访问中，代理发送带有If-None-Match的条件GET。如果内容未更改，服务器返回304 Not Modified——零字节传输，零token处理。"
-    },
-    "annex_title": "附录：RFC 2119头部分类",
-    "annex_subtitle": "MAKO头部遵循RFC 2119关键字来定义一致性要求。",
-    "annex_classification": "分类",
-    "annex_rfc_keyword": "RFC关键字",
-    "annex_headers": "头部",
-    "annex_required": "必需",
-    "annex_recommended": "推荐",
-    "annex_optional": "可选"
+    "subtitle": "一个页面，两个受众。MAKO为任何网站添加结构化层，让AI代理能够阅读、理解和行动——使用标准HTTP。",
+    "diagram_label": "一个页面，两个受众",
+    "diagram_browser": "浏览器",
+    "diagram_agent": "AI代理",
+    "diagram_note": "相同的URL。相同的服务器。根据请求者不同返回不同响应。",
+    "step_request_title": "AI请求您的页面",
+    "step_request_body": "AI代理向您现有的URL发送标准HTTP请求。一个请求头表明它偏好结构化内容。如果服务器不支持MAKO，则返回普通HTML——零破坏性变更。",
+    "step_request_point_1": "向浏览器使用的同一URL发送标准HTTP请求",
+    "step_request_point_2": "Accept头部表示偏好MAKO格式",
+    "step_request_point_3": "如果MAKO不可用则优雅降级为HTML",
+    "step_respond_title": "您的服务器响应结构化版本",
+    "step_respond_body": "服务器不再返回包含导航、广告和脚本的原始HTML，而是响应一个干净的文档：类型化的元数据、结构化的内容和声明的能力。",
+    "step_respond_point_1": "元数据：内容类型、实体名称、语言、token数量",
+    "step_respond_point_2": "仅包含相关内容的干净Markdown正文",
+    "step_respond_point_3": "声明的操作（购买、订阅、预订）和带上下文的语义链接",
+    "step_act_title": "AI阅读、理解并行动",
+    "step_act_body": "代理接收可以立即处理的结构化信息——无需解析HTML，无需执行JavaScript，无需猜测127个链接中哪些重要。",
+    "step_act_point_1": "无需解析HTML或执行脚本即可提取信息",
+    "step_act_point_2": "导航带有上下文和目的的语义链接",
+    "step_act_point_3": "直接使用类型化参数执行声明的操作",
+    "cta_spec": "阅读完整规范",
+    "cta_score": "检查您的AI评分"
   },
   "benchmark": {
     "title": "Token效率",
@@ -115,7 +159,7 @@
     "token_note": "Token数量为模型无关的估算（~4字符/token），是BPE分词器的标准近似值。"
   },
   "preview": {
-    "title": "MAKO文件的样子",
+    "title": "AI实际接收的内容",
     "subtitle": "结构化YAML前置数据 + 优化的Markdown正文。AI代理需要的一切，不需要的一概没有。"
   },
   "features": {

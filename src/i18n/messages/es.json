@@ -15,11 +15,74 @@
   },
   "hero": {
     "badge": "Estándar Abierto · Apache 2.0",
-    "title_line1": "La IA lee tu web",
-    "title_line2": "pero se pierde lo importante",
-    "subtitle": "Cuando ChatGPT, Perplexity o Claude visitan tu sitio, descargan 181KB de barras de navegación, anuncios y scripts — solo para encontrar el nombre de un producto. MAKO le da a cada página una versión limpia y estructurada que la IA realmente entiende.",
-    "cta_score": "Consulta tu AI Score",
-    "cta_spec": "Descubre cómo funciona"
+    "title_line1": "La web fue construida para browsers",
+    "title_line2": "La IA necesita otra cosa",
+    "subtitle": "MAKO es un estándar abierto que le da a cada página una versión limpia y estructurada para agentes IA. Misma URL, mismo servidor — diferente audiencia.",
+    "cta_score": "Comprueba tu AI Score",
+    "cta_spec": "Cómo funciona"
+  },
+  "the_shift": {
+    "title": "Una nueva audiencia está leyendo la web",
+    "body": "Cada día, ChatGPT, Perplexity, Claude y miles de agentes IA visitan millones de sitios web. No renderizan CSS. No ejecutan JavaScript. No hacen clic en botones. Leen — y necesitan contenido diseñado para ser leído.",
+    "row_browser": "Browser",
+    "row_human": "Humano",
+    "row_agent": "Agente IA"
+  },
+  "problem_proof": {
+    "title": "El problema no es tu contenido. Es el formato.",
+    "card_traditional_label": "Sitios con contenido",
+    "card_traditional_value": "181 KB",
+    "card_traditional_detail": "Navegación, anuncios, scripts, cookies — contenido enterrado en ruido",
+    "card_spa_label": "Apps JavaScript",
+    "card_spa_value": "0 KB",
+    "card_spa_detail": "Contenido renderizado del lado del cliente — invisible para agentes",
+    "resolution": "HTML fue diseñado para navegadores, no para agentes de razonamiento. Ya sea que tu sitio envíe demasiado o muy poco, el resultado es el mismo: la IA no puede extraer lo que importa de forma fiable.",
+    "tokens_html": "tokens (HTML crudo)",
+    "tokens_mako": "tokens (MAKO)",
+    "fewer": "menos"
+  },
+  "what_is_mako": {
+    "title": "MAKO: una página, dos versiones",
+    "body_1": "MAKO es una especificación abierta que permite a cualquier sitio web servir una versión estructurada y optimizada para IA de su contenido junto a la versión humana.",
+    "body_2": "Cuando un agente IA solicita una página, el servidor responde con metadatos limpios y markdown en lugar de HTML crudo. Misma URL, mismo servidor, cero duplicación — solo una respuesta diferente para una audiencia diferente.",
+    "diagram_title": "content negotiation",
+    "tagline": "Sin SDK necesario. Sin cambios de infraestructura. HTTP estándar."
+  },
+  "how_it_works_simple": {
+    "title": "Cómo Funciona",
+    "step_request_title": "La IA solicita tu página",
+    "step_request_desc": "El agente visita la misma URL que cualquier navegador.",
+    "step_respond_title": "Tu servidor responde con una versión estructurada",
+    "step_respond_desc": "Metadatos limpios, contenido tipado, enlaces semánticos — todo lo que la IA necesita.",
+    "step_act_title": "La IA lee, entiende y actúa",
+    "step_act_desc": "El agente extrae tu producto, sigue enlaces relacionados y ejecuta acciones.",
+    "tagline": "Basado en content negotiation HTTP estándar."
+  },
+  "audience_impact": {
+    "title": "Un estándar. Tres efectos.",
+    "subtitle": "La misma arquitectura, tres consecuencias diferentes.",
+    "visibility_title": "Visibilidad",
+    "visibility_desc": "Tus productos y contenido aparecen en tráfico impulsado por IA — ChatGPT, Perplexity, asistentes de compra y cada IA que lee la web.",
+    "simplicity_title": "Simplicidad",
+    "simplicity_desc": "Sin hacks de renderizado, sin workarounds de scraping. Un SDK tipado y plugin WordPress — content negotiation que simplemente funciona.",
+    "determinism_title": "Determinismo",
+    "determinism_desc": "Frontmatter estructurado, acciones declaradas, enlaces semánticos. Una capa de ingestión determinista en lugar de parsing HTML frágil."
+  },
+  "get_started": {
+    "title": "Los próximos mil millones de visitantes no usarán un navegador.",
+    "title_2": "Define cómo leen tu sitio.",
+    "subtitle": "Estándar abierto. Apache-2.0. Listo para producción.",
+    "wp_title": "WordPress",
+    "wp_desc": "Instala el plugin, activa, listo. WooCommerce y ACF incluidos.",
+    "sdk_title": "@mako-spec/js",
+    "sdk_install": "npm install @mako-spec/js",
+    "cli_title": "MAKO CLI",
+    "cli_desc": "Valida, inspecciona y benchmarkea archivos MAKO.",
+    "spec_title": "Especificación",
+    "spec_desc": "El protocolo completo: tipos de contenido, headers, niveles de conformidad.",
+    "score_title": "¿Qué tan preparado está tu sitio para la IA?",
+    "score_placeholder": "https://ejemplo.com",
+    "score_button": "Obtén tu Score"
   },
   "problem": {
     "title": "La web fue diseñada para humanos",
@@ -52,50 +115,31 @@
     "cta_learn_more": "Explorar las 6 capas"
   },
   "how_it_works_page": {
-    "meta_title": "Cómo Funciona — Capas del Protocolo MAKO",
-    "meta_description": "Análisis profundo de las 6 capas del protocolo MAKO: Descubrimiento, Pre-filtro, Contenido, Navegación, Acciones y Caché.",
-    "title": "Cómo Funciona",
-    "subtitle": "6 capas que transforman cómo los agentes IA interactúan con tu sitio web — todo construido sobre HTTP estándar.",
-    "without_mako": "Sin MAKO",
-    "with_mako": "Con MAKO",
-    "layer_discovery": {
-      "title": "Descubrimiento",
-      "question": "¿Cómo sabe el agente que tu sitio soporta MAKO?",
-      "description": "MAKO ofrece tres mecanismos de descubrimiento: el endpoint .well-known/mako declara capacidades a nivel de sitio, la etiqueta link rel=alternate señala soporte a nivel de página, y el elemento script type=text/mako+markdown incrusta contenido MAKO directamente en el HTML. Juntos, reemplazan el rastreo ciego con descubrimiento intencional."
-    },
-    "layer_prefilter": {
-      "title": "Pre-filtro",
-      "question": "¿Cómo decide el agente si tu página es relevante — antes de descargarla?",
-      "description": "Una petición HEAD ligera devuelve cabeceras de respuesta clasificadas según RFC 2119: cabeceras requeridas (MUST) como versión, tipo, tokens e idioma; cabeceras recomendadas (SHOULD) como ETag y Cache-Control para caché; y cabeceras opcionales (MAY) como acciones declaradas. El agente sabe todo lo que necesita para decidir la relevancia — sin transferir un solo byte de contenido."
-    },
-    "layer_content": {
-      "title": "Contenido",
-      "question": "¿Qué recibe realmente el agente?",
-      "description": "Una petición GET con la cabecera Accept de MAKO devuelve un documento estructurado: frontmatter YAML con metadatos tipados, seguido de un cuerpo markdown limpio. 245 tokens en vez de 4.125 — una reducción del 94%. Alternativamente, los agentes pueden extraer contenido MAKO directamente de un elemento script en el HTML — sin necesidad de negociación de contenido."
-    },
-    "layer_navigation": {
-      "title": "Navegación",
-      "question": "¿Cómo explora el agente contenido relacionado?",
-      "description": "En vez de analizar 127 enlaces del HTML (la mayoría irrelevantes), el frontmatter MAKO declara enlaces semánticos con descripciones de contexto. El agente sabe que /products/running-socks son 'Calcetines deportivos compatibles' — no solo otra URL para rastrear a ciegas."
-    },
-    "layer_action": {
-      "title": "Acciones",
-      "question": "¿Cómo interactúa el agente con tu sitio?",
-      "description": "MAKO declara acciones legibles por máquina en el frontmatter: add_to_cart, check_availability, notify_restock — cada una con URL, método y parámetros. El agente puede ejecutar estas acciones directamente, sin analizar formularios HTML ni ejecutar JavaScript."
-    },
-    "layer_cache": {
-      "title": "Caché",
-      "question": "¿Cómo evita el agente re-descargar contenido sin cambios?",
-      "description": "Las respuestas MAKO incluyen cabeceras ETag y Cache-Control. En visitas posteriores, el agente envía un GET condicional con If-None-Match. Si el contenido no ha cambiado, el servidor devuelve 304 Not Modified — cero bytes transferidos, cero tokens procesados."
-    },
-    "annex_title": "Anexo: Clasificación de Cabeceras RFC 2119",
-    "annex_subtitle": "Las cabeceras MAKO siguen las palabras clave RFC 2119 para definir requisitos de conformidad.",
-    "annex_classification": "Clasificación",
-    "annex_rfc_keyword": "Palabra Clave RFC",
-    "annex_headers": "Cabeceras",
-    "annex_required": "Requerido",
-    "annex_recommended": "Recomendado",
-    "annex_optional": "Opcional"
+    "meta_title": "Cómo funciona — MAKO",
+    "meta_description": "Cómo MAKO permite que cualquier sitio web sirva una versión estructurada y optimizada para IA junto a la versión humana. Misma URL, diferente audiencia.",
+    "title": "Cómo funciona",
+    "subtitle": "Una página, dos audiencias. MAKO añade una capa estructurada a cualquier sitio web para que los agentes de IA puedan leer, entender y actuar — usando HTTP estándar.",
+    "diagram_label": "Una página, dos audiencias",
+    "diagram_browser": "Navegador",
+    "diagram_agent": "Agente IA",
+    "diagram_note": "Misma URL. Mismo servidor. Diferente respuesta según quién pregunta.",
+    "step_request_title": "La IA solicita tu página",
+    "step_request_body": "Un agente de IA envía una petición HTTP estándar a tu URL existente. Un solo header indica que prefiere contenido estructurado. Si el servidor no soporta MAKO, responde con HTML normal — cero cambios disruptivos.",
+    "step_request_point_1": "Petición HTTP estándar a la misma URL que usan los navegadores",
+    "step_request_point_2": "El header Accept señala preferencia por formato MAKO",
+    "step_request_point_3": "Fallback a HTML si MAKO no está disponible",
+    "step_respond_title": "Tu servidor responde con una versión estructurada",
+    "step_respond_body": "En lugar de HTML con navegación, anuncios y scripts, el servidor responde con un documento limpio: metadatos tipados, contenido estructurado y capacidades declaradas.",
+    "step_respond_point_1": "Metadatos: tipo de contenido, nombre de entidad, idioma, número de tokens",
+    "step_respond_point_2": "Cuerpo en markdown limpio con solo el contenido relevante",
+    "step_respond_point_3": "Acciones declaradas (comprar, suscribir, reservar) y enlaces semánticos con contexto",
+    "step_act_title": "La IA lee, entiende y actúa",
+    "step_act_body": "El agente recibe información estructurada que puede procesar inmediatamente — sin parsear HTML, sin ejecutar JavaScript, sin adivinar cuáles de los 127 enlaces importan.",
+    "step_act_point_1": "Extrae información sin parsear HTML ni ejecutar scripts",
+    "step_act_point_2": "Navega enlaces semánticos que llevan contexto y propósito",
+    "step_act_point_3": "Ejecuta acciones declaradas directamente con parámetros tipados",
+    "cta_spec": "Leer la especificación completa",
+    "cta_score": "Comprobar tu AI Score"
   },
   "benchmark": {
     "title": "Eficiencia de Tokens",
@@ -115,7 +159,7 @@
     "token_note": "Los tokens son estimaciones agnósticas de modelo (~4 chars/token), una aproximación estándar para tokenizadores BPE."
   },
   "preview": {
-    "title": "Así Luce un Archivo MAKO",
+    "title": "Lo que la IA realmente recibe",
     "subtitle": "Frontmatter YAML estructurado + cuerpo Markdown optimizado. Todo lo que un agente IA necesita, nada que no."
   },
   "features": {

@@ -1,14 +1,12 @@
 import { setRequestLocale } from 'next-intl/server';
 import { Hero } from '@/components/hero';
-import { Problem } from '@/components/problem';
-import { Benchmark } from '@/components/benchmark';
-import { AudienceBenefits } from '@/components/audience-benefits';
-import { Comparison } from '@/components/comparison';
-import { ScoreInline } from '@/components/score-inline';
-import { HowItWorksOverview } from '@/components/how-it-works/how-it-works-overview';
+import { TheShift } from '@/components/the-shift';
+import { ProblemProof } from '@/components/problem-proof';
+import { WhatIsMako } from '@/components/what-is-mako';
+import { HowItWorksSimple } from '@/components/how-it-works-simple';
 import { ProtocolPreview } from '@/components/protocol-preview';
-import { Ecosystem } from '@/components/ecosystem';
-import { CtaSection } from '@/components/cta-section';
+import { AudienceImpact } from '@/components/audience-impact';
+import { GetStarted } from '@/components/get-started';
 import { Footer } from '@/components/footer';
 
 export default async function HomePage({
@@ -22,15 +20,13 @@ export default async function HomePage({
   return (
     <main>
       <Hero />
-      <Problem />
-      <Benchmark />
-      <AudienceBenefits />
-      <Comparison />
-      <ScoreInline />
-      <HowItWorksOverview />
+      <TheShift />
+      <ProblemProof />
+      <WhatIsMako />
+      <HowItWorksSimple />
       <ProtocolPreview />
-      <Ecosystem />
-      <CtaSection />
+      <AudienceImpact />
+      <GetStarted />
       <Footer />
     </main>
   );
