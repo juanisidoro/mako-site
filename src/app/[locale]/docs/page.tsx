@@ -1,6 +1,7 @@
 import { setRequestLocale } from 'next-intl/server';
 import { getTranslations } from 'next-intl/server';
 import type { Metadata } from 'next';
+import { generateAlternates } from '@/lib/metadata';
 import { Link } from '@/i18n/routing';
 import { Footer } from '@/components/footer';
 import { DocsMobileDrawer } from '@/components/docs/docs-mobile-drawer';
@@ -39,6 +40,7 @@ export async function generateMetadata({
   return {
     title: t('meta_title'),
     description: t('meta_description'),
+    alternates: generateAlternates(locale, '/docs'),
   };
 }
 

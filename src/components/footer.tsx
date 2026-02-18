@@ -1,13 +1,34 @@
 import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/routing';
 import { siteConfig } from '@/config/site';
 import { LanguageSwitcher } from './language-switcher';
 
 export function Footer() {
   const t = useTranslations('footer');
+  const nav = useTranslations('nav');
 
   return (
     <footer className="border-t border-slate-800/50">
       <div className="mx-auto max-w-5xl px-6 py-8">
+        {/* Internal nav links */}
+        <nav className="mb-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2" aria-label="Footer">
+          <Link href="/how-it-works" className="text-sm text-slate-500 transition hover:text-slate-300">
+            {nav('how_it_works')}
+          </Link>
+          <Link href="/analyzer" className="text-sm text-slate-500 transition hover:text-slate-300">
+            {nav('analyzer')}
+          </Link>
+          <Link href="/score" className="text-sm text-slate-500 transition hover:text-slate-300">
+            {nav('score')}
+          </Link>
+          <Link href="/directory" className="text-sm text-slate-500 transition hover:text-slate-300">
+            {nav('directory')}
+          </Link>
+          <Link href="/docs" className="text-sm text-slate-500 transition hover:text-slate-300">
+            {nav('docs')}
+          </Link>
+        </nav>
+
         <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
           {/* Logo + info */}
           <div className="flex flex-col items-center gap-3 sm:flex-row">

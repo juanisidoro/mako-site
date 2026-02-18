@@ -22,7 +22,7 @@ MAKO transforms web pages into structured, token-efficient Markdown that AI agen
 - Spec: https://github.com/juanisidoro/mako-spec
 - JS Library: https://github.com/juanisidoro/mako-js
 - npm: https://www.npmjs.com/package/@mako-spec/js
-- Website: https://mako-site.vercel.app
+- Website: https://makospec.vercel.app
 
 ## Install
 npm install @mako-spec/js

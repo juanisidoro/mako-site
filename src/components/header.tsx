@@ -21,12 +21,12 @@ export function Header() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden items-center gap-5 sm:flex">
+        <nav className="hidden items-center gap-5 sm:flex" aria-label="Main">
           <Link
             href="/#features"
             className="text-sm text-slate-400 transition hover:text-white"
           >
-            Features
+            {t('features')}
           </Link>
           <Link
             href="/how-it-works"
@@ -45,6 +45,12 @@ export function Header() {
             className="text-sm text-slate-400 transition hover:text-white"
           >
             {t('score')}
+          </Link>
+          <Link
+            href="/directory"
+            className="text-sm text-slate-400 transition hover:text-white"
+          >
+            {t('directory')}
           </Link>
           <Link
             href="/docs"
@@ -91,10 +97,10 @@ export function Header() {
 
       {/* Mobile menu */}
       {open && (
-        <nav className="border-t border-slate-800/50 px-6 py-4 sm:hidden">
+        <nav className="border-t border-slate-800/50 px-6 py-4 sm:hidden" aria-label="Mobile">
           <div className="flex flex-col gap-3">
             <Link href="/#features" className="text-sm text-slate-400" onClick={() => setOpen(false)}>
-              Features
+              {t('features')}
             </Link>
             <Link
               href="/how-it-works"
@@ -116,6 +122,13 @@ export function Header() {
               onClick={() => setOpen(false)}
             >
               {t('score')}
+            </Link>
+            <Link
+              href="/directory"
+              className="text-sm text-slate-400"
+              onClick={() => setOpen(false)}
+            >
+              {t('directory')}
             </Link>
             <Link
               href="/docs"

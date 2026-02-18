@@ -20,7 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return routes.flatMap((route) =>
     locales.map((locale) => ({
       url: `${siteConfig.baseUrl}/${locale}${route}`,
-      lastModified: new Date(),
+      lastModified: new Date('2026-02-18'),
       alternates: {
         languages: Object.fromEntries(
           locales.map((l) => [l, `${siteConfig.baseUrl}/${l}${route}`])

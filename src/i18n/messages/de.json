@@ -11,7 +11,9 @@
     "menu": "Menü",
     "analyzer": "Analyzer",
     "score": "Score",
-    "how_it_works": "So funktioniert's"
+    "how_it_works": "So funktioniert's",
+    "features": "Funktionen",
+    "directory": "Verzeichnis"
   },
   "hero": {
     "badge": "Offener Standard · Apache 2.0",
@@ -44,7 +46,7 @@
   },
   "what_is_mako": {
     "title": "MAKO: eine Seite, zwei Versionen",
-    "body_1": "MAKO ist eine offene Spezifikation, die es jeder Website ermöglicht, eine strukturierte, KI-optimierte Version ihres Inhalts neben der menschlichen Version bereitzustellen.",
+    "body_1": "MAKO ist ein offenes Protokoll, das es jeder Website ermöglicht, eine strukturierte, KI-optimierte Version ihres Inhalts neben der menschlichen Version bereitzustellen.",
     "body_2": "Wenn ein KI-Agent eine Seite anfordert, antwortet der Server mit sauberen Metadaten und Markdown anstelle von rohem HTML. Gleiche URL, gleicher Server, null Duplizierung — nur eine andere Antwort für ein anderes Publikum.",
     "diagram_title": "Content Negotiation",
     "tagline": "Kein SDK erforderlich. Keine Infrastrukturänderungen. Standard-HTTP."

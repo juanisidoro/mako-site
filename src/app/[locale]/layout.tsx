@@ -1,14 +1,36 @@
 import type { ReactNode } from 'react';
 import type { Metadata } from 'next';
+import { Syne, Plus_Jakarta_Sans, JetBrains_Mono } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { locales } from '@/i18n/config';
 import { siteConfig } from '@/config/site';
+import { generateAlternates } from '@/lib/metadata';
 import { Header } from '@/components/header';
-import { MakoLinkTag } from '@/components/mako-link-tag';
 import '../globals.css';
+
+const syne = Syne({
+  subsets: ['latin'],
+  variable: '--font-syne',
+  weight: ['400', '500', '600', '700', '800'],
+  display: 'swap',
+});
+
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  variable: '--font-plus-jakarta',
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-jetbrains',
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+});
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -22,20 +44,14 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'meta' });
 
-  const languages: Record<string, string> = {};
-  for (const l of locales) {
-    languages[l] = `${siteConfig.baseUrl}/${l}`;
-  }
-  languages['x-default'] = `${siteConfig.baseUrl}/en`;
-
   return {
-    title: t('title'),
+    title: {
+      default: t('title'),
+      template: '%s | MAKO',
+    },
     description: t('description'),
     metadataBase: new URL(siteConfig.baseUrl),
-    alternates: {
-      canonical: `${siteConfig.baseUrl}/${locale}`,
-      languages,
-    },
+    alternates: generateAlternates(locale, ''),
     openGraph: {
       title: t('title'),
       description: t('description'),
@@ -116,7 +132,7 @@ export default async function LocaleLayout({
   };
 
   return (
-    <html lang={locale} className="dark">
+    <html lang={locale} className={`dark ${syne.variable} ${plusJakarta.variable} ${jetbrainsMono.variable}`}>
       <head>
         {siteConfig.googleSiteVerification && (
           <meta name="google-site-verification" content={siteConfig.googleSiteVerification} />
@@ -125,17 +141,6 @@ export default async function LocaleLayout({
           defer
           src="https://analytics.moniisima.com/script.js"
           data-website-id="0bb9b0f2-7272-4b79-aeee-cc0ec74fdd93"
-        />
-        <MakoLinkTag />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
-          rel="stylesheet"
         />
         <script
           type="application/ld+json"

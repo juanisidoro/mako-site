@@ -2,6 +2,8 @@ import { Suspense } from 'react';
 import { setRequestLocale } from 'next-intl/server';
 import { getTranslations } from 'next-intl/server';
 import type { Metadata } from 'next';
+import { generateAlternates } from '@/lib/metadata';
+import { siteConfig } from '@/config/site';
 import { HowItWorksPageV2 } from '@/components/how-it-works/how-it-works-page-v2';
 import { Footer } from '@/components/footer';
 
@@ -16,6 +18,19 @@ export async function generateMetadata({
   return {
     title: t('meta_title'),
     description: t('meta_description'),
+    alternates: generateAlternates(locale, '/how-it-works'),
+    openGraph: {
+      title: t('meta_title'),
+      description: t('meta_description'),
+      url: `${siteConfig.baseUrl}/${locale}/how-it-works`,
+      siteName: siteConfig.name,
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary',
+      title: t('meta_title'),
+      description: t('meta_description'),
+    },
   };
 }
 

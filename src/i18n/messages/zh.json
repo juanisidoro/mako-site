@@ -11,7 +11,9 @@
     "menu": "菜单",
     "analyzer": "分析器",
     "score": "评分",
-    "how_it_works": "工作原理"
+    "how_it_works": "工作原理",
+    "features": "特性",
+    "directory": "目录"
   },
   "hero": {
     "badge": "开放标准 · Apache 2.0",
@@ -44,7 +46,7 @@
   },
   "what_is_mako": {
     "title": "MAKO：一个页面，两个版本",
-    "body_1": "MAKO是一个开放规范，允许任何网站在人类版本旁边提供结构化的、AI优化的内容版本。",
+    "body_1": "MAKO是一个开放协议，允许任何网站在人类版本旁边提供结构化的、AI优化的内容版本。",
     "body_2": "当AI代理请求页面时，服务器以干净的元数据和markdown响应，而不是原始HTML。相同URL，相同服务器，零重复——只是为不同受众提供不同响应。",
     "diagram_title": "内容协商",
     "tagline": "无需SDK。无需基础设施变更。标准HTTP。"

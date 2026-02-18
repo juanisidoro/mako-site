@@ -1,6 +1,8 @@
 import { setRequestLocale } from 'next-intl/server';
 import { getTranslations } from 'next-intl/server';
 import type { Metadata } from 'next';
+import { generateAlternates } from '@/lib/metadata';
+import { siteConfig } from '@/config/site';
 import { AnalyzerClient } from '@/components/analyzer/analyzer-client';
 import { Footer } from '@/components/footer';
 
@@ -15,6 +17,19 @@ export async function generateMetadata({
   return {
     title: t('meta_title'),
     description: t('meta_description'),
+    alternates: generateAlternates(locale, '/analyzer'),
+    openGraph: {
+      title: t('meta_title'),
+      description: t('meta_description'),
+      url: `${siteConfig.baseUrl}/${locale}/analyzer`,
+      siteName: siteConfig.name,
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary',
+      title: t('meta_title'),
+      description: t('meta_description'),
+    },
   };
 }
 

@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
 import type { Metadata } from 'next';
+import { generateAlternates } from '@/lib/metadata';
 import { getDocPage, getDocSlugs } from '@/lib/docs';
 import { MarkdownRenderer } from '@/components/docs/markdown-renderer';
 import { TableOfContents } from '@/components/docs/table-of-contents';
@@ -16,13 +17,14 @@ export async function generateMetadata({
 }: {
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
-  const { slug } = await params;
+  const { locale, slug } = await params;
   const doc = getDocPage(slug);
   if (!doc) return {};
 
   return {
     title: `${doc.title} — MAKO Docs`,
     description: doc.description,
+    alternates: generateAlternates(locale, `/docs/${slug}`),
   };
 }
 
