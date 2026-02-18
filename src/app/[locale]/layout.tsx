@@ -7,6 +7,7 @@ import { routing } from '@/i18n/routing';
 import { locales } from '@/i18n/config';
 import { siteConfig } from '@/config/site';
 import { Header } from '@/components/header';
+import { MakoLinkTag } from '@/components/mako-link-tag';
 import '../globals.css';
 
 export function generateStaticParams() {
@@ -125,11 +126,7 @@ export default async function LocaleLayout({
           src="https://analytics.moniisima.com/script.js"
           data-website-id="0bb9b0f2-7272-4b79-aeee-cc0ec74fdd93"
         />
-        <link
-          rel="alternate"
-          type="text/mako+markdown"
-          href={`${siteConfig.baseUrl}/api/mako?path=/${locale}`}
-        />
+        <MakoLinkTag />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"

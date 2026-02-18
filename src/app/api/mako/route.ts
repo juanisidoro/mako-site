@@ -264,6 +264,228 @@ AI-readiness audit that scores any website from 0 to 100 using the DTRA framewor
 
 Sites without MAKO support can reach ~60-62/100 (Grade B) maximum. Full MAKO implementation unlocks the remaining 40 points.`,
   },
+  "/docs": {
+    type: "docs",
+    entity: "MAKO Documentation",
+    summary: "Full documentation: protocol specification, CEF encoding format, HTTP headers reference, and real-world examples.",
+    freshness: "weekly",
+    links: `links:
+  internal:
+    - url: /docs/spec
+      context: "Full MAKO protocol specification"
+      type: child
+    - url: /docs/cef
+      context: "Compact Embedding Format specification"
+      type: child
+    - url: /docs/headers
+      context: "HTTP headers reference"
+      type: child
+    - url: /docs/examples
+      context: "Real-world MAKO file examples"
+      type: child
+    - url: /
+      context: "MAKO Protocol overview"
+      type: parent
+  external:
+    - url: ${siteConfig.github}
+      context: "Specification source on GitHub"
+      type: source`,
+    related: ["/docs/spec", "/docs/cef", "/docs/headers", "/docs/examples"],
+    body: `# MAKO Documentation
+
+Everything you need to implement the MAKO protocol.
+
+## Specification
+
+The full protocol: file format, 10 content types, YAML frontmatter schema, HTTP content negotiation, conformance levels, and versioning.
+
+## CEF — Compact Embedding Format
+
+Standard for compressing 512-dimension embedding vectors to ~470 bytes for HTTP header transport. Enables semantic pre-filtering without downloading content.
+
+## HTTP Headers Reference
+
+Complete reference for MAKO request and response headers. Required (MUST), Recommended (SHOULD), and Optional (MAY) headers with examples.
+
+## Examples
+
+Real-world MAKO files: product page (Nike Air Max 90), article, and documentation.`,
+  },
+  "/docs/spec": {
+    type: "docs",
+    entity: "MAKO Specification v0.1.0",
+    summary: "Full MAKO protocol specification: file format, content types, frontmatter, content negotiation, conformance levels.",
+    freshness: "monthly",
+    links: `links:
+  internal:
+    - url: /docs
+      context: "Documentation index"
+      type: parent
+    - url: /docs/cef
+      context: "CEF encoding format"
+      type: sibling
+    - url: /docs/headers
+      context: "HTTP headers reference"
+      type: sibling
+  external:
+    - url: ${siteConfig.github}
+      context: "Specification source (spec.md)"
+      type: source`,
+    related: ["/docs/cef", "/docs/headers", "/docs/examples"],
+    body: `# MAKO Specification v0.1.0
+
+Open standard that defines how web pages serve semantically optimized content to AI agents via HTTP content negotiation.
+
+## Key Concepts
+
+- **MAKO file:** YAML frontmatter + Markdown body, served as \`text/mako+markdown\`
+- **Content negotiation:** \`Accept: text/mako+markdown\` triggers MAKO response
+- **10 content types:** product, article, docs, landing, listing, profile, event, recipe, faq, custom
+- **6 required frontmatter fields:** mako, type, entity, updated, tokens, language
+- **3 conformance levels:** L1 (valid file), L2 (+ content negotiation), L3 (+ CEF embeddings)
+
+## Discovery
+
+Three complementary mechanisms: \`.well-known/mako\`, \`<link rel="alternate">\`, and \`<script type="text/mako+markdown">\`.
+
+## Token Efficiency
+
+~94% reduction vs raw HTML. A product page: 245 tokens vs 4,125.
+
+## Read the Full Spec
+
+The complete specification covers file format, actions, semantic links, content negotiation, HTTP headers, CEF embeddings, conformance, and security considerations.`,
+  },
+  "/docs/cef": {
+    type: "docs",
+    entity: "CEF — Compact Embedding Format",
+    summary: "Standard for compressing 512-dim embeddings to ~470 bytes for HTTP header transport.",
+    freshness: "monthly",
+    links: `links:
+  internal:
+    - url: /docs
+      context: "Documentation index"
+      type: parent
+    - url: /docs/spec
+      context: "Full MAKO specification"
+      type: sibling
+    - url: /docs/headers
+      context: "HTTP headers reference (X-Mako-Embedding)"
+      type: sibling
+  external:
+    - url: ${siteConfig.github}
+      context: "CEF specification source (cef.md)"
+      type: source`,
+    related: ["/docs/spec", "/docs/headers"],
+    body: `# CEF — Compact Embedding Format v0.1.0
+
+Standard method for compressing semantic embedding vectors for HTTP header transport.
+
+## Encoding Pipeline
+
+1. **Quantize** — float32 to int8 (2,048 → 520 bytes)
+2. **Compress** — gzip (520 → ~350 bytes)
+3. **Encode** — base64url (~350 → ~470 chars)
+
+Result: a 512-dimension embedding fits in a single HTTP header.
+
+## Headers
+
+- \`X-Mako-Embedding\`: CEF-encoded string
+- \`X-Mako-Embedding-Model\`: model identifier (required)
+- \`X-Mako-Embedding-Dim\`: dimensions (required)
+
+## Similarity Thresholds
+
+- >0.85: Highly relevant — download immediately
+- 0.70-0.85: Potentially relevant — download if within budget
+- 0.50-0.70: Marginal — skip unless no better results
+- <0.50: Not relevant — skip entirely`,
+  },
+  "/docs/headers": {
+    type: "docs",
+    entity: "MAKO HTTP Headers Reference",
+    summary: "Complete reference for MAKO request and response HTTP headers: required, recommended, and optional.",
+    freshness: "monthly",
+    links: `links:
+  internal:
+    - url: /docs
+      context: "Documentation index"
+      type: parent
+    - url: /docs/spec
+      context: "Full MAKO specification"
+      type: sibling
+    - url: /docs/cef
+      context: "CEF embedding headers"
+      type: sibling
+  external:
+    - url: ${siteConfig.github}
+      context: "Headers reference source (headers.md)"
+      type: source`,
+    related: ["/docs/spec", "/docs/cef"],
+    body: `# MAKO HTTP Headers Reference
+
+## Request
+
+- \`Accept: text/mako+markdown\` — triggers MAKO response
+
+## Required Response Headers (MUST)
+
+- \`Content-Type: text/mako+markdown; charset=utf-8\`
+- \`X-Mako-Version: 1.0\`
+- \`X-Mako-Tokens: 280\` — token count for budget decisions
+- \`X-Mako-Type: product\` — content category filter
+- \`X-Mako-Lang: en\` — language filter
+- \`Vary: Accept\` — CDN correctness
+
+## Recommended (SHOULD)
+
+- \`ETag\` — conditional requests (304 Not Modified)
+- \`Cache-Control\` — caching strategy based on freshness
+- \`Last-Modified\` — content update timestamp
+- \`Content-Location\` — canonical HTML URL
+
+## Optional (MAY)
+
+- \`X-Mako-Actions\` — comma-separated action names
+- \`X-Mako-Embedding\` — CEF-encoded embedding (experimental)
+- \`X-Mako-Embedding-Model\` — embedding model ID
+- \`X-Mako-Embedding-Dim\` — embedding dimensions`,
+  },
+  "/docs/examples": {
+    type: "docs",
+    entity: "MAKO Examples",
+    summary: "Real-world MAKO file examples: product, article, and documentation pages.",
+    freshness: "monthly",
+    links: `links:
+  internal:
+    - url: /docs
+      context: "Documentation index"
+      type: parent
+    - url: /docs/spec
+      context: "Full specification"
+      type: sibling
+  external:
+    - url: ${siteConfig.github}
+      context: "Example files on GitHub"
+      type: source`,
+    related: ["/docs/spec", "/docs/headers"],
+    body: `# MAKO Examples
+
+Real-world examples of MAKO files showing the protocol in action.
+
+## Product Example (Nike Air Max 90)
+
+Type: product. 245 tokens. Includes actions (add_to_cart, check_availability), semantic links (category, alternatives), media metadata, and structured body with key facts, context, and review summary.
+
+## Article Example
+
+Type: article. Demonstrates summary, key points, author/date metadata, and semantic links to related content.
+
+## Documentation Example (Express.js Middleware)
+
+Type: docs. Shows API documentation with code examples, parameter descriptions, and navigation links to related docs.`,
+  },
   "/directory": {
     type: "listing",
     entity: "MAKO Analysis Directory",
