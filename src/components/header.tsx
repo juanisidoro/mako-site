@@ -53,6 +53,12 @@ export function Header() {
             {t('directory')}
           </Link>
           <Link
+            href="/blog"
+            className="text-sm text-slate-400 transition hover:text-white"
+          >
+            {t('blog')}
+          </Link>
+          <Link
             href="/docs"
             className="text-sm text-slate-400 transition hover:text-white"
           >
@@ -129,6 +135,13 @@ export function Header() {
               onClick={() => setOpen(false)}
             >
               {t('directory')}
+            </Link>
+            <Link
+              href="/blog"
+              className="text-sm text-slate-400"
+              onClick={() => setOpen(false)}
+            >
+              {t('blog')}
             </Link>
             <Link
               href="/docs"

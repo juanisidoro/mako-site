@@ -13,7 +13,8 @@
     "score": "スコア",
     "how_it_works": "仕組み",
     "features": "機能",
-    "directory": "ディレクトリ"
+    "directory": "ディレクトリ",
+    "blog": "ブログ"
   },
   "hero": {
     "badge": "オープン標準 · Apache 2.0",
@@ -525,5 +526,18 @@
     "card_headers_desc": "MAKOのリクエストとレスポンスHTTPヘッダーの完全なリファレンス。",
     "card_examples_title": "例",
     "card_examples_desc": "実際のMAKOファイル例：商品、記事、ドキュメントページ。"
+  },
+  "blog": {
+    "meta_title": "ブログ — MAKO",
+    "meta_description": "AI最適化ウェブコンテンツとMAKOプロトコルに関する記事。",
+    "title": "ブログ",
+    "subtitle": "MAKOとAI対応ウェブに関する記事、インサイト、最新情報。",
+    "read_more": "記事を読む",
+    "min_read": "{minutes}分で読める",
+    "by_author": "{author} 著",
+    "published_on": "{date} 公開",
+    "back_to_blog": "ブログに戻る",
+    "no_posts": "まだ記事がありません。近日公開予定です。",
+    "tags": "タグ"
   }
 }

@@ -24,6 +24,9 @@ export function Footer() {
           <Link href="/directory" className="text-sm text-slate-500 transition hover:text-slate-300">
             {nav('directory')}
           </Link>
+          <Link href="/blog" className="text-sm text-slate-500 transition hover:text-slate-300">
+            {nav('blog')}
+          </Link>
           <Link href="/docs" className="text-sm text-slate-500 transition hover:text-slate-300">
             {nav('docs')}
           </Link>

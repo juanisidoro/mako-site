@@ -1,0 +1,18 @@
+slugs:
+  en: what-happens-when-ai-visits-your-site
+  es: que-pasa-cuando-una-ia-visita-tu-web
+  pt: o-que-acontece-quando-ia-visita-seu-site
+  fr: que-se-passe-t-il-quand-une-ia-visite-votre-site
+  de: was-passiert-wenn-ki-ihre-website-besucht
+  zh: ai-fangwen-wangzhan-shi-fasheng-le-shenme
+  ja: ai-ga-website-wo-houmon-suru-toki
+
+date: "2026-02-20"
+author: "Juan Isidoro"
+tags: [ai-agents, web, education]
+draft: false
+
+seo:
+  schema: TechArticle
+  og_type: article
+  twitter_card: summary_large_image

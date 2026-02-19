@@ -520,6 +520,195 @@ Each entry shows:
 
 Analyze any URL with the MAKO Analyzer and mark the result as public. It will appear in this directory automatically.`,
   },
+  "/blog": {
+    type: "listing",
+    entity: "MAKO Blog",
+    summary: "Articles, insights, and updates about MAKO and the AI-readable web.",
+    freshness: "weekly",
+    links: `links:
+  internal:
+    - url: /blog/introducing-mako
+      context: "Announcing the MAKO protocol and its design decisions"
+      type: child
+    - url: /blog/what-happens-when-ai-visits-your-site
+      context: "How AI agents process web pages step by step"
+      type: child
+    - url: /blog/ai-ready-website-checklist
+      context: "20 practical steps to optimize for AI agents"
+      type: child
+    - url: /
+      context: "MAKO Protocol overview"
+      type: parent`,
+    related: ["/blog/introducing-mako", "/blog/what-happens-when-ai-visits-your-site", "/blog/ai-ready-website-checklist"],
+    body: `# MAKO Blog
+
+Articles, insights, and updates about MAKO and the AI-readable web.
+
+## Latest Articles
+
+- **Introducing MAKO** — Why we built MAKO and how it reduces token consumption by 94%.
+- **What Happens When an AI Agent Visits Your Website** — The invisible journey from HTTP request to reasoning, and why 93% of what your server sends is noise.
+- **AI-Ready Website Checklist** — 20 practical steps to make your website readable, discoverable, and actionable for AI agents.`,
+  },
+  "/blog/introducing-mako": {
+    type: "article",
+    entity: "Introducing MAKO",
+    summary: "Why we built MAKO and how it reduces token consumption by 94% while making every web page understandable to AI agents.",
+    freshness: "monthly",
+    links: `links:
+  internal:
+    - url: /blog
+      context: "All blog articles"
+      type: parent
+    - url: /blog/what-happens-when-ai-visits-your-site
+      context: "How AI agents process web pages"
+      type: sibling
+    - url: /blog/ai-ready-website-checklist
+      context: "Practical checklist for AI readiness"
+      type: sibling
+    - url: /score
+      context: "Check your site's AI-readiness score"
+      type: reference
+  external:
+    - url: ${siteConfig.npm}
+      context: "TypeScript SDK (@mako-spec/js)"
+      type: reference
+    - url: ${siteConfig.githubWp}
+      context: "WordPress plugin (mako-wp)"
+      type: reference`,
+    related: ["/blog/what-happens-when-ai-visits-your-site", "/blog/ai-ready-website-checklist", "/score"],
+    body: `# Introducing MAKO
+
+The web wasn't designed for AI agents. Every time ChatGPT, Perplexity, or a shopping assistant visits a website, it downloads 181 KB of HTML — navigation, cookies, ads, scripts — just to find a product name and price. That's 4,000+ tokens consumed before reaching actual content.
+
+## The Problem
+
+A typical e-commerce page: 181 KB of raw HTML, 93% noise, 7% signal. For JavaScript SPAs, the agent sees an empty div and nothing else.
+
+## What MAKO Does
+
+MAKO adds a structured AI-optimized layer via standard HTTP content negotiation. When an agent sends Accept: text/mako+markdown, the server responds with clean markdown + YAML frontmatter instead of raw HTML.
+
+## Key Design Decisions
+
+- **Content negotiation over new endpoints** — zero URL changes, every page can serve MAKO
+- **Markdown over JSON** — LLMs are trained on markdown, more token-efficient
+- **10 content types** — product, article, docs, landing, listing, profile, event, recipe, faq, custom
+- **Declared actions** — machine-readable CTAs with endpoints and parameters
+
+## The Numbers
+
+Average across 50+ real pages: 181 KB / ~4,125 tokens (HTML) → 3 KB / ~276 tokens (MAKO). **93% reduction.**
+
+## Getting Started
+
+- WordPress: mako-wp plugin (WooCommerce, Yoast, ACF support)
+- Any stack: @mako-spec/js TypeScript SDK with Express middleware
+- Validate: @mako-spec/cli for file validation`,
+  },
+  "/blog/what-happens-when-ai-visits-your-site": {
+    type: "article",
+    entity: "What Happens When AI Visits Your Site",
+    summary: "The invisible journey from HTTP request to reasoning — and why 93% of what your server sends is noise an AI agent can't use.",
+    freshness: "monthly",
+    links: `links:
+  internal:
+    - url: /blog
+      context: "All blog articles"
+      type: parent
+    - url: /blog/introducing-mako
+      context: "Announcing the MAKO protocol"
+      type: sibling
+    - url: /blog/ai-ready-website-checklist
+      context: "Practical steps to optimize for AI"
+      type: sibling
+    - url: /score
+      context: "Audit how AI agents experience your site"
+      type: reference`,
+    related: ["/blog/introducing-mako", "/blog/ai-ready-website-checklist", "/score"],
+    body: `# What Happens When an AI Agent Visits Your Website
+
+Every day, millions of AI agents visit websites. None of them see your site like a human does. No CSS, no rendered layouts, no images — just raw text extracted from HTML.
+
+## The 5-Step Process
+
+1. **Agent receives a URL** — delegates to an HTTP fetching tool
+2. **HTTP GET request** — server responds with same HTML as for browsers (181 KB typical)
+3. **Content extraction** — tool strips scripts/styles/nav, extracts text, converts to markdown, truncates
+4. **Text enters context window** — agent reads cleaned text as a document, finite context
+5. **Agent reasons** — extracts information, answers questions based on whatever survived extraction
+
+## Structural Limitations
+
+- **No JavaScript execution** — SPAs render empty divs, content invisible
+- **No state or sessions** — no login, no cart, no gated content
+- **No purposeful navigation** — 47 links all equally opaque
+- **Truncation is lossy** — important content may get cut
+
+## Impact on Business
+
+Your server sends one format for two completely different audiences. Browsers need HTML/CSS/JS. AI agents need structured text, metadata, and declared actions.
+
+## A Better Approach
+
+Content negotiation for AI: same URL, same server, but AI agents receive ~276 tokens of structured markdown instead of ~4,125 tokens of noisy HTML. That's what MAKO enables.`,
+  },
+  "/blog/ai-ready-website-checklist": {
+    type: "article",
+    entity: "AI-Ready Website Checklist",
+    summary: "20 practical steps to make your website readable, discoverable, and actionable for ChatGPT, Claude, Perplexity, and every AI agent.",
+    freshness: "monthly",
+    links: `links:
+  internal:
+    - url: /blog
+      context: "All blog articles"
+      type: parent
+    - url: /blog/introducing-mako
+      context: "What is the MAKO protocol"
+      type: sibling
+    - url: /blog/what-happens-when-ai-visits-your-site
+      context: "How AI agents process web pages"
+      type: sibling
+    - url: /score
+      context: "Measure your AI-readiness score"
+      type: reference`,
+    related: ["/blog/what-happens-when-ai-visits-your-site", "/blog/introducing-mako", "/score"],
+    body: `# AI-Ready Website Checklist: 20 Steps
+
+Practical checklist organized by the DTRA framework: Discoverable, Readable, Trustworthy, Actionable.
+
+## Discoverable (5 steps)
+1. Allow AI crawlers in robots.txt
+2. Add sitemap.xml
+3. Add llms.txt file
+4. Add JSON-LD structured data (Schema.org)
+5. Add Open Graph tags
+
+## Readable (7 steps)
+6. Use semantic HTML (main, article, section)
+7. Single descriptive H1
+8. Meaningful headings (h2, h3)
+9. Alt text on images
+10. Descriptive link text (not "click here")
+11. Don't depend on JavaScript for content (use SSR)
+12. Reduce HTML bloat
+
+## Trustworthy (5 steps)
+13. Meta description (<160 chars)
+14. Canonical URL
+15. Language attribute on html tag
+16. Fresh content with datePublished/dateModified
+17. ETag or Last-Modified headers
+
+## Actionable (3 steps)
+18. Clear CTAs in HTML content
+19. Semantic links with context
+20. Main content first in DOM
+
+## Beyond the Checklist
+
+Even perfectly optimized HTML sends 15-20x more tokens than necessary. MAKO content negotiation reduces tokens by ~94%. Most sites score 30-40 without optimization, 60+ with this checklist, 90+ with MAKO.`,
+  },
 };
 
 function buildMakoResponse(path: string): NextResponse | null {

@@ -1,14 +1,16 @@
 import type { MetadataRoute } from 'next';
 import { locales } from '@/i18n/config';
 import { siteConfig } from '@/config/site';
+import { getAllPostsMeta } from '@/lib/blog';
 
-// Add new routes here as you create pages
+// Static routes
 const routes = [
   '',
   '/how-it-works',
   '/analyzer',
   '/score',
   '/directory',
+  '/blog',
   '/docs',
   '/docs/spec',
   '/docs/cef',
@@ -17,10 +19,10 @@ const routes = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return routes.flatMap((route) =>
+  const staticEntries = routes.flatMap((route) =>
     locales.map((locale) => ({
       url: `${siteConfig.baseUrl}/${locale}${route}`,
-      lastModified: new Date('2026-02-18'),
+      lastModified: new Date('2026-02-19'),
       alternates: {
         languages: Object.fromEntries(
           locales.map((l) => [l, `${siteConfig.baseUrl}/${l}${route}`])
@@ -28,4 +30,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     }))
   );
+
+  // Blog posts with localized slugs
+  const posts = getAllPostsMeta('en');
+  const blogEntries = posts.flatMap((post) =>
+    locales.map((locale) => {
+      const slug = post.slugsByLocale[locale] ?? post.folder;
+      return {
+        url: `${siteConfig.baseUrl}/${locale}/blog/${slug}`,
+        lastModified: new Date(post.updated ?? post.date),
+        alternates: {
+          languages: Object.fromEntries(
+            locales.map((l) => [
+              l,
+              `${siteConfig.baseUrl}/${l}/blog/${post.slugsByLocale[l] ?? post.folder}`,
+            ])
+          ),
+        },
+      };
+    })
+  );
+
+  return [...staticEntries, ...blogEntries];
 }

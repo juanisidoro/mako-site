@@ -13,7 +13,8 @@
     "score": "Score",
     "how_it_works": "Como Funciona",
     "features": "Recursos",
-    "directory": "Diretório"
+    "directory": "Diretório",
+    "blog": "Blog"
   },
   "hero": {
     "badge": "Padrão Aberto · Apache 2.0",
@@ -525,5 +526,18 @@
     "card_headers_desc": "Referência completa dos cabeçalhos HTTP de solicitação e resposta do MAKO.",
     "card_examples_title": "Exemplos",
     "card_examples_desc": "Exemplos reais de arquivos MAKO: páginas de produto, artigo e documentação."
+  },
+  "blog": {
+    "meta_title": "Blog — MAKO",
+    "meta_description": "Artigos sobre conteúdo web otimizado para IA e o protocolo MAKO.",
+    "title": "Blog",
+    "subtitle": "Artigos, insights e novidades sobre o MAKO e a web legível por IA.",
+    "read_more": "Ler artigo",
+    "min_read": "{minutes} min de leitura",
+    "by_author": "Por {author}",
+    "published_on": "Publicado em {date}",
+    "back_to_blog": "Voltar ao blog",
+    "no_posts": "Ainda não há artigos. Volte em breve.",
+    "tags": "Tags"
   }
 }

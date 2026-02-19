@@ -1,0 +1,18 @@
+slugs:
+  en: ai-ready-website-checklist
+  es: checklist-web-preparada-para-ia
+  pt: checklist-site-preparado-para-ia
+  fr: checklist-site-web-pret-pour-ia
+  de: ki-ready-website-checkliste
+  zh: ai-jiuxu-wangzhan-jiancha-qingdan
+  ja: ai-taiou-website-checklist
+
+date: "2026-02-20"
+author: "Juan Isidoro"
+tags: [checklist, seo, ai-agents]
+draft: false
+
+seo:
+  schema: TechArticle
+  og_type: article
+  twitter_card: summary_large_image

@@ -1,11 +1,8 @@
 import fs from 'fs';
 import path from 'path';
+import { extractHeadings, type Heading } from './markdown-utils';
 
-export interface DocHeading {
-  id: string;
-  text: string;
-  level: number;
-}
+export type DocHeading = Heading;
 
 export interface DocPage {
   slug: string;
@@ -41,41 +38,6 @@ const DOCS: Record<string, { file: string; title: string; description: string }>
 };
 
 const EXAMPLES = ['product.mako.md', 'article.mako.md', 'docs.mako.md'];
-
-function slugify(text: string): string {
-  return text
-    .toLowerCase()
-    .replace(/[^a-z0-9\s-]/g, '')
-    .replace(/\s+/g, '-')
-    .replace(/-+/g, '-')
-    .trim();
-}
-
-function extractHeadings(markdown: string): DocHeading[] {
-  const headings: DocHeading[] = [];
-  const lines = markdown.split('\n');
-  let inCodeBlock = false;
-
-  for (const line of lines) {
-    if (line.trim().startsWith('```')) {
-      inCodeBlock = !inCodeBlock;
-      continue;
-    }
-    if (inCodeBlock) continue;
-
-    const match = line.match(/^(#{2,3})\s+(.+)$/);
-    if (match) {
-      const text = match[2].replace(/\*\*/g, '').trim();
-      headings.push({
-        id: slugify(text),
-        text,
-        level: match[1].length,
-      });
-    }
-  }
-
-  return headings;
-}
 
 function buildExamplesContent(): string {
   const parts: string[] = ['# Examples\n\nReal-world MAKO file examples showing the protocol in action.\n'];

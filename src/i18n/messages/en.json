@@ -13,7 +13,8 @@
     "score": "Score",
     "how_it_works": "How It Works",
     "features": "Features",
-    "directory": "Directory"
+    "directory": "Directory",
+    "blog": "Blog"
   },
   "hero": {
     "badge": "Open Standard · Apache 2.0",
@@ -525,5 +526,18 @@
     "card_headers_desc": "Complete reference for MAKO request and response HTTP headers.",
     "card_examples_title": "Examples",
     "card_examples_desc": "Real-world MAKO file examples: product, article, and documentation pages."
+  },
+  "blog": {
+    "meta_title": "Blog — MAKO",
+    "meta_description": "Articles about AI-optimized web content and the MAKO protocol.",
+    "title": "Blog",
+    "subtitle": "Articles, insights, and updates about MAKO and the AI-readable web.",
+    "read_more": "Read article",
+    "min_read": "{minutes} min read",
+    "by_author": "By {author}",
+    "published_on": "Published on {date}",
+    "back_to_blog": "Back to blog",
+    "no_posts": "No articles yet. Check back soon.",
+    "tags": "Tags"
   }
 }

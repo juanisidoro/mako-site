@@ -13,7 +13,8 @@
     "score": "评分",
     "how_it_works": "工作原理",
     "features": "特性",
-    "directory": "目录"
+    "directory": "目录",
+    "blog": "博客"
   },
   "hero": {
     "badge": "开放标准 · Apache 2.0",
@@ -525,5 +526,18 @@
     "card_headers_desc": "MAKO 请求和响应 HTTP 头部的完整参考。",
     "card_examples_title": "示例",
     "card_examples_desc": "真实的 MAKO 文件示例：产品、文章和文档页面。"
+  },
+  "blog": {
+    "meta_title": "博客 — MAKO",
+    "meta_description": "关于AI优化网页内容和MAKO协议的文章。",
+    "title": "博客",
+    "subtitle": "关于MAKO和AI可读网络的文章、洞察和最新动态。",
+    "read_more": "阅读文章",
+    "min_read": "{minutes} 分钟阅读",
+    "by_author": "作者：{author}",
+    "published_on": "发布于 {date}",
+    "back_to_blog": "返回博客",
+    "no_posts": "暂无文章，请稍后再来。",
+    "tags": "标签"
   }
 }
