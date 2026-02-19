@@ -21,6 +21,21 @@ description: "我们为什么要构建 MAKO，以及它如何将 token 消耗降
 
 这意味着 **93% 是噪音，只有 7% 是有效信号**。
 
+## SPA 黑洞
+
+对于现代 JavaScript 应用（React、Vue、Angular、Next.js CSR），情况更加严峻。当 AI 代理请求一个页面时，服务器返回的内容类似于：
+
+```html
+<div id="root"></div>
+<script src="/bundle.js"></script>
+```
+
+真正的内容——产品、文章、价格、描述——是由 JavaScript 在客户端渲染的。AI 代理不会执行 JavaScript。它们看到的是一个空白页面。你的整个网站对它们来说是**不可见的**。
+
+服务端渲染（SSR）和静态生成有所帮助，但即便如此，HTML 仍然充斥着水合标记、嵌入状态和框架产物。一个使用 SSR 的 Next.js 页面仍然会发送比实际需要多 5 到 10 倍的 tokens，因为它在实际内容之外还包含了完整的 React 树。
+
+Web 世界已经分裂：传统网站发送了太多噪音，而现代 SPA 什么都不发送。这两种格式都不是为增长最快的受众而设计的。
+
 ## MAKO 的作用
 
 MAKO 利用标准的 HTTP 内容协商机制，为任何网站添加了结构化的、AI 优化的内容层。当 AI 代理发送 `Accept: text/mako+markdown` 时，服务器会返回一个干净的 MAKO 文档，而非原始 HTML：

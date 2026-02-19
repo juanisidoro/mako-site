@@ -1,0 +1,18 @@
+slugs:
+  en: how-to-implement-webmcp
+  es: como-implementar-webmcp
+  pt: como-implementar-webmcp
+  fr: comment-implementer-webmcp
+  de: webmcp-implementieren
+  zh: ruhe-shixian-webmcp
+  ja: webmcp-no-dounyu-houhou
+
+date: "2026-02-20"
+author: "Juan Isidoro"
+tags: [webmcp, mcp, guide]
+draft: false
+
+seo:
+  schema: TechArticle
+  og_type: article
+  twitter_card: summary_large_image

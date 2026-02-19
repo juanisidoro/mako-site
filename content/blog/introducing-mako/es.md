@@ -1,9 +1,9 @@
 ---
-title: "Presentando MAKO: El Protocolo Abierto para Contenido Optimizado para IA"
+title: "MAKO: El Protocolo Abierto que Optimiza tu Web para Agentes IA"
 description: "Por qué construimos MAKO y cómo reduce el consumo de tokens un 94% mientras hace cada página web comprensible para agentes IA."
 ---
 
-# Presentando MAKO
+# MAKO: El Protocolo Abierto que Optimiza tu Web para Agentes IA
 
 La web no fue diseñada para agentes IA. Cada vez que ChatGPT, Perplexity o un asistente de compras visita un sitio web, descarga barras de navegación, banners de cookies, scripts publicitarios y miles de líneas de markup — solo para encontrar el nombre y precio de un producto.
 
@@ -20,6 +20,21 @@ Consideremos una página típica de producto e-commerce. Un visitante humano ve 
 - Los datos reales del producto enterrados en algún lugar del medio
 
 Esto es **93% ruido, 7% señal**.
+
+## El Agujero Negro de las SPAs
+
+En aplicaciones JavaScript modernas (React, Vue, Angular, Next.js CSR), la situación es aún peor. Cuando un agente IA solicita una página, el servidor responde con algo como:
+
+```html
+<div id="root"></div>
+<script src="/bundle.js"></script>
+```
+
+El contenido real — productos, artículos, precios, descripciones — se renderiza del lado del cliente con JavaScript. Los agentes IA no ejecutan JavaScript. Ven una página vacía. Tu sitio entero es **invisible**.
+
+El renderizado del lado del servidor (SSR) y la generación estática ayudan, pero incluso así el HTML viene inflado con marcadores de hidratación, estado embebido y artefactos del framework. Una página SSR de Next.js sigue enviando 5-10x más tokens de los necesarios porque incluye el árbol React completo junto al contenido real.
+
+La web está dividida: los sitios legacy envían demasiado ruido, las SPAs modernas no envían nada. Ninguno de los dos formatos está diseñado para la audiencia que más rápido está creciendo.
 
 ## Qué Hace MAKO
 

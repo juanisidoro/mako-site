@@ -1,0 +1,18 @@
+slugs:
+  en: how-to-create-llms-txt
+  es: como-crear-llms-txt
+  pt: como-criar-llms-txt
+  fr: comment-creer-llms-txt
+  de: llms-txt-erstellen
+  zh: ruhe-chuangjian-llms-txt
+  ja: llms-txt-no-tsukurikata
+
+date: "2026-02-20"
+author: "Juan Isidoro"
+tags: [llms-txt, guide, ai-agents]
+draft: false
+
+seo:
+  schema: TechArticle
+  og_type: article
+  twitter_card: summary_large_image

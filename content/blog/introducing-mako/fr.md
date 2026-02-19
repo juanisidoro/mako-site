@@ -21,6 +21,21 @@ Prenons une page produit typique d'un site e-commerce. Un visiteur humain voit u
 
 C'est **93 % de bruit, 7 % de signal**.
 
+## Le Trou Noir des SPAs
+
+Pour les applications JavaScript modernes (React, Vue, Angular, Next.js CSR), la situation est encore pire. Lorsqu'un agent IA demande une page, le serveur repond avec quelque chose comme :
+
+```html
+<div id="root"></div>
+<script src="/bundle.js"></script>
+```
+
+Le contenu reel — produits, articles, prix, descriptions — est rendu cote client par JavaScript. Les agents IA n'executent pas JavaScript. Ils voient une page vide. L'integralite de votre site est **invisible**.
+
+Le rendu cote serveur (SSR) et la generation statique aident, mais meme dans ce cas, le HTML est alourdi par des marqueurs d'hydratation, de l'etat embarque et des artefacts du framework. Une page Next.js avec SSR envoie encore 5 a 10 fois plus de tokens que necessaire, car elle inclut l'arbre React complet en plus du contenu reel.
+
+Le web est divise : les sites anciens envoient trop de bruit, les SPAs modernes n'envoient rien du tout. Aucun des deux formats n'est concu pour le public qui croit le plus rapidement.
+
 ## Ce Que Fait MAKO
 
 MAKO ajoute une couche structuree et optimisee pour l'IA a n'importe quel site web grace a la negociation de contenu HTTP standard. Lorsqu'un agent IA envoie `Accept: text/mako+markdown`, le serveur repond avec un document MAKO propre au lieu du HTML brut :

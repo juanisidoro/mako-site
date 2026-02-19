@@ -21,6 +21,21 @@ Considere uma pagina tipica de produto em um e-commerce. Um visitante humano ve 
 
 Isso e **93% ruido, 7% sinal**.
 
+## O Buraco Negro das SPAs
+
+Para aplicacoes JavaScript modernas (React, Vue, Angular, Next.js CSR), a situacao e ainda pior. Quando um agente de IA solicita uma pagina, o servidor responde com algo assim:
+
+```html
+<div id="root"></div>
+<script src="/bundle.js"></script>
+```
+
+O conteudo real — produtos, artigos, precos, descricoes — e renderizado no lado do cliente por JavaScript. Agentes de IA nao executam JavaScript. Eles veem uma pagina vazia. Todo o seu site e **invisivel**.
+
+A renderizacao no servidor (SSR) e a geracao estatica ajudam, mas mesmo assim o HTML vem inchado com marcadores de hidratacao, estado embutido e artefatos do framework. Uma pagina Next.js com SSR ainda envia de 5 a 10 vezes mais tokens do que o necessario, porque inclui a arvore React completa junto com o conteudo real.
+
+A web esta dividida: sites legados enviam ruido demais, SPAs modernas nao enviam nada. Nenhum dos formatos foi projetado para o publico que mais cresce.
+
 ## O Que o MAKO Faz
 
 O MAKO adiciona uma camada estruturada e otimizada para IA a qualquer site usando negociacao de conteudo HTTP padrao. Quando um agente de IA envia `Accept: text/mako+markdown`, o servidor responde com um documento MAKO limpo em vez de HTML bruto:

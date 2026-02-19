@@ -1,5 +1,5 @@
 ---
-title: "AI-Ready Website Checklist: 20 Steps to Optimize for AI Agents"
+title: "AI-Ready Website Checklist: 21 Steps to Optimize for AI Agents"
 description: "A practical checklist to make your website readable, discoverable, and actionable for ChatGPT, Claude, Perplexity, and every AI agent."
 ---
 
@@ -7,7 +7,7 @@ description: "A practical checklist to make your website readable, discoverable,
 
 AI agents are a growing share of your website traffic. ChatGPT, Claude, Perplexity, shopping assistants, and research bots visit millions of pages every day — but most websites aren't built for them.
 
-This checklist covers 20 concrete steps you can take today, organized by the four dimensions that matter: **Discoverable**, **Readable**, **Trustworthy**, and **Actionable**.
+This checklist covers 21 concrete steps you can take today, organized by the four dimensions that matter: **Discoverable**, **Readable**, **Trustworthy**, and **Actionable**.
 
 ## Discoverable: Can AI Agents Find You?
 
@@ -28,7 +28,7 @@ A sitemap helps agents discover all your pages without crawling link by link. Ma
 
 ### 3. Add an llms.txt file
 
-The [llms.txt standard](https://llmstxt.org) tells AI agents what your site offers and how to access it. Think of it as `robots.txt` for LLMs — a site-level instruction file.
+The [llms.txt standard](https://llmstxt.org) tells AI agents what your site offers and how to access it. Think of it as `robots.txt` for LLMs — a site-level instruction file. See our [guide to creating an effective llms.txt](/en/blog/how-to-create-llms-txt).
 
 ### 4. Add structured data (JSON-LD)
 
@@ -38,35 +38,39 @@ Schema.org markup in JSON-LD format helps agents understand what your page is ab
 
 Open Graph tags (`og:title`, `og:description`, `og:type`, `og:image`) are used by AI agents to preview and classify content, not just social platforms.
 
+### 6. Add WebMCP attributes to your forms
+
+[WebMCP](https://webmachinelearning.github.io/webmcp/) is a W3C standard that lets you declare your forms as tools for AI agents. Add `toolname` and `tooldescription` attributes to your `<form>` elements so agents can discover and use them directly — no screen-scraping needed. See our [WebMCP guide](/en/blog/how-to-implement-webmcp).
+
 ## Readable: Can AI Agents Understand You?
 
 Most web pages are 90%+ boilerplate. Agents need clean, structured content.
 
-### 6. Use semantic HTML
+### 7. Use semantic HTML
 
 Tags like `<main>`, `<article>`, `<section>`, and `<aside>` tell agents where the real content lives. Without them, the agent sees a flat soup of `<div>` elements.
 
-### 7. Add a single, descriptive H1
+### 8. Add a single, descriptive H1
 
 The H1 is the primary signal agents use to understand what a page is about. Use exactly one, and make it descriptive — not "Welcome" or "Home."
 
-### 8. Use meaningful headings
+### 9. Use meaningful headings
 
 Headings (`<h2>`, `<h3>`) should summarize section content. Agents use them for smart skimming — understanding structure without reading everything. Avoid generic headings like "More Information."
 
-### 9. Add alt text to images
+### 10. Add alt text to images
 
 Without alt text, images are invisible to AI agents. With it, agents understand your visual content and can reference it in responses.
 
-### 10. Use descriptive link text
+### 11. Use descriptive link text
 
 Replace generic link text ("click here," "read more," "learn more") with descriptive labels. Agents use link text to decide whether following a link is worthwhile.
 
-### 11. Don't depend on JavaScript for content
+### 12. Don't depend on JavaScript for content
 
 AI agents and crawlers cannot execute JavaScript. If your content requires client-side rendering (React, Vue, Angular SPAs without SSR), it's invisible to every AI agent. Use SSR or static generation.
 
-### 12. Reduce HTML bloat
+### 13. Reduce HTML bloat
 
 Remove unnecessary inline styles, empty elements, and non-semantic markup. The less noise in your HTML, the better the signal-to-noise ratio agents experience.
 
@@ -74,15 +78,15 @@ Remove unnecessary inline styles, empty elements, and non-semantic markup. The l
 
 Trust signals help agents verify accuracy and decide whether to cite your page.
 
-### 13. Add a meta description
+### 14. Add a meta description
 
 The meta description is the quick summary agents use when they don't read the full page. Keep it under 160 characters, specific, and accurate.
 
-### 14. Set a canonical URL
+### 15. Set a canonical URL
 
 `<link rel="canonical">` prevents agents from indexing duplicate versions of your content. Essential if you have URL parameters, pagination, or print versions.
 
-### 15. Declare the language
+### 16. Declare the language
 
 The `lang` attribute on `<html>` tells agents what language your content is in. Simple, but often missing — and it directly affects comprehension.
 
@@ -90,11 +94,11 @@ The `lang` attribute on `<html>` tells agents what language your content is in. 
 <html lang="en">
 ```
 
-### 16. Keep content fresh
+### 17. Keep content fresh
 
 Agents pay attention to dates. Include `datePublished` and `dateModified` in your structured data. Stale content loses trust.
 
-### 17. Use ETag or Last-Modified headers
+### 18. Use ETag or Last-Modified headers
 
 These headers let agents check if content has changed without re-downloading everything. Efficient caching signals a well-maintained site.
 
@@ -102,15 +106,15 @@ These headers let agents check if content has changed without re-downloading eve
 
 The future of the agent web is transactional. If agents can't find your actions, you miss conversions.
 
-### 18. Define clear CTAs in the content
+### 19. Define clear CTAs in the content
 
 Your "Buy Now," "Subscribe," "Book a Demo" buttons should be clear in the HTML content, not just visually styled. Agents identify actions from text and HTML structure, not CSS.
 
-### 19. Use semantic links with context
+### 20. Use semantic links with context
 
 Links should have descriptive text that explains where they lead. Instead of "Click here for pricing," use "View pricing plans." This helps agents navigate your site purposefully.
 
-### 20. Put your main content first
+### 21. Put your main content first
 
 Agents scan the first few hundred characters to decide if a page is relevant. If they find only navigation or boilerplate before real content, they may skip your page entirely. Move your H1 and main content as high as possible in the HTML.
 

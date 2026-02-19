@@ -534,12 +534,18 @@ Analyze any URL with the MAKO Analyzer and mark the result as public. It will ap
       context: "How AI agents process web pages step by step"
       type: child
     - url: /blog/ai-ready-website-checklist
-      context: "20 practical steps to optimize for AI agents"
+      context: "21 practical steps to optimize for AI agents"
+      type: child
+    - url: /blog/how-to-create-llms-txt
+      context: "Guide to creating an effective llms.txt file"
+      type: child
+    - url: /blog/how-to-implement-webmcp
+      context: "Implement WebMCP on your site in under a minute"
       type: child
     - url: /
       context: "MAKO Protocol overview"
       type: parent`,
-    related: ["/blog/introducing-mako", "/blog/what-happens-when-ai-visits-your-site", "/blog/ai-ready-website-checklist"],
+    related: ["/blog/introducing-mako", "/blog/what-happens-when-ai-visits-your-site", "/blog/ai-ready-website-checklist", "/blog/how-to-create-llms-txt", "/blog/how-to-implement-webmcp"],
     body: `# MAKO Blog
 
 Articles, insights, and updates about MAKO and the AI-readable web.
@@ -548,7 +554,9 @@ Articles, insights, and updates about MAKO and the AI-readable web.
 
 - **Introducing MAKO** — Why we built MAKO and how it reduces token consumption by 94%.
 - **What Happens When an AI Agent Visits Your Website** — The invisible journey from HTTP request to reasoning, and why 93% of what your server sends is noise.
-- **AI-Ready Website Checklist** — 20 practical steps to make your website readable, discoverable, and actionable for AI agents.`,
+- **AI-Ready Website Checklist** — 21 practical steps to make your website readable, discoverable, and actionable for AI agents.
+- **How to Create an llms.txt** — A quick guide to creating an effective llms.txt file for AI agent discovery.
+- **How to Implement WebMCP** — Add a .well-known/mcp.json endpoint to expose your site's tools to AI agents.`,
   },
   "/blog/introducing-mako": {
     type: "article",
@@ -656,7 +664,7 @@ Content negotiation for AI: same URL, same server, but AI agents receive ~276 to
   "/blog/ai-ready-website-checklist": {
     type: "article",
     entity: "AI-Ready Website Checklist",
-    summary: "20 practical steps to make your website readable, discoverable, and actionable for ChatGPT, Claude, Perplexity, and every AI agent.",
+    summary: "21 practical steps to make your website readable, discoverable, and actionable for ChatGPT, Claude, Perplexity, and every AI agent.",
     freshness: "monthly",
     links: `links:
   internal:
@@ -673,41 +681,122 @@ Content negotiation for AI: same URL, same server, but AI agents receive ~276 to
       context: "Measure your AI-readiness score"
       type: reference`,
     related: ["/blog/what-happens-when-ai-visits-your-site", "/blog/introducing-mako", "/score"],
-    body: `# AI-Ready Website Checklist: 20 Steps
+    body: `# AI-Ready Website Checklist: 21 Steps
 
 Practical checklist organized by the DTRA framework: Discoverable, Readable, Trustworthy, Actionable.
 
-## Discoverable (5 steps)
+## Discoverable (6 steps)
 1. Allow AI crawlers in robots.txt
 2. Add sitemap.xml
 3. Add llms.txt file
 4. Add JSON-LD structured data (Schema.org)
 5. Add Open Graph tags
+6. Add WebMCP attributes to your forms
 
 ## Readable (7 steps)
-6. Use semantic HTML (main, article, section)
-7. Single descriptive H1
-8. Meaningful headings (h2, h3)
-9. Alt text on images
-10. Descriptive link text (not "click here")
-11. Don't depend on JavaScript for content (use SSR)
-12. Reduce HTML bloat
+7. Use semantic HTML (main, article, section)
+8. Single descriptive H1
+9. Meaningful headings (h2, h3)
+10. Alt text on images
+11. Descriptive link text (not "click here")
+12. Don't depend on JavaScript for content (use SSR)
+13. Reduce HTML bloat
 
 ## Trustworthy (5 steps)
-13. Meta description (<160 chars)
-14. Canonical URL
-15. Language attribute on html tag
-16. Fresh content with datePublished/dateModified
-17. ETag or Last-Modified headers
+14. Meta description (<160 chars)
+15. Canonical URL
+16. Language attribute on html tag
+17. Fresh content with datePublished/dateModified
+18. ETag or Last-Modified headers
 
 ## Actionable (3 steps)
-18. Clear CTAs in HTML content
-19. Semantic links with context
-20. Main content first in DOM
+19. Clear CTAs in HTML content
+20. Semantic links with context
+21. Main content first in DOM
 
 ## Beyond the Checklist
 
 Even perfectly optimized HTML sends 15-20x more tokens than necessary. MAKO content negotiation reduces tokens by ~94%. Most sites score 30-40 without optimization, 60+ with this checklist, 90+ with MAKO.`,
+  },
+  "/blog/how-to-create-llms-txt": {
+    type: "article",
+    entity: "How to Create an llms.txt",
+    summary: "A quick guide to creating an effective llms.txt file — the robots.txt for AI agents. Tell ChatGPT, Claude, and Perplexity what your site is about.",
+    freshness: "monthly",
+    links: `links:
+  internal:
+    - url: /blog
+      context: "All blog articles"
+      type: parent
+    - url: /blog/how-to-implement-webmcp
+      context: "Implement WebMCP for tool exposure"
+      type: sibling
+    - url: /blog/ai-ready-website-checklist
+      context: "Full AI-readiness checklist"
+      type: sibling
+    - url: /score
+      context: "Check if your llms.txt is detected"
+      type: reference`,
+    related: ["/blog/how-to-implement-webmcp", "/blog/ai-ready-website-checklist", "/score"],
+    body: `# How to Create an llms.txt That AI Agents Actually Use
+
+The llms.txt file is the simplest way to tell AI agents what your website is about. A plain text file at your site root that describes your content, structure, and capabilities.
+
+## What Is llms.txt?
+
+A text file at \`https://yoursite.com/llms.txt\` that provides AI agents with: site description, key pages, content structure, API endpoints, and agent instructions.
+
+## Basic Structure
+
+Start with site name, brief description, main pages with URLs, and value proposition. Keep it specific, include key URLs, mention capabilities, and keep it under 500 lines.
+
+## Implementation
+
+Static sites: add to public/ folder. Next.js: public/llms.txt or route handler. WordPress: plugin or rewrite rule. Nginx/Apache: place in web root.
+
+## llms.txt vs MAKO
+
+llms.txt is site-level discovery. MAKO is page-level optimized content. Use llms.txt to help agents find your content, MAKO to serve it efficiently.`,
+  },
+  "/blog/how-to-implement-webmcp": {
+    type: "article",
+    entity: "How to Implement WebMCP",
+    summary: "WebMCP is the W3C standard that lets AI agents interact with your website through HTML form attributes. Learn how to implement it.",
+    freshness: "monthly",
+    links: `links:
+  internal:
+    - url: /blog
+      context: "All blog articles"
+      type: parent
+    - url: /blog/how-to-create-llms-txt
+      context: "Create an llms.txt for site discovery"
+      type: sibling
+    - url: /blog/ai-ready-website-checklist
+      context: "Full AI-readiness checklist"
+      type: sibling
+    - url: /score
+      context: "Check if your MCP endpoint is detected"
+      type: reference`,
+    related: ["/blog/how-to-create-llms-txt", "/blog/ai-ready-website-checklist", "/score"],
+    body: `# What Is WebMCP and How to Add It to Your Website
+
+WebMCP (Web Model Context Protocol) is a W3C standard backed by Google and Microsoft that lets websites declare their forms as structured tools for AI agents.
+
+## How It Works
+
+Add HTML attributes to existing forms: \`toolname\` (unique identifier), \`tooldescription\` (what the form does), \`toolautosubmit\` (auto-submit when filled). On inputs: \`toolparamtitle\` and \`toolparamdescription\`.
+
+## JavaScript API
+
+For dynamic tools: \`navigator.modelContext.registerTool()\` with name, description, inputSchema, and execute callback.
+
+## Testing
+
+Available in Chrome 146 (Canary) with the "WebMCP for testing" flag enabled.
+
+## WebMCP + llms.txt + MAKO
+
+Three complementary standards: llms.txt for discovery, WebMCP for interaction through forms, MAKO for AI-optimized content delivery.`,
   },
 };
 

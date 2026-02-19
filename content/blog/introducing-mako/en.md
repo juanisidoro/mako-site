@@ -21,6 +21,21 @@ Consider a typical e-commerce product page. A human visitor sees a clean layout 
 
 This is **93% noise, 7% signal**.
 
+## The SPA Black Hole
+
+For modern JavaScript applications (React, Vue, Angular, Next.js CSR), the situation is even worse. When an AI agent requests a page, the server responds with something like:
+
+```html
+<div id="root"></div>
+<script src="/bundle.js"></script>
+```
+
+The actual content — products, articles, prices, descriptions — is rendered client-side by JavaScript. AI agents don't execute JavaScript. They see an empty page. Your entire site is **invisible**.
+
+Server-side rendering (SSR) and static generation help, but even then the HTML is bloated with hydration markers, embedded state, and framework artifacts. A Next.js SSR page still sends 5-10x more tokens than necessary because it includes the full React tree alongside the actual content.
+
+The web is split: legacy sites send too much noise, modern SPAs send nothing at all. Neither format is designed for the audience that's growing fastest.
+
 ## What MAKO Does
 
 MAKO adds a structured, AI-optimized layer to any website using standard HTTP content negotiation. When an AI agent sends `Accept: text/mako+markdown`, the server responds with a clean MAKO document instead of raw HTML:

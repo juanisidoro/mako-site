@@ -21,6 +21,21 @@ Nehmen wir eine typische E-Commerce-Produktseite. Ein menschlicher Besucher sieh
 
 Das sind **93 % Rauschen, 7 % Signal**.
 
+## Das Schwarze Loch der SPAs
+
+Bei modernen JavaScript-Anwendungen (React, Vue, Angular, Next.js CSR) ist die Situation noch schlimmer. Wenn ein KI-Agent eine Seite anfordert, antwortet der Server mit etwas wie:
+
+```html
+<div id="root"></div>
+<script src="/bundle.js"></script>
+```
+
+Der eigentliche Inhalt — Produkte, Artikel, Preise, Beschreibungen — wird clientseitig durch JavaScript gerendert. KI-Agenten fuehren kein JavaScript aus. Sie sehen eine leere Seite. Ihre gesamte Website ist **unsichtbar**.
+
+Serverseitiges Rendering (SSR) und statische Generierung helfen, doch selbst dann ist das HTML aufgeblaht mit Hydration-Markern, eingebettetem State und Framework-Artefakten. Eine Next.js-Seite mit SSR sendet immer noch 5- bis 10-mal mehr Tokens als noetig, da sie den vollstaendigen React-Baum neben dem eigentlichen Inhalt mitliefert.
+
+Das Web ist gespalten: Aeltere Websites senden zu viel Rauschen, moderne SPAs senden gar nichts. Keines der beiden Formate ist fuer das am schnellsten wachsende Publikum konzipiert.
+
 ## Was MAKO macht
 
 MAKO fuegt jeder Website eine strukturierte, KI-optimierte Schicht hinzu — ueber standardmaessige HTTP-Content-Negotiation. Wenn ein KI-Agent `Accept: text/mako+markdown` sendet, antwortet der Server mit einem sauberen MAKO-Dokument anstelle von rohem HTML:

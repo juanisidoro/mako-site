@@ -1,21 +1,21 @@
 ---
-title: "Checklist de Site Pronto para IA: 20 Passos para Otimizar para Agentes de IA"
-description: "Um checklist pr\u00e1tico para tornar seu site leg\u00edvel, descobr\u00edvel e acion\u00e1vel para ChatGPT, Claude, Perplexity e qualquer agente de IA."
+title: "Checklist de Site Pronto para IA: 21 Passos para Otimizar para Agentes de IA"
+description: "Um checklist prático para tornar seu site legível, descobrível e acionável para ChatGPT, Claude, Perplexity e qualquer agente de IA."
 ---
 
 # Checklist de Site Pronto para IA
 
-Os agentes de IA representam uma parcela crescente do tr\u00e1fego do seu site. ChatGPT, Claude, Perplexity, assistentes de compras e bots de pesquisa visitam milh\u00f5es de p\u00e1ginas todos os dias \u2014 mas a maioria dos sites n\u00e3o foi constru\u00edda para eles.
+Os agentes de IA representam uma parcela crescente do tráfego do seu site. ChatGPT, Claude, Perplexity, assistentes de compras e bots de pesquisa visitam milhões de páginas todos os dias — mas a maioria dos sites não foi construída para eles.
 
-Este checklist cobre 20 passos concretos que voc\u00ea pode implementar hoje, organizados pelas quatro dimens\u00f5es que importam: **Descobr\u00edvel**, **Leg\u00edvel**, **Confi\u00e1vel** e **Acion\u00e1vel**.
+Este checklist cobre 21 passos concretos que você pode implementar hoje, organizados pelas quatro dimensões que importam: **Descobrível**, **Legível**, **Confiável** e **Acionável**.
 
-## Descobr\u00edvel: Os Agentes de IA Conseguem Encontrar Voc\u00ea?
+## Descobrível: Os Agentes de IA Conseguem Encontrar Você?
 
-Se os agentes n\u00e3o conseguem descobrir seu conte\u00fado, nada mais importa.
+Se os agentes não conseguem descobrir seu conteúdo, nada mais importa.
 
 ### 1. Permita crawlers de IA no robots.txt
 
-Verifique se o seu `robots.txt` n\u00e3o bloqueia crawlers de IA. Muitos sites bloqueiam inadvertidamente user agents como `GPTBot`, `ClaudeBot` ou `PerplexityBot`.
+Verifique se o seu `robots.txt` não bloqueia crawlers de IA. Muitos sites bloqueiam inadvertidamente user agents como `GPTBot`, `ClaudeBot` ou `PerplexityBot`.
 
 ```
 User-agent: *
@@ -24,108 +24,112 @@ Allow: /
 
 ### 2. Adicione um sitemap.xml
 
-Um sitemap ajuda os agentes a descobrir todas as suas p\u00e1ginas sem precisar rastrear link por link. Certifique-se de que esteja referenciado no seu `robots.txt` e inclua todas as p\u00e1ginas importantes.
+Um sitemap ajuda os agentes a descobrir todas as suas páginas sem precisar rastrear link por link. Certifique-se de que esteja referenciado no seu `robots.txt` e inclua todas as páginas importantes.
 
 ### 3. Adicione um arquivo llms.txt
 
-O [padr\u00e3o llms.txt](https://llmstxt.org) informa aos agentes de IA o que seu site oferece e como acess\u00e1-lo. Pense nele como um `robots.txt` para LLMs \u2014 um arquivo de instru\u00e7\u00f5es no n\u00edvel do site.
+O [padrão llms.txt](https://llmstxt.org) informa aos agentes de IA o que seu site oferece e como acessá-lo. Pense nele como um `robots.txt` para LLMs — um arquivo de instruções no nível do site. Consulte nosso [guia para criar um llms.txt eficaz](/pt/blog/como-criar-llms-txt).
 
 ### 4. Adicione dados estruturados (JSON-LD)
 
-Marca\u00e7\u00e3o Schema.org em formato JSON-LD ajuda os agentes a entender o assunto da sua p\u00e1gina sem precisar analisar o HTML. Inclua pelo menos `@type`, `name`, `description` e as propriedades relevantes para seu tipo de conte\u00fado.
+Marcação Schema.org em formato JSON-LD ajuda os agentes a entender o assunto da sua página sem precisar analisar o HTML. Inclua pelo menos `@type`, `name`, `description` e as propriedades relevantes para seu tipo de conteúdo.
 
 ### 5. Adicione tags Open Graph
 
-Tags Open Graph (`og:title`, `og:description`, `og:type`, `og:image`) s\u00e3o usadas por agentes de IA para pr\u00e9-visualizar e classificar conte\u00fado, n\u00e3o apenas por plataformas sociais.
+Tags Open Graph (`og:title`, `og:description`, `og:type`, `og:image`) são usadas por agentes de IA para pré-visualizar e classificar conteúdo, não apenas por plataformas sociais.
 
-## Leg\u00edvel: Os Agentes de IA Conseguem Entender Voc\u00ea?
+### 6. Adicione atributos WebMCP aos seus formulários
 
-A maioria das p\u00e1ginas web \u00e9 90%+ de c\u00f3digo desnecess\u00e1rio. Os agentes precisam de conte\u00fado limpo e estruturado.
+[WebMCP](https://webmachinelearning.github.io/webmcp/) é um padrão do W3C que permite declarar seus formulários como ferramentas para agentes IA. Adicione os atributos `toolname` e `tooldescription` aos seus elementos `<form>` para que os agentes possam descobri-los e usá-los diretamente — sem scraping de tela. Consulte nosso [guia de WebMCP](/pt/blog/como-implementar-webmcp).
 
-### 6. Use HTML sem\u00e2ntico
+## Legível: Os Agentes de IA Conseguem Entender Você?
 
-Tags como `<main>`, `<article>`, `<section>` e `<aside>` indicam aos agentes onde o conte\u00fado real est\u00e1. Sem elas, o agente v\u00ea uma sopa desestruturada de elementos `<div>`.
+A maioria das páginas web é 90%+ de código desnecessário. Os agentes precisam de conteúdo limpo e estruturado.
 
-### 7. Adicione um \u00fanico H1 descritivo
+### 7. Use HTML semântico
 
-O H1 \u00e9 o principal sinal que os agentes usam para entender o assunto de uma p\u00e1gina. Use exatamente um, e torne-o descritivo \u2014 n\u00e3o "Bem-vindo" ou "In\u00edcio."
+Tags como `<main>`, `<article>`, `<section>` e `<aside>` indicam aos agentes onde o conteúdo real está. Sem elas, o agente vê uma sopa desestruturada de elementos `<div>`.
 
-### 8. Use t\u00edtulos significativos
+### 8. Adicione um único H1 descritivo
 
-Os t\u00edtulos (`<h2>`, `<h3>`) devem resumir o conte\u00fado da se\u00e7\u00e3o. Os agentes os utilizam para leitura inteligente \u2014 compreendendo a estrutura sem ler tudo. Evite t\u00edtulos gen\u00e9ricos como "Mais Informa\u00e7\u00f5es."
+O H1 é o principal sinal que os agentes usam para entender o assunto de uma página. Use exatamente um, e torne-o descritivo — não "Bem-vindo" ou "Início."
 
-### 9. Adicione texto alternativo \u00e0s imagens
+### 9. Use títulos significativos
 
-Sem texto alternativo, as imagens s\u00e3o invis\u00edveis para os agentes de IA. Com ele, os agentes compreendem seu conte\u00fado visual e podem referenci\u00e1-lo em respostas.
+Os títulos (`<h2>`, `<h3>`) devem resumir o conteúdo da seção. Os agentes os utilizam para leitura inteligente — compreendendo a estrutura sem ler tudo. Evite títulos genéricos como "Mais Informações."
 
-### 10. Use texto descritivo nos links
+### 10. Adicione texto alternativo às imagens
 
-Substitua textos gen\u00e9ricos em links ("clique aqui", "leia mais", "saiba mais") por r\u00f3tulos descritivos. Os agentes usam o texto do link para decidir se vale a pena segui-lo.
+Sem texto alternativo, as imagens são invisíveis para os agentes de IA. Com ele, os agentes compreendem seu conteúdo visual e podem referenciá-lo em respostas.
 
-### 11. N\u00e3o dependa de JavaScript para o conte\u00fado
+### 11. Use texto descritivo nos links
 
-Agentes de IA e crawlers n\u00e3o conseguem executar JavaScript. Se o seu conte\u00fado depende de renderiza\u00e7\u00e3o no lado do cliente (React, Vue, Angular SPAs sem SSR), ele \u00e9 invis\u00edvel para qualquer agente de IA. Use SSR ou gera\u00e7\u00e3o est\u00e1tica.
+Substitua textos genéricos em links ("clique aqui", "leia mais", "saiba mais") por rótulos descritivos. Os agentes usam o texto do link para decidir se vale a pena segui-lo.
 
-### 12. Reduza a infla\u00e7\u00e3o do HTML
+### 12. Não dependa de JavaScript para o conteúdo
 
-Remova estilos inline desnecess\u00e1rios, elementos vazios e marca\u00e7\u00e3o n\u00e3o sem\u00e2ntica. Quanto menos ru\u00eddo no seu HTML, melhor a rela\u00e7\u00e3o sinal-ru\u00eddo que os agentes experimentam.
+Agentes de IA e crawlers não conseguem executar JavaScript. Se o seu conteúdo depende de renderização no lado do cliente (React, Vue, Angular SPAs sem SSR), ele é invisível para qualquer agente de IA. Use SSR ou geração estática.
 
-## Confi\u00e1vel: Os Agentes de IA Podem Confiar em Voc\u00ea?
+### 13. Reduza a inflação do HTML
 
-Sinais de confian\u00e7a ajudam os agentes a verificar a precis\u00e3o e decidir se devem citar sua p\u00e1gina.
+Remova estilos inline desnecessários, elementos vazios e marcação não semântica. Quanto menos ruído no seu HTML, melhor a relação sinal-ruído que os agentes experimentam.
 
-### 13. Adicione uma meta description
+## Confiável: Os Agentes de IA Podem Confiar em Você?
 
-A meta description \u00e9 o resumo r\u00e1pido que os agentes usam quando n\u00e3o leem a p\u00e1gina inteira. Mantenha-a com menos de 160 caracteres, espec\u00edfica e precisa.
+Sinais de confiança ajudam os agentes a verificar a precisão e decidir se devem citar sua página.
 
-### 14. Defina uma URL canonical
+### 14. Adicione uma meta description
 
-`<link rel="canonical">` evita que os agentes indexem vers\u00f5es duplicadas do seu conte\u00fado. Essencial se voc\u00ea tem par\u00e2metros de URL, pagina\u00e7\u00e3o ou vers\u00f5es para impress\u00e3o.
+A meta description é o resumo rápido que os agentes usam quando não leem a página inteira. Mantenha-a com menos de 160 caracteres, específica e precisa.
 
-### 15. Declare o idioma
+### 15. Defina uma URL canonical
 
-O atributo `lang` no `<html>` informa aos agentes em que idioma est\u00e1 o seu conte\u00fado. Simples, mas frequentemente ausente \u2014 e afeta diretamente a compreens\u00e3o.
+`<link rel="canonical">` evita que os agentes indexem versões duplicadas do seu conteúdo. Essencial se você tem parâmetros de URL, paginação ou versões para impressão.
+
+### 16. Declare o idioma
+
+O atributo `lang` no `<html>` informa aos agentes em que idioma está o seu conteúdo. Simples, mas frequentemente ausente — e afeta diretamente a compreensão.
 
 ```html
 <html lang="pt">
 ```
 
-### 16. Mantenha o conte\u00fado atualizado
+### 17. Mantenha o conteúdo atualizado
 
-Os agentes prestam aten\u00e7\u00e3o \u00e0s datas. Inclua `datePublished` e `dateModified` nos seus dados estruturados. Conte\u00fado desatualizado perde credibilidade.
+Os agentes prestam atenção às datas. Inclua `datePublished` e `dateModified` nos seus dados estruturados. Conteúdo desatualizado perde credibilidade.
 
-### 17. Use headers ETag ou Last-Modified
+### 18. Use headers ETag ou Last-Modified
 
-Esses headers permitem que os agentes verifiquem se o conte\u00fado mudou sem precisar baix\u00e1-lo novamente. Cache eficiente sinaliza um site bem mantido.
+Esses headers permitem que os agentes verifiquem se o conteúdo mudou sem precisar baixá-lo novamente. Cache eficiente sinaliza um site bem mantido.
 
-## Acion\u00e1vel: Os Agentes de IA Podem Interagir com Voc\u00ea?
+## Acionável: Os Agentes de IA Podem Interagir com Você?
 
-O futuro da web de agentes \u00e9 transacional. Se os agentes n\u00e3o encontram suas a\u00e7\u00f5es, voc\u00ea perde convers\u00f5es.
+O futuro da web de agentes é transacional. Se os agentes não encontram suas ações, você perde conversões.
 
-### 18. Defina CTAs claros no conte\u00fado
+### 19. Defina CTAs claros no conteúdo
 
-Seus bot\u00f5es "Comprar Agora", "Assinar", "Agendar uma Demo" devem estar claros no conte\u00fado HTML, n\u00e3o apenas visualmente estilizados. Os agentes identificam a\u00e7\u00f5es pelo texto e pela estrutura HTML, n\u00e3o pelo CSS.
+Seus botões "Comprar Agora", "Assinar", "Agendar uma Demo" devem estar claros no conteúdo HTML, não apenas visualmente estilizados. Os agentes identificam ações pelo texto e pela estrutura HTML, não pelo CSS.
 
-### 19. Use links sem\u00e2nticos com contexto
+### 20. Use links semânticos com contexto
 
-Os links devem ter texto descritivo que explique para onde levam. Em vez de "Clique aqui para ver os pre\u00e7os", use "Ver planos de pre\u00e7os." Isso ajuda os agentes a navegar pelo seu site com prop\u00f3sito.
+Os links devem ter texto descritivo que explique para onde levam. Em vez de "Clique aqui para ver os preços", use "Ver planos de preços." Isso ajuda os agentes a navegar pelo seu site com propósito.
 
-### 20. Coloque seu conte\u00fado principal primeiro
+### 21. Coloque seu conteúdo principal primeiro
 
-Os agentes analisam os primeiros centenas de caracteres para decidir se a p\u00e1gina \u00e9 relevante. Se encontram apenas navega\u00e7\u00e3o ou c\u00f3digo desnecess\u00e1rio antes do conte\u00fado real, podem pular sua p\u00e1gina completamente. Mova seu H1 e conte\u00fado principal o mais alto poss\u00edvel no HTML.
+Os agentes analisam os primeiros centenas de caracteres para decidir se a página é relevante. Se encontram apenas navegação ou código desnecessário antes do conteúdo real, podem pular sua página completamente. Mova seu H1 e conteúdo principal o mais alto possível no HTML.
 
-## Al\u00e9m do Checklist: O N\u00edvel MAKO
+## Além do Checklist: O Nível MAKO
 
-Tudo acima torna seu site melhor para agentes de IA usando o formato HTML existente. Mas h\u00e1 um limite \u2014 mesmo HTML perfeitamente otimizado ainda envia **15-20x mais tokens** do que o necess\u00e1rio.
+Tudo acima torna seu site melhor para agentes de IA usando o formato HTML existente. Mas há um limite — mesmo HTML perfeitamente otimizado ainda envia **15-20x mais tokens** do que o necessário.
 
-O pr\u00f3ximo n\u00edvel \u00e9 servir conte\u00fado estruturado e nativo para IA junto com seu HTML atrav\u00e9s de content negotiation. \u00c9 isso que o [protocolo MAKO](https://makospec.vercel.app/pt/docs) possibilita: mesma URL, mesmo servidor, mas quando um agente de IA visita, ele recebe markdown otimizado com metadados em vez de HTML bruto.
+O próximo nível é servir conteúdo estruturado e nativo para IA junto com seu HTML através de content negotiation. É isso que o [protocolo MAKO](https://makospec.vercel.app/pt/docs) possibilita: mesma URL, mesmo servidor, mas quando um agente de IA visita, ele recebe markdown otimizado com metadados em vez de HTML bruto.
 
-O resultado: **~94% menos tokens**, a\u00e7\u00f5es declaradas que os agentes podem executar e links sem\u00e2nticos que podem seguir com prop\u00f3sito.
+O resultado: **~94% menos tokens**, ações declaradas que os agentes podem executar e links semânticos que podem seguir com propósito.
 
-## Avalie Onde Voc\u00ea Est\u00e1
+## Avalie Onde Você Está
 
-Cada item deste checklist corresponde a uma verifica\u00e7\u00e3o espec\u00edfica no [MAKO Score](https://makospec.vercel.app/pt/score) \u2014 uma auditoria gratuita que mede seu site nas quatro dimens\u00f5es (Descobr\u00edvel, Leg\u00edvel, Confi\u00e1vel, Acion\u00e1vel) e atribui uma pontua\u00e7\u00e3o de 0 a 100.
+Cada item deste checklist corresponde a uma verificação específica no [MAKO Score](https://makospec.vercel.app/pt/score) — uma auditoria gratuita que mede seu site nas quatro dimensões (Descobrível, Legível, Confiável, Acionável) e atribui uma pontuação de 0 a 100.
 
-A maioria dos sites sem otimiza\u00e7\u00e3o pontua entre 30-40. Com este checklist, voc\u00ea pode alcan\u00e7ar 60+. Com MAKO, 90+.
+A maioria dos sites sem otimização pontua entre 30-40. Com este checklist, você pode alcançar 60+. Com MAKO, 90+.
 
 [Verifique seu AI Score agora](https://makospec.vercel.app/pt/score).

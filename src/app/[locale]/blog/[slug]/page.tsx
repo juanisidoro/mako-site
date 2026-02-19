@@ -5,8 +5,10 @@ import type { Metadata } from 'next';
 import { siteConfig } from '@/config/site';
 import { locales } from '@/i18n/config';
 import { getPost, getPostSlugs } from '@/lib/blog';
+import { extractHeadings } from '@/lib/markdown-utils';
 import { Link } from '@/i18n/routing';
 import { MarkdownRenderer } from '@/components/docs/markdown-renderer';
+import { TableOfContents } from '@/components/docs/table-of-contents';
 import { BlogPostHeader } from '@/components/blog/blog-post-header';
 import { Footer } from '@/components/footer';
 
@@ -75,6 +77,7 @@ export default async function BlogPostPage({
   if (!post) notFound();
 
   const t = await getTranslations({ locale, namespace: 'blog' });
+  const headings = extractHeadings(post.content);
 
   const canonical = `${siteConfig.baseUrl}/${locale}/blog/${post.slug}`;
 
@@ -105,7 +108,7 @@ export default async function BlogPostPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main className="mx-auto max-w-3xl px-6 py-16">
+      <div className="mx-auto max-w-5xl px-6 py-16">
         <Link
           href="/blog"
           className="inline-flex items-center gap-1 text-sm text-slate-500 hover:text-emerald-400 transition-colors mb-8"
@@ -116,12 +119,16 @@ export default async function BlogPostPage({
           {t('back_to_blog')}
         </Link>
 
-        <BlogPostHeader post={post} />
-
-        <div className="prose-blog">
-          <MarkdownRenderer content={post.content} />
+        <div className="flex gap-10">
+          <main className="min-w-0 flex-1 max-w-3xl">
+            <BlogPostHeader post={post} />
+            <div className="prose-blog">
+              <MarkdownRenderer content={post.content} />
+            </div>
+          </main>
+          <TableOfContents headings={headings} />
         </div>
-      </main>
+      </div>
       <Footer />
     </>
   );
