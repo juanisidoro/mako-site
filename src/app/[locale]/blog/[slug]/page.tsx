@@ -5,6 +5,7 @@ import type { Metadata } from 'next';
 import { siteConfig } from '@/config/site';
 import { locales } from '@/i18n/config';
 import { getPost, getPostSlugs } from '@/lib/blog';
+import { buildCoverUrl } from '@/lib/blog/cover-url';
 import { extractHeadings } from '@/lib/markdown-utils';
 import { Link } from '@/i18n/routing';
 import { MarkdownRenderer } from '@/components/docs/markdown-renderer';
@@ -34,6 +35,9 @@ export async function generateMetadata({
   languages['x-default'] = `${siteConfig.baseUrl}/en/blog/${post.slugsByLocale.en ?? slug}`;
 
   const canonical = `${siteConfig.baseUrl}/${locale}/blog/${post.slug}`;
+  const ogImage = post.cover
+    ? post.cover
+    : `${siteConfig.baseUrl}${buildCoverUrl(post)}`;
 
   return {
     title: `${post.title} — MAKO Blog`,
@@ -47,7 +51,7 @@ export async function generateMetadata({
       description: post.description,
       url: canonical,
       type: post.seo.og_type as 'article',
-      ...(post.cover ? { images: [{ url: post.cover }] } : {}),
+      images: [{ url: ogImage, width: 1200, height: 630 }],
       siteName: siteConfig.name,
       locale,
       alternateLocale: locales.filter((l) => l !== locale),
@@ -60,7 +64,7 @@ export async function generateMetadata({
       card: post.seo.twitter_card as 'summary_large_image',
       title: post.title,
       description: post.description,
-      ...(post.cover ? { images: [post.cover] } : {}),
+      images: [ogImage],
     },
   };
 }
@@ -97,7 +101,7 @@ export default async function BlogPostPage({
       name: 'MAKO',
       url: siteConfig.baseUrl,
     },
-    ...(post.cover ? { image: post.cover } : {}),
+    image: post.cover || `${siteConfig.baseUrl}${buildCoverUrl(post)}`,
     inLanguage: locale,
     mainEntityOfPage: canonical,
   };

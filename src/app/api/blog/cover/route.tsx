@@ -1,13 +1,7 @@
 import { ImageResponse } from 'next/og';
-import { getPost, getPostSlugs } from '@/lib/blog';
+import { NextRequest } from 'next/server';
 
-export const size = { width: 1200, height: 630 };
-export const contentType = 'image/png';
-export const alt = 'MAKO Blog';
-
-export function generateStaticParams() {
-  return getPostSlugs();
-}
+export const runtime = 'edge';
 
 // ---------------------------------------------------------------------------
 // Theme definitions — each tag maps to a distinct visual style
@@ -93,18 +87,24 @@ function formatDate(iso: string): string {
 }
 
 // ---------------------------------------------------------------------------
-// OG Image generator
+// GET /api/blog/cover?title=...&tags=...&author=...&date=...&time=3
 // ---------------------------------------------------------------------------
 
-export default async function OgImage({
-  params,
-}: {
-  params: Promise<{ locale: string; slug: string }>;
-}) {
-  const { locale, slug } = await params;
-  const post = getPost(slug, locale);
+export async function GET(request: NextRequest) {
+  const { searchParams } = request.nextUrl;
+  const title = searchParams.get('title') || 'MAKO Blog';
+  const tagsRaw = searchParams.get('tags') || '';
+  const author = searchParams.get('author') || '';
+  const date = searchParams.get('date') || '';
+  const readingTime = searchParams.get('time') || '';
 
-  if (!post) {
+  const tags = tagsRaw ? tagsRaw.split(',').map((t) => t.trim()) : [];
+  const theme = resolveTheme(tags);
+  const displayTitle =
+    title.length > 90 ? title.slice(0, 87) + '...' : title;
+
+  // No data at all → generic fallback
+  if (!searchParams.get('title')) {
     return new ImageResponse(
       (
         <div
@@ -150,13 +150,9 @@ export default async function OgImage({
           </div>
         </div>
       ),
-      { ...size },
+      { width: 1200, height: 630 },
     );
   }
-
-  const theme = resolveTheme(post.tags);
-  const title =
-    post.title.length > 90 ? post.title.slice(0, 87) + '...' : post.title;
 
   return new ImageResponse(
     (
@@ -260,7 +256,7 @@ export default async function OgImage({
           {/* Title */}
           <div
             style={{
-              fontSize: title.length > 60 ? 38 : 46,
+              fontSize: displayTitle.length > 60 ? 38 : 46,
               fontWeight: 700,
               color: '#f8fafc',
               lineHeight: 1.25,
@@ -270,26 +266,28 @@ export default async function OgImage({
               flex: 1,
             }}
           >
-            {title}
+            {displayTitle}
           </div>
 
           {/* Tags */}
-          <div style={{ display: 'flex', gap: 10, marginBottom: 24 }}>
-            {post.tags.slice(0, 4).map((tag) => (
-              <span
-                key={tag}
-                style={{
-                  fontSize: 14,
-                  color: '#94a3b8',
-                  backgroundColor: 'rgba(30,41,59,0.8)',
-                  padding: '5px 14px',
-                  borderRadius: 14,
-                }}
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
+          {tags.length > 0 && (
+            <div style={{ display: 'flex', gap: 10, marginBottom: 24 }}>
+              {tags.slice(0, 4).map((tag) => (
+                <span
+                  key={tag}
+                  style={{
+                    fontSize: 14,
+                    color: '#94a3b8',
+                    backgroundColor: 'rgba(30,41,59,0.8)',
+                    padding: '5px 14px',
+                    borderRadius: 14,
+                  }}
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
 
           {/* Footer */}
           <div
@@ -302,23 +300,33 @@ export default async function OgImage({
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <span
-                style={{
-                  fontSize: 15,
-                  color: '#94a3b8',
-                  fontWeight: 500,
-                }}
-              >
-                {post.author}
-              </span>
-              <span style={{ fontSize: 15, color: '#475569' }}>·</span>
-              <span style={{ fontSize: 15, color: '#64748b' }}>
-                {formatDate(post.date)}
-              </span>
-              <span style={{ fontSize: 15, color: '#475569' }}>·</span>
-              <span style={{ fontSize: 15, color: '#64748b' }}>
-                {post.readingTime} min read
-              </span>
+              {author && (
+                <>
+                  <span
+                    style={{
+                      fontSize: 15,
+                      color: '#94a3b8',
+                      fontWeight: 500,
+                    }}
+                  >
+                    {author}
+                  </span>
+                  <span style={{ fontSize: 15, color: '#475569' }}>·</span>
+                </>
+              )}
+              {date && (
+                <>
+                  <span style={{ fontSize: 15, color: '#64748b' }}>
+                    {formatDate(date)}
+                  </span>
+                  <span style={{ fontSize: 15, color: '#475569' }}>·</span>
+                </>
+              )}
+              {readingTime && (
+                <span style={{ fontSize: 15, color: '#64748b' }}>
+                  {readingTime} min read
+                </span>
+              )}
             </div>
             <span
               style={{
@@ -333,6 +341,12 @@ export default async function OgImage({
         </div>
       </div>
     ),
-    { ...size },
+    {
+      width: 1200,
+      height: 630,
+      headers: {
+        'Cache-Control': 'public, max-age=31536000, immutable',
+      },
+    },
   );
 }

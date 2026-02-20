@@ -1,11 +1,11 @@
 import { Link } from '@/i18n/routing';
 import { useTranslations } from 'next-intl';
 import type { BlogMeta } from '@/lib/blog';
+import { buildCoverUrl } from '@/lib/blog/cover-url';
 
 export function BlogCard({ post }: { post: BlogMeta }) {
   const t = useTranslations('blog');
-  const coverSrc =
-    post.cover ?? `/${post.locale}/blog/${post.slug}/opengraph-image`;
+  const coverSrc = buildCoverUrl(post);
 
   return (
     <article className="group rounded-xl border border-slate-800/50 bg-slate-900/30 p-6 transition hover:border-emerald-500/30 hover:bg-slate-900/50">

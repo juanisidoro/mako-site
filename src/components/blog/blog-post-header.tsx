@@ -1,10 +1,10 @@
 import { useTranslations } from 'next-intl';
 import type { BlogPost } from '@/lib/blog';
+import { buildCoverUrl } from '@/lib/blog/cover-url';
 
 export function BlogPostHeader({ post }: { post: BlogPost }) {
   const t = useTranslations('blog');
-  const coverSrc =
-    post.cover ?? `/${post.locale}/blog/${post.slug}/opengraph-image`;
+  const coverSrc = buildCoverUrl(post);
 
   return (
     <header className="mb-10">
