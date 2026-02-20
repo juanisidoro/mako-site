@@ -1,7 +1,35 @@
 import { ImageResponse } from 'next/og';
-import { NextRequest } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 export const runtime = 'edge';
+
+const SECRET = process.env.COVER_HMAC_SECRET || 'mako-cover-k7x9p2';
+
+/** Verify HMAC-SHA256 signature using Web Crypto (Edge-compatible). */
+async function verifySignature(
+  title: string,
+  tags: string,
+  author: string,
+  date: string,
+  time: string,
+  sig: string,
+): Promise<boolean> {
+  const encoder = new TextEncoder();
+  const key = await crypto.subtle.importKey(
+    'raw',
+    encoder.encode(SECRET),
+    { name: 'HMAC', hash: 'SHA-256' },
+    false,
+    ['sign'],
+  );
+  const payload = [title, tags, author, date, time].join('|');
+  const signed = await crypto.subtle.sign('HMAC', key, encoder.encode(payload));
+  const hex = Array.from(new Uint8Array(signed))
+    .map((b) => b.toString(16).padStart(2, '0'))
+    .join('')
+    .slice(0, 16);
+  return hex === sig;
+}
 
 // ---------------------------------------------------------------------------
 // Theme definitions — each tag maps to a distinct visual style
@@ -97,6 +125,15 @@ export async function GET(request: NextRequest) {
   const author = searchParams.get('author') || '';
   const date = searchParams.get('date') || '';
   const readingTime = searchParams.get('time') || '';
+  const sig = searchParams.get('sig') || '';
+
+  // Verify HMAC signature — reject unsigned requests
+  if (searchParams.get('title')) {
+    const valid = await verifySignature(title, tagsRaw, author, date, readingTime, sig);
+    if (!valid) {
+      return NextResponse.json({ error: 'Invalid signature' }, { status: 403 });
+    }
+  }
 
   const tags = tagsRaw ? tagsRaw.split(',').map((t) => t.trim()) : [];
   const theme = resolveTheme(tags);
