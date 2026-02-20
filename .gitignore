@@ -10,6 +10,9 @@ out/
 .env.local
 .env.production.local
 
+# cover generation fonts cache
+scripts/fonts/
+
 # misc
 .DS_Store
 *.tsbuildinfo
