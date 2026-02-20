@@ -3,18 +3,18 @@ import type { BlogPost } from '@/lib/blog';
 
 export function BlogPostHeader({ post }: { post: BlogPost }) {
   const t = useTranslations('blog');
+  const coverSrc =
+    post.cover ?? `/${post.locale}/blog/${post.slug}/opengraph-image`;
 
   return (
     <header className="mb-10">
-      {post.cover && (
-        <div className="mb-8 overflow-hidden rounded-xl">
-          <img
-            src={post.cover}
-            alt={post.title}
-            className="aspect-[2.4/1] w-full object-cover"
-          />
-        </div>
-      )}
+      <div className="mb-8 overflow-hidden rounded-xl">
+        <img
+          src={coverSrc}
+          alt={post.title}
+          className="aspect-[1200/630] w-full object-cover"
+        />
+      </div>
 
       <div className="flex flex-wrap items-center gap-2 text-sm text-slate-500 mb-4">
         <time dateTime={post.date}>

@@ -4,19 +4,19 @@ import type { BlogMeta } from '@/lib/blog';
 
 export function BlogCard({ post }: { post: BlogMeta }) {
   const t = useTranslations('blog');
+  const coverSrc =
+    post.cover ?? `/${post.locale}/blog/${post.slug}/opengraph-image`;
 
   return (
     <article className="group rounded-xl border border-slate-800/50 bg-slate-900/30 p-6 transition hover:border-emerald-500/30 hover:bg-slate-900/50">
       <Link href={`/blog/${post.slug}`} className="block">
-        {post.cover && (
-          <div className="mb-4 overflow-hidden rounded-lg">
-            <img
-              src={post.cover}
-              alt={post.title}
-              className="aspect-[2/1] w-full object-cover transition group-hover:scale-[1.02]"
-            />
-          </div>
-        )}
+        <div className="mb-4 overflow-hidden rounded-lg">
+          <img
+            src={coverSrc}
+            alt={post.title}
+            className="aspect-[1200/630] w-full object-cover transition group-hover:scale-[1.02]"
+          />
+        </div>
 
         <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500 mb-3">
           <time dateTime={post.date}>
