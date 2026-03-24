@@ -17,7 +17,15 @@ export default function middleware(request: NextRequest) {
     return NextResponse.rewrite(url);
   }
 
-  return intlMiddleware(request);
+  const response = intlMiddleware(request);
+
+  // Crawl budget optimization: mark _rsc prefetch URLs as noindex
+  // to prevent Google from wasting crawl budget on RSC flight data
+  if (request.nextUrl.searchParams.has('_rsc')) {
+    response.headers.set('X-Robots-Tag', 'noindex');
+  }
+
+  return response;
 }
 
 export const config = {
